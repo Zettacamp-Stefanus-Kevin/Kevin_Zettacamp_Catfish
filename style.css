@@ -1,0 +1,16 @@
+
+.line {
+    border-left: 6px solid grey;
+    height: 200px;
+}
+
+.bline {
+    border-bottom: 6px solid grey;
+    height: 10px;
+    weight: 10px;
+}
+
+.td {
+    border: 5px solid;
+    border-color: black;
+}
