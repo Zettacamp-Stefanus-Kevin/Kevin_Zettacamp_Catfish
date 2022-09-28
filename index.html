@@ -3,15 +3,36 @@
 
 <head>
         <meta charset="UTF-8">
-        <title>Page Title</title>
+        <title>Profil</title>
         <link rel="stylesheet" href="style.css">
 
         <style>
-                .button {
+                line {
+                        border-left: 6px solid grey;
+                        height: 200px;
+                }
+
+                table {
+                        padding: 2px;
+                }
+
+                ul {
+                        margin: 0;
+                        padding: 0;
+                        width: 200px;
+                }
+
+                #switch a {
                         display: block;
                         color: #000;
                         padding: 8px 16px;
                         text-decoration: none;
+                }
+
+                /* Change the link color on hover */
+                #switch a:hover {
+                        background-color: #555;
+                        color: white;
                 }
         </style>
 </head>
@@ -19,7 +40,7 @@
 <body>
         <!--using span & img relative-->
         <div class="line">
-                <img src="./aset/profil.jpeg" height="200" Alt="Profil">
+                <img src="./aset/Image/profil.jpeg" height="200" Alt="Profil">
         </div>
         <h1> <span style="color:rgb(255, 0, 0);font-weight:bold">My Profil</span> </h1>
         <!--using special character &nbsp, &quot, &amp -->
@@ -34,8 +55,17 @@
                         target="_blank">Quaver_Pro</a>&quot;
         </p>
 
-        <p>Berikut saya kasih contoh hasil video yang pernah saya buat</p>
+        <!--List-->
+        <p><strong> Alat yang Support hobby aku :</strong></p>
+        <ol type="I">
+                <li>Camera (A6000)</li>
+                <li>Lensa</li>
+                <li>Tripod</li>
+                <li>Laptop(Editing)</li>
+        </ol>
+
         <!-- Table -->
+        <p>Berikut saya kasih contoh hasil video yang pernah saya buat</p>
         <table border="5px">
                 <tr>
                         <th> Project</th>
@@ -45,17 +75,43 @@
                 </tr>
                 <tr>
                         <td>Padus LP3K </td>
-                        <td> <img src="./aset/barcode_1.PNG" height="100" Alt="scan"> </td>
+                        <td> <img src="./aset/Image/barcode_1.PNG" height="100" Alt="scan"> </td>
                         <td><a href=" https://bit.ly/3ySipa7"> Watch Video</a> </td>
                         <td> Lomba Paduan suara team LP3K</td>
                 </tr>
                 <tr>
                         <td>Padus UNY </td>
-                        <td> <img src="./aset/barcode_2.PNG" height="100" Alt="scan"> </td>
+                        <td> <img src="./aset/Image/barcode_2.PNG" height="100" Alt="scan"> </td>
                         <td><a href="https://bit.ly/38ILvy2"> Watch Video</a> </td>
                         <td> Lomba Paduan suara UNY</td>
                 </tr>
         </table>
+
+        <p> <strong>This my Media Aset for Editting </strong> </p>
+        
+        <video width="400" controls>
+                <source src="./aset/Video/videoplayback.mp4" type="video/mp4">
+        </video>
+        <audio controls>
+                <source src="./aset/Audio/Goofy Cartoon.mp3" type="audio/mp3">
+        </audio></br>
+        <video width="400" controls>
+                <source src="./aset/Video/videoplayback_1.mp4" type="video/mp4">
+        </video>
+        <audio controls>
+                <source src="./aset/Audio/jumpscare.mp3" type="audio/mp3">
+        </audio>
+        
+
+
+        <h4> <strong>You Can Visit to</strong> </h4>
+        <!-- Navbar to link Shopping -->
+
+        <ul style="background-color: #f1f1f1; ">
+                <li id="switch"><a href="shopping.html">Shopping</a></li>
+                <li id="switch"><a href="Form.html">Form</a></li>
+        </ul>
+
 
 
         <h4> <strong>Visit Me at</strong> </h4>
@@ -78,14 +134,8 @@
                                 Channel</a></br></li>
         </ul>
 
-        <p>This is my list shopping</p>
-        <!-- Navbar to link Shopping -->
-        <div class="button">
-                <a href="shopping.html" title="Shopping" target="_blank">
-                        <height="20">
-                                Shopping List
-                </a></br>
-        </div>
+
+
 
 
 
