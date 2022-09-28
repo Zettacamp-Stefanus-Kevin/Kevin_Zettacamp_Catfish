@@ -5,13 +5,11 @@
         <meta charset="UTF-8">
         <title>Profil</title>
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
         <style>
-                line {
-                        border-left: 6px solid grey;
-                        height: 200px;
-                }
-
                 table {
                         padding: 2px;
                 }
@@ -19,13 +17,12 @@
                 ul {
                         margin: 0;
                         padding: 0;
-                        width: 200px;
                 }
 
                 #switch a {
                         display: block;
                         color: #000;
-                        padding: 8px 16px;
+                        padding: 5px 12px;
                         text-decoration: none;
                 }
 
@@ -35,14 +32,22 @@
                         color: white;
                 }
         </style>
+
+
 </head>
 
 <body>
+        <nav class="navbar navbar-default">
+                <ul class="nav navbar-nav">
+                        <li id="switch"><a href="index.html">Profil</a></li>
+                        <li id="switch"><a href="shopping.html">Shopping</a></li>
+                        <li id="switch"><a href="Form.html">Form</a></li>
+                </ul>
+        </nav>
+
         <!--using span & img relative-->
-        <div class="line">
                 <img src="./aset/Image/profil.jpeg" height="200" Alt="Profil">
-        </div>
-        <h1> <span style="color:rgb(255, 0, 0);font-weight:bold">My Profil</span> </h1>
+        <h1> <span style="color:rgb(34, 233, 247);font-weight:bold">My Profil</span> </h1>
         <!--using special character &nbsp, &quot, &amp -->
         <p> &nbsp;&nbsp;&nbsp;Hello There, My name Kevin and now Iam join in Zettacamp for learn more about <b>HTML</b>,
                 <strong>CSS</strong>, &amp; <b>Angular.</b> </br>
@@ -88,7 +93,7 @@
         </table>
 
         <p> <strong>This my Media Aset for Editting </strong> </p>
-        
+
         <video width="400" controls>
                 <source src="./aset/Video/videoplayback.mp4" type="video/mp4">
         </video>
@@ -101,17 +106,6 @@
         <audio controls>
                 <source src="./aset/Audio/jumpscare.mp3" type="audio/mp3">
         </audio>
-        
-
-
-        <h4> <strong>You Can Visit to</strong> </h4>
-        <!-- Navbar to link Shopping -->
-
-        <ul style="background-color: #f1f1f1; ">
-                <li id="switch"><a href="shopping.html">Shopping</a></li>
-                <li id="switch"><a href="Form.html">Form</a></li>
-        </ul>
-
 
 
         <h4> <strong>Visit Me at</strong> </h4>

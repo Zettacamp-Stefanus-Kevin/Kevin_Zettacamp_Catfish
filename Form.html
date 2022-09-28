@@ -2,17 +2,58 @@
 <html>
 
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
+    <style>
+        #formulir{
+            padding: 20px;
+        }
+        fieldset{
+            margin : 5px;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        #switch a {
+            display: block;
+            color: #000;
+            padding: 5px 12px;
+            text-decoration: none;
+        }
+
+        /* Change the link color on hover */
+        #switch a:hover {
+            background-color: #555;
+            color: white;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Form -->
-    <form action="/action_page.php">
-        <!--Fieldset-->
-        <fieldset>
+    <header>
+        <nav class="navbar navbar-default">
+            <ul class="nav navbar-nav">
+                <li id="switch"><a href="index.html">Profil</a></li>
+                <li id="switch"><a href="shopping.html">Shopping</a></li>
+                <li id="switch"><a href="Form.html">Form</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="formulir">
+        <!-- Form -->
+        <form action="/action_page.php">
+            <!--Fieldset-->
+<fieldset>
             <legend>
                 <h1><span style="text-align: center;">Formulir Zettacamp</span></h1>
             </legend>
+        
             </br></br>
             <!--Text input first nama, last name-->
             <tr></tr><label for="fname"><strong> First name:</strong></label><br>
@@ -33,35 +74,35 @@
             <!--Telephone input-->
             <label for="phone"><strong> Enter a phone number:</strong></label><br>
             <input type="tel" id="phone" name="phone" placeholder="08XX-XX-XX" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-                required><br>
+                required><br><br>
 
             <!--Radio Button for Civility or Gender-->
-            <p> <strong> Gender </strong> <br>
-                <input type="radio" id="Gender" name="Sex" value="Male">
-                <label for="male">Male</label></br>
-                <input type="radio" id="Gender" name="Sex" value="Female">
-                <label for="female">Female</label></br>
-                <input type="radio" id="Gender" name="Sex" value="none">
-                <label for="none">I prefer not to say</label></br></br>
+            <p> <strong> Gender </strong> </p><br>
+            <input type="radio" id="Gender" name="Sex" value="Male">
+            <label for="male">Male</label></br>
+            <input type="radio" id="Gender" name="Sex" value="Female">
+            <label for="female">Female</label></br>
+            <input type="radio" id="Gender" name="Sex" value="none">
+            <label for="none">I prefer not to say</label></br></br>
 
-                <!--Birthday-->
-                <label for="birthday"><strong> Birthday: </strong></label>
-                <input type="date" id="birthday" name="birthday" min="1980-01-01" max="2022-12-31"></br></br>
+            <!--Birthday-->
+            <label for="birthday"><strong> Birthday: </strong></label>
+            <input type="date" id="birthday" name="birthday" min="1980-01-01" max="2022-12-31"></br></br>
 
-                <!--Number input for age-->
-                <label for="age"><strong> Age:</strong></label>
-                <input type="number" id="age" name="age" style="width: 50px;" min="17" max="60"></br></br>
+            <!--Number input for age-->
+            <label for="age"><strong> Age:</strong></label>
+            <input type="number" id="age" name="age" style="width: 50px;" min="17" max="60"></br></br>
 
-                <!--select element-->
-                <label for="Program"><strong> Our Program:</strong></label>
-                <select id="program" name="cars">
-                    <option value="FrontEnd">Front-End</option>
-                    <option value="BackEnd">Back-End</option>
-                    <option value="Quality Asurance">Quality Asurance</option>
-                    <option value="Mobile Development">Mobile Development</option>
-                </select><br><br>
+            <!--select element-->
+            <label for="Program"><strong> Our Program:</strong></label>
+            <select id="program" name="cars">
+                <option value="FrontEnd">Front-End</option>
+                <option value="BackEnd">Back-End</option>
+                <option value="Quality Asurance">Quality Asurance</option>
+                <option value="Mobile Development">Mobile Development</option>
+            </select><br><br>
 
-                <!--Checkbox-->
+            <!--Checkbox-->
             <p> <strong>Language </strong></p>
             <input type="checkbox" id="Language1" name="Language1" value="Indonesia">
             <label for="Language1"> Indonesia </label><br>
@@ -91,8 +132,9 @@
             <!--Input Button-->
             <input type="submit" value="Submit" onclick="alert('Nice Job!')" value="Submit">
         </fieldset>
-    </form>
-    <a href="index.html"><button type="button">Back to Profile</button></a>
+        </form>
+    </div>
+
 </body>
 
 </html>

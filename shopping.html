@@ -4,6 +4,9 @@
 
 <head>
     <title>Shopping</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
         * {
             padding: 0;
@@ -36,10 +39,38 @@
             text-align: left;
             padding: 10px;
         }
+
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        #switch a {
+            display: block;
+            color: #000;
+            padding: 5px 12px;
+            text-decoration: none;
+        }
+
+        /* Change the link color on hover */
+        #switch a:hover {
+            background-color: #555;
+            color: white;
+        }
     </style>
 </head>
 
 <body>
+
+    <nav class="navbar navbar-default">
+        <ul class="nav navbar-nav">
+            <li id="switch"><a href="index.html">Profil</a></li>
+            <li id="switch"><a href="shopping.html">Shopping</a></li>
+            <li id="switch"><a href="Form.html">Form</a></li>
+        </ul>
+    </nav>
+
+
     <h1 style="text-align: center;"> <span style="color: #FFD700; "> Realme Accessories</span></h1></br>
     <h4 style=" text-align: center;">Realme not only sell Mobilephone, We have Accessories that can support your
         activity</h4></br>
@@ -268,7 +299,6 @@
                 <td> Rp 4.350.000 </td>
             </tr>
         </table>
-        <br><a href="index.html"><button type="button">Back to Profile</button></a><br><br>
     </section>
 
 
