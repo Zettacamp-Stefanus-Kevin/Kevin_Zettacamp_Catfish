@@ -13,7 +13,7 @@
                 table {
                         padding: 2px;
                 }
-
+                /*bagian navbar*/
                 ul {
                         margin: 0;
                         padding: 0;
@@ -22,7 +22,7 @@
                 #switch a {
                         display: block;
                         color: #000;
-                        padding: 5px 12px;
+                        padding: 15px;
                         text-decoration: none;
                 }
 
@@ -37,13 +37,18 @@
 </head>
 
 <body>
-        <nav class="navbar navbar-default">
-                <ul class="nav navbar-nav">
+        <header>
+                <nav class="navbar navbar-default">
+                    <ul class="nav navbar-nav">
                         <li id="switch"><a href="index.html">Profil</a></li>
                         <li id="switch"><a href="shopping.html">Shopping</a></li>
                         <li id="switch"><a href="Form.html">Form</a></li>
-                </ul>
-        </nav>
+                        <li id="switch"><a href="Register.html">Register</a></li>
+                        <li id="switch"><a href="List.html">List</a></li>
+                    </ul>
+                </nav>
+                </header>
+        
 
         <!--using span & img relative-->
                 <img src="./aset/Image/profil.jpeg" height="200" Alt="Profil">
@@ -92,18 +97,19 @@
                 </tr>
         </table>
 
+        <!--Multimedia-->
         <p> <strong>This my Media Aset for Editting </strong> </p>
 
-        <video width="400" controls>
+        <video width="540" controls>
                 <source src="./aset/Video/videoplayback.mp4" type="video/mp4">
         </video>
         <audio controls>
                 <source src="./aset/Audio/Goofy Cartoon.mp3" type="audio/mp3">
         </audio></br>
-        <video width="400" controls>
+        <video width="540" autoplay>
                 <source src="./aset/Video/videoplayback_1.mp4" type="video/mp4">
         </video>
-        <audio controls>
+        <audio autoplay>
                 <source src="./aset/Audio/jumpscare.mp3" type="audio/mp3">
         </audio>
 
@@ -127,11 +133,6 @@
                                 <img src="https://img.icons8.com/color/344/youtube--v1.png" height="20"> My Youtube
                                 Channel</a></br></li>
         </ul>
-
-
-
-
-
 
 </body>
 
