@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+
+        .he {
+            width: 100%;
+            text-align: center;
+        }
+
+        .paket {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        section {
+            width: 100%;
+            align-content: center;
+            float: center;
+        }
+
+        form {
+            margin: 50px;
+            border: 3px solid;
+            padding: 50px;
+        }
+
+        fieldset {}
+    </style>
+
+</head>
+
+<body>
+    <div class="he">
+        <h1 style="text-align: center;">Infinite Music</h1>
+    </div>
+
+    <section>
+        <form on submit="return false">
+            <fieldset>
+                <legend>What's your email?</legend>
+                <input type="email" id="email" name="email" style="width: 100%;" placeholder="Email" value="">
+            </fieldset><br><br>
+            <fieldset>
+                <legend> should we call you?</legend>
+                <input type="text" id="name" name="name" style="width: 100%;" placeholder="Full Name" value="">
+            </fieldset><br><br>
+            <fieldset>
+                <legend> Create a password</legend>
+                <input type="password" id="pwd" name="pwd" style="width: 100%;" placeholder="Password" value="">
+            </fieldset><br><br>
+            <fieldset>
+                <legend> Input your Phone Number </legend>
+                <input type="tel" id="pnum" name="pnum" style="width: 100%;" placeholder="Phone Number" value="">
+            </fieldset><br><br>
+            <fieldset>
+                <legend> Choose Your Pack </legend>
+                <div class="paket">
+                    <div>
+                        <input type="radio" id="pnum" name="pnum" value="Free">
+                        <label for="free"> Free </label>
+                    </div>
+                    <div>
+                        <input type="radio" id="pnum" name="pnum" value="Personal">
+                        <label for="free"> Personal </label>
+                    </div>
+                    <div>
+                        <input type="radio" id="pnum" name="pnum" value="Couple">
+                        <label for="free"> Couple </label>
+                    </div>
+                    <div>
+                        <input type="radio" id="pnum" name="pnum" value="Family">
+                        <label for="free"> Family </label>
+                    </div>
+                </div>
+            </fieldset><br><br>
+            <input type="checkbox" id="snk" name="snk" value="snk">
+            <label>I would prefer not to receive marketing messages from Infinite Music</label><br>
+            <input type="checkbox" id="snk" name="snk" value="snk">
+            <label>Share my registration data with Infinite Music's content providers for marketing
+                purposes.</label><br><br>
+
+            <button id="submit" type="submit" value="Sign Up"> <a href="profil.html">Sign Up</a></button>
+
+        </form>
+    </section>
+</body>
+
+</html>
