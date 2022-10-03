@@ -1,0 +1,35 @@
+h1{
+    text-align: center;
+}
+
+div {
+    display: flex;
+    width: 100%;
+}
+
+section {
+    width: 50%;
+    margin: 10px;
+    text-align: center;
+}
+
+article{
+    text-align: left;
+}
+
+img{
+    border-radius: 100%;
+    width: 35%;
+}
+
+tr{
+    padding: 10px;
+}
+
+.big{
+    font-size: 40px;
+}
+
+.small{
+    font-size: 25px;
+}
