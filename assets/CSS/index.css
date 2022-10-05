@@ -5,14 +5,19 @@
     font-family: Tahoma, sans-serif;
     color: black;
     max-width: 100%;
+    font-size: 20px;
 }
 
 body{
     background-color: #F7EDDB;
 }
+header{
+    font-size: 100px;
+}
 
 header > h1 {
     text-align: center;
+    font-size: 1em;
 }
 
 .wrapper1, .wrapper2, .wrapper3 {
@@ -24,6 +29,7 @@ header > h1 {
 
 .wrapper2{
    margin: 1rem 0;
+  
 }
 
 
