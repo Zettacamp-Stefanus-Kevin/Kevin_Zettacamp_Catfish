@@ -7,34 +7,40 @@
     max-width: 100%;
 }
 
-body{
+body {
     background-color: #F7EDDB;
 }
 
+header {
+    position: sticky;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    background-color: #CCD6A6;
+    z-index: 1;
+}
 
-header > h1 {
+header>h1 {
     text-align: center;
 }
 
-.wrapper1, .wrapper2, .wrapper3 {
+.wrapper1,
+.wrapper2,
+.wrapper3,
+.wrapper4,
+.wrapper5,
+.wrapper6 {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
     justify-content: center;
 }
 
-.wrapper2{
-   margin: 1rem 0;
-  
-}
-
-
-
 .card {
     border: 2px solid;
     box-shadow: 3px 5px 20px 5px #888888;
     border-radius: 15px;
-    background-color:rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);
     width: 28vw;
     margin: 0 20px;
     text-align: center;
@@ -46,62 +52,58 @@ header > h1 {
     transform: scale(1.05);
 } */
 
-.card >.card-header{
-    margin: 10px;
-    padding: 10px;
-}
-
-.card >.card-header >img {
+.card>.card-header>img {
     height: 20vw;
 }
 
-.card >.card-header >img:hover{
+.card>.card-header>img:hover {
     transform: scale(1.05);
     transition: 0.5s;
     rotate: -5deg;
 }
 
-.card >.card-body {
-    padding: 15px 35px;
-}
-
-.card >.card-body >p {
+.card>.card-body>p {
     text-align: justify;
     margin-top: 10px;
 }
 
-.card >.card-body >p::first-letter {
+.card>.card-body>p::first-letter {
     color: #03f965;
     font-size: x-large;
-  }
+}
 
-.card >.card-body >p::first-line {
+.card>.card-body>p::first-line {
     color: #46b4dc;
     font-variant: small-caps;
-  }
+}
 
-.card >.card-footer {
-    margin: 15px;
+.card>.card-footer {
     border-radius: 10%;
 }
+
+
 
 .btn {
     padding: 10px 5px;
     background-color: #83BD75;
     border-radius: 10px;
-    color:#ffffff;
+    color: #ffffff;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     width: 80%;
 }
 
-.btn:hover{
+.btn:hover {
     background-color: #888888;
     color: #83BD75;
 }
 
 footer {
+    position: sticky;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
     background-color: #CCD6A6;
 }
 
@@ -112,7 +114,30 @@ footer {
     justify-content: center;
 }
 
-.container > a{
-    margin: 1rem;
+.p-1rem{
     padding: 1rem;
+}
+
+.m-1rem{
+    margin: 1rem 0;;
+}
+
+.mb-1rem{
+    margin: 0 1rem;
+}
+
+.m-10px{
+    margin: 10px;
+}
+
+.p-10px{
+    padding: 10px;
+}
+
+.m-15px {
+    margin: 15px;
+}
+
+.p-30px{
+    padding: 15px 30px ;
 }
