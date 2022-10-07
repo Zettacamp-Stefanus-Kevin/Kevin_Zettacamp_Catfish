@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<head>
+    <title>CSS_Day-6_Add-Item</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="./index.html"><img style="height: 50px;"
+                    src="https://media.giphy.com/avatars/SCREAMOUS_55/4iJBk0y8dYA0.png"></a>
+            <a style="justify-content: right; padding-top: 25px;" href="./shopping-list.html">Shopping List</a>
+        </nav>
+    </header>
+    <main>
+        <div class="wrapper content-1">
+            <section class="card upper p-10px">
+                <div class="backhome">
+                    <a href="./shopping-list.html">&larr;Shopping List</a>
+                </div><br><br>
+                <h1 style="text-align: left;">Add New Item</h1>
+            </section>
+            <section class="card upper">
+                <a class="frezze" href="./add-item.html"><button>&#43;Submit</button></a>
+            </section>
+        </div>
+        <div class="wrapper content-1">
+            <section class="card upper" style="text-align: left;">
+                <label for="fname">Product Name:</label><br>
+                <input type="text" id="fname" name="fname" style="width: 100%;" placeholder="Enter the Product Name..." ><br><br>
+                <label for="fname">Price:</label><br>
+                <input type="text" id="fname" name="fname" style="width: 100%;" placeholder="Enter the Product Price..."><br><br>
+            </section>
+            <section class="card upper" style="border: 2px dotted;">
+                <input type="file" id="file" hidden>
+                <label class="form__file" for="file">
+                    <div>
+                        &#43;Upload Product Image
+                    </div>
+                </label>
+            </section>
+        </div>
+        <h1 style="text-align: center; margin-top: 40px;"> Our Most Popular Product </h1>
+        <div class="wrapper">
+            <section class="card shop">
+                <div class="card-header p-5px">
+                    <img
+                        src="https://cdn.shopify.com/s/files/1/1365/9261/products/FN-TSRT-E58B_1024x1024.jpg?v=1654508784">
+                </div>
+                <div class="card-body p-5px">
+                    <h1>Psycho</h1>
+                    <p style="text-align: justify;">Kaos lengan panjang dengan bahan Katun, Nyaman untuk penggunaan
+                        sehari-hari.</p>
+                </div>
+                <div class="card-footer p-10px">
+                    <article class="footer-left">
+                        <p><sub>25%</sub></p>
+                    </article>
+                    <article class="footer-right">
+                        <p style="text-decoration: line-through;">Rp 200.000</p>
+                        <p>Rp 150.000</p>
+                    </article>
+                </div>
+            </section>
+            <section class="card shop">
+                <div class="card-header p-5px">
+                    <img
+                        src="https://cdn.shopify.com/s/files/1/1365/9261/products/EN-SWTP-A04P_1024x1024.jpg?v=1617213678">
+                </div>
+                <div class="card-body p-5px">
+                    <h1>Crown Outline Deep Yellowe</h1>
+                    <p style="text-align: justify;">Kaos lengan panjang dengan bahan Katun, Nyaman untuk penggunaan
+                        sehari-hari.</p>
+                </div>
+                <div class="card-footer p-10px">
+                    <article class="footer-left">
+                        <p><sub>20%</sub></p>
+                    </article>
+                    <article class="footer-right">
+                        <p style="text-decoration: line-through;">Rp 180.000</p>
+                        <p>Rp 144.000</p>
+                    </article>
+                </div>
+            </section>
+            <section class="card shop">
+                <div class="card-header p-5px">
+                    <img
+                        src="https://cdn.shopify.com/s/files/1/1365/9261/products/FN-TSRT-E60R_1024x1024.jpg?v=1654509301">
+                </div>
+                <div class="card-body p-5px">
+                    <h1>Tiny Crown</h1>
+                    <p style="text-align: justify;">Kaos lengan panjang dengan bahan Katun, Nyaman untuk penggunaan
+                        sehari-hari.</p>
+                </div>
+                <div class="card-footer p-10px">
+                    <article class="footer-left">
+                        <p><sub>30%</sub></p>
+                    </article>
+                    <article class="footer-right">
+                        <p style="text-decoration: line-through;">Rp 150.000</p>
+                        <p>Rp 105.000</p>
+                    </article>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-container">
+            <a href="./about-me.html">About</a>
+            <a href="./contact-me.html">Contact</a>
+        </div>
+    </footer>
+
+
+</body>

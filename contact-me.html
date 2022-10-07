@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<head>
+    <title>CSS_Day-6_Contact-Me</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .formulir {
+            border: 3px solid;
+            padding: 20px;
+            margin: 20px;
+        }
+
+        form {
+            padding: 20px;
+        }
+
+        .gender {
+            display: flex;
+            justify-content: space-around;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="./index.html"><img style="height: 50px;"
+                    src="https://media.giphy.com/avatars/SCREAMOUS_55/4iJBk0y8dYA0.png"></a>
+            <a style="justify-content: right; padding-top: 25px;" href="./shopping-list.html">Shopping List</a>
+        </nav>
+    </header>
+    <main>
+        <h1 style="text-align: center;">CONTACT US</h1>
+
+
+        <section class="card">
+            <fieldset>
+                <legend>
+                    <h5><b>CUSTOMER CARE</b></h5>
+                </legend>
+                <p>Customer Care Screamous :</p>
+                <p><b>Phone number</b> 0274-885573 </p>
+                <p><b>Email us :</b> screamous@gmail.com </p>
+            </fieldset>
+        </section>
+        <section class="card">
+            <fieldset>
+                <legend>
+                    <h5><b>KOMPLAIN</b></h5>
+                </legend>
+                <p>Komplain layanan Silakan Menghubungi:</p>
+                <p><b>Phone number</b> 08156607075 </p>
+                <p><b>Email us :</b> screamous@gmail.com </p>
+            </fieldset><br><br><br>
+
+            <div style="border: 1px solid;">
+                <label for="fname">Name:</label><br>
+                <input type="text" id="fname" name="fname" style="width: 100%;"
+                    placeholder="Enter Your Name..."><br><br>
+                <label for="fname">Email</label><br>
+                <input type="text" id="fname" name="fname" style="width: 100%;" placeholder="Enter Email..."><br><br>
+                <label for="fname">Tell Your Problem</label><br>
+                <textarea rows="4" cols="50" name="comment" form="usrform">
+                    Your Problem</textarea>
+                <input type="submit" value="Submit">
+            </div>
+
+    </main>
+    <footer>
+        <div class="footer-container">
+            <a href="./about-me.html">About</a>
+            <a href="./contact-me.html">Contact</a>
+        </div>
+    </footer>
+
+
+</body>
