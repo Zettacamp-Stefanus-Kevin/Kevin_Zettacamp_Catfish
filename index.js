@@ -1,6 +1,6 @@
-let beli = confirm('kau beli buku dak?');
+let notif = confirm('kau beli buku dak?');
 /* JavaScript if statement */
-if (beli == true) {
+if (notif == true) {
     let buku = prompt('mau beli buku apa? (html/javascript)');
     if (buku == "html") {
 
