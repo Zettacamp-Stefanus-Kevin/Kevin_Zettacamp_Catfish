@@ -11,8 +11,8 @@ if (notif == true) {
             let amountprice = 0;
             const pricediskon = price * diskon / 100;
             let afterdiskon = price - pricediskon;
-            const pricetax = price * tax / 100;
-            let aftertax = price + pricetax;
+            const pricetax = pricediskon * tax / 100;
+            let aftertax = pricediskon + pricetax;
             let total = price - pricediskon + pricetax;
 
 
@@ -46,7 +46,7 @@ if (notif == true) {
             console.log("|--------------------------------------|");
         }
 
-        purchasing(50000, 15, 5, prompt('mau beli berapa buku ? (stok 5)'));
+        purchasing(10000, 50, 10, prompt('mau beli berapa buku ? (stok 5)'));
 
     } else if (buku == "javascript") {
         function purchasing(price, diskon, tax, beli) {
