@@ -1,4 +1,4 @@
-let list = [
+let song = [
     {
         title: "U suck",
         artist: "Khole",
@@ -57,10 +57,10 @@ let list = [
         genre: "EDM"
     },
     {
-        title: "祝福",
-        artist: "Yoasobi",
+        title: "Wake Me Up",
+        artist: "Avicii",
         durasi: 3,
-        genre: "J-pop"
+        genre: "EDM"
     },
     {
         title: "Wake Me Up",
@@ -70,65 +70,77 @@ let list = [
     }
 ]
 
-
-let song = list.sort(() => Math.floor((Math.random()*list.length)-1));
-// let song = list.sort(() => Math.random() -1 );
-
-function filterTitle(song, title) {
-    let ftitle = song.find(song => song.title == title)
+function filterTitle(song) {
+     let SearchTitle = prompt('Artist yang dicari?')
+    let ftitle = song.filter(song =>  song.artist === SearchTitle)
+    // let ftitle = song.find(song => song.title == 'U suck')
     console.log(ftitle);
 }
-filterTitle(song, 'U suck');
+filterTitle(song);
 
-
-function filterArtis(song, artist) {
-    let fartis = song.filter(song => song.artist == artist)
+function filterArtis(song) {
+    let SearchArtist = prompt('Artist yang dicari?')
+    let fartis = song.filter(song =>  song.artist === SearchArtist)
+    // let fartis = song.filter(song => song.artist === 'Yoasobi')
     console.log(fartis);
 }
-filterArtis(song, 'Yoasobi');
-filterArtis(song, 'Avicii');
+filterArtis(song);
 
-
-function filterGenre(song, genre) {
-    let fgenre = song.filter(song => song.genre == genre)
+function filterGenre(song) {
+    let SearchGenre = prompt('Artist yang dicari?')
+    let fgenre = song.filter(song =>  song.artist === SearchGenre)
+    // let fgenre = song.filter(song => song.genre === 'pop')
     console.log(fgenre);
 }
-filterGenre(song, 'pop');
+filterGenre(song);
 
-let waktu = 60;
+let waktu;
 let durasilagu = 0;
 let playlist = [];
 let totaldurasi = 0;
 
 for (let i = 0; i < song.length; i++) {
     durasilagu += song[i].durasi;
-   
     if (durasilagu < waktu) {
-
         totaldurasi = (durasilagu)
         playlist[i] = (`Judul = ${song[i].title}, Artist = ${song[i].artist}, genre :${song[i].genre}, durasi :${song[i].durasi}`)
-        
 
     } else {
-        // if (durasilagu > waktu) {
-        //     let fdurasi = song.filter(song => song[i].durasi <= 60)
-        // }
-
-        //===============================================//
-
-        // let sisa = song.slice(i, song.length)
-        // for (let j=0;j<sisa.length; j++) {
-        //     let random = sisa[j].durasi.split('.');
-        // }
-
-        // console.log(sisa)
         break;
     }
 }
-// let sisawaktu = 59 - song.length;
-// console.log(sisawaktu)
 
 console.log(`total durasi lagu = ${totaldurasi}`)
 console.log(playlist)
-// let random = Math.floor((Math.random()playlist))
-// console.log(random);
+
+
+
+
+
+
+let notif = prompt('1 cari lagu / 2 buat playlist');
+/* JavaScript if statement */
+if (notif == 1) {
+    let buku = prompt('cari lagu berdasarkan? (judul/artist/genre)');
+    if (buku == "judul") {
+
+        filterTitle(prompt(`Input Title : `))
+
+    } else if (buku == "artist") {
+
+        filterArtis(prompt(`Input Artist : `))
+
+    } else if (buku == "genre") {
+
+        filterGenre(prompt(`Input Genre : `))
+
+    }else {
+        console.log("buku yang sedang anda cari tidak tersedia")
+    }
+
+} else if (notif == 2){
+    waktu(prompt(`Input durasi waktu playlist : `))
+} 
+else {
+    console.log("Selamat Datang Kembali")
+}
