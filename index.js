@@ -18,19 +18,20 @@ function purchasing(price, diskon, tax, beli, credit) {
         console.log('sisa stock = ' + (stock - (i + 1)));
     }
 
-    const cicilan = parseFloat((amountprice / credit).toFixed(2));
+    let cicilan = parseFloat((amountprice / credit).toFixed(2));
     let termOfCredit = [];
     let amountCredit = 0;
 
-    for (i = 1; i <= credit; i++) {
+    for (let i = 1; i <= credit; i++) {
         // if (cicilan !== amountCredit){
             
         // }
         amountCredit += cicilan;
-        if( i == credit){
+
+        if(  i == credit) {
             let selisih = price - amountCredit;
             cicilan += selisih;
-            amountCredit += selisih;
+            amountCredit += selisih ;
         }
         termOfCredit.push({
             termin: i,
