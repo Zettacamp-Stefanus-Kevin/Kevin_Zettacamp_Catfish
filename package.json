@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "typescript": "^4.8.4"
+  },
+  "name": "kevin_zettacamp_catfish",
+  "description": "first readme",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zettacamp-Stefanus-Kevin/Kevin_Zettacamp_Catfish.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zettacamp-Stefanus-Kevin/Kevin_Zettacamp_Catfish/issues"
+  },
+  "homepage": "https://github.com/Zettacamp-Stefanus-Kevin/Kevin_Zettacamp_Catfish#readme"
+}
