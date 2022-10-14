@@ -9,10 +9,6 @@ function untukpotong(t:string,c:number,k:number){
     return apa;
 }
 
-function tambahh(t, a) {
-    let yoi : string = t.s
-}
-
 console.log(untukpotong(sentence,0,9));
 console.log(untukpotong(sentence,9,19));
 console.log(untukpotong(sentence,19,22));
@@ -22,13 +18,10 @@ console.log(untukpotong(sentence,38,50));
 
 
 
-
 let duanda : boolean = true
 
-duanda = false
 console.log(duanda);
 
-let farhan : any = 'damn'
-
+let farhan : any = 'tester'
 
 console.log(farhan)
