@@ -82,15 +82,15 @@ filterTitle(song, 'U suck');
 
 
 function filterArtis(song, artist) {
-    let fartis = song.filter(song => song.artist == artist)
+    let fartis = song.filter(song => song.artist.includes(artist))
     console.log(fartis);
 }
 filterArtis(song, 'Yoasobi');
-filterArtis(song, 'Avicii');
+filterArtis
 
 
 function filterGenre(song, genre) {
-    let fgenre = song.filter(song => song.genre == genre)
+    let fgenre = song.filter(song => song.genre.includes(genre))
     console.log(fgenre);
 }
 filterGenre(song, 'pop');
