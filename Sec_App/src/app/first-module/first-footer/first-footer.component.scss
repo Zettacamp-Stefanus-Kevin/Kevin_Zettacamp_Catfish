@@ -1,0 +1,27 @@
+footer {
+    border: 2px solid;
+    position: static;
+    bottom: 0px;
+}
+
+.footer-container {
+    border: 2px solid;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: darkgray;
+}
+
+.footer-container>a {
+    font-size: 150%;
+    margin: 10px;
+    padding: 10px;
+    background-color: darkgray;
+    color: #000;
+    text-decoration: none;
+}
+
+.footer-container>a:hover {
+    background-color: #555;
+    color: white;
+}
