@@ -1,0 +1,47 @@
+
+.card {
+    border: 2px solid;
+    width: 75%;
+    padding: 15px;
+    border-radius: 2rem;
+    background-color: rgb(220, 249, 251);
+}
+
+.card-header {
+    padding: 10px;
+}
+
+.card-header > img {
+    width: 35vh;
+}
+
+.card-body{
+    text-align: justify;
+    padding: 10px;
+}
+
+.card-body > h1{
+    text-align: center;
+}
+
+.card-footer {
+    margin-top: 1rem;
+    display: flex;
+    width: 90%;
+    text-align: center;
+    justify-content: center;
+}
+
+.card-footer > button{
+    padding: 5px 2rem;
+    background-color: rgb(203, 246, 232);
+    border-radius: 1rem;
+}
+
+.warna1 {
+    background-color: rgb(179, 22, 7);
+}
+
+.warna2 {
+    color: rgb(50, 12, 82);
+}

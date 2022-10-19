@@ -1,0 +1,16 @@
+<p>konten works!</p>
+
+
+    <section class="card" [ngClass] = 'click ? "warna1" : ""'>
+
+        <div class="card-header">
+            <img [src]="items.img" alt="">
+        </div>
+        <div class="card-body" [ngClass] = 'click ? "warna2" : ""'>
+           <h1> {{items.title}}</h1><br>
+            {{items.text}}
+        </div>
+        <div class="card-footer">
+            <button (click)="OnClick()"> Test </button>
+        </div>
+    </section>
