@@ -1,0 +1,40 @@
+.wrapper{
+    display: flex;
+    height: 50vh;
+    width: 29vw;
+    border: 3px solid  #fa4454;;
+    border-radius: 2rem;
+    background-color:hsl(216, 31%, 31%) ;
+    margin: 20px;
+}
+
+.card{
+    width: 35%;
+    padding: 1rem; 
+    margin: 1rem;
+    justify-content: center;
+}
+
+.card > img{
+    height: 100%;
+}
+
+.text{
+    width: 50%;
+    justify-content: left;
+    text-align:justify;
+    padding-top: 8px ;
+    padding-right: 30px;
+    color:  #fa4454;
+}
+
+h1{
+    color:  #fa4454;
+}
+
+p {
+    color:brown;
+    background-color: aquamarine;
+    font-weight: 300px;
+    text-align: center;
+}

@@ -1,0 +1,23 @@
+.page {
+    background-color: #364966;
+    border: 2px solid;
+    border-radius: 2rem;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+
+}
+
+input{
+    width: 95%;
+    margin: 1rem;
+    text-align: center;
+}
+
+button{
+    background-color: #b78460;
+    color: #dc3d4b;
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 1rem;
+}

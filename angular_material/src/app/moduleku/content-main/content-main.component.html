@@ -1,0 +1,11 @@
+<p>content-main works!</p>
+
+
+<div class="container">
+    <app-card *ngFor="let item of list" [input]="item"></app-card>
+
+</div>
+
+<div class="wrap">
+    <app-skill *ngFor="let item of inputs" (newItemEvent)="addItem($event)"></app-skill>
+</div>

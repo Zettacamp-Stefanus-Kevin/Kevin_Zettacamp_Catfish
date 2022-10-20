@@ -1,0 +1,19 @@
+<p>skill works!</p>
+
+<div class="page">
+    <section class="header">
+        <h1>ADD NEW AGENT</h1>
+    </section>
+    <section class="main">
+       
+        <input type="text" id="item-input" placeholder="Input Url Image" #img><br>
+        
+        <input type="text" id="item-input" placeholder="Input Hero" #hero><br>
+        
+        <input type="text" id="item-input" placeholder="Input Skill" #skill>
+    </section>
+    <section class="footer">
+        <button type="button" (click)="addNewItem({img:img.value, hero:hero.value,skill:skill.value})">ADD
+            AGENT</button>
+    </section>
+</div>
