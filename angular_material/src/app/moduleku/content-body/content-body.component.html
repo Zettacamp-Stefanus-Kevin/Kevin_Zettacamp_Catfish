@@ -1,0 +1,10 @@
+<p>content-body works!</p>
+
+<div class="container">
+    <app-konten-main *ngFor="let item of list" [input]="item"></app-konten-main>
+
+</div>
+
+<div class="wrap">
+    <app-konten-side *ngFor="let item of inputs" (newItemEvent)="addItem($event)"></app-konten-side>
+</div>
