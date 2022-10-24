@@ -1,0 +1,15 @@
+<p>cardlist works!</p>
+
+<!-- <mat-selection-list #shoes [multiple]="false">
+    <mat-list-option *ngFor="let shoe of typesOfShoes" [value]="shoe">
+      {{shoe}}
+    </mat-list-option>
+  </mat-selection-list>
+
+
+  <p>
+    Options selected: {{shoes.selectedOptions.selected.length}}
+  </p> -->
+<div class="wrap">
+    <app-card *ngFor="let item of list" [ball]="item"></app-card>
+</div>

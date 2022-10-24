@@ -1,0 +1,20 @@
+.example-card {
+    width: 400px;
+    margin: 1rem;
+    height: 500px;
+    justify-content: center;
+  }
+  
+  .example-header-image {
+    background-image: url('https://png.pngtree.com/element_our/png_detail/20180724/cartoon-hand-painted-sports-ball-png_50978.jpg');
+    background-size: 40px;
+  }
+
+  .image{
+    width: 400px;
+  }
+
+  .card-body {
+    padding: 15px;
+    justify-content: center;
+  }
