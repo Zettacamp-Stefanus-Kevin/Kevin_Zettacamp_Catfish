@@ -6,7 +6,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
-import { ListComponent } from './cardlist/list/list.component';
+import {HttpClientModule} from '@angular/common/http';
 
 
 
@@ -15,19 +15,18 @@ import { ListComponent } from './cardlist/list/list.component';
   declarations: [
     CardlistComponent,
     CardComponent,
-    ListComponent
   ],
   imports: [
     CommonModule,
     MatCardModule,
     MatButtonModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    HttpClientModule
   ],
   exports: [
     CardlistComponent,
-    CardComponent,
-    ListComponent
+    CardComponent
   ]
 })
 export class ModulekuModule { }

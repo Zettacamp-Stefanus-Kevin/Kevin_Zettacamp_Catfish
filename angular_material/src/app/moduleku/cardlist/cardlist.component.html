@@ -1,7 +1,9 @@
 <p>cardlist works!</p>
 
-
 <div class="wrap">
     <app-card *ngFor="let item of list" [ball]="item"></app-card>
-    <!-- <app-list></app-list> -->
+       
+    <!-- <app-card *ngFor="let item of list; let i = index" 
+       [index]="i"
+       [ball]="item"></app-card> -->
 </div>
