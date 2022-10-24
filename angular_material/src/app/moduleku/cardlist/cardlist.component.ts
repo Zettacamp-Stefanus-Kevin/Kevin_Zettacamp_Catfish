@@ -8,7 +8,6 @@ import { HeroService } from 'src/app/hero.service';
 })
 export class CardlistComponent implements OnInit {
 
-  // typesOfShoes: string[] = ['Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers'];
 
   list: { img: string, Nama: string, Jenis: string, Desc: string }[] = []
 

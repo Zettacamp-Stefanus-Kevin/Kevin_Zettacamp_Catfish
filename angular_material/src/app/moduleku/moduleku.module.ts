@@ -6,6 +6,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
+import { ListComponent } from './cardlist/list/list.component';
 
 
 
@@ -13,7 +14,8 @@ import {MatIconModule} from '@angular/material/icon';
 @NgModule({
   declarations: [
     CardlistComponent,
-    CardComponent
+    CardComponent,
+    ListComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +26,8 @@ import {MatIconModule} from '@angular/material/icon';
   ],
   exports: [
     CardlistComponent,
-    CardComponent
+    CardComponent,
+    ListComponent
   ]
 })
 export class ModulekuModule { }
