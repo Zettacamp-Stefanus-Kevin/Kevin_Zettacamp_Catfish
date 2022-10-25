@@ -22,8 +22,12 @@ export class BookCardComponent implements OnInit {
   }
 
   onClick() {
-    this.bookManagementService.update(this.book)
+    if(this.isSelected){
+      this.bookManagementService.update(null)
 
+    }else{
+    this.bookManagementService.update(this.book)
+    }
   }
 }
 
