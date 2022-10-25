@@ -1,21 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { BookManagementService } from 'src/app/book-management.service';
+import { list } from 'src/app/list';
 
 @Component({
   selector: 'app-book-list',
   templateUrl: './book-list.component.html',
-  styleUrls: ['./book-list.component.css']
+  styleUrls: ['./book-list.component.css'],
 })
 export class BookListComponent implements OnInit {
 
-  list: { name: string, author: string, publisher: string, publish-date: nunmber }[] = []
+  List: list[]= []
 
   constructor(private bookManagementService: BookManagementService) { }
 
-  ngOnInit(): void {
-    this.list = this.bookManagementService.list
-    console.log(this.list)
-  }
+  ngOnInit(){
+    this.bookManagementService.list.subscribe(data=>{
+      this.List = data
+      console.log(this.List)
+  })
+}
+
 
 
 }

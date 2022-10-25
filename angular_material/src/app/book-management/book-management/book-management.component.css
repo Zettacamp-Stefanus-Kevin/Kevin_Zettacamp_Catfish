@@ -1,0 +1,15 @@
+.wrap {
+    display: flex;
+    width: 95%;
+    justify-content: center;
+    gap: 15px;
+    background-color: #1d3344;
+    padding: 10px;
+}
+
+.page{
+    background-color:#deb6a2 ;
+    border: 1px solid;
+    border-radius: 20px;
+    width: 50%;
+}

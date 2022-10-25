@@ -1,0 +1,16 @@
+.card {
+    background-color: #cdb7af;
+    border: 2px solid;
+    border-radius: 15px;
+}
+
+button {
+    text-align: center;
+    background-color:  #9a6851;
+    color: whitesmoke;
+    border-radius: 2rem;
+}
+.selected{
+    background-color: #263e4a;
+    color: whitesmoke;
+}

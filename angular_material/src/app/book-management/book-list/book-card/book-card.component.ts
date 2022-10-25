@@ -10,9 +10,21 @@ export class BookCardComponent implements OnInit {
 
   @Input() book:any;
 
-  constructor(private ) { }
+  isSelected: boolean = false;
+  
 
-  ngOnInit(): void {
+  constructor(private bookManagementService: BookManagementService ) { }
+
+  ngOnInit(){
+      this.bookManagementService.selectedlist$.subscribe(data=>{
+      this.isSelected = (data != null) && (data.id == this.book.id)
+      })
   }
 
+  onClick() {
+    this.bookManagementService.update(this.book)
+
+  }
 }
+
+

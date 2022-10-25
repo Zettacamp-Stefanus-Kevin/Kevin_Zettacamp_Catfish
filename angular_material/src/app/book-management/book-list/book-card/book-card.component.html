@@ -1,11 +1,10 @@
 <p>book-card works!</p>
 
 
-<mat-card>
-    <mat-card-title>Actions Buttons</mat-card-title>
-    <mat-card-subtitle>End</mat-card-subtitle>
-    <mat-card-actions>
-      <button mat-button>Like</button>
-      <button mat-button>SHARE</button>
+<mat-card class="card" [ngClass]="{selected:isSelected}">
+    <mat-card-title>Judul Buku ={{book.name}}</mat-card-title>
+    <mat-card-subtitle>Penulis    ={{book.author}}</mat-card-subtitle>
+    <mat-card-actions  align="end"  class="button"  >
+      <button mat-button  (click)="onClick()">Detail</button>
     </mat-card-actions>
   </mat-card>

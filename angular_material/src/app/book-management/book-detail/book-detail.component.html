@@ -1,1 +1,23 @@
 <p>book-detail works!</p>
+
+
+<div *ngIf="selectedlist; else gone">
+<div class="book">
+    <img [src]=selectedlist.img alt="">
+</div>
+
+<div class="detail">
+    <p>Judul Buku ={{selectedlist.name}}</p>
+    <p>Penulis ={{selectedlist.author}}</p>
+    <p>Penerbit ={{selectedlist.publisher}}</p>
+    <p>Terbit ={{selectedlist.publishDate}}</p>
+</div>
+</div>
+
+<ng-template #gone>
+    <div class="not">
+        <img
+            src="https://st4.depositphotos.com/20152108/22203/v/1600/depositphotos_222033250-stock-illustration-page-found-404-error-concept.jpg">
+        <h4>You dont have any selected book yet, Please select from list of book that available</h4>
+    </div>
+</ng-template>

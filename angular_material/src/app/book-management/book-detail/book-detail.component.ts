@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { BookManagementService } from 'src/app/book-management.service';
+import { list } from 'src/app/list';
+
 
 @Component({
   selector: 'app-book-detail',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookDetailComponent implements OnInit {
 
-  constructor() { }
+  constructor(private bookManagementService : BookManagementService) { }
 
-  ngOnInit(): void {
+  selectedlist : list | null = null
+
+  ngOnInit(){
+    this.bookManagementService.selectedlist$.subscribe(data =>{
+      this.selectedlist = data
+      console.log(this.selectedlist)
+  })
   }
 
 }
