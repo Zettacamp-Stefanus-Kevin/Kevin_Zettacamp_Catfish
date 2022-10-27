@@ -1,0 +1,22 @@
+/* .wrap{
+    display: flex;
+    height: 25vh;
+    width: 29vw;
+} */
+
+.card {
+    background-color: #cdb7af;
+    border: 2px solid;
+    border-radius: 15px;
+    width: 50%;
+    height: 90%;
+    margin: 1rem;
+}
+
+/* button {
+    text-align: center;
+    background-color:  #9a6851;
+    color: whitesmoke;
+    border-radius: 2rem;
+} */
+
