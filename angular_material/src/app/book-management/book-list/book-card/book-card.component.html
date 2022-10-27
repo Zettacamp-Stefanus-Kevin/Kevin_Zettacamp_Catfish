@@ -1,0 +1,13 @@
+<p>book-card works!</p>
+
+<div class="wrap">
+    <mat-card class="card" [ngClass]="{selected:isSelected}">
+        <mat-card-title>Judul Buku ={{book.name}}</mat-card-title>
+        <mat-card-subtitle>Penulis ={{book.author}}</mat-card-subtitle>
+        <mat-card-actions align="end" class="button">
+            <a (click)="onClick(book)" routerLinkActive="active" ariaCurrentWhenActive="page">
+                <button mat-button >Detail</button>
+            </a>
+        </mat-card-actions>
+    </mat-card>
+</div>

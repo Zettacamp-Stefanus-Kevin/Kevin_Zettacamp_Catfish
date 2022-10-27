@@ -1,0 +1,20 @@
+img{
+    width: 75%;
+    border-radius: 100%;
+}
+
+.not{
+    text-align: center;
+}
+
+.book{
+    text-align: center;
+}
+
+.detail{
+    border-radius: 15px;
+    border: 2px solid;
+    text-align: center;
+    margin: 30px;
+    background-color: aliceblue;
+}
