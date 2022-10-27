@@ -1,4 +1,4 @@
-export interface Addresses{
+export interface Addressess{
     address:string;
     zipcode:number;
     city:string;

@@ -37,14 +37,14 @@ export class UserFormComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.queryParamMap.get('userid');
     this.isEdit = id != null;
-  
 
   if (this.isEdit) {
     this.userFormService.list
       .pipe(first((user) => user.length !== 0))
       .subscribe((user) => {
-        const item = user.find((user) => user.id === id);
-        this.setFormValues(item);
+        const update = user.find((user) => user.id === id);
+        this.setFormValues(update);
+        console.log(user)
       });
   }
 }

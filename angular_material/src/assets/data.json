@@ -7,7 +7,7 @@
       "email": "Steve@gmail.com",
       "position": "FrontEnd",
       "maritalstatus": "Single",
-      "addresses": {
+      "addressess": {
         "address": "Concad",
         "zipcode": "54321",
         "city": "Klaten",
@@ -21,8 +21,8 @@
       "gender": "Male",
       "email": "Jenkins@gmail.com",
       "position": "BackEnd",
-      "maritalStatus": "Married",
-      "addresses": {
+      "maritalstatus": "Married",
+      "addressess": {
         "address": "Paingan",
         "zipcode": "12345",
         "city": "Yogya",
