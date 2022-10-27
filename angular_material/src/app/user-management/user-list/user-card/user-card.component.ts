@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -8,11 +9,19 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class UserCardComponent implements OnInit {
 
-@Input()user:any;
+@Input()user: any;
 
-  constructor() { }
+constructor(private router : Router) { 
+
+}
 
   ngOnInit(): void {
+  }
+
+  Edit() :void {
+    this.router.navigate(["/form"], {
+      queryParams: {userid : this.user.id},
+    });
   }
 
 }

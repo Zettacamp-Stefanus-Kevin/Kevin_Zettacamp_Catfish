@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { UserFormService } from 'src/app/user-form.service';
+import { ActivatedRoute } from '@angular/router';
+import { first } from 'rxjs';
+
 
 @Component({
   selector: 'app-user-form',
@@ -27,12 +30,37 @@ export class UserFormComponent implements OnInit {
     addressess : this.userAddress
   });
 
-  constructor(private userFormService:UserFormService ) { }
+  isEdit: boolean = false;
 
-  ngOnInit(): void {}
+  constructor(private userFormService:UserFormService, private route:ActivatedRoute ) { }
+
+  ngOnInit(): void {
+    const id = this.route.snapshot.queryParamMap.get('userid');
+    this.isEdit = id != null;
   
+
+  if (this.isEdit) {
+    this.userFormService.list
+      .pipe(first((user) => user.length !== 0))
+      .subscribe((user) => {
+        const item = user.find((user) => user.id === id);
+        this.setFormValues(item);
+      });
+  }
+}
+
+setFormValues(user: any) {
+  this.userForm.setValue(user);
+}
+
+
   onSubmit(){
-    this.userFormService.addUserToList(this.userForm.value)
+    
+    if(this.isEdit){
+      this.userFormService.updateUser(this.userForm.value)
+    }else{
+      this.userFormService.addUserToList(this.userForm.value)
+    }
   }
 
 }

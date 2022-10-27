@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
+import { User } from './list';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { User } from './list';
+
 
 @Injectable({
   providedIn: 'root'
@@ -28,15 +29,22 @@ export class UserFormService {
     this.list.next(data);
   }
 
-  addUserToList(data: User) {
-    let tempUsers = this.getValueUserList();
-    tempUsers.push(data);
-    this.setAllUserList(tempUsers);
-  }
-
   getValueUserList(): User[] {
     return this.list.getValue();
   }
 
+  addUserToList(data: User) {
+    const addUsers = this.getValueUserList();
+    addUsers.push(data);
+    this.setAllUserList(addUsers);
+  }
+
+  updateUser(user: any) {
+    const upUser = this.list.getValue().map(u => {
+          return (u.id === user.id) ? user : u;
+    });
+
+    this.list.next(upUser);
+}
   
 }

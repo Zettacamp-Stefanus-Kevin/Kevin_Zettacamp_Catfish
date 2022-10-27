@@ -1,12 +1,10 @@
 <p>user-list works!</p>
 
-<app-user-form></app-user-form>
-
 <div class="wrap">
 <h1>USER LIST</h1>
 <app-user-card *ngFor="let item of List" [user]="item"></app-user-card>
 </div>
 
 <div class="button">
-    <button routerLink="form" >Add_User</button>
+    <button routerLink="/form" >Add_User</button>
 </div>

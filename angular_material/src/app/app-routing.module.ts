@@ -8,9 +8,6 @@ import { UserManagementComponent } from './user-management/user-management/user-
 
 
 const routes: Routes = [
-  // { path : "mm", loadChildren: ( ) => import("./user-management/user-management.module").then(m=>m.UserManagementModule)},
-  // {path : "**", redirectTo : ""}
-  
   {path : "home", component : UserManagementComponent},
   {path : "list", component : UserListComponent},
   {path : "card", component : UserCardComponent},

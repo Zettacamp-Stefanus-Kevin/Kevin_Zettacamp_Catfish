@@ -6,20 +6,11 @@ import { UserFormComponent } from './user-form/user-form.component';
 import { UserManagementComponent } from './user-management/user-management.component';
 
 import { AppRoutingModule } from '../app-routing.module';
-// import { RouterModule } from '@angular/router';
+
 
 import { ReactiveFormsModule} from '@angular/forms'
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
 
-
-// const routes: Routes = [
-//   {path : "",  component : UserManagementComponent},
-//   {path : "home", component : UserManagementComponent},
-//   {path : "list", component : UserListComponent},
-//   {path : "card", component : UserCardComponent},
-//   {path : "form", component : UserFormComponent},
-//   {path : "**", redirectTo : ""}
-// ];
 
 @NgModule({
   declarations: [
