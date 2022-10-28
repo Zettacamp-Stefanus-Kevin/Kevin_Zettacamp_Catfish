@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, FormArray } from '@angular/forms';
 import { UserFormService } from 'src/app/user-form.service';
 import { ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs';
+import { FormBuilder } from '@angular/forms';
 
 
 @Component({
@@ -12,55 +13,94 @@ import { first } from 'rxjs';
 })
 
 export class UserFormComponent implements OnInit {
-  userAddress = new FormGroup({
-    address:new FormControl(null),
-    zipcode:new FormControl(null),
-    city:new FormControl(null),
-    country:new FormControl(null),
+
+  constructor(private userFormService: UserFormService,
+    private route: ActivatedRoute,
+    private fb: FormBuilder) { }
+
+  //   userAddress = new FormArray([{
+  //     address:new FormArray([]),
+  //     zipcode:new FormArray([]),
+  //     city:new FormArray([]),
+  //     country:new FormArray([]),
+  //   }]);
+
+  //  userForm:any = new FormGroup({
+  //     id:new FormControl(null),
+  //     name:new FormControl(null),
+  //     age:new FormControl(null),
+  //     gender:new FormControl(null),
+  //     email :new FormControl(null),
+  //     position:new FormControl(null),
+  //     maritalstatus:new FormControl(null),
+  //     addressess : this.userAddress([]);
+  //   });
+
+
+  userForm: any = new FormGroup({
+    id: new FormControl(null),
+    name: new FormControl(null),
+    age: new FormControl(null),
+    gender: new FormControl(null),
+    email: new FormControl(null),
+    position: new FormControl(null),
+    maritalstatus: new FormControl(null),
+    addressess: this.fb.array([]
+    ),
   });
 
- userForm:any = new FormGroup({
-    id:new FormControl(null),
-    name:new FormControl(null),
-    age:new FormControl(null),
-    gender:new FormControl(null),
-    email :new FormControl(null),
-    position:new FormControl(null),
-    maritalstatus:new FormControl(null),
-    addressess : this.userAddress
-  });
+  userAddress(): FormGroup {
+    return this.fb.group({
+      address: '',
+      zipcode: '',
+      city: '',
+      country: '',
+    })
+  }
 
   isEdit: boolean = false;
-
-  constructor(private userFormService:UserFormService, private route:ActivatedRoute ) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.queryParamMap.get('userid');
     this.isEdit = id != null;
 
-  if (this.isEdit) {
-    this.userFormService.list
-      .pipe(first((user) => user.length !== 0))
-      .subscribe((user) => {
-        const update = user.find((user) => user.id === id);
-        this.setFormValues(update);
-        console.log(user)
-      });
+    if (this.isEdit) {
+      this.userFormService.list
+        .pipe(first((user) => user.length !== 0))
+        .subscribe((user) => {
+          const update = user.find((user) => user.id === id);
+          this.setFormValues(update);
+          console.log(user)
+        });
+    }
+
+    this.userAddress()
   }
-}
 
-setFormValues(user: any) {
-  this.userForm.setValue(user);
-}
+  setFormValues(user: any) {
+    this.userForm.setValue(user);
+  }
 
+  get addressess(): FormArray {
+    return this.userForm.get("addressess") as FormArray
+  }
 
-  onSubmit(){
-    
-    if(this.isEdit){
+  onSubmit() {
+
+    if (this.isEdit) {
       this.userFormService.updateUser(this.userForm.value)
-    }else{
+    } else {
       this.userFormService.addUserToList(this.userForm.value)
     }
+  }
+
+  onAddAddress() {
+    this.addressess.push(this.userAddress())
+    console.log(this.userForm)
+  }
+
+  onRemove(i: number) {
+    this.addressess.removeAt(i);
   }
 
 }

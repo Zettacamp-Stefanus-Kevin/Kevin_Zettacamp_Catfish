@@ -7,12 +7,12 @@
       "email": "Steve@gmail.com",
       "position": "FrontEnd",
       "maritalstatus": "Single",
-      "addressess": {
+      "addressess": [{
         "address": "Concad",
         "zipcode": "54321",
         "city": "Klaten",
         "country": "Indonesia"
-      }
+      }]
     },
     {
       "id": "2",
@@ -22,11 +22,11 @@
       "email": "Jenkins@gmail.com",
       "position": "BackEnd",
       "maritalstatus": "Married",
-      "addressess": {
+      "addressess": [{
         "address": "Paingan",
         "zipcode": "12345",
         "city": "Yogya",
         "country": "Indonesia"
-      }
+      }]
     }
   ]
