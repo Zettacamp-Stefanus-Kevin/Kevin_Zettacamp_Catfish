@@ -1,0 +1,24 @@
+{
+  "userForm": {
+    "_id": "ID",
+    "name": "Nama",
+    "age": "Umur",
+    "gender": "Jenis Kelamin",
+    "male": "Laki-laki",
+    "female": "Perempuan",
+    "email": "Surel",
+    "position": "Posisi",
+    "maritalStatus": "Status Perkawinan",
+    "married": "Menikah",
+    "single": "Belum Menikah",
+    "address": "Alamat",
+    "zipCode": "Kode Pos",
+    "city": "Kota",
+    "country": "Negara"
+   
+   
+    },
+    "actions": {
+      "submit": "Input"
+    }
+  }
