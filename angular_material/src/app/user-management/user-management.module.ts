@@ -10,6 +10,14 @@ import { AppRoutingModule } from '../app-routing.module';
 
 import { ReactiveFormsModule} from '@angular/forms'
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
+import { HttpClientModule, HttpClient} from '@angular/common/http'
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
+
 
 
 @NgModule({
@@ -23,8 +31,16 @@ import { AngularMaterialModule } from '../angular-material/angular-material.modu
     CommonModule,
     ReactiveFormsModule, 
     AngularMaterialModule,
-    // RouterModule, 
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      defaultLanguage: 'EN',
+      loader:{
+        provide: TranslateLoader,
+        useFactory : HttpLoaderFactory,
+        deps :[HttpClient]
+      }
+    })
   ], 
   exports: [
     UserListComponent,

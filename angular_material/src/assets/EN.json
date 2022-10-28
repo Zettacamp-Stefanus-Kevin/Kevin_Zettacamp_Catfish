@@ -1,0 +1,32 @@
+[
+    {
+      "id": "1",
+      "name": "Steve",
+      "age": 21,
+      "gender": "Female",
+      "email": "Steve@gmail.com",
+      "position": "FrontEnd",
+      "maritalstatus": "Single",
+      "addressess": {
+        "address": "Concad",
+        "zipcode": "54321",
+        "city": "Klaten",
+        "country": "Indonesia"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Jenkins",
+      "age": 28,
+      "gender": "Male",
+      "email": "Jenkins@gmail.com",
+      "position": "BackEnd",
+      "maritalstatus": "Married",
+      "addressess": {
+        "address": "Paingan",
+        "zipcode": "12345",
+        "city": "Yogya",
+        "country": "Indonesia"
+      }
+    }
+  ]

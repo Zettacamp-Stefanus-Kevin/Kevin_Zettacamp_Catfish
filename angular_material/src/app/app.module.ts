@@ -10,6 +10,9 @@ import { ReactiveFormsModule } from '@angular/forms'
 
 import { AngularMaterialModule } from './angular-material/angular-material.module';
 
+import { UserFormComponent } from './user-management/user-form/user-form.component';
+
+
 @NgModule({
   declarations: [
     AppComponent
@@ -21,7 +24,8 @@ import { AngularMaterialModule } from './angular-material/angular-material.modul
     HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule, 
-    AngularMaterialModule
+    AngularMaterialModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
