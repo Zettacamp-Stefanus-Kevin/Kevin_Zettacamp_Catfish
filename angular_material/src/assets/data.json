@@ -22,11 +22,13 @@
       "email": "Jenkins@gmail.com",
       "position": "BackEnd",
       "maritalstatus": "Married",
-      "addressess": [{
+      "addressess": [
+        {
         "address": "Paingan",
         "zipcode": "12345",
         "city": "Yogya",
         "country": "Indonesia"
-      }]
+      }
+    ]
     }
   ]

@@ -57,7 +57,7 @@ export class UserFormComponent implements OnInit {
       country: '',
     })
   }
-
+A
   isEdit: boolean = false;
 
   ngOnInit(): void {
@@ -69,6 +69,7 @@ export class UserFormComponent implements OnInit {
         .pipe(first((user) => user.length !== 0))
         .subscribe((user) => {
           const update = user.find((user) => user.id === id);
+          
           this.setFormValues(update);
           console.log(user)
         });

@@ -8,6 +8,6 @@ export interface User{
     email :string;
     position:string;
     maritalStatus:string;
-    address : [Addressess];
+    address : Addressess;
     }
 
