@@ -34,11 +34,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppRoutingModule,
     HttpClientModule,
     TranslateModule.forRoot({
-      defaultLanguage: 'EN',
+      defaultLanguage: 'en',
       loader:{
         provide: TranslateLoader,
         useFactory : HttpLoaderFactory,
-        deps :[HttpClient]
+        deps : [HttpClient]
       }
     })
   ], 

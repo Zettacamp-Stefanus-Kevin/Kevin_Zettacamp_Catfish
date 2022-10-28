@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { UserFormService } from 'src/app/user-form.service';
 import { ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -10,6 +11,8 @@ import { first } from 'rxjs';
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.css']
 })
+
+
 
 export class UserFormComponent implements OnInit {
   userAddress = new FormGroup({
@@ -32,7 +35,9 @@ export class UserFormComponent implements OnInit {
 
   isEdit: boolean = false;
 
-  constructor(private userFormService:UserFormService, private route:ActivatedRoute ) { }
+  selectedLang = 'en';
+
+  constructor(private userFormService:UserFormService, private route:ActivatedRoute,     public translateService: TranslateService ) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.queryParamMap.get('userid');
@@ -49,9 +54,15 @@ export class UserFormComponent implements OnInit {
   }
 }
 
+setLanguage(lang: string) {
+  this.translateService.use(lang);
+}
+
+
 setFormValues(user: any) {
   this.userForm.setValue(user);
 }
+
 
 
   onSubmit(){

@@ -1,0 +1,24 @@
+{
+    "userForm": {
+      "_id": "ID",
+      "name": "Name",
+      "age": "Age",
+      "gender": "Gender",
+      "male": "Male",
+      "female": "Female",
+      "email": "Email",
+      "position": "Posisi",
+      "maritalStatus": "Marital Status",
+      "married": "Married",
+      "single": "Single",
+      "address": "address",
+      "zipCode": "Zip Code",
+      "city": "City",
+      "country": "Country"
+     
+     
+      },
+      "actions": {
+        "submit": "Input"
+      }
+    }

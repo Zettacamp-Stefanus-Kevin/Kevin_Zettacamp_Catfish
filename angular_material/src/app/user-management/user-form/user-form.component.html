@@ -1,14 +1,29 @@
 <p>user-form works!</p>
 <div class="wrap">
+
+ <div class="language">
+    <mat-form-field class="input" appearance="outline">
+      <mat-label>Language</mat-label>
+      <mat-select
+        [(value)]="selectedLang"
+        #lang
+        (valueChange)="setLanguage(lang.value)"
+      >
+        <mat-option value="en">English</mat-option>
+        <mat-option value="id">Indonesian</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
     <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
 
         <mat-form-field appearance="fill">
-            <mat-label>Input your ID</mat-label>
+            <mat-label>ID</mat-label>
             <input matInput formControlName="id" placeholder="ID Number">
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-            <mat-label>Input your Name</mat-label>
+            <mat-label>Name</mat-label>
             <input matInput formControlName="name" placeholder="Name">
         </mat-form-field>
 
@@ -17,13 +32,13 @@
             <input matInput formControlName="age" placeholder="Age" >
         </mat-form-field>
 
-        <mat-radio-group aria-label="Select an option" formControlName="gender">
+        <mat-radio-group aria-label="Select an option" formControlName="Gender">
             <mat-radio-button value="1">Male </mat-radio-button>
-            <mat-radio-button value="2">Female </mat-radio-button>
+            <mat-radio-button value="2">Female</mat-radio-button>
         </mat-radio-group>
 
         <mat-form-field appearance="fill">
-            <mat-label>Input Your Email</mat-label>
+            <mat-label>Email</mat-label>
             <input matInput formControlName="email" placeholder="Email" >
         </mat-form-field>
 
@@ -37,7 +52,7 @@
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-            <mat-label>Status</mat-label>
+            <mat-label>matital Status</mat-label>
             <mat-select formControlName="maritalstatus">
                 <mat-option value="Single">Single</mat-option>
                 <mat-option value="Married">Married</mat-option>
@@ -68,6 +83,7 @@
 
 
         </div>
+        <button mat-raised-button color="primary">{{ "actions.submit" | translate }}</button>
         <button mat-raised-button color="primary">Submit</button>
     </form>
 </div>
