@@ -57,7 +57,7 @@ export class UserFormComponent implements OnInit {
       country: '',
     })
   }
-A
+
   isEdit: boolean = false;
 
   ngOnInit(): void {
@@ -68,18 +68,15 @@ A
       this.userFormService.list
         .pipe(first((user) => user.length !== 0))
         .subscribe((user) => {
-          const update = user.find((user) => user.id === id);
+          const update : any = user.find((user) => user.id === id);
+          for(let i = 0; i< update.addressess.length; i++){
+            this.onAddAddress();
+          }
+          this.userForm.patchValue(update)
           
-          this.setFormValues(update);
           console.log(user)
         });
     }
-
-    this.userAddress()
-  }
-
-  setFormValues(user: any) {
-    this.userForm.setValue(user);
   }
 
   get addressess(): FormArray {
@@ -87,7 +84,6 @@ A
   }
 
   onSubmit() {
-
     if (this.isEdit) {
       this.userFormService.updateUser(this.userForm.value)
     } else {
