@@ -15,61 +15,67 @@ import { TranslateService } from '@ngx-translate/core';
 
 
 export class UserFormComponent implements OnInit {
-  userAddress = new FormGroup({
-    address:new FormControl(null),
-    zipcode:new FormControl(null),
-    city:new FormControl(null),
-    country:new FormControl(null),
-  });
-
- userForm:any = new FormGroup({
-    id:new FormControl(null),
-    name:new FormControl(null),
-    age:new FormControl(null),
-    gender:new FormControl(null),
-    email :new FormControl(null),
-    position:new FormControl(null),
-    maritalstatus:new FormControl(null),
-    addressess : this.userAddress
-  });
+  userForm!: FormGroup;
 
   isEdit: boolean = false;
 
   selectedLang = 'en';
 
-  constructor(private userFormService:UserFormService, private route:ActivatedRoute,     public translateService: TranslateService ) { }
+  constructor(private userFormService: UserFormService, private route: ActivatedRoute, public translateService: TranslateService) { }
+
+  update: any;
 
   ngOnInit(): void {
     const id = this.route.snapshot.queryParamMap.get('userid');
     this.isEdit = id != null;
 
-  if (this.isEdit) {
-    this.userFormService.list
-      .pipe(first((user) => user.length !== 0))
-      .subscribe((user) => {
-        const update = user.find((user) => user.id === id);
-        this.setFormValues(update);
-        console.log(user)
-      });
+
+    this.userForm = new FormGroup({
+      id: new FormControl(null),
+      name: new FormControl(null),
+      age: new FormControl(null),
+      gender: new FormControl(null),
+      email: new FormControl(null),
+      position: new FormControl(null),
+      maritalstatus: new FormControl(null),
+      addressess: new FormGroup({
+        address: new FormControl(null),
+        zipcode: new FormControl(null),
+        city: new FormControl(null),
+        country: new FormControl(null),
+      })
+    });
+
+    if (this.isEdit) {
+      this.userFormService.list
+        .pipe(first((user) => user.length !== 0))
+        .subscribe((user) => {
+          this.update = user.find((user) => user.id === id);
+          this.setFormValues(this.update)
+          console.log(user)
+        });
+    }
+
+
+
   }
-}
 
-setLanguage(lang: string) {
-  this.translateService.use(lang);
-}
-
-
-setFormValues(user: any) {
-  this.userForm.setValue(user);
-}
+  setLanguage(lang: string) {
+    this.translateService.use(lang);
+  }
 
 
+  setFormValues(user: any) {
+    this.userForm.patchValue(user);
+  }
 
-  onSubmit(){
-    
-    if(this.isEdit){
+
+
+  onSubmit() {
+
+    if (this.isEdit) {
       this.userFormService.updateUser(this.userForm.value)
-    }else{
+    } else {
       this.userFormService.addUserToList(this.userForm.value)
     }
   }
