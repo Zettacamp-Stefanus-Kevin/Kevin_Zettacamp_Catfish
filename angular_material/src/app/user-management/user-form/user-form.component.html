@@ -18,32 +18,32 @@
     <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
 
         <mat-form-field appearance="fill">
-            <mat-label>ID</mat-label>
+            <mat-label>{{ "userForm._id" | translate }}</mat-label>
             <input matInput formControlName="id" placeholder="ID Number">
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-            <mat-label>Name</mat-label>
+            <mat-label>{{ "userForm.name" | translate }}</mat-label>
             <input matInput formControlName="name" placeholder="Name">
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-            <mat-label>Age</mat-label>
+            <mat-label>{{ "userForm.age" | translate }}</mat-label>
             <input matInput formControlName="age" placeholder="Age" >
         </mat-form-field>
 
-        <mat-radio-group aria-label="Select an option" formControlName="Gender">
+        <mat-radio-group aria-label="Select an option" formControlName="gender">
             <mat-radio-button value="Male">Male </mat-radio-button>
             <mat-radio-button value="Female">Female</mat-radio-button>
         </mat-radio-group>
 
         <mat-form-field appearance="fill">
-            <mat-label>Email</mat-label>
+            <mat-label>{{ "userForm.email" | translate }}</mat-label>
             <input matInput formControlName="email" placeholder="Email" >
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-            <mat-label>Position</mat-label>
+            <mat-label>{{ "userForm.position" | translate }}</mat-label>
             <mat-select formControlName="position">
                 <mat-option value="FrontEnd">Front_End</mat-option>
                 <mat-option value="BackEnd">Back_End</mat-option>
@@ -52,7 +52,7 @@
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-            <mat-label>matital Status</mat-label>
+            <mat-label>{{ "userForm.maritalstatus" | translate }}</mat-label>
             <mat-select formControlName="maritalstatus">
                 <mat-option value="Single">Single</mat-option>
                 <mat-option value="Married">Married</mat-option>
@@ -62,28 +62,28 @@
         <div formGroupName = "addressess">
 
             <mat-form-field appearance="fill">
-                <mat-label>Input your Address</mat-label>
+                <mat-label>{{ "userForm.address" | translate }}</mat-label>
                 <input matInput formControlName="address" placeholder="Address" >
             </mat-form-field>
 
             <mat-form-field appearance="fill">
-                <mat-label>Input your Zip Code</mat-label>
+                <mat-label>{{ "userForm.zipcode" | translate }}</mat-label>
                 <input matInput formControlName="zipcode" placeholder="Zip Code" >
             </mat-form-field>
 
             <mat-form-field appearance="fill">
-                <mat-label>Input your City</mat-label>
+                <mat-label>{{ "userForm.city" | translate }}</mat-label>
                 <input matInput formControlName="city" placeholder="City">
             </mat-form-field>
 
             <mat-form-field appearance="fill">
-                <mat-label>Input your Country</mat-label>
+                <mat-label>{{ "userForm.country" | translate }}</mat-label>
                 <input matInput formControlName="country" placeholder="Country" >
             </mat-form-field>
 
 
         </div>
-        <!-- <button mat-raised-button color="primary">{{ "actions.submit" | translate }}</button> -->
-        <button mat-raised-button color="primary">Submit</button>
+        <button mat-raised-button color="primary">{{ "actions.submit" | translate }}</button>
+        <!-- <button mat-raised-button color="primary">Submit</button> -->
     </form>
 </div>
