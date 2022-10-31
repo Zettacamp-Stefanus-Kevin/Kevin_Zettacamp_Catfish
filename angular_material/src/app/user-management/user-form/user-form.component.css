@@ -1,9 +1,17 @@
-.wrap{
+.wrap {
     background-color: #cdb7af;
     border: 2px solid;
     border-radius: 15px;
-    width: 50%;
+    width: 40%;
     margin: 1rem;
     justify-content: center;
+    text-align: center;
+    padding: 20px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+mat-form-field {
+    width: 80%;
     text-align: center;
 }

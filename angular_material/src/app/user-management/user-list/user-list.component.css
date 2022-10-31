@@ -1,6 +1,9 @@
 .wrap{
-    text-align: center;
-    justify-content: center;
+    /* text-align: center;
+    justify-content: center; */
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
 }
 button {
     text-align: center;
