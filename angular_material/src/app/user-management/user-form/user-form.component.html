@@ -1,19 +1,15 @@
 <p>user-form works!</p>
 <div class="wrap">
 
- <div class="language">
-    <mat-form-field class="input" appearance="outline">
-      <mat-label>Language</mat-label>
-      <mat-select
-        [(value)]="selectedLang"
-        #lang
-        (valueChange)="setLanguage(lang.value)"
-      >
-        <mat-option value="en">English</mat-option>
-        <mat-option value="id">Indonesian</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
+    <div class="language">
+        <mat-form-field class="input" appearance="outline">
+            <mat-label>Language</mat-label>
+            <mat-select [(value)]="selectedLang" #lang (valueChange)="setLanguage(lang.value)">
+                <mat-option value="en">English</mat-option>
+                <mat-option value="id">Indonesian</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
 
     <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
 
@@ -29,7 +25,7 @@
 
         <mat-form-field appearance="fill">
             <mat-label>{{ "userForm.age" | translate }}</mat-label>
-            <input matInput formControlName="age" placeholder="Age" >
+            <input matInput formControlName="age" placeholder="Age">
         </mat-form-field>
 
         <mat-radio-group aria-label="Select an option" formControlName="gender">
@@ -39,7 +35,7 @@
 
         <mat-form-field appearance="fill">
             <mat-label>{{ "userForm.email" | translate }}</mat-label>
-            <input matInput formControlName="email" placeholder="Email" >
+            <input matInput formControlName="email" placeholder="Email">
         </mat-form-field>
 
         <mat-form-field appearance="fill">
@@ -52,34 +48,44 @@
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-            <mat-label>{{ "userForm.maritalstatus" | translate }}</mat-label>
+            <mat-label>{{ "userForm.maritalStatus" | translate }}</mat-label>
             <mat-select formControlName="maritalstatus">
                 <mat-option value="Single">Single</mat-option>
                 <mat-option value="Married">Married</mat-option>
             </mat-select>
         </mat-form-field>
 
-        <div formGroupName = "addressess">
+        <div formArrayName="addressess">
+            <div *ngFor="let addressControl of addressess.controls; let i = index" [formGroupName]="i">
+                <div>
 
-            <mat-form-field appearance="fill">
-                <mat-label>{{ "userForm.address" | translate }}</mat-label>
-                <input matInput formControlName="address" placeholder="Address" >
-            </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>{{ "userForm.address" | translate }}</mat-label>
+                        <input matInput formControlName="address" placeholder="Address">
+                    </mat-form-field>
 
-            <mat-form-field appearance="fill">
-                <mat-label>{{ "userForm.zipcode" | translate }}</mat-label>
-                <input matInput formControlName="zipcode" placeholder="Zip Code" >
-            </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>{{ "userForm.zipCode" | translate }}</mat-label>
+                        <input matInput formControlName="zipcode" placeholder="Zip Code">
+                    </mat-form-field>
 
-            <mat-form-field appearance="fill">
-                <mat-label>{{ "userForm.city" | translate }}</mat-label>
-                <input matInput formControlName="city" placeholder="City">
-            </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>{{ "userForm.city" | translate }}</mat-label>
+                        <input matInput formControlName="city" placeholder="City">
+                    </mat-form-field>
 
-            <mat-form-field appearance="fill">
-                <mat-label>{{ "userForm.country" | translate }}</mat-label>
-                <input matInput formControlName="country" placeholder="Country" >
-            </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>{{ "userForm.country" | translate }}</mat-label>
+                        <input matInput formControlName="country" placeholder="Country">
+                    </mat-form-field>
+
+                    <button mat-raised-button (click)="onRemove(i)">Remove</button>
+
+                </div>
+
+            </div>
+            <button mat-raised-button color="accent" (click)="onAddAddress()">Add_Address</button>
+
 
 
         </div>
