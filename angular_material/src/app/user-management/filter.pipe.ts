@@ -10,7 +10,7 @@ export class FilterPipe implements PipeTransform {
 
   transform(items : User[]  , searchText: string): User[] {
     
-    if (!items) return [];
+  
     if (!searchText) return items;
 
     searchText = searchText.toLowerCase();
@@ -20,7 +20,6 @@ export class FilterPipe implements PipeTransform {
       let calling = this.cepi.transform(user.name);
       calling = calling.toLowerCase();
       calling = calling.replace(/[.\s,]/g, '');
-      console.log(calling)
       return calling.includes(searchText);
       
       

@@ -6,11 +6,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class CremePipe implements PipeTransform {
 
   transform(value: string): string {
-    let chars:string[] = value.split('');
-    chars = chars.map(char => {
-      const splited = char.normalize('NFD').split('');
+    let accent:string[] = value.split('');
+    accent = accent.map(data => {
+      const splited = data.normalize('NFD').split('');
       return splited[0]
     })
-    return chars.join('');
+    return accent.join('');
   }
 }
