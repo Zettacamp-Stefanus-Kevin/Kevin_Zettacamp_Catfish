@@ -1,32 +1,70 @@
   [
     {
       "id": "1",
-      "name": "Steve",
+      "name": "Stèvè",
       "age": 21,
       "gender": "Female",
       "email": "Steve@gmail.com",
       "position": "FrontEnd",
       "maritalstatus": "Single",
-      "addressess": [{
-        "address": "Concad",
-        "zipcode": "54321",
-        "city": "Klaten",
-        "country": "Indonesia"
-  }]
+      "addressess": [
+        {
+          "address": "Concad",
+          "zipcode": "54321",
+          "city": "Klaten",
+          "country": "Indonesia"
+        }
+      ]
     },
     {
       "id": "2",
-      "name": "Jenkins",
+      "name": "Jènkins",
       "age": 28,
       "gender": "Male",
       "email": "Jenkins@gmail.com",
       "position": "BackEnd",
       "maritalstatus": "Married",
-      "addressess": [{
-        "address": "Paingan",
-        "zipcode": "12345",
-        "city": "Yogya",
-        "country": "Indonesia"
-      }]
+      "addressess": [
+        {
+          "address": "Paingan",
+          "zipcode": "12345",
+          "city": "Yogya",
+          "country": "Indonesia"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Mr. Arya Purnama",
+      "age": 40,
+      "gender": "Male",
+      "email": "AryaPurnama@gmail.com",
+      "position": "Quality Asurance",
+      "maritalstatus": "Married",
+      "addressess": [
+        {
+          "address": "Babarsari",
+          "zipcode": "13254",
+          "city": "Solo",
+          "country": "Indonesia"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "name": " ô, â, ê, î, û",
+      "age": 30,
+      "gender": "Female",
+      "email": "aeiou@gmail.com",
+      "position": "Quality Asurance",
+      "maritalstatus": "Single",
+      "addressess": [
+        {
+          "address": "Babarsari",
+          "zipcode": "43152",
+          "city": "Magelang",
+          "country": "Indonesia"
+        }
+      ]
     }
   ]

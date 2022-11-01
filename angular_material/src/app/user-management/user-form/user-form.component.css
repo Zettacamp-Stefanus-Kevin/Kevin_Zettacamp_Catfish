@@ -1,5 +1,5 @@
 .wrap {
-    background-color: #cdb7af;
+    background-color: #263e4a;
     border: 2px solid;
     border-radius: 15px;
     width: 40%;
@@ -9,9 +9,25 @@
     padding: 20px;
     margin-right: auto;
     margin-left: auto;
+    color: whitesmoke;
 }
 
-mat-form-field {
+.mat-radio-button, label{
+    color: aliceblue;
+    margin: 20px;
+}
+
+.mat-form-field {
     width: 80%;
     text-align: center;
+}
+
+.button{
+    text-align: left;
+    justify-content: center;
+}
+
+.buttonsub{
+    text-align: right;
+    justify-content: center;
 }

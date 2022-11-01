@@ -11,6 +11,7 @@ import { UserFormService } from 'src/app/user-form.service';
 export class UserListComponent implements OnInit {
 
   constructor( private userFormService : UserFormService ) { }
+  filterBy: string = ''
 
   List : User[]=[]
 

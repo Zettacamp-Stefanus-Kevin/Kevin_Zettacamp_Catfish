@@ -7,13 +7,11 @@ import { TranslateService } from '@ngx-translate/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 
-
 @Component({
   selector: 'app-user-form',
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.css']
 })
-
 
 export class UserFormComponent implements OnInit {
 

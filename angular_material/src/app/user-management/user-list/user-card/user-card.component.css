@@ -1,11 +1,11 @@
-/* .wrap{
+.wrap{
     display: flex;
-    height: 25vh;
-    width: 29vw;
-} */
+    width: 30vw;
+    
+}
 
 .card {
-    background-color: #cdb7af;
+    background-color: #cdb7af ;
     border: 2px solid;
     border-radius: 15px;
     width: 100%;
@@ -13,10 +13,12 @@
     margin: 1rem;
 }
 
-/* button {
+button {
     text-align: center;
     background-color:  #9a6851;
     color: whitesmoke;
     border-radius: 2rem;
-} */
+}
 
+/* #2deb6a */
+/* #1d3344 */

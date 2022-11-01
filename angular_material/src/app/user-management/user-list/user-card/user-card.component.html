@@ -2,14 +2,14 @@
 
 <div class="wrap">
     <mat-card class="card">
-        <mat-card-title>Name ={{user.name}}</mat-card-title>
+        <mat-card-title>Name ={{user.name | uppercase }}</mat-card-title>
         <mat-card-content>
             <p>ID Number ={{user.id}}
             <p>Gender ={{user.gender}}</p>
-            <p>Position ={{user.position}}</p>
+            <p>Position ={{user.position | lowercase}}</p>
         </mat-card-content>
         <mat-card-actions align="end" class="button">
-            <button mat-button color="primary" (click)="Edit()">Edit</button>
+            <button mat-button  (click)="Edit()">Edit</button>
         </mat-card-actions>
     </mat-card>
 </div>

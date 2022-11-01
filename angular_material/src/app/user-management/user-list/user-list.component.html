@@ -1,10 +1,12 @@
 <p>user-list works!</p>
 
-<div class="wrap">
-<h1>USER LIST</h1>
-<app-user-card *ngFor="let item of List" [user]="item"></app-user-card>
+<div class="whead">
+    <h1>USER LIST</h1>
+    <input matInput class="search" type="text" id="filter" [(ngModel)]="filterBy" />
+    <div class="button">
+        <button routerLink="/form">Add_User</button>
+    </div>
 </div>
-
-<div class="button">
-    <button routerLink="/form" >Add_User</button>
+<div class="wrap">
+    <app-user-card *ngFor="let item of List | filter : filterBy" [user]="item"></app-user-card>
 </div>

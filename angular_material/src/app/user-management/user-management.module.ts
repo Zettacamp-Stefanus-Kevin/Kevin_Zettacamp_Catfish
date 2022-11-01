@@ -13,6 +13,9 @@ import { AngularMaterialModule } from '../angular-material/angular-material.modu
 import { HttpClientModule, HttpClient} from '@angular/common/http'
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { FilterPipe } from './filter.pipe';
+import { FormsModule } from '@angular/forms';
+import { CremePipe } from './creme.pipe';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, '../../assets/i18n/', '.json');
@@ -25,7 +28,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     UserListComponent,
     UserCardComponent,
     UserFormComponent,
-    UserManagementComponent
+    UserManagementComponent,
+    FilterPipe,
+    CremePipe
   ],
   imports: [
     CommonModule,
@@ -33,6 +38,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AngularMaterialModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     TranslateModule.forRoot({
       defaultLanguage: 'en',
       loader:{

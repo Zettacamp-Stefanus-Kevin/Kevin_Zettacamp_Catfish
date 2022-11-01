@@ -17,8 +17,8 @@
             <mat-label>{{ "userForm._id" | translate }}</mat-label>
             <input matInput type="number" formControlName="id" placeholder="ID Number">
         </mat-form-field>
-        <mat-error *ngIf="this.userForm.get('id').invalid && this.userForm.get('id').touched" 
-        class="alert alert-danger"> You Must Input your ID_Number </mat-error><br>
+        <mat-error *ngIf="this.userForm.get('id').invalid && this.userForm.get('id').touched"
+            class="alert alert-danger"> You Must Input your ID_Number </mat-error><br>
 
         <mat-form-field appearance="fill">
             <mat-label>{{ "userForm.name" | translate }}</mat-label>
@@ -27,25 +27,26 @@
         <mat-error *ngIf="this.userForm.get('name').invalid && this.userForm.get('name').touched"
             class="alert alert-danger"> You Must Input Your Name </mat-error>
 
-            <mat-error *ngIf="userForm.get('name').hasError['forbiden']">jangan berkata kasar</mat-error><br>
+        <mat-error *ngIf="userForm.get('name').hasError['forbiden']">jangan berkata kasar</mat-error><br>
 
-       
+
 
         <mat-form-field appearance="fill">
             <mat-label>{{ "userForm.age" | translate }}</mat-label>
             <input matInput type="number" formControlName="age" placeholder="Age">
         </mat-form-field>
-        <mat-error *ngIf="this.userForm.get('age').invalid && this.userForm.get('age').touched" 
-        class="alert alert-danger"> You Must Input your Age </mat-error><br>
+        <mat-error *ngIf="this.userForm.get('age').invalid && this.userForm.get('age').touched"
+            class="alert alert-danger"> You Must Input your Age </mat-error><br>
 
         <mat-radio-group aria-label="Select an option" formControlName="gender">
-            <mat-radio-button value="Male">Male </mat-radio-button>
+            <label>{{ "userForm.gender" | translate }}</label><br>
+            <mat-radio-button value="Male">Male    </mat-radio-button>
             <mat-radio-button value="Female">Female</mat-radio-button>
         </mat-radio-group><br>
 
         <mat-form-field appearance="fill">
             <mat-label>{{ "userForm.email" | translate }}</mat-label>
-            <input matInput type="email" formControlName="email" placeholder="Example@gmail.com">
+            <input matInput type="email" formControlName="email" placeholder="example@gmail.com">
             <mat-error *ngIf="userForm.get('email').invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field><br>
 
@@ -79,17 +80,18 @@
                         <mat-label>{{ "userForm.zipCode" | translate }}</mat-label>
                         <input matInput formControlName="zipcode" placeholder="Zip Code">
                     </mat-form-field><br>
+
                     <!-- <mat-error *ngIf="this.userForm.get('zip').invalid && this.userForm.get('zipcode').touched" 
                     class="alert alert-danger"> You Must Input your Zip_Code </mat-error> -->
 
                     <mat-form-field appearance="fill">
                         <mat-label>{{ "userForm.city" | translate }}</mat-label>
-                        <input matInput type = "text" formControlName="city" placeholder="City">
+                        <input matInput type="text" formControlName="city" placeholder="City">
                     </mat-form-field><br>
 
                     <mat-form-field appearance="fill">
                         <mat-label>{{ "userForm.country" | translate }}</mat-label>
-                        <input matInput type = "text" formControlName="country" placeholder="Country">
+                        <input matInput type="text" formControlName="country" placeholder="Country">
                     </mat-form-field><br>
 
                     <button mat-raised-button (click)="onRemove(i)">Remove</button>
@@ -97,11 +99,13 @@
                 </div>
 
             </div>
-            <button type="button" mat-raised-button color="accent" (click)="onAddAddress()">Add_Address</button>
-            <br><br>
+            <div class="button">
+                <button type="button" mat-raised-button color="accent" (click)="onAddAddress()">Add_Address</button>
+            </div><br><br>
         </div>
-        <button mat-raised-button color="primary">{{ "actions.submit" | translate }}</button>
-
+        <div class="buttonsub">
+            <button mat-raised-button color="primary">{{ "actions.submit" | translate }}</button>
+        </div>
 
     </form>
 </div>
