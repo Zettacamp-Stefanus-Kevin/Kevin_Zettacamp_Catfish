@@ -1,0 +1,18 @@
+.wrap {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+button {
+    text-align: center;
+    background-color: #9a6851;
+    color: whitesmoke;
+    border-radius: 2rem;
+    padding: 2px 10px;
+}
+
+.button {
+    text-align: right;
+    justify-content: center;
+}

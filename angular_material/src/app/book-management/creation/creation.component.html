@@ -1,0 +1,26 @@
+<p>creation works!</p>
+
+<div class="wrap">
+    <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+        <mat-form-field>
+            <mat-label>ID</mat-label>
+            <input matInput formControlName="id" placeholder="ID Number">
+        </mat-form-field><br>
+
+        <mat-form-field>
+            <mat-label>Title</mat-label>
+            <input matInput formControlName="title" placeholder="ID Number">
+        </mat-form-field><br>
+
+        <mat-form-field>
+            <mat-label>Body</mat-label>
+            <input matInput formControlName="body" placeholder="ID Number">
+        </mat-form-field><br>
+
+        <mat-form-field>
+            <mat-label>User ID</mat-label>
+            <input matInput formControlName="userId" placeholder="ID Number">
+        </mat-form-field><br>
+        <button mat-raised-button>Submit</button>
+    </form>
+</div>

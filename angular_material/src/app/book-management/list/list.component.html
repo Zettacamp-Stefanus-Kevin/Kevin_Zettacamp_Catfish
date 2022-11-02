@@ -1,0 +1,8 @@
+<p>list works!</p>
+<div class="button">
+    <button mat-button routerLink="/form">Add_User</button>
+</div>
+<h1 style="text-align: center;">Kitab Latin</h1>
+<div class="wrap">
+    <app-card *ngFor="let item of list" [posts]="item"></app-card>
+</div>

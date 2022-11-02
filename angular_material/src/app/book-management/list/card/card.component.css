@@ -1,0 +1,13 @@
+
+.wrap{
+    width: 50%;
+    justify-content: center;
+}
+
+.card{
+    border: 2px solid;
+    border-radius: 2rem;
+    width: 45vw;
+    margin: 10px;
+    padding: 10px;
+}
