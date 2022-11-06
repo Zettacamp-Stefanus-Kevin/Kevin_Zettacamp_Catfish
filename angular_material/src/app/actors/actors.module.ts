@@ -4,7 +4,9 @@ import { ActorListComponent } from './actor-list/actor-list.component';
 import { ActorDetailComponent } from './actor-detail/actor-detail.component';
 import { ActorCardComponent } from './actor-list/actor-card/actor-card.component';
 import { ActorsComponent } from './actors.component';
+import { AngularMaterialModule } from '../angular-material/angular-material.module';
 import { RouterModule, Routes } from '@angular/router';
+
 
 const routes:Routes = [
   { path: "", redirectTo:'/actors/list', pathMatch:'full'},
@@ -21,6 +23,7 @@ const routes:Routes = [
   ],
   imports: [
     CommonModule,
+    AngularMaterialModule,
     RouterModule.forChild(routes)
   ], 
   exports: [

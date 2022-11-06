@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Actor } from 'src/app/services/actors';
+import { ActorsService } from 'src/app/services/actors.service';
 
 @Component({
   selector: 'app-actor-list',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActorListComponent implements OnInit {
 
-  constructor() { }
+  list:Actor[]=[]
+
+  constructor(private actorsService:ActorsService) { }
 
   ngOnInit(): void {
+    this.actorsService.fetchData().subscribe(data =>{
+      this.list = data
+      console.log(this.list)
+    })
   }
 
 }

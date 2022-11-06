@@ -9,6 +9,8 @@ import { ActorsModule } from './actors/actors.module';
 import { MoviesModule } from './movies/movies.module';
 import { AboutModule } from './about/about.module';
 
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -20,6 +22,7 @@ import { AboutModule } from './about/about.module';
     AngularMaterialModule,
     ActorsModule,
     AboutModule,
+    HttpClientModule,
     MoviesModule
 
   ],

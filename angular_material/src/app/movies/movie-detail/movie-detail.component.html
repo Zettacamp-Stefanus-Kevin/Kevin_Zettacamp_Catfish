@@ -1,1 +1,15 @@
 <p>movie-detail works!</p>
+
+<mat-tab-group mat-align-tabs="start">
+    <mat-tab label="Detail">
+        <img src="{{selectMovie.img}}">
+        <div>
+            <h2>Realese :{{selectMovie.release}}</h2>
+            <h2>Rating  :{{selectMovie.rating}}</h2>
+            <p>Synopsis :{{selectMovie.desc}}</p>
+        </div>
+    </mat-tab>
+    <mat-tab label="Actors">
+        <h3>{{selectMovie.actor_id}}</h3>
+    </mat-tab>
+</mat-tab-group>

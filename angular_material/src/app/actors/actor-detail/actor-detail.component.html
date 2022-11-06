@@ -1,1 +1,14 @@
 <p>actor-detail works!</p>
+
+<mat-tab-group mat-align-tabs="start">
+    <mat-tab label="Detail">
+        <img src="{{selectActor.img}}">
+        <div>
+            <h2>{{selectActor.name}} as "{{selectActor.as}}"</h2>
+            <p>age : {{selectActor.age}} years old</p>
+        </div>
+    </mat-tab>
+    <mat-tab label="Movies">
+        <h3>{{selectActor.movie_id}}</h3>
+    </mat-tab>
+</mat-tab-group>

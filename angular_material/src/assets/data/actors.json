@@ -1,0 +1,82 @@
+[
+    {
+      "id": 1,
+      "name": "Eliza Taylor",
+      "as": "Clarke Griffin",
+      "movie_id":["The 100 Season 1", "The 100 Season 2", "The 100 Season 3", "The 100 Season 4", "The 100 Season 5", "The 100 Season 6"],
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Eliza_Taylor_by_Gage_Skidmore_cropped.jpg/330px-Eliza_Taylor_by_Gage_Skidmore_cropped.jpg",
+      "age": 25 
+    },
+    {
+      "id": 2,
+      "name": "Bob Morley",
+      "as": "Bellamy Blake",
+      "movie_id":["The 100 Season 1", "The 100 Season 2", "The 100 Season 3", "The 100 Season 4", "The 100 Season 5", "The 100 Season 6"],
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Bob_Morley_%2827468730956%29_%28cropped%29.jpg/640px-Bob_Morley_%2827468730956%29_%28cropped%29.jpg",
+      "age": 30 
+    },
+    {
+      "id": 3,
+      "name": "Ricky Whittle",
+      "as": "Lincoln",
+      "movie_id":["The 100 Season 2", "The 100 Season 3"],
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Ricky_Whittle_July_2017.jpg/800px-Ricky_Whittle_July_2017.jpg",
+      "age": 35 
+    },
+    {
+      "id": 4,
+      "name": "Thomas Mcdonell",
+      "as": "Finn Collins",
+      "movie_id":["The 100 Season 1", "The 100 Season 2"],
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTm1IScsRWafvU0TTTFKSEAEn2KQ7VlAI1naM6wB7uo&s",
+      "age": 28 
+    },
+    {
+      "id": 5,
+      "name": "Devon Bostick",
+      "as": "Jasper Jordan",
+      "movie_id":["The 100 Season 1", "The 100 Season 2", "The 100 Season 3", "The 100 Season 4"],
+      "img": "https://collider.com/wp-content/uploads/devon-bostick-the-100-1.jpg",
+      "age": 29 
+    },
+    {
+      "id": 6,
+      "name": "Isaiah Washington",
+      "as": "Thelonious Jaha",
+      "movie_id":["The 100 Season 1", "The 100 Season 2", "The 100 Season 3", "The 100 Season 4", "The 100 Season 5"],
+      "img": "https://media.vanityfair.com/photos/5fb4224645a75c7f2635f9f0/9:16/w_1682,h_2991,c_limit/109286983",
+      "age": 50 
+    },
+    {
+      "id": 7,
+      "name": "Christopher Larkin",
+      "as": "Monty Green",
+      "movie_id":["The 100 Season 1", "The 100 Season 2", "The 100 Season 3", "The 100 Season 4", "The 100 Season 5"],
+      "img": "https://www.showbizjunkies.com/wp-content/uploads/2017/01/christopher-larkin-100-cc2016.jpg",
+      "age": 32 
+    },
+    {
+      "id": 8,
+      "name": "Lindsey Morgan",
+      "as": "Raven Reyes",
+      "movie_id":["The 100 Season 2", "The 100 Season 3", "The 100 Season 4", "The 100 Season 5", "The 100 Season 6"],
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Lindsey_Morgan_by_Gage_Skidmore_2.jpg/640px-Lindsey_Morgan_by_Gage_Skidmore_2.jpg",
+      "age": 28 
+    },
+    {
+      "id": 9,
+      "name": "Marie Avgeropoulus",
+      "as": "Octavia Blake",
+      "movie_id":["The 100 Season 1", "The 100 Season 2", "The 100 Season 3", "The 100 Season 4", "The 100 Season 5", "The 100 Season 6"],
+      "img": "https://m.media-amazon.com/images/M/MV5BNTIzOGEzYzQtMzVkYy00Y2JiLThmZDUtODFkODJjNmUxZGM3XkEyXkFqcGdeQXVyOTYwOTMwNjk@._V1_.jpg",
+      "age": 24 
+    },
+    {
+      "id": 10,
+      "name": "Tasya Teles",
+      "as": "Echo/Ash",
+      "movie_id":["The 100 Season 5", "The 100 Season 6"],
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Tasya_Teles_by_Gage_Skidmore.jpg/330px-Tasya_Teles_by_Gage_Skidmore.jpg",
+      "age": 45 
+    }
+  ]

@@ -1,0 +1,57 @@
+[
+    {
+      "id": 1,
+      "name": "The 100 Season 1",
+      "img": "https://bacaterus.com/wp-content/uploads/2021/08/The-100-S1-Movie-Poster_.webp",
+      "release": "2014",
+      "rating": 5,
+      "actor_id":["Eliza Taylor","Bob Morley","Thomas Mcdonell","Devon Bostick","Isaiah Washington","Christopher Larkin","Marie Avgeropoulus"],
+      "desc": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum cum reprehenderit earum! Possimus, laborum rem? Dolore, recusandae magni. Nesciunt ab beatae quidem impedit, praesentium rem ad at sed quos repudiandae?"
+    },
+    {
+      "id": 2,
+      "name": "The 100 Season 2",
+      "img": "https://images.justwatch.com/poster/8634418/s718/season-2.%7Bformat%7D",
+      "release": "2015",
+      "rating": 5,
+      "actor_id":["Eliza Taylor","Bob Morley","Thomas Mcdonell", "Ricky Whittle","Devon Bostick","Isaiah Washington","Christopher Larkin","Lindsey Morgan","Marie Avgeropoulus"],
+      "desc": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum cum reprehenderit earum! Possimus, laborum rem? Dolore, recusandae magni. Nesciunt ab beatae quidem impedit, praesentium rem ad at sed quos repudiandae?"
+    },
+    {
+      "id": 3,
+      "name": "The 100 Season 3",
+      "img": "https://i.pinimg.com/originals/1f/4d/63/1f4d63883110c21b48833d43376b8a13.png",
+      "release": "2016",
+      "rating": 5,
+      "actor_id":["Eliza Taylor","Bob Morley","Ricky Whittle","Devon Bostick","Isaiah Washington","Christopher Larkin","Lindsey Morgan","Marie Avgeropoulus"],
+      "desc": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum cum reprehenderit earum! Possimus, laborum rem? Dolore, recusandae magni. Nesciunt ab beatae quidem impedit, praesentium rem ad at sed quos repudiandae?"
+    },
+    {
+      "id": 4,
+      "name": "The 100 Season 4",
+      "img": "https://cdn.seat42f.com/wp-content/uploads/2017/04/05130703/The-100-Season-4-DVD.jpg",
+      "release": "2017",
+      "rating": 4,
+      "actor_id":["Eliza Taylor","Bob Morley","Devon Bostick","Isaiah Washington","Christopher Larkin","Lindsey Morgan","Marie Avgeropoulus"],
+      "desc": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum cum reprehenderit earum! Possimus, laborum rem? Dolore, recusandae magni. Nesciunt ab beatae quidem impedit, praesentium rem ad at sed quos repudiandae?"
+    },
+    {
+      "id": 5,
+      "name": "The 100 Season 5",
+      "img": "https://cdn.seat42f.com/wp-content/uploads/2018/04/24172251/THE-100-Season-5-Poster-2.jpg",
+      "release": "2018",
+      "rating": 4,
+      "actor_id":["Eliza Taylor","Bob Morley","Isaiah Washington","Christopher Larkin","Lindsey Morgan","Marie Avgeropoulus","Tasya Teles"],
+      "desc": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum cum reprehenderit earum! Possimus, laborum rem? Dolore, recusandae magni. Nesciunt ab beatae quidem impedit, praesentium rem ad at sed quos repudiandae?"
+    },
+    {
+      "id": 6,
+      "name": "The 100 Season 6",
+      "img": "https://cdn.seat42f.com/wp-content/uploads/2019/04/02174100/The-100-Season-6-Poster.jpg",
+      "release": "2019",
+      "rating": 3,
+      "actor_id":["Eliza Taylor","Bob Morley","Lindsey Morgan","Marie Avgeropoulus","Tasya Teles"],
+      "desc": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum cum reprehenderit earum! Possimus, laborum rem? Dolore, recusandae magni. Nesciunt ab beatae quidem impedit, praesentium rem ad at sed quos repudiandae?"
+    }
+    
+  ]
