@@ -5,6 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
+import { ActorsModule } from './actors/actors.module';
+import { MoviesModule } from './movies/movies.module';
+import { AboutModule } from './about/about.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +17,11 @@ import { AngularMaterialModule } from './angular-material/angular-material.modul
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    ActorsModule,
+    AboutModule,
+    MoviesModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
