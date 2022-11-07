@@ -7,6 +7,7 @@ import { PopupComponent } from './popup/popup.component';
 import { TranslateService } from "@ngx-translate/core";
 import Swal from 'sweetalert2'
 
+
 @Component({
   selector: 'app-formulir',
   templateUrl: './formulir.component.html',
@@ -23,7 +24,8 @@ export class FormulirComponent implements OnInit {
 
   constructor(private formService: FormService,
     private dialog: MatDialog,
-    private translate: TranslateService) { }
+    private translate: TranslateService,
+  ) { }
 
   ngOnInit(): void {
     this.formService.getdatas().subscribe(
@@ -36,7 +38,9 @@ export class FormulirComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(PopupComponent, 
       {width: '90%', height: '90%'}); {
+       
       dialogRef.afterClosed().subscribe(result => {
+         
         console.log(result);
 
         if (!result) return;
@@ -45,7 +49,7 @@ export class FormulirComponent implements OnInit {
 
         Swal.fire({
           icon: 'success',
-          title: 'Success'
+          title: this.translate.instant("MyForm.Success")
         })
       });
 

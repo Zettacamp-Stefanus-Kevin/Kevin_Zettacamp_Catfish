@@ -15,6 +15,14 @@
             "submit": "Input",
             "cancel": "Cancel"
         },
-        "action":"add Data"
+        "action":"add Data",
+
+        "Success":"Success",
+        "Error": "Error",
+        "Data not Completed": "Data not Completed"
+
+        
+
+        
     }
 }

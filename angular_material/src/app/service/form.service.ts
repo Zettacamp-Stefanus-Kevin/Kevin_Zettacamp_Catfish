@@ -36,7 +36,6 @@ export class FormService {
   addData(data: Form) {
     const addUsers = this.getData();
     addUsers.push(data);
-    // this.data.next(addUsers);
     this.setData(addUsers);
   }
 

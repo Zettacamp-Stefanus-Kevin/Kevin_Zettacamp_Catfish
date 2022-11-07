@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import Swal from 'sweetalert2'
 import { Form } from 'src/app/service/form';
+import { TranslateService } from '@ngx-translate/core';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -24,6 +26,8 @@ export class PopupComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<PopupComponent>,
+    private translate : TranslateService,
+    private pipi: DatePipe,
     @Inject(MAT_DIALOG_DATA) public data: Form) { }
 
 
@@ -33,16 +37,13 @@ export class PopupComponent implements OnInit {
     if (!isvalid) {
       Swal.fire({
         icon: 'error',
-        title: 'Error',
-        text: 'Data not Completed'
+        title: this.translate.instant("MyForm.Error"),
+        text: this.translate.instant("MyForm.Data not Completed")
       })
     } else {
+      this.myGroup.value.dateOfBirth = this.pipi.transform(this.myGroup.value.dateOfBirth)
       this.dialogRef.close(this.myGroup.value);
-      // Swal.fire({
-      //   icon: 'success',
-      //   title: 'Mantap',
-      //   text: 'Data Complete to upload'
-      // })
+  
     }
   }
 

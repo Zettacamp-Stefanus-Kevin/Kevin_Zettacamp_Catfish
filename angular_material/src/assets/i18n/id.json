@@ -15,6 +15,10 @@
             "submit": "Kirim",
             "cancel": "Batalkan"
         },
-        "action":"Tambah Data"
+        "action":"Tambah Data",
+
+        "Success":"Berhasil",
+        "Error": "Gagal",
+        "Data not Completed": "Data Tidak Lengkap"
     }
 }
