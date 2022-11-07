@@ -1,34 +1,61 @@
 <p>table works!</p>
+<p>search</p>
+
+<div class="filter">
+
+  <label>Search Name : </label>
+  <input matInput class="search" type="text" id="filter" [(ngModel)]="filterName" (ngModelChange)="filterByName()" /><br><br>
+
+  <label>Search Type  : </label>
+  <input matInput class="search" type="text" id="filter" [(ngModel)]="filterType" (ngModelChange)="filterByType()" /><br><br>
+  
+  <label>Search Email : </label>
+  <input matInput class="search" type="text" id="filter" [(ngModel)]="filterEmail" (ngModelChange)="filterByEmail()" /><br><br>
+
+  <label>Search Status :  </label>
+  <mat-form-field appearance="fill">
+    <mat-label>Select an option</mat-label>
+    <mat-select [(value)]="filterStatus" (selectionChange)="filterByStatus()">
+      <mat-option value="active">Active</mat-option>
+      <mat-option value="pending">Pending</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<p>table</p>
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-    <!--- Note that these columns can be defined in any order.
+  <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
-  
-    <!-- Position Column -->
-    <ng-container matColumnDef="nama">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element">{{element.civility}} {{element.first_name}} {{element.last_name}} </td>
-    </ng-container>
-  
-    <!-- Name Column -->
-    <ng-container matColumnDef="user_type">
-      <th mat-header-cell *matHeaderCellDef> User-Type </th>
-      <td mat-cell *matCellDef="let element"> {{element.company.user_type}} </td>
-    </ng-container>
-  
-    <!-- Weight Column -->
-    <ng-container matColumnDef="email">
-      <th mat-header-cell *matHeaderCellDef> Email </th>
-      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-    </ng-container>
-  
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="status">
-      <th mat-header-cell *matHeaderCellDef> Status </th>
-      <td mat-cell *matCellDef="let element"> {{element.user_status}} </td>
-    </ng-container>
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> 
-  </table>
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="nama">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element">{{element.civility}} {{element.first_name}} {{element.last_name}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="user_type">
+    <th mat-header-cell *matHeaderCellDef> User-Type </th>
+    <td mat-cell *matCellDef="let element"> {{element.company.user_type}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef> Email </th>
+    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef> Status </th>
+    <td mat-cell *matCellDef="let element">
+      <mat-icon [ngStyle]="{'color':'green'}" *ngIf="element.user_status === 'active'">done</mat-icon>
+      <mat-icon [ngStyle]="{'color':'red'}" *ngIf="element.user_status === 'pending'">close</mat-icon>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
