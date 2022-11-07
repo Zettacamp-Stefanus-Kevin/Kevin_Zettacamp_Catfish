@@ -1,0 +1,20 @@
+{
+    "MyForm": {
+        "id": "ID",
+        "civility": "Civility",
+        "Tuan":"Mr",
+        "Nyonya":"Mrs",
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "dateOfBirth": "Choose A Date",
+        "gender": "Gender",
+        "male": "Male",
+        "female": "Female",
+        "another" : "Another",
+        "actions": {
+            "submit": "Input",
+            "cancel": "Cancel"
+        },
+        "action":"add Data"
+    }
+}

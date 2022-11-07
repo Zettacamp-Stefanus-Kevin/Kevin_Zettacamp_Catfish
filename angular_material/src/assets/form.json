@@ -1,0 +1,10 @@
+[
+    {
+        "id": 1,
+        "civility": "MR",
+        "firstName": "Steve",
+        "lastName": "Jenkins",
+        "dateOfBirth": "8/5/1999",
+        "gender": "Male"
+    }
+]

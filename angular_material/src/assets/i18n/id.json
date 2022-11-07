@@ -1,0 +1,20 @@
+{
+    "MyForm": {
+        "id": "Nomor",
+        "civility": "Panggilan",
+        "Tuan":"Tuan",
+        "Nyonya":"Nyonya",
+        "firstName": "Nama Awal",
+        "lastName": "Nama Akhir",
+        "dateOfBirth": "Pilih Tanggal Lahir",
+        "gender": "Jenis Kelamin",
+        "male": "Laki-Laki",
+        "female": "Perempuan",
+        "another" : "Tidak Ingin Disebutkan",
+        "actions": {
+            "submit": "Kirim",
+            "cancel": "Batalkan"
+        },
+        "action":"Tambah Data"
+    }
+}
