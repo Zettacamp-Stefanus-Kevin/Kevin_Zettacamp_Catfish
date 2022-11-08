@@ -1,0 +1,37 @@
+<p>schools works!</p>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="nama">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.short_name}} {{element.long_name}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <!-- <ng-container matColumnDef="user_type">
+      <th mat-header-cell *matHeaderCellDef> User-Type </th>
+      <td mat-cell *matCellDef="let element"> {{element.company.user_type}} </td>
+    </ng-container> -->
+  
+    <!-- Weight Column -->
+    <!-- <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container> -->
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef> Status </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-icon [ngStyle]="{'color':'green'}" *ngIf="element.status === 'active'">done</mat-icon>
+        <mat-icon [ngStyle]="{'color':'red'}" *ngIf="element.status === 'pending'">close</mat-icon>
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>

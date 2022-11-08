@@ -1,0 +1,10 @@
+<p>filters works!</p>
+
+<mat-form-field>
+    <input matInput class="form-field" [formControl]="filterName" placeholder="Name Filter" />
+</mat-form-field>
+
+<div class="wrapper">
+
+    <app-card *ngFor="let item of filter" [card]="item"></app-card>
+</div>

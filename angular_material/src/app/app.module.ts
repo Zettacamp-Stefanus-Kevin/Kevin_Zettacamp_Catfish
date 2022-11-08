@@ -5,6 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
+import { GraphQLModule } from './graphql.module';
+import { HttpClientModule } from '@angular/common/http';
+import { FiltersModule } from './filters/filters.module';
+import { PromosModule } from './promos/promos.module';
+import { SchoolsModule } from './schools/schools.module';
+
 
 @NgModule({
   declarations: [
@@ -14,7 +20,12 @@ import { AngularMaterialModule } from './angular-material/angular-material.modul
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    GraphQLModule,
+    HttpClientModule,
+    FiltersModule,
+    PromosModule,
+    SchoolsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
