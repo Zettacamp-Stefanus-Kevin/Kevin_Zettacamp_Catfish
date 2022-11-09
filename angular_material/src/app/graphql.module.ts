@@ -7,7 +7,7 @@ import { HttpHeaders } from '@angular/common/http';
 const uri = 'https://api.zettacamp.zetta-staging.work/graphql  '; // <-- add the URL of the GraphQL server here
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
   return {
-    link: httpLink.create({uri, headers: new HttpHeaders().set('Authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmZlYzVjMmNlNjM1YjJmYjZhODFmMmQiLCJlbWFpbCI6Im0ubXVnbmllcjJAeW9wbWFpbC5jb20iLCJpYXQiOjE2Njc4Nzk3NDksImV4cCI6MTY2Nzk2NjE0OX0.7Pi5u7tc8AKMSesnkHB9P1XL7CLcWrlrQtz5rOpf6bA') }),
+    link: httpLink.create({uri, headers: new HttpHeaders().set('Authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmZlYzVjMmNlNjM1YjJmYjZhODFmMmQiLCJlbWFpbCI6Im0ubXVnbmllcjJAeW9wbWFpbC5jb20iLCJpYXQiOjE2Njc5NzI2NjksImV4cCI6MTY2ODA1OTA2OX0.iwchi-BrqNLvpJb6K5JxUVzmViVw1X6YmJGDa_rMRrw') }),
     cache: new InMemoryCache(),
   };
 }

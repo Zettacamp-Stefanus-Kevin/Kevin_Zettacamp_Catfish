@@ -5,27 +5,32 @@ import { AngularMaterialModule } from '../angular-material/angular-material.modu
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { CardComponent } from './card/card.component';
+import { InputComponent } from './input/input.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 const routes : Routes = [
   { path:"", component:PromosComponent},
 ]
 
-
 @NgModule({
   declarations: [
     PromosComponent,
-    CardComponent
+    CardComponent,
+    InputComponent
   ],
   imports: [
     CommonModule,
     AngularMaterialModule,
     HttpClientModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
   exports:[
     PromosComponent,
     RouterModule,
-    CardComponent
+    CardComponent,
+    InputComponent
   ]
 })
 export class PromosModule { }

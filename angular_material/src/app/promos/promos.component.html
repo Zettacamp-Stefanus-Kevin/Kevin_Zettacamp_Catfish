@@ -1,5 +1,9 @@
 <p>promos works!</p>
 
+<button mat-button (click)="openDialog()">Add Promo</button>
+<mat-spinner *ngIf="spin" ></mat-spinner>
+
+
 <div class="wrapper">
     <app-card *ngFor="let item of promo" [card]="item"></app-card>
 </div>

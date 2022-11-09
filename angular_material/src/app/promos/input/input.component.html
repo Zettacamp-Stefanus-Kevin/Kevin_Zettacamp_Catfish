@@ -1,0 +1,37 @@
+<p>input works!</p>
+
+<div class="form">
+    <form mat-dialog-content [formGroup]="promoForm">
+
+        <mat-form-field appearance="fill">
+            <mat-label> Input Image Url</mat-label>
+            <input matInput type="text" formControlName="image_url" placeholder="Image URL">
+        </mat-form-field><br>
+
+        <mat-form-field appearance="fill">
+            <mat-label> Input Title</mat-label>
+            <input matInput type="text" formControlName="title" placeholder="Title">
+        </mat-form-field><br>
+
+        <mat-form-field appearance="fill">
+            <mat-label> Input  Subtitle</mat-label>
+            <input matInput type="text" formControlName="sub_title" placeholder="Subtitle">
+        </mat-form-field><br>
+
+        <mat-form-field appearance="fill">
+            <mat-label> Input ref</mat-label>
+            <input matInput type="text" formControlName="ref" placeholder="ref number">
+        </mat-form-field><br>
+
+        <mat-form-field appearance="fill">
+            <mat-label> Input description</mat-label>
+            <input matInput type="text" formControlName="description" placeholder="Description">
+        </mat-form-field><br>
+
+        <button type='button' mat-raised-button color="accent" (click)="onClick()">Cancel</button>
+        <button mat-raised-button color="primary" (click)="onSubmit()">Submit</button>
+
+    </form>
+
+
+</div>

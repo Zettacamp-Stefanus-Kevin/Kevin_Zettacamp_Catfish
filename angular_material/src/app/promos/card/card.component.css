@@ -1,7 +1,7 @@
-/* .wrap{
+.wrap{
     display: flex;
-    height: 30vh;
-    width: 20vw;
+    height: 80vh;
+    width: 40vw;
     padding: 10px;
 }
 
@@ -19,6 +19,6 @@
 }
 
 img {
-    width: 100px;
-    height: 125px;
-} */
+    width: 350px;
+    height: 300px;
+}
