@@ -23,6 +23,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/primeflex/primeflex.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -97,5 +98,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "fbd684fd-b468-4cef-a4e0-5b28431a2d0d"
   }
 }

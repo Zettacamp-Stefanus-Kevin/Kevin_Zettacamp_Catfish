@@ -1,0 +1,44 @@
+main{
+    width: 800px;
+    margin-right: auto; margin-left: auto;
+    margin-top: 100px;
+}
+
+.pad-5{
+    padding: 10px;
+}
+
+.mar-5{
+    margin: 5px;
+}
+
+.mar-10{
+    margin: 8px;
+}
+
+.mac-5{
+    margin: 15px 0;
+}
+
+.border{
+    border: 2px solid rgb(255, 64, 0);
+    border-radius: 5px;
+}
+
+.height{
+    height: 150px;
+}
+
+.box{
+    height: 50px;
+    width: 50px;
+}
+
+.bar{
+    height: 40px;
+}
+
+.space{
+    justify-content:space-around;
+    align-items: center;
+}
