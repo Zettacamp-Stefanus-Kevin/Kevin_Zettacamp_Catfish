@@ -1,0 +1,20 @@
+{
+    "card": {
+        "id": "ID",
+        "nama": "Name",
+        "img": "Image",
+        "caption": "Caption",
+        "actions": {
+            "submit": "Submit",
+            "cancel": "Cancel"
+        },
+        "Success":"Success",
+        "Error": "Error",
+        "Data Completed": "Data Completed",
+        "Data not Completed": "Data not Completed",
+        "like" : "like",
+        "share" : "share"
+
+
+    }
+}

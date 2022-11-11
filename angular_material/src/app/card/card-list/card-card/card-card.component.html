@@ -1,0 +1,29 @@
+<p>card-card works!</p>
+
+<div class="wrap">
+    <mat-card class="example-card">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{card.nama}}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image src="{{card.img}}" alt="Photo of a Shiba Inu">
+        <mat-card-content>
+            <p>{{card.caption}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+            
+            <button (click)="onClick()">
+                <div *ngIf="isLike; then liked else noLiked"></div>
+            </button>
+            <ng-template #liked>
+                <mat-icon>favorite</mat-icon>
+            </ng-template>
+            <ng-template #noLiked>
+                <mat-icon>favorite_border</mat-icon>
+            </ng-template>
+
+            <button mat-button>{{"card.like" | translate }}</button>
+            <button mat-button>SHARE</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

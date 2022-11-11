@@ -1,0 +1,58 @@
+{
+  "card": [
+    {
+      "id": "1",
+      "nama": "Steve ",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Under_the_Milky_Way_in_Black_Rock_Desert%2C_Nevada.jpg/1200px-Under_the_Milky_Way_in_Black_Rock_Desert%2C_Nevada.jpg",
+      "caption": "Milky_Way"
+    },
+    {
+      "id": "2",
+      "nama": "Jenkins",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Pemandangan_Gunung_Bromo.jpg/1280px-Pemandangan_Gunung_Bromo.jpg",
+      "caption": "Mountain_View"
+    },
+    {
+      "id": "2",
+      "nama": "Steve Jenkins",
+      "img": "https://assets.promediateknologi.com/crop/0x0:0x0/x/photo/2022/04/21/227732975.jpeg",
+      "caption": "Sunset_in_Beach"
+    },
+    {
+      "nama": null,
+      "img": null,
+      "caption": null,
+      "id": 3
+    },
+    {
+      "nama": "anam",
+      "img": "123",
+      "caption": "test",
+      "id": 4
+    },
+    {
+      "nama": null,
+      "img": null,
+      "caption": null,
+      "id": 5
+    },
+    {
+      "nama": null,
+      "img": "ads",
+      "caption": null,
+      "id": 6
+    },
+    {
+      "nama": null,
+      "img": "as",
+      "caption": null,
+      "id": 7
+    },
+    {
+      "nama": "duandaa",
+      "img": "asda",
+      "caption": "aku cab",
+      "id": 8
+    }
+  ]
+}

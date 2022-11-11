@@ -1,0 +1,18 @@
+{
+    "card": {
+        "id": "Nomer-ID",
+        "nama": "Nama",
+        "img": "Foto",
+        "caption": "Deskripsi",
+        "actions": {
+            "submit": "Masukkan",
+            "cancel": "Batalkan"
+        },
+        "Success":"Berhasil",
+        "Error": "Gagal",
+        "Data Completed": "Data berhasil diinput",
+        "Data not Completed": "Data gagal berhasil diinput",
+        "like" : "suka",
+        "share" : "berbagi"
+    }
+}

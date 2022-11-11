@@ -1,0 +1,33 @@
+
+
+<div class="wrapper">
+    <div class="language">
+        <mat-form-field class="input" appearance="outline">
+            <mat-label>Language</mat-label>
+            <mat-select [(value)]="selectedLang" #lang (valueChange)="setLanguage(lang.value)">
+                <mat-option value="en">English</mat-option>
+                <mat-option value="id">Indonesian</mat-option>
+                <mat-option value="cn">China</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <form class="form" [formGroup]="cardForm" (ngSubmit)="onSubmit(cardForm.value)">
+
+        <mat-form-field appearance="fill">
+            <mat-label>{{"card.nama" | translate }}</mat-label>
+            <input matInput formControlName="nama" />
+        </mat-form-field><br>
+
+        <mat-form-field appearance="fill">
+            <mat-label>{{"card.img" | translate }}</mat-label>
+            <input matInput formControlName="img" />
+        </mat-form-field><br>
+
+        <mat-form-field appearance="fill">
+            <mat-label>{{"card.caption" | translate }}</mat-label>
+            <input matInput formControlName="caption" />
+        </mat-form-field><br>
+        <button mat-raised-button color="primary">{{"card.actions.submit" | translate }}</button>
+    </form>
+</div>

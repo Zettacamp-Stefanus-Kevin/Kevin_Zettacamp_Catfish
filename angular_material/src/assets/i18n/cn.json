@@ -1,0 +1,17 @@
+{
+    "card": {
+        "id": "ID",
+        "nama": "纳马",
+        "img": "图片",
+        "caption": "标题",
+        "actions": {
+            "submit": "提交",
+            "cancel": "取消"
+        },
+        "Success":"成功",
+        "Error": "错误",
+        "Data Completed": "数据完成",
+        "Data not Completed": "数据未完成"
+
+    }
+}
