@@ -1,0 +1,43 @@
+.navatas {
+    justify-content: space-between;
+    background-color: #100F0F;
+    color: #F4F4F4;
+    position: fixed;
+    z-index: 2;
+    padding: 20px;
+    vertical-align: middle;
+}
+
+.left {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    gap: 20px;
+}
+
+mat-sidenav {
+    background-color: #100F0F;
+}
+
+.icon{
+    color: #F4F4F4 ;
+}
+
+a.active{
+    color: #E6B325 !important; 
+  }
+  
+.wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.cart{
+color: #E6B325;
+}
+
+.change:hover {
+    color: #E6B325;
+}

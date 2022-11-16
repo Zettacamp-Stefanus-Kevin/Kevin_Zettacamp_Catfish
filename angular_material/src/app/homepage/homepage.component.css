@@ -1,0 +1,110 @@
+
+.header {
+    background-image: url(/../../assets/pictures/background_homepage_1.jpg);
+    position: relative;
+    height: 75%;
+    width: 100%;
+}
+
+.header_caption {
+    border: 1.5px solid #F0A500;
+    margin: 135px 450px;
+    text-align: center;
+    padding: 40px 100px;
+}
+
+.header::before {
+    content: '';
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    font-size: 40px;
+}
+
+h4 {
+    font-size: large;
+}
+
+
+
+.text {
+    color: #F0A500 ;
+    z-index: 2;
+}
+
+.par1 {
+    padding: 10%;
+    text-align: justify;
+    background-color: #F4F4F4;
+    color: #1A1C20;
+    text-align: center;
+}
+
+.par1 > button{
+    background-color: #F0A500;
+    color: #1A1C20;
+    padding: 10px;
+    border-radius: 1rem;
+
+}
+
+
+.pict > .wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    background-color: #1B2430 ;
+    justify-content: center;
+ 
+    gap: 10px;
+}
+
+.pict > .wrapper > .card{
+    width: 30%;
+    border: 1px solid #1B2430;
+    padding: 10px;
+}
+
+ .card > img{
+    width: 425px;
+    height: 300px;
+}
+
+footer{
+    background-color: #100F0F;
+    color: #f4f4f4;
+    text-align: center;
+    padding: 1rem;
+    
+}
+.wrapper{
+    display: flex;
+    width: 100%;
+}
+
+.wrap{
+    display: flex;
+    width: 100%;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.cardFooter{
+    width: 48%;
+    border: 2px solid #E6B325;  
+    border-radius: 2rem;
+    padding: 20px;
+}
+
+footer > img{
+    width: 100%;
+    height: 98%;
+    padding: auto;
+}

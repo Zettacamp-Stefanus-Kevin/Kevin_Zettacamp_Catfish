@@ -1,0 +1,37 @@
+<p>menu-card works!</p>
+
+<div class="wrapper">
+    <div class="container header">
+        <section class="title">
+            <h1>{{recipe.recipe_name}}</h1>
+            <p>price Rp{{recipe.price}}</p>
+        </section>
+        <section class="card">
+            <img [src]="recipe.image" alt="">
+        </section>
+    </div>
+    <div class="container text body">
+        {{recipe.description}}
+    </div>
+    <div class="container footer">
+        <button mat-button (click)="addCart()">
+            <mat-icon>add_shopping_cart</mat-icon> add to cart
+        </button>
+    </div>
+</div>
+
+
+<!-- <div class="wrapper">
+    <mat-card class="card">
+        <mat-card-title-group>
+            <div class="text">
+                <mat-card-title>{{recipe.judul}}</mat-card-title>
+                <mat-card-subtitle>{{recipe.ingredient}}</mat-card-subtitle>
+            </div>
+            <img [src]="recipe.img">
+        </mat-card-title-group>
+        <mat-card-content>
+            {{recipe.text}}
+        </mat-card-content>
+    </mat-card>
+</div> -->

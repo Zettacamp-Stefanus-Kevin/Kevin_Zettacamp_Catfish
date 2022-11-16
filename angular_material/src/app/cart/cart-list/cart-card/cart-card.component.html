@@ -1,0 +1,14 @@
+<div class="wrap">
+    <mat-card>
+        <mat-card-title>{{ingredient.judul}}</mat-card-title>
+        <mat-card-subtitle>Stock : {{ingredient.text}}</mat-card-subtitle>
+        <mat-card-actions align="end">
+            <button mat-button (click)="deleteStock()">
+                <mat-icon>remove_circle</mat-icon> delete stock
+            </button>
+            <button mat-button (click)="addStock()">
+                <mat-icon>add_circle</mat-icon> add stock
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</div>
