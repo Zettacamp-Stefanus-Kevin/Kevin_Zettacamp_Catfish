@@ -40,12 +40,11 @@ export class LoginComponent implements OnInit {
         for(let data of user_type){
           data.routing = data.name
         }
-
         console.log(user_type)
-        localStorage.setItem('adminToken', adminToken);
+        localStorage.setItem('getToken', adminToken);
         localStorage.setItem('userData', JSON.stringify(user_type));
       })
-
+ 
       console.log('berhasil')
       this.loginForm.reset();
       this.router.navigate(['homepage'])

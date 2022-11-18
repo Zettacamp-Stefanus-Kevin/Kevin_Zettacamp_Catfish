@@ -53,9 +53,6 @@ export class StockManagementComponent implements OnInit {
   }
 
   onEdit(parameter: any){
-    // this.subs.sink = this.stockService.getOneStock().subscribe(resp => {
-    //   this.id.get(resp.data.GetOneIngredients)
-    // })
     const dialogRef = this.dialog.open(StockManagementUpdateComponent, {
       width: '100%', height: '100%',
       data : parameter
@@ -67,8 +64,5 @@ export class StockManagementComponent implements OnInit {
 
     );
   }
-
-
-
 
 }

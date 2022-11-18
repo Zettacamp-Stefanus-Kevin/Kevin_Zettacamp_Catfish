@@ -13,7 +13,7 @@ export class MenuService {
     return this.apolo.query({
       query: gql`
       query Query {
-        GetAllRecipes{
+        GetAllRecipes (limit : 20, page :1 ){
           data_recipes {
             price
             recipe_name

@@ -21,7 +21,7 @@ export class LoginService {
       mutation
       {
         Login(  
-        email: "${email}"
+        email: "${email}",
         password:"${password}" 
         ) 
         {
@@ -37,7 +37,7 @@ export class LoginService {
         }
       }
       `,
-      variables: { email, password },
+      variables: { email, password }
     })
     // .subscribe((data)=>{
     //   console.log(data)

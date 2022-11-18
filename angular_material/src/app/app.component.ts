@@ -16,7 +16,7 @@ export class AppComponent {
   ngOnInit() {
 
 
-    if (localStorage.getItem('adminToken') !== null){
+    if (localStorage.getItem('getToken') !== null){
       this.root = true;
       let userData: any = localStorage.getItem('userData');
       userData = JSON.parse(userData);

@@ -6,7 +6,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 const uri = environment.apiUrl; // <-- add the URL of the GraphQL server here
-const token: any = localStorage.getItem('adminToken');
+const token: any = localStorage.getItem('getToken');
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
   return {
     link: httpLink.create({uri, headers: new HttpHeaders().set('Authorization', token)}),

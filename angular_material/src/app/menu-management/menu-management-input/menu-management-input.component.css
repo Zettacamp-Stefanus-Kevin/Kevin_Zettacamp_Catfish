@@ -1,0 +1,19 @@
+
+form{
+width: 90%;
+height: 90%;
+justify-content: center ;
+text-align: center;
+border: 2px solid ;
+}
+
+.wrapper{
+    justify-content: center ;
+    text-align: center;
+    border: 2px solid ;
+    
+}
+
+.ingredient{
+    display: flex;
+}

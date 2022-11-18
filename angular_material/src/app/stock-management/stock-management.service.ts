@@ -14,7 +14,7 @@ export class StockManagementService {
     return this.apolo.query({
       query: gql`
       query Query {
-        GetAllIngredients (limit:20, page: 1){
+        GetAllIngredients (limit:30, page: 1){
           data {
             id
             name

@@ -1,0 +1,59 @@
+<p>menu-management-input works!</p>
+
+<form mat-dialog-content [formGroup]="recipeForm">
+
+    <mat-form-field appearance="fill">
+        <mat-label> Name </mat-label>
+        <input matInput type="text" formControlName="recipe_name">
+        <!-- <mat-error *ngIf="this.recipeForm.get('recipe_name')?.invalid"> This field is required ! </mat-error> -->
+    </mat-form-field><br>
+
+    <mat-form-field appearance="fill">
+        <mat-label> Image </mat-label>
+        <input matInput type="text" formControlName="image">
+        <!-- <mat-error *ngIf="this.recipeForm.get('image')?.invalid"> This field is required ! </mat-error> -->
+    </mat-form-field><br>
+
+    <mat-form-field appearance="fill">
+        <mat-label> description </mat-label>
+        <input matInput type="text" formControlName="description">
+        <!-- <mat-error *ngIf="this.recipeForm.get('description')?.invalid"> This field is required ! </mat-error> -->
+    </mat-form-field><br>
+
+    <mat-form-field appearance="fill">
+        <mat-label> price </mat-label>
+        <input matInput type="number" formControlName="price">
+        <!-- <mat-error *ngIf="this.recipeForm.get('price')?.invalid"> This field is required ! </mat-error> -->
+    </mat-form-field><br>
+
+
+    <div formArrayName="ingredients" class="wrapper" >
+        <div class="ingredient" *ngFor="let ingredient of recipeForm.get('ingredients').controls; let i = index" [formGroupName]="i">
+
+            <mat-form-field appearance="fill">
+                <mat-label> ingredients </mat-label>
+                <mat-select formControlName="ingredient_id">
+                    <mat-option *ngFor="let ingredient of ingredients" [value]="ingredient.id">
+                    {{ingredient.name}}
+                    </mat-option>
+                </mat-select>
+                <!-- <mat-error *ngIf="this.recipeForm.get('price')?.invalid"> This field is required ! </mat-error> -->
+            </mat-form-field><br>
+
+
+            <mat-form-field appearance="fill">
+                <mat-label> stock </mat-label>
+                <input matInput type="number" formControlName="stock_used">
+                <!-- <mat-error *ngIf="this.recipeForm.get('price')?.invalid"> This field is required ! </mat-error> -->
+            </mat-form-field><br>
+
+
+        </div>
+        <button type="button" mat-raised-button color="accent" (click)="addIngredient()">Add_Address</button>
+    </div>
+
+
+    <button type="button" mat-raised-button color="warn" (click)="onClick()"> Cancel </button>
+    <button type="submit" mat-raised-button color="accent" [disabled]="recipeForm.invalid" (click)="onSubmit()"> Submit </button>
+    
+</form>

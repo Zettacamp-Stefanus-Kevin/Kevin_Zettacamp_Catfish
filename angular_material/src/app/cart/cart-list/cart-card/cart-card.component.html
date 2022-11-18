@@ -1,7 +1,16 @@
 <div class="wrap">
     <mat-card>
-        <mat-card-title>{{ingredient.judul}}</mat-card-title>
-        <mat-card-subtitle>Stock : {{ingredient.text}}</mat-card-subtitle>
+        <mat-card-title>{{transaction.recipe_name}}</mat-card-title>
+        <mat-card-subtitle>Stock : {{transaction.price}}</mat-card-subtitle>
+        <div *ngFor="let item of transaction.menu">
+           <p>Amout : {{item.amount}} </p>
+            <p>Note : {{item.note}}</p> 
+            <img [src]="item.recipe_id.image" alt="">
+            <p>{{item.recipe_id.recipe_name}}</p> 
+            <p>{{item.recipe_id.price}}</p> 
+        </div>
+        <p>Total Price :{{transaction.total_price}}</p>
+        <p>order : {{transaction.order_date}}</p>
         <mat-card-actions align="end">
             <button mat-button (click)="deleteStock()">
                 <mat-icon>remove_circle</mat-icon> delete stock

@@ -30,8 +30,6 @@ export class StockManagementUpdateComponent implements OnInit {
     console.log(this.stock)
   }
 
-
-
   onClick(): void {
     this.dialog.close();
   }

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { SubSink } from 'subsink';
 import { MenuService } from '../menu.service';
 import { menu } from '../menu';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-menu-list',
@@ -23,45 +24,35 @@ export class MenuListComponent implements OnInit {
       console.log(resp)
     })
   }
-
-
-  // list = [{
-  //   img: "https://ichef.bbci.co.uk/food/ic/food_16x9_832/recipes/rib-eye_steak_with_61963_16x9.jpg",
-  //   judul: "Tenderloin Steak",
-  //   ingredient: "mash popatoes, meat 250gr",
-  //   text: "Steak yang di olah menggunakan daging yang masih fresh, dan bisa dinikmati dengan tingkat kematangan yang diingankan oleh customer"
-  // }, {
-
-  //   img: "https://ichef.bbci.co.uk/food/ic/food_16x9_832/recipes/rib-eye_steak_with_61963_16x9.jpg",
-  //   judul: "Sirloin Steak",
-  //   ingredient: "popatoes wedges, meat 250gr",
-  //   text: "Steak yang di olah menggunakan daging yang masih fresh, dan bisa dinikmati dengan tingkat kematangan yang diingankan oleh customer"
-  // }, {
-  //   img: "https://ichef.bbci.co.uk/food/ic/food_16x9_832/recipes/rib-eye_steak_with_61963_16x9.jpg",
-  //   judul: "Wagyu Steak",
-  //   ingredient: "mash popatoes, meat 250gr",
-  //   text: "Steak yang di olah menggunakan daging yang masih fresh, dan bisa dinikmati dengan tingkat kematangan yang diingankan oleh customer"
-  // },{
-  //   img: "https://ichef.bbci.co.uk/food/ic/food_16x9_832/recipes/rib-eye_steak_with_61963_16x9.jpg",
-  //   judul: "Tenderloin Steak",
-  //   ingredient: "mash popatoes, meat 250gr",
-  //   text: "Steak yang di olah menggunakan daging yang masih fresh, dan bisa dinikmati dengan tingkat kematangan yang diingankan oleh customer"
-  // }, {
-
-  //   img: "https://ichef.bbci.co.uk/food/ic/food_16x9_832/recipes/rib-eye_steak_with_61963_16x9.jpg",
-  //   judul: "Sirloin Steak",
-  //   ingredient: "popatoes wedges, meat 250gr",
-  //   text: "Steak yang di olah menggunakan daging yang masih fresh, dan bisa dinikmati dengan tingkat kematangan yang diingankan oleh customer"
-  // }, {
-  //   img: "https://ichef.bbci.co.uk/food/ic/food_16x9_832/recipes/rib-eye_steak_with_61963_16x9.jpg",
-  //   judul: "Wagyu Steak",
-  //   ingredient: "mash popatoes, meat 250gr",
-  //   text: "Steak yang di olah menggunakan daging yang masih fresh, dan bisa dinikmati dengan tingkat kematangan yang diingankan oleh customer"
-  // }
-  // ]
-
- 
-
- 
-
 }
+
+  //  ngOnInit(): void {
+  //   this.getDatas()
+  // }
+
+  // getDatas(paginationObj?: any){
+  //   const pagination: any ={
+  //     page: paginationObj.page ?? 1,
+  //     limit: paginationObj.limit ?? 4
+  //   }
+
+  //   this.subs.sink =this.menuService.getMenu(pagination).valueChanges.subscribe((resp:any )=> {
+  //     this.paginator.length = resp.data.GetAllRecipes.data_recipes;
+  //     this.paginator.pageSize = this.pageSizeOptions[0];
+  //     this.menu = resp.data.GetAllRecipes.data_recipes;
+  //   })
+  // }
+
+  // @ViewChild('paginator') paginator!: MatPaginator;
+
+  // pageSizeOptions: number[] = [4];
+
+  // onPaginatorChange(event: PageEvent) {
+  //   const pagination = {
+  //     limit: event.pageSize,
+  //     page: event.pageIndex+1,
+  //   }
+  //   this.getDatas(pagination)
+  // }
+
+
