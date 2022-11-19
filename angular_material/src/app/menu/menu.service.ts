@@ -15,6 +15,7 @@ export class MenuService {
       query Query {
         GetAllRecipes (limit : 20, page :1 ){
           data_recipes {
+            id
             price
             recipe_name
             status
@@ -27,4 +28,6 @@ export class MenuService {
       `
     })
   }
+
+
 }

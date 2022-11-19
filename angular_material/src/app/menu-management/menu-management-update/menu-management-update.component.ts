@@ -15,7 +15,7 @@ export class MenuManagementUpdateComponent implements OnInit {
 
   recipeForm: any
 
-  ingredients: any
+  ingredients: any =[]
 
 
   constructor(private menuService: MenuManagementService,
