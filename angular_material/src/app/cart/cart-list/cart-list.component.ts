@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SubSink } from 'subsink';
-import { cart } from '../cart'; 
+import { cart } from '../cart';
 import { CartService } from '../cart.service';
 
 @Component({
@@ -10,37 +10,41 @@ import { CartService } from '../cart.service';
 })
 export class CartListComponent implements OnInit {
 
-  // list = [{
-  //   judul: "daging sapi",
-  //   text: "10"
-  // },{
-  //   judul: "kecap",
-  //   text: "10"
-  // },{
-  //   judul: "MSG",
-  //   text: "10"
-  // },{
-  //   judul: "daging ayam",
-  //   text: "10"
-  // },{
-  //   judul: "sayuran",
-  //   text: "10"
-  // },{
-  //   judul: "kentang",
-  //   text: "10"
-  // }, ]
-
   private subs = new SubSink();
-  cart:cart[]=[]
-  
-  constructor(private cartService : CartService) { }
+  cart: cart[] = []
+
+  constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
-    this.subs.sink =this.cartService.getCart().subscribe((resp:any )=> {
-      this.cart = resp.data.GetAllTransactions.data;
-      console.log(this.cart)
-      console.log(resp)
-    })
+    this.init()
   }
 
+  init() {
+    // this.subs.sink = this.cartService.getCart().subscribe((resp: any) => {
+    //   const data = resp.data.GetOrder;
+    //   const id = data.id;
+
+    //   const menus: any = [];
+
+    //   data.menu.forEach((item: any) => {
+    //     menus.push({
+    //       trans_id: id,
+    //       ...item
+    //     })
+    //   })
+
+    //   console.log(menus)
+    //   this.cart = menus
+    // })
+
+    this.subs.sink = this.cartService.getCart().subscribe((resp: any) => {
+      this.cart = resp.data.GetOrder.menu;
+
+      console.log(resp.data.GetOrder.menu);
+    })
+
+ 
+  }
+
+  
 }

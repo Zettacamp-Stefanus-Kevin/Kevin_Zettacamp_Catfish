@@ -15,7 +15,7 @@ export class MenuManagementUpdateComponent implements OnInit {
 
   recipeForm: any
 
-  ingredients: any =[]
+  ingredients: any = []
 
 
   constructor(private menuService: MenuManagementService,
@@ -28,25 +28,52 @@ export class MenuManagementUpdateComponent implements OnInit {
     this.recipeForm = new FormGroup({
       'id': new FormControl(null),
       'recipe_name': new FormControl(null, [Validators.required]),
-      // 'image': new FormControl(null,),
-      // 'price': new FormControl(null, [Validators.required]),
-      // 'description': new FormControl(null, [Validators.required]),
+      'price': new FormControl(null, [Validators.required]),
       'ingredients': new FormArray([])
     })
 
     this.addIngredient()
 
     this.stockService.getStock().subscribe((val: any) => {
+      // this.ingredients = val.data.GetAllIngredients.data
 
-      this.ingredients = val.data.GetAllIngredients.data
+      const data = val.data.GetAllIngredients.data
+
+      const item: any = []
+
+      if (this.ingredients.length) {
+
+        data?.ingredients.forEach((getItem: any) => {
+          console.log(getItem);
+          item.push({
+            ingredients_id: getItem.ingredient_id,
+            stock_used: getItem.stock_used
+          });
+        });
+      }
+
+      console.log(item)
+      this.ingredients = item
+
       console.log(val)
       console.log(val.data.GetAllIngredients.data);
-      
     })
+
+    // for looping
+    // if (this.menu?.ingredients) {
+    //   let data = this.menu.ingredients.ingredient_id;
+    //   data = value.map((item: any) => {
+    //     this.addIngredient();
+
+    //     return {
+    //       ingredients_id : item.ingredient_id
+    //       stock_used : item.stock_used
+    //     } 
+    //   })
+    // }
+
     console.log(this.ingredients)
     this.recipeForm.patchValue(this.menu)
-    
-
   }
 
   addIngredient() {
@@ -56,8 +83,6 @@ export class MenuManagementUpdateComponent implements OnInit {
     });
 
     (<FormArray>this.recipeForm.get('ingredients')).push(item)
-
-
   }
 
   onClick(): void {

@@ -20,20 +20,17 @@ export class LoginService {
       mutation: gql`
       mutation
       {
-        Login(  
-        email: "${email}",
-        password:"${password}" 
-        ) 
+        Login(   email: "${email}", password:"${password}" ) 
         {
         token
+        id
+        email
+        role
         user_type
           {
           name
           view
           }
-        id
-        email
-        role
         }
       }
       `,

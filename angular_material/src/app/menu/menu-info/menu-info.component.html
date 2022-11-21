@@ -1,0 +1,13 @@
+<div class="wrapper">
+    <h1>{{cart.recipe_name}}</h1>
+    <img [src]="cart.image" alt=""><br>
+    <p>Price : {{cart.price}}</p>
+    <p>{{cart.description}}</p>
+    <div class="ids"><br>
+        <label>Ingredient : </label>
+        <p *ngFor="let item of cart.ingredients"> {{item.ids.name}}, </p>
+    </div>
+    <button class="trash" mat-button (click)="Close()">
+        <mat-icon> close </mat-icon>Close
+    </button>
+</div>

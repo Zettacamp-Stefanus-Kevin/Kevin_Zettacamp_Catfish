@@ -1,19 +1,24 @@
 import { Injectable } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
 import { Observable } from 'rxjs';
+import { menu } from './menu';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MenuService {
 
-  constructor(private apolo : Apollo) { }
+  constructor(private apolo: Apollo) { }
 
-  getMenu(): Observable<any>{
+  getMenu(pagination: any): Observable<any> {
+    
     return this.apolo.query({
       query: gql`
-      query Query {
-        GetAllRecipes (limit : 20, page :1 ){
+      query Query ($limit: Int, $page: Int, $recipeName: String){
+        GetAllRecipes(limit: $limit, page: $page, recipe_name: $recipeName) {
+          maxPage
+          page
+          count
           data_recipes {
             id
             price
@@ -22,12 +27,68 @@ export class MenuService {
             remain_order
             description
             image
+            ingredients {
+              ids {
+                name
+                stock
+              }
+            }
           }
         }
       }
-      `
+      `,
+      variables: {
+        ...pagination,
+      },
+      fetchPolicy: "network-only"
     })
   }
+
+  addCart(data: any): Observable<any> {
+    console.log('haskjdh', data);
+    
+    let recipe_id = data.id
+    let amount = data.amount
+    let note = data.note
+    return this.apolo.mutate({
+      mutation: gql`
+      mutation AddCart ($input: transactions_menu_input) {
+        addCart(input: $input) {
+          id
+          order_date
+          status
+          total_price
+          menu {
+            recipe_id {
+              id  
+            }
+            amount
+            note
+          }
+        }
+      }
+
+      `,
+      variables: { input: { recipe_id, amount, note } }
+    })
+  }
+
+  // getPage(): Observable<any> {
+  //   return this.apolo.query({
+  //     query: gql
+  //     `
+  //     query GetAllRecipes($page: Int, $limit: Int) {
+  //       GetAllRecipes(page: $page, limit: $limit) {
+  //         maxPage
+  //         page
+  //         count
+  //       }
+  //     }
+  //     `
+  //   })
+  // }
+
+
 
 
 }

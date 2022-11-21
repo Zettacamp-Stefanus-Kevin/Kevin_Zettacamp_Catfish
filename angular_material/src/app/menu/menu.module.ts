@@ -7,6 +7,7 @@ import { MenuListComponent } from './menu-list/menu-list.component';
 import { MenuCardComponent } from './menu-list/menu-card/menu-card.component';
 import { MenuDetailComponent } from './menu-detail/menu-detail.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MenuInfoComponent } from './menu-info/menu-info.component';
 
 const routes: Routes = [
   {path: "", redirectTo: '/menu/list', pathMatch: 'full'},
@@ -19,7 +20,8 @@ const routes: Routes = [
     MenuComponent,
     MenuListComponent,
     MenuCardComponent,
-    MenuDetailComponent
+    MenuDetailComponent,
+    MenuInfoComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +33,8 @@ const routes: Routes = [
     MenuComponent,
     MenuListComponent,
     MenuCardComponent,
-    MenuDetailComponent
+    MenuDetailComponent,
+    MenuInfoComponent
   ]
 })
 export class MenuModule { }

@@ -1,10 +1,10 @@
 <mat-sidenav-container fullscreen >
   <mat-sidenav  #sidenav >
     <mat-nav-list (click)="sidenav.close()">
-      <a mat-list-item class="icon" routerLink="/stock_management" *ngIf="root" routerLinkActive="active">
+      <a mat-list-item class="icon" routerLink="/stock_management" *ngIf="role=='admin'" routerLinkActive="active">
         <mat-icon>store</mat-icon> Stock Management
       </a>
-      <a mat-list-item class="icon" routerLink="/menu_management" *ngIf="root" routerLinkActive="active">
+      <a mat-list-item class="icon" routerLink="/menu_management" *ngIf="role=='admin'" routerLinkActive="active">
         <mat-icon>restaurant_menu</mat-icon> Menu Management
       </a>
     </mat-nav-list>
@@ -12,17 +12,18 @@
 
   <mat-toolbar class="navatas">
     <div class="left">
-      <button class="change" mat-icon-button (click)="sidenav.open()"  *ngIf="root" >
+      <button class="change" mat-icon-button (click)="sidenav.open()"  *ngIf="role=='admin'"  >
         <mat-icon>menu</mat-icon>
       </button>
       <a class="change"><div routerLink="/homepage"   routerLinkActive="active">RESTORAN</div></a>
     </div>
     <div class="wrap">
-      <a mat-button class="cart" routerLink="/cart"  *ngIf="root" routerLinkActive="active">
+      <a mat-button class="cart" routerLink="/cart"  *ngIf="token"  routerLinkActive="active">
         <mat-icon>shopping_cart</mat-icon></a>
       <a class="change"><div routerLink="/about"   routerLinkActive="active">About</div></a>
       <a class="change"><div routerLink="/menu"   routerLinkActive="active">Menu</div> </a>
-      <a class="change"><div routerLink="/login"  routerLinkActive="active">Login</div></a>
+      <a class="change"><div routerLink="/login" *ngIf="!token"  routerLinkActive="active" >Login</div></a>
+      <a class="change"><div routerLink="/login" *ngIf="token"   (click)="onLogout()">Logout</div></a>
     </div>
   </mat-toolbar>
   <router-outlet></router-outlet>

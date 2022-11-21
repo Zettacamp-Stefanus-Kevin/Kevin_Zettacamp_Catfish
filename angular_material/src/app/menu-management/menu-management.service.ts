@@ -8,14 +8,17 @@ import { menu } from './menu';
 })
 export class MenuManagementService {
 
-  constructor(private apolo : Apollo) { }
+  constructor(private apolo: Apollo) { }
 
-  getRecipe(): Observable<any> {
+  getRecipe(pagination: any): Observable<any> {
     return this.apolo.query({
       query: gql
-      `
-      query GetAllTransactions {
-        GetAllRecipes (limit : 20, page : 1) {
+        `
+      query GetAllTransactions ($page: Int, $limit: Int) {
+        GetAllRecipes (page: $page, limit: $limit) {
+          count
+          maxPage
+          page
           data_recipes {
             recipe_name
             id
@@ -32,13 +35,15 @@ export class MenuManagementService {
           }
         }
       }
-      `,
-      fetchPolicy:'network-only'
+      `, variables: {
+        ...pagination,
+      },
+      fetchPolicy: 'network-only'
     })
   }
 
 
-  deleteRecipe(parameter: any) : Observable<any> {
+  deleteRecipe(parameter: any): Observable<any> {
     const id = parameter
     return this.apolo.mutate({
       mutation: gql
@@ -54,7 +59,7 @@ export class MenuManagementService {
   }
 
 
-  addRecipe(data: menu) {
+  addRecipe(data: menu): Observable<any> {
     let recipe_name = data.recipe_name
     let price = data.price
     let description = data.description
@@ -80,21 +85,19 @@ export class MenuManagementService {
           }
         }
       `,
-      variables: { recipe_name , price, description, image, input}
-    }).subscribe((subs) =>
-    console.log(subs)
-  )
+      variables: { recipe_name, price, description, image, input }
+    })
   }
 
 
-  updateRecipe(data:menu){
+  updateRecipe(data: menu) {
     let id = data.id
     let recipe_name = data.recipe_name
     let input = data.ingredients
     console.log(id)
     return this.apolo.mutate({
-      mutation:gql
-      `
+      mutation: gql
+        `
       mutation Mutation($input: [ingredient_id_input], $recipe_name: String) {
         CreateRecipes(input: $input, recipe_name: $recipe_name) {
           id
@@ -112,12 +115,12 @@ export class MenuManagementService {
         }
       }
       `,
-      variables: { id, recipe_name,  input }
+      variables: { id, recipe_name, input }
     }).subscribe((subs) =>
       console.log(subs)
     )
   }
 
-    
+
 
 }

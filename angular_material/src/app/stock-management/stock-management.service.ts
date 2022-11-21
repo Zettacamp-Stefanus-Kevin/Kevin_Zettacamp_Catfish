@@ -10,11 +10,16 @@ export class StockManagementService {
 
   constructor(private apolo: Apollo) { }
 
-  getStock(): Observable<any> {
+  getStock(pagination?: any):Observable<any> {
+    console.log(pagination);
+    
     return this.apolo.query({
       query: gql`
-      query Query {
-        GetAllIngredients (limit:30, page: 1){
+      query Query ($limit: Int, $page: Int){
+        GetAllIngredients (limit: $limit, page: $page) {
+          maxPage
+          page
+          count
           data {
             id
             name
@@ -23,32 +28,22 @@ export class StockManagementService {
           }
         }
       }
-      `
+      `,
+      variables: {
+        ...pagination,
+      },
+      fetchPolicy: "network-only"
     })
   }
 
-  getOneStock(): Observable<any> {
-    return this.apolo.query({
-      query: gql`
-      query Data($getOneIngredientsId: ID) {
-        GetOneIngredients(id:$getOneIngredientsId) {
-          id
-          name
-          stock
-        }
-      }
-      `
-    })
-  }
-
-  updateStock(data:stock){
+  updateStock(data: stock) {
     let id = data.id
     let name = data.name
     let stock = data.stock
     console.log(id)
     return this.apolo.mutate({
-      mutation:gql
-      `
+      mutation: gql
+        `
       mutation Mutation($id: ID, $stock: Int, $name: String) {
         UpdateIngredients(id: $id, stock: $stock, name: $name) {
           id
@@ -64,7 +59,7 @@ export class StockManagementService {
     )
   }
 
-  addStock(data: stock) {
+  addStock(data: stock): Observable<any> {
     let name = data.name
     let stock = data.stock
     console.log(data)
@@ -81,13 +76,11 @@ export class StockManagementService {
       }
       `,
       variables: { name, stock }
-    }).subscribe((subs) =>
-      console.log(subs)
-    )
+    })
   }
 
 
-  deleteStock(parameter: any) {
+  deleteStock(parameter: any):Observable<any> {
     const id = parameter
     return this.apolo.mutate({
       mutation: gql
@@ -100,10 +93,8 @@ export class StockManagementService {
         }
       }
       `,
-      variables: { id : parameter}
-    }).subscribe((subs) =>
-      console.log(subs)
-    )
+      variables: { id: parameter }
+    })
   }
 
 }

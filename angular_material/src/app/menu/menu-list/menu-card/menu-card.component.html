@@ -5,6 +5,7 @@
         <section class="title">
             <h1>{{recipe.recipe_name}}</h1>
             <p>price Rp{{recipe.price}}</p>
+            <button mat-button (click)="info(recipe)">details...</button>
         </section>
         <section class="card">
             <img [src]="recipe.image" alt="">
@@ -14,7 +15,7 @@
         {{recipe.description}}
     </div>
     <div class="container footer">
-        <button mat-button (click)="addCart()">
+        <button mat-button (click)="addCart(recipe)">
             <mat-icon>add_shopping_cart</mat-icon> add to cart
         </button>
     </div>

@@ -1,0 +1,22 @@
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    border : 2px solid;
+    border-radius: 1rem;
+    padding: 15px;
+}
+
+.wrapper > img{
+    width: 500px;
+    height: 300px;
+    border-radius: 1rem;
+}
+.ids{
+    display: flex;
+}
+
+.trash{
+    background-color:  #F0A500;;
+    margin-left: auto;
+ }

@@ -36,24 +36,25 @@ export class LoginComponent implements OnInit {
         console.log(data.data.Login.email)
         console.log(data.data.Login.role)
         let adminToken = data.data.Login.token;
-        let user_type = data.data.Login.user_type;
-        for(let data of user_type){
-          data.routing = data.name
-        }
-        console.log(user_type)
+        
         localStorage.setItem('getToken', adminToken);
-        localStorage.setItem('userData', JSON.stringify(user_type));
-      })
- 
-      console.log('berhasil')
-      this.loginForm.reset();
-      this.router.navigate(['homepage'])
+        localStorage.setItem('userData', data.data.Login.role);
 
-      Swal.fire({
-        icon: 'success',
-        text: 'Data Complete',
-        title: "Success"
-      });
+        console.log('berhasil')
+        this.loginForm.reset();
+
+
+        Swal.fire({
+          icon: 'success',
+          text: 'Data Complete',
+          title: "Success"
+        });
+        this.router.navigate(['homepage']).then(() => {
+          window.location.reload()
+        })
+      })
+
+
     } else {
       console.log('gagal');
       Swal.fire({

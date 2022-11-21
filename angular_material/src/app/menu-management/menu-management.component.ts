@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { SubSink } from 'subsink';
 import { MenuManagementService } from './menu-management.service';
 import { MatTableDataSource } from '@angular/material/table';
@@ -6,6 +6,8 @@ import { menu } from './menu';
 import { MatDialog } from '@angular/material/dialog';
 import { MenuManagementInputComponent } from './menu-management-input/menu-management-input.component';
 import { MenuManagementUpdateComponent } from './menu-management-update/menu-management-update.component';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-menu-management',
@@ -25,11 +27,22 @@ export class MenuManagementComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.init()
+    this.init(this.paginator)
   }
 
-  init() {
-    this.subs.sink = this.menuService.getRecipe().subscribe(resp => {
+  init(paginationObj:any) {
+
+    const pagination : any = {
+      page: paginationObj?.page ?? 1,
+      limit: paginationObj?.limit ?? 5,
+    }
+
+    this.subs.sink = this.menuService.getRecipe(pagination).subscribe(resp => {
+
+      this.paginator.length = resp.data.GetAllRecipes.count;
+      
+      // this.paginator.pageSize = this.pageSizeOptions[0];
+
       this.menu.push(resp.data.GetAllRecipes.data_recipes)
       console.log(resp.data.GetAllRecipes.data_recipes)
       this.dataSource.data = resp.data.GetAllRecipes.data_recipes
@@ -44,16 +57,23 @@ export class MenuManagementComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      this.menuService.addRecipe(result).subscribe(() => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: 'Your work has been saved',
+        });
+        this.init(this.paginator)
+      })
+      console.log('The dialog was closed')
     }
-
     );
   }
 
   onEdit(parameter: any) {
     const dialogRef = this.dialog.open(MenuManagementUpdateComponent, {
       width: '100%', height: '100%',
-      data: parameter
+      data: parameter || null
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -63,11 +83,26 @@ export class MenuManagementComponent implements OnInit {
     );
   }
 
-  onClick(parameter: any) {
+  onDelete(parameter: any) {
     this.menuService.deleteRecipe(parameter).subscribe(resp => {
-      this.init()
+      this.init(this.paginator)
     })
     console.log(parameter);
   }
+
+  @ViewChild('paginator') paginator!: MatPaginator
+
+  pageSizeOptions: number[] = [5];
+
+  onPagination(event:any) {
+    console.log(event);
+    
+    const pagination ={
+      limit : event?.pageSize,
+      page :  event?.pageIndex+1
+    }
+    this.init(pagination)
+  }
+
 
 }

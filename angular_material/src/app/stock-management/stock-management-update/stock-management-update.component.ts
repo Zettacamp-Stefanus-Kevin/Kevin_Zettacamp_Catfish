@@ -36,14 +36,8 @@ export class StockManagementUpdateComponent implements OnInit {
 
   onSubmit() {
     if (this.stockForm.valid) {
-      this.stockService.updateStock(this.stockForm.value)
-      console.log('berhasil');
-      Swal.fire({
-        icon: 'success',
-        title: 'Success',
-        text: 'Your work has been saved',
-      });
-      this.dialog.close();
+     
+      this.dialog.close(this.stockForm.value);
     } else {
       console.log('gagal');
       Swal.fire({

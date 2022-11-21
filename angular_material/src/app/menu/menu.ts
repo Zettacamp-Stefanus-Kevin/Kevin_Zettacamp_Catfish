@@ -1,3 +1,5 @@
+import { ingredient } from "../menu-management/ingredients";
+
 export interface menu {
   id: string;
   price: string;
@@ -6,4 +8,6 @@ export interface menu {
   status: string;
   remain_order: string;
   description: string;
+  ingredients : ingredient;
+  
 }

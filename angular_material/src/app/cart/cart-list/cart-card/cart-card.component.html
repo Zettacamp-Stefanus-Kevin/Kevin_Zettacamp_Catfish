@@ -1,23 +1,27 @@
-<div class="wrap">
-    <mat-card>
-        <mat-card-title>{{transaction.recipe_name}}</mat-card-title>
-        <mat-card-subtitle>Stock : {{transaction.price}}</mat-card-subtitle>
-        <div *ngFor="let item of transaction.menu">
-           <p>Amout : {{item.amount}} </p>
-            <p>Note : {{item.note}}</p> 
-            <img [src]="item.recipe_id.image" alt="">
-            <p>{{item.recipe_id.recipe_name}}</p> 
-            <p>{{item.recipe_id.price}}</p> 
+<mat-card class="wrap">
+    <!-- <mat-card-title>{{transaction.recipe_name}}</mat-card-title>
+        <mat-card-subtitle>Harga : {{transaction.price}}</mat-card-subtitle> -->
+    <div class="wrapper" *ngFor="let item of transaction">
+        <div class="left">
+            <img class="imge" [src]="item.recipe_id.image" alt="">  
         </div>
-        <p>Total Price :{{transaction.total_price}}</p>
-        <p>order : {{transaction.order_date}}</p>
-        <mat-card-actions align="end">
-            <button mat-button (click)="deleteStock()">
-                <mat-icon>remove_circle</mat-icon> delete stock
+        <div class="right">
+            <p>Nama  : {{item.recipe_id.recipe_name}}</p>
+            <p>Harga :{{item.recipe_id.price}}</p>
+            <p>Amout : {{item.amount}} </p>
+            <p>Note  : {{item.note}}</p>
+            <button class="trash" mat-button (click)="deleteStock(item.trans_id)">
+                <mat-icon> restore_from_trash</mat-icon>
             </button>
-            <button mat-button (click)="addStock()">
-                <mat-icon>add_circle</mat-icon> add stock
-            </button>
-        </mat-card-actions>
-    </mat-card>
-</div>
+        </div>
+    </div>
+    <p>id :{{transaction.id}}</p>
+    <p>menu :{{transaction.menu}}</p>
+    <p>Total Price :{{transaction.total_price}}</p>
+    <p>order : {{transaction.order_date}}</p>
+    <mat-card-actions align="end">
+        <button mat-button (click)="orderMenu(transaction.id)">
+            <mat-icon>remove_circle</mat-icon> Order Menu
+        </button>
+    </mat-card-actions>
+</mat-card>

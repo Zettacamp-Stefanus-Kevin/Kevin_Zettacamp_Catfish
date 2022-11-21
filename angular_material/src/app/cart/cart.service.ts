@@ -7,30 +7,85 @@ import { Observable } from 'rxjs';
 })
 export class CartService {
 
-  constructor(private apolo : Apollo) { }
+  constructor(private apolo: Apollo) { }
 
-  getCart(): Observable<any>{
+  getCart() {
     return this.apolo.query({
-      query: gql`
-      query Query {
-        GetAllTransactions (limit : 10, page : 1){
-          data {
+      query: gql(`
+      query GetOrder {
+        GetOrder {
+          
+            id
+            order_date
+            total_price
             menu {
-              amount
+             amount
+              id
               note
               recipe_id {
-                price
-                image
-                recipe_name
+               id
+               recipe_name
+               image
+               price
               }
             }
-            total_price
+          
+        }
+      }
+      `),
+      fetchPolicy: 'network-only'
+    })
+  }
+
+//   query GetAllCart {
+//     getAllCart {
+//     user_id
+//     total_price
+//     cart {
+//       amount
+//       note
+//       total_price
+//       id
+//         recipe_id {
+//         id
+//         recipe_name
+//         price
+//         imgUrl
+//       }
+//     }
+//   }
+// }
+
+deleteCart(parameter: any): Observable < any > {
+  const id = parameter
+    return this.apolo.mutate({
+    mutation: gql
+      `
+      mutation DeleteCart($deleteCartId: ID) {
+        deleteCart(id: $deleteCartId) {
+          id
+        }
+      }
+      `,
+    variables: { id }
+  })
+}
+
+orderMenu(parameter: any): Observable < any > {
+  const id = parameter
+    return this.apolo.mutate({
+    mutation: gql
+      `
+        mutation Mutation($orderNowId: ID) {
+          OrderNow(id: $orderNowId) {
+            id
+            order_status
             order_date
           }
         }
-      }
-      `
-    })
-  }
+      `,
+    variables: { id }
+  })
+}
 
 }

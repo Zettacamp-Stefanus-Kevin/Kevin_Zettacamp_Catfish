@@ -1,31 +1,39 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from './login/login.component';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular_material';
-  menuType: any = []
-  root: boolean = false;
 
+
+  title = 'angular_material';
+  token : string | null = ""
+  role: string | null = "";
+
+
+  constructor(private router:Router) { }
 
   ngOnInit() {
 
-
     if (localStorage.getItem('getToken') !== null){
-      this.root = true;
-      let userData: any = localStorage.getItem('userData');
-      userData = JSON.parse(userData);
-      this.menuType = userData.filter((val: any) => val.view === true);
-    }else {
-      this.root = false
+      this.token = localStorage.getItem('getToken')
+      this.role = localStorage.getItem('userData')
+    
     }
-
   }
+
+  onLogout(){
+    localStorage.removeItem('getToken');
+    localStorage.removeItem('userData');
+    this.router.navigate(['']).then(()=>{
+      window.location.reload()
+    })
+  }
+
 
 }
 
