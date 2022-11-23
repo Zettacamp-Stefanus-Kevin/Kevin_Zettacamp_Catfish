@@ -1,8 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { SubSink } from 'subsink';
-import { MenuService } from '../../menu.service';
-import { menu } from '../../menu';
 import { MenuDetailComponent } from '../../menu-detail/menu-detail.component';
 import { MenuInfoComponent } from '../../menu-info/menu-info.component';
 
@@ -24,7 +22,7 @@ export class MenuCardComponent implements OnInit {
 
   info(parameter: any) {
     const dialogRef = this.dialog.open(MenuInfoComponent, {
-      width: '100%', height: '100%',
+      width: '80%', height: '80%',
       data: parameter || null
       // data : parameter
     });
@@ -40,7 +38,7 @@ export class MenuCardComponent implements OnInit {
     console.log(parameter.amount);
     
       const dialogRef = this.dialog.open(MenuDetailComponent, {
-        width: '100%', height: '100%',
+        width: '50%', height: '40%',
         data: parameter || null
         // data : parameter
       });

@@ -19,7 +19,7 @@ export class MenuManagementComponent implements OnInit {
   private subs = new SubSink();
   menu: menu[] = []
 
-  displayedColumns: string[] = ['recipe_name', 'ingredients', 'description', 'price', 'status', 'actions'];
+  displayedColumns: string[] = ['recipe_name', 'ingredients', 'description', 'remain_order', 'price', 'status', 'actions'];
   dataSource = new MatTableDataSource([])
 
   constructor(private menuService: MenuManagementService,
@@ -70,10 +70,19 @@ export class MenuManagementComponent implements OnInit {
     );
   }
 
+
   onEdit(parameter: any) {
+    console.log(parameter);
+    const bebas : any = {
+      ...parameter,ingredients : parameter.ingredients.map((ingredient: any) =>{
+        return {ingredient_id : ingredient.ids.id, stock_used : ingredient.stock_used, name: ingredient.ids.name}
+    })
+    }
+    console.log(bebas);
+    
     const dialogRef = this.dialog.open(MenuManagementUpdateComponent, {
       width: '100%', height: '100%',
-      data: parameter || null
+      data: bebas || null
     });
 
     dialogRef.afterClosed().subscribe(result => {

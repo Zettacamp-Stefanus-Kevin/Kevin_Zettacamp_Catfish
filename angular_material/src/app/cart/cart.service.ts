@@ -10,26 +10,29 @@ export class CartService {
   constructor(private apolo: Apollo) { }
 
   getCart() {
-    return this.apolo.query({
+    return this.apolo.watchQuery({
       query: gql(`
       query GetOrder {
         GetOrder {
-          
             id
             order_date
             total_price
             menu {
-             amount
+              amount
               id
               note
               recipe_id {
                id
                recipe_name
+               remain_order
                image
                price
               }
             }
-          
+            user_id {
+              first_name
+              last_name
+            }
         }
       }
       `),
@@ -37,55 +40,81 @@ export class CartService {
     })
   }
 
-//   query GetAllCart {
-//     getAllCart {
-//     user_id
-//     total_price
-//     cart {
-//       amount
-//       note
-//       total_price
-//       id
-//         recipe_id {
-//         id
-//         recipe_name
-//         price
-//         imgUrl
-//       }
-//     }
-//   }
-// }
+  // getTransaction(){}
 
-deleteCart(parameter: any): Observable < any > {
-  const id = parameter
+  deleteCart(parameter: any): Observable<any> {
+    const id = parameter
     return this.apolo.mutate({
-    mutation: gql
-      `
+      mutation: gql
+        `
       mutation DeleteCart($deleteCartId: ID) {
         deleteCart(id: $deleteCartId) {
           id
         }
       }
       `,
-    variables: { id }
-  })
-}
+      variables: { deleteCartId: parameter.id }
+    })
+  }
 
-orderMenu(parameter: any): Observable < any > {
-  const id = parameter
+  orderMenu(parameter: any): Observable<any> {
+    const id = parameter
     return this.apolo.mutate({
-    mutation: gql
-      `
-        mutation Mutation($orderNowId: ID) {
-          OrderNow(id: $orderNowId) {
+      mutation: gql
+        `
+        mutation Mutation($id: ID) {
+          OrderNow(id: $id) {
             id
             order_status
             order_date
           }
         }
       `,
-    variables: { id }
-  })
-}
+      variables: { id }
+    })
+  }
+
+  decrAmount(parameter: any): Observable < any > {
+    const id = parameter
+    return this.apolo.mutate({
+      mutation: gql`
+      mutation update($id: ID) {
+        DecrAmount(id: $id) {
+          status
+        }
+      }
+      `,
+      variables: { id }
+    })
+  }
+
+  incrAmount(parameter: any): Observable < any > {
+    const id = parameter
+    return this.apolo.mutate({
+      mutation: gql`
+      mutation update($id: ID) {
+        IncrAmount(id: $id) {
+          status
+        }
+      }
+      `,
+      variables: { id }
+    })
+  }
+
+  updateNote(parameter: any) {
+    let {editNoteId, newNote} = parameter
+    
+    return this.apolo.mutate({
+      mutation: gql`
+      mutation update($editNoteId: ID, $newNote: String) {
+        EditNote(id: $editNoteId, newNote: $newNote) {
+          status
+        }
+      }
+      `,
+      variables: { editNoteId, newNote }
+    })
+  }
 
 }

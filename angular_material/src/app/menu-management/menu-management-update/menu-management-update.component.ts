@@ -21,7 +21,7 @@ export class MenuManagementUpdateComponent implements OnInit {
   constructor(private menuService: MenuManagementService,
     private stockService: StockManagementService,
     public dialog: MatDialogRef<MenuManagementUpdateComponent>,
-    @Inject(MAT_DIALOG_DATA) public menu: menu,
+    @Inject(MAT_DIALOG_DATA) public menu: any,
   ) { }
 
   ngOnInit(): void {
@@ -31,49 +31,44 @@ export class MenuManagementUpdateComponent implements OnInit {
       'price': new FormControl(null, [Validators.required]),
       'ingredients': new FormArray([])
     })
+    // this.recipeForm.patchValue(this.menu)
 
-    this.addIngredient()
 
-    this.stockService.getStock().subscribe((val: any) => {
-      // this.ingredients = val.data.GetAllIngredients.data
+    
 
-      const data = val.data.GetAllIngredients.data
-
-      const item: any = []
-
-      if (this.ingredients.length) {
-
-        data?.ingredients.forEach((getItem: any) => {
-          console.log(getItem);
-          item.push({
-            ingredients_id: getItem.ingredient_id,
-            stock_used: getItem.stock_used
-          });
-        });
-      }
-
-      console.log(item)
-      this.ingredients = item
-
-      console.log(val)
-      console.log(val.data.GetAllIngredients.data);
+    this.menuService.getIngredient().subscribe((val: any) => {
+      this.ingredients = val.data.GetAllIngredients.data
     })
 
-    // for looping
-    // if (this.menu?.ingredients) {
-    //   let data = this.menu.ingredients.ingredient_id;
-    //   data = value.map((item: any) => {
-    //     this.addIngredient();
+    let tempIngeridient = {
+      recipe_name: this.menu.recipe_name,
+      price: this.menu.price,
+    };
 
-    //     return {
-    //       ingredients_id : item.ingredient_id
-    //       stock_used : item.stock_used
-    //     } 
-    //   })
-    // }
+    let ingredients: any = [];
+    
 
-    console.log(this.ingredients)
-    this.recipeForm.patchValue(this.menu)
+    if (this.menu?.ingredients) {
+      for(let ingredient of this.menu?.ingredients) {
+        
+        ingredients.push({
+          ingredient_id: ingredient.ingredient_id,
+          stock_used: ingredient.stock_used,
+        })
+        this.addIngredient();
+      }
+    
+      const temp = {
+        ...tempIngeridient,
+        ingredients: ingredients,
+      };
+      console.log(temp);
+      
+
+      this.recipeForm.patchValue(temp);
+    }
+
+
   }
 
   addIngredient() {
@@ -90,6 +85,8 @@ export class MenuManagementUpdateComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.recipeForm.value);
+    
     if (this.recipeForm.valid) {
       this.menuService.updateRecipe(this.recipeForm.value)
       console.log('berhasil');

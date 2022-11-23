@@ -17,9 +17,7 @@ export class MenuManagementInputComponent implements OnInit {
 
   ingredients: any
 
-
   constructor(private menuService: MenuManagementService,
-    private stockService: StockManagementService,
     public dialog: MatDialogRef<MenuManagementInputComponent>
     ) { }
 
@@ -32,9 +30,8 @@ export class MenuManagementInputComponent implements OnInit {
       'ingredients': new FormArray([])
     })
     
-    this.addIngredient()
 
-    this.stockService.getStock().subscribe((val: any) => {
+    this.menuService.getIngredient().subscribe((val: any) => {
 
       this.ingredients = val.data.GetAllIngredients.data
       console.log(val)
@@ -49,7 +46,6 @@ export class MenuManagementInputComponent implements OnInit {
       ingredient_id: new FormControl(null, Validators.required),
       stock_used: new FormControl(null, Validators.required),
     });
-
     (<FormArray>this.recipeForm.get('ingredients')).push(item)
   }
 
@@ -62,26 +58,6 @@ export class MenuManagementInputComponent implements OnInit {
   }
 
   onSubmit() {
-    // if (this.recipeForm.valid) {
-    //   this.menuService.addRecipe(this.recipeForm.value)
-    //   console.log('berhasil');
-    //   Swal.fire({
-    //     icon: 'success',
-    //     title: 'Success',
-    //     text: 'Your work has been saved',
-    //   });
-    //   this.dialog.close();
-    // } else {
-    //   console.log('gagal');
-    //   Swal.fire({
-    //     icon: 'error',
-    //     title: 'Failed',
-    //     text: 'Try again',
-    //   });
-
-    //   this.recipeForm.markAllAsTouched();
-    // }
-
     if (this.recipeForm.valid) {
       this.dialog.close(this.recipeForm.value);
     } else {

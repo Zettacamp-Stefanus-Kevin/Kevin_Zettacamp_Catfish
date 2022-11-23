@@ -5,6 +5,8 @@ import { AngularMaterialModule } from '../angular-material/angular-material.modu
 import { RouterModule, Routes } from '@angular/router';
 import { CartListComponent } from './cart-list/cart-list.component';
 import { CartCardComponent } from './cart-list/cart-card/cart-card.component';
+import { CartUpdateComponent } from './cart-update/cart-update.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {path: "", redirectTo: '/cart/list', pathMatch: 'full'},
@@ -15,11 +17,13 @@ const routes: Routes = [
   declarations: [
     CartComponent,
     CartListComponent,
-    CartCardComponent
+    CartCardComponent,
+    CartUpdateComponent
   ],
   imports: [
     CommonModule,
     AngularMaterialModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
   exports:[

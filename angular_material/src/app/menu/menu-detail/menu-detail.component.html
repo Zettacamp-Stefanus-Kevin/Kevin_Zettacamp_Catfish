@@ -1,6 +1,7 @@
 <form mat-dialog-content [formGroup]="detailForm" (ngSubmit)="onSubmit()">
 
     <mat-form-field appearance="fill">
+        <!-- <p> you can order {{detailForm.remain_order}}</p> -->
         <mat-label> Amount </mat-label>
         <input matInput type="number" formControlName="amount">
 

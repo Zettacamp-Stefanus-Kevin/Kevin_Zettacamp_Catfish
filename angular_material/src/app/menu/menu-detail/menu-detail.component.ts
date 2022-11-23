@@ -2,7 +2,6 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MenuService } from '../menu.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MenuComponent } from '../menu.component';
 import Swal from 'sweetalert2';
 import { menu } from '../menu';
 
@@ -29,7 +28,6 @@ export class MenuDetailComponent implements OnInit {
     })
     this.detailForm.patchValue(this.menu)
     console.log(this.menu)
-  
   }
  
 
@@ -39,7 +37,6 @@ export class MenuDetailComponent implements OnInit {
         id : this.menu.id,
         ...this.detailForm.value
       }
-
       this.menuService.addCart(this.detailForm.value).subscribe((resp)=> {
         this.detailForm.value
       });

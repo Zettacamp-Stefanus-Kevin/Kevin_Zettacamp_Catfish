@@ -1,13 +1,44 @@
 .container{
-    margin-top: 50px;
-}
-table{
-    width: 80%;
+    width: 85%;
+    margin-top: 60px;
+    padding: 20px 0px;
+    display: flex;
     margin-left: auto;
     margin-right: auto;
+    color: #F4F4F4;
+}
+
+.add{
+    border-radius: 1rem;
+    margin-left: auto;
+    background-color:#F0A500 ;
+    color:#F4F4F4 ;
+}
+
+table{
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #F4F4F4;
+    margin-bottom: 250px;
+}
+
+ng-container{
+    color: #F0A500;
 }
 
 .actions-button{
     display: flex;
+}
+
+
+
+mat-paginator{
+    background-color:  #F0A500;
+    color: #100F0F;
+    z-index: 1;
+    bottom: 0;
+    margin-right: auto;
+    margin-left: auto;
 }
 

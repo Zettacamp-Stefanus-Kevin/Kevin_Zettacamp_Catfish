@@ -53,7 +53,7 @@ export class StockManagementComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(StockManagementInputComponent, {
-      width: '100%', height: '100%'
+      width: '50%', height: '50%'
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -80,7 +80,7 @@ export class StockManagementComponent implements OnInit {
 
   onEdit(parameter: any) {
     const dialogRef = this.dialog.open(StockManagementUpdateComponent, {
-      width: '100%', height: '100%',
+      width: '50%', height: '50%',
       data: parameter
     });
 

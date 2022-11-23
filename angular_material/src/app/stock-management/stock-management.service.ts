@@ -59,7 +59,7 @@ export class StockManagementService {
     )
   }
 
-  addStock(data: stock): Observable<any> {
+  addStock(data: stock) {
     let name = data.name
     let stock = data.stock
     console.log(data)
@@ -76,7 +76,9 @@ export class StockManagementService {
       }
       `,
       variables: { name, stock }
-    })
+    }).subscribe((subs) =>
+    console.log(subs)
+  )
   }
 
 

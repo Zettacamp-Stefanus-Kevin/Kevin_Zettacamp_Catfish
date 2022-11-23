@@ -1,27 +1,31 @@
 <mat-card class="wrap">
-    <!-- <mat-card-title>{{transaction.recipe_name}}</mat-card-title>
-        <mat-card-subtitle>Harga : {{transaction.price}}</mat-card-subtitle> -->
-    <div class="wrapper" *ngFor="let item of transaction">
+    <div class="wrapper">
         <div class="left">
-            <img class="imge" [src]="item.recipe_id.image" alt="">  
+            <img class="imge" [src]="menu.recipe_id.image" alt="">
         </div>
         <div class="right">
-            <p>Nama  : {{item.recipe_id.recipe_name}}</p>
-            <p>Harga :{{item.recipe_id.price}}</p>
-            <p>Amout : {{item.amount}} </p>
-            <p>Note  : {{item.note}}</p>
-            <button class="trash" mat-button (click)="deleteStock(item.trans_id)">
+            <p>Nama : {{menu.recipe_id.recipe_name}}</p>
+            <p>Harga : Rp {{menu.recipe_id.price.toLocaleString('ID')}}</p>
+            <p >Amout :
+                
+                <button [disabled]="menu.amount === 0" class="edit" (click)="minus(menu.id)">
+                    <mat-icon> remove_circle_outline </mat-icon>
+                </button>
+                {{menu.amount}}
+                <button [disabled]="menu.amount >= menu.recipe_id.remain_order" class="edit" (click)="plus(menu.id)">
+                    <mat-icon> add_circle_outline  </mat-icon>
+                </button>
+                
+                <sub> *max yang bisa dipesan : {{menu.recipe_id.remain_order}}</sub>
+            </p>
+            <p>Note : {{menu.note}}
+                <a class="edit" (click)="editOrder(menu)">
+                    <mat-icon>edit</mat-icon>
+                </a>
+            </p>
+            <button class="trash" mat-button (click)="deleteStock(menu)">
                 <mat-icon> restore_from_trash</mat-icon>
             </button>
         </div>
     </div>
-    <p>id :{{transaction.id}}</p>
-    <p>menu :{{transaction.menu}}</p>
-    <p>Total Price :{{transaction.total_price}}</p>
-    <p>order : {{transaction.order_date}}</p>
-    <mat-card-actions align="end">
-        <button mat-button (click)="orderMenu(transaction.id)">
-            <mat-icon>remove_circle</mat-icon> Order Menu
-        </button>
-    </mat-card-actions>
 </mat-card>

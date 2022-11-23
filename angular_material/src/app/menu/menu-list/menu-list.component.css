@@ -2,5 +2,14 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    background-color: black;
+    background-color: #100F0F ;
+}
+
+mat-paginator{
+    background-color:  #F0A500;
+    color: #100F0F;
+    z-index: 1;
+    bottom: 0;
+    margin-right: auto;
+    margin-left: auto;
 }

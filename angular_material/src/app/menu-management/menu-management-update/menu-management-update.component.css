@@ -4,12 +4,13 @@ form {
     justify-content: center;
     text-align: center;
     border: 2px solid;
+    margin: 5px;
 }
 
 .wrapper {
     justify-content: center;
     text-align: center;
-    border: 2px solid;
+    border: 1px solid;
 
 }
 

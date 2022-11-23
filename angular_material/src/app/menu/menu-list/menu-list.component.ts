@@ -26,6 +26,7 @@ export class MenuListComponent implements OnInit {
     const pagination : any = {
       page: paginationObj?.page ?? 1,
       limit: paginationObj?.limit ?? 5,
+      status : 'publish'
     }
 
     this.subs.sink = this.menuService.getMenu(pagination).subscribe((resp: any) => {

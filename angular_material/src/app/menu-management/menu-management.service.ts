@@ -22,16 +22,18 @@ export class MenuManagementService {
           data_recipes {
             recipe_name
             id
+            remain_order
+            status
+            description
+            price
             ingredients {
               ids {
+                id
                 name
                 stock
               }
               stock_used
             }
-            status
-            description
-            price
           }
         }
       }
@@ -39,6 +41,25 @@ export class MenuManagementService {
         ...pagination,
       },
       fetchPolicy: 'network-only'
+    })
+  }
+
+  getIngredient( ):Observable<any> {
+
+    
+    return this.apolo.query({
+      query: gql`
+      query Data($limit: Int) {
+        GetAllIngredients(limit: $limit) {
+          data {
+            name
+            stock
+            id
+          }
+        }
+      }
+      `,
+      variables: { limit: 200 },
     })
   }
 
