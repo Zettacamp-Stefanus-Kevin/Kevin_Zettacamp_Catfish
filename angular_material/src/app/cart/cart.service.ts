@@ -40,20 +40,39 @@ export class CartService {
     })
   }
 
-  getTransaction(pagination: any, status:any): Observable<any> {
+  getTransaction(pagination: any, status:any, name:any, date:any, menu:any): Observable<any> {
 
     let statusFilter : any = ""
     if (status) {
       statusFilter = status
     }  
     console.log(statusFilter);
+
+    let nameFilter : any = ""
+    if (name) {
+      nameFilter = name
+    }  
+    console.log(nameFilter);
+
+    let dateFilter : any = ""
+    if (date) {
+      dateFilter = date
+    }  
+    console.log(dateFilter);
+
+    let menuFilter : any = ""
+    if (menu) {
+      menuFilter = menu
+    }  
+    console.log(menuFilter);
     
 
     return this.apolo.query({
       query: gql
         `
-      query History($orderStatus: enum_order_status, $limit: Int, $page: Int) {
-        GetAllTransactions(order_status: $orderStatus, limit: $limit, page: $page) {
+      query History($orderStatus: String, $lastNameUser: String, $recipeName: String, $orderDate: String, $limit: Int, $page: Int) {
+        GetAllTransactions(order_status: $orderStatus, last_name_user: $lastNameUser, recipe_name: $recipeName,
+          order_date: $orderDate, limit: $limit, page: $page,) {
           count
           maxPage
           page
@@ -88,7 +107,8 @@ export class CartService {
       }
       `,
       variables: {
-        ...pagination, order_status: statusFilter
+        ...pagination, orderStatus: statusFilter, lastNameUser : nameFilter, recipeName: menuFilter,
+        orderDate: dateFilter
       },
       fetchPolicy: 'network-only'
     })

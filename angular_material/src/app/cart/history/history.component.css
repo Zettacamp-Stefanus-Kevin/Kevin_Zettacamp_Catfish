@@ -13,10 +13,10 @@ body,html{
 }
 
 .add{
-    border-radius: 1rem;
+
     margin-left: auto;
-    background-color:#F0A500 ;
-    color:#F4F4F4 ;
+    /* background-color:#F0A500 ; */
+    color:#F0A500  ;
 }
 
 table{

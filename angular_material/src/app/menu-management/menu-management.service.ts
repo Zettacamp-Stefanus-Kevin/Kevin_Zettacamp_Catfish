@@ -10,12 +10,25 @@ export class MenuManagementService {
 
   constructor(private apolo: Apollo) { }
 
-  getRecipe(pagination: any): Observable<any> {
+  getRecipe(pagination: any, name:any, status:any): Observable<any> {
+
+    let nameFilter : any = ""
+    if(name){
+      nameFilter = name
+    }
+    console.log(nameFilter);
+    
+    let statusFilter : any = ""
+    if (status) {
+      statusFilter = status
+    }  
+    console.log(statusFilter);
+
     return this.apolo.query({
       query: gql
         `
-      query GetAllTransactions ($page: Int, $limit: Int) {
-        GetAllRecipes (page: $page, limit: $limit) {
+      query GetAllTransactions ($page: Int, $limit: Int, $status: status, $recipeName: String) {
+        GetAllRecipes (status: $status, recipe_name: $recipeName, page: $page, limit: $limit) {
           count
           maxPage
           page
@@ -24,6 +37,8 @@ export class MenuManagementService {
             id
             remain_order
             status
+            is_hightlighted
+            is_special_offers
             description
             price
             status
@@ -39,13 +54,14 @@ export class MenuManagementService {
         }
       }
       `, variables: {
-        page : pagination.page, limit : pagination.limit
+        page: pagination.page, limit: pagination.limit,  recipeName: nameFilter,
+        status: statusFilter
       },
       fetchPolicy: 'network-only'
     })
   }
 
-  getIngredient( ):Observable<any> {
+  getIngredient(): Observable<any> {
     return this.apolo.query({
       query: gql`
       query Data($limit: Int) {
@@ -140,16 +156,16 @@ export class MenuManagementService {
           }
         }
       `,
-      variables: { updateRecipesId, recipe_name, input, price}
+      variables: { updateRecipesId, recipe_name, input, price }
     })
   }
 
-  updatepublish(data : any){
+  updatepublish(data: any) {
     let updateRecipesId = data.id
     let status = data.status
     return this.apolo.mutate({
       mutation: gql
-      `
+        `
       mutation update($updateRecipesId: ID, $status: String) {
         UpdateRecipes(id: $updateRecipesId, status: $status) {
           status
@@ -158,9 +174,47 @@ export class MenuManagementService {
       }
       
       `,
-      variables: { updateRecipesId, status}
+      variables: { updateRecipesId, status }
     })
   }
+
+  updateHighlight(data: any) {
+    let updateRecipesId = data.id
+    let isHightlighted = data.is_hightlighted
+    return this.apolo.mutate({
+      mutation: gql
+        `
+      mutation update($updateRecipesId: ID, $isHightlighted: Boolean) {
+        UpdateRecipes(id: $updateRecipesId, is_hightlighted: $isHightlighted) {
+          id
+          is_hightlighted
+        }
+      }
+      
+      `,
+      variables: { updateRecipesId, isHightlighted }
+    })
+  }
+
+  updateSPrice(data: any) {
+    let updateRecipesId = data.id
+    let isSpecialOffers = data.is_special_offers
+    return this.apolo.mutate({
+      mutation: gql
+        `
+      mutation update($updateRecipesId: ID,  $isSpecialOffers: Boolean) {
+        UpdateRecipes(id: $updateRecipesId,  is_special_offers: $isSpecialOffers) {
+          id
+          is_special_offers
+        }
+      }
+      
+      `,
+      variables: { updateRecipesId, isSpecialOffers}
+    })
+  }
+
+
 
 
 

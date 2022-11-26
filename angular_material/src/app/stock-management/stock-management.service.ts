@@ -10,13 +10,33 @@ export class StockManagementService {
 
   constructor(private apolo: Apollo) { }
 
-  getStock(pagination?: any):Observable<any> {
+
+  getStock(pagination?: any, ing?:any , status?: any):Observable<any> {
     console.log(pagination);
+
+    let ingredientFilter : any = ""
+    if(ing){
+      ingredientFilter = ing
+    }
+    console.log(ingredientFilter);
     
+    
+    let statusFilter : any = ""
+    if (status) {
+      statusFilter = status
+    }  
+    console.log(statusFilter);
+
+    // let stockFilter : number 
+    // if (stock) {
+    //   stockFilter = stock
+    // }  
+    // console.log(stockFilter!);
+
     return this.apolo.query({
       query: gql`
-      query Query ($limit: Int, $page: Int){
-        GetAllIngredients (limit: $limit, page: $page) {
+      query Query($name: String,  $status: status,  $limit: Int, $page: Int){
+        GetAllIngredients (name: $name,  status: $status, limit: $limit, page: $page) {
           maxPage
           page
           count
@@ -29,8 +49,8 @@ export class StockManagementService {
         }
       }
       `,
-      variables: {
-        ...pagination,
+      variables:{
+        ...pagination, name: ingredientFilter, status: statusFilter
       },
       fetchPolicy: "network-only"
     })

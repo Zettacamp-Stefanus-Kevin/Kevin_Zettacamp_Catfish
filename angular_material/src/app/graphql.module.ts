@@ -5,13 +5,15 @@ import { HttpLink } from 'apollo-angular/http';
 import { HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
-const uri = 'https://35ff-140-213-166-138.eu.ngrok.io/graphql'; // <-- add the URL of the GraphQL server here
-const token: any = localStorage?.getItem('token');
+// const uri = environment?.apiUrl; // <-- add the URL of the GraphQL server here
+// const token: any = localStorage?.getItem('token');
+const uri = 'https://35ff-140-213-166-138.eu.ngrok.io/graphql'// <-- add the URL of the GraphQL server here
+const token: any = localStorage?.getItem('getToken');
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
   const http = httpLink.create({ uri: uri });
   const authLink = new ApolloLink((operation, forward) => {
     // Get the authentication token from local storage if it exists
-
+    // const token = localStorage?.getItem(environment?.tokenKey);
 
     // Call the next link in the middleware chain.
     return forward(operation);

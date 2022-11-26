@@ -15,7 +15,12 @@
 
         <!-- Name Column -->
         <ng-container matColumnDef="recipe_name">
-            <th mat-header-cell *matHeaderCellDef> Name Recipe </th>
+            <th mat-header-cell *matHeaderCellDef> Name Recipe <br>
+                <mat-form-field>
+                    <mat-label>Search Ingredients</mat-label>
+                    <input matInput [formControl]="nameFilter">
+                </mat-form-field>
+            </th>
             <td mat-cell *matCellDef="let element"> {{element.recipe_name}} </td>
         </ng-container>
 
@@ -35,6 +40,24 @@
             <td mat-cell *matCellDef="let element"> {{element.description}} </td>
         </ng-container>
 
+        <!-- Hightlighted Column -->
+        <ng-container matColumnDef="hightlight">
+            <th mat-header-cell *matHeaderCellDef> Hightlight </th>
+            <td mat-cell *matCellDef="let element"> {{element.is_hightlighted}} <br>
+                <mat-slide-toggle class="example-margin" color="primary" [checked]="element.is_hightlighted== true"
+                    (change)="onHigh(element)"> </mat-slide-toggle>
+            </td>
+        </ng-container>
+
+        <!-- Special_Offers Column -->
+        <ng-container matColumnDef="specialoffers">
+            <th mat-header-cell *matHeaderCellDef> Special Offers </th>
+            <td mat-cell *matCellDef="let element"> {{element.is_special_offers}}<br>
+                <mat-slide-toggle class="example-margin" color="primary" [checked]="element.is_special_offers== true"
+                    (change)="onSpecial(element)"> </mat-slide-toggle>
+            </td>
+        </ng-container>
+
         <!-- Price Column -->
         <ng-container matColumnDef="price">
             <th mat-header-cell *matHeaderCellDef> Price </th>
@@ -43,22 +66,21 @@
 
         <!-- Status Column -->
         <ng-container matColumnDef="status">
-            <th mat-header-cell *matHeaderCellDef> Status </th>
+            <th mat-header-cell *matHeaderCellDef> Status <br>
+                <mat-form-field>
+                    <mat-select [formControl]="statusFilter" [(ngModel)]="value">
+                        <mat-option *ngFor="let stat of status" [value]="stat.value">
+                            {{stat.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </th>
             <td mat-cell *matCellDef="let element"> {{element.status}}<br>
-                
-                <mat-slide-toggle class="example-margin" color="primary" [checked]="element.status == 'active'" 
-                (change)="onChanged($event, element)"> </mat-slide-toggle>
+
+                <mat-slide-toggle class="example-margin" color="primary" [checked]="element.status == 'active'"
+                    (change)="onChanged(element)"> </mat-slide-toggle>
             </td>
         </ng-container>
-
-        <!-- Status Column -->
-        <!-- <ng-container matColumnDef="status">
-            <th mat-header-cell *matHeaderCellDef> Status </th>
-            <td mat-cell *matCellDef="let element">
-                <mat-icon [ngStyle]="{'color':'green'}" *ngIf="element.status === 'active'">done</mat-icon>
-                <mat-icon [ngStyle]="{'color':'red'}" *ngIf="element.status === 'deleted'">close</mat-icon>
-            </td>
-        </ng-container> -->
 
         <!-- Remain_order Column -->
         <ng-container matColumnDef="remain_order">
@@ -72,13 +94,15 @@
             <td mat-cell *matCellDef="let element">
                 <mat-list class="actions-button">
                     <mat-list-item>
-                        <button mat-flat-button color="primary" matTooltip="Edit" [disabled]="element.status == 'active'">
-                            <mat-icon (click)="onEdit(element)">edit</mat-icon>
+                        <button mat-flat-button color="primary" (click)="onEdit(element)" matTooltip="Edit"
+                            [disabled]="element.status == 'active'">
+                            <mat-icon>edit</mat-icon>
                         </button>
                     </mat-list-item>
                     <mat-list-item>
-                        <button mat-flat-button color="warn" matTooltip="Delete" [disabled]="element.status == 'active'" >
-                            <mat-icon (click)="onDelete(element.id)">delete</mat-icon>
+                        <button mat-flat-button color="warn" (click)="onDelete(element.id)" matTooltip="Delete"
+                            [disabled]="element.status == 'active'">
+                            <mat-icon>delete</mat-icon>
                         </button>
                     </mat-list-item>
                 </mat-list>

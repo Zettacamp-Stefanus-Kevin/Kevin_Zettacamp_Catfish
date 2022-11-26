@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://35ff-140-213-166-138.eu.ngrok.io/graphql',
-  tokenKey: 'token'
+  // apiUrl: 'https://35ff-140-213-166-138.eu.ngrok.io/graphql',
+  // tokenKey: 'token'
   // user: 'user'
 };
 

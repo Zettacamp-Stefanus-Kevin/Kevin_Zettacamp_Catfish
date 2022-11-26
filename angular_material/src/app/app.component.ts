@@ -13,6 +13,7 @@ export class AppComponent {
   title = 'angular_material';
   token : string | null = ""
   role: string | null = "";
+  // name  : any;
 
 
   constructor(private router:Router) { }
@@ -22,7 +23,9 @@ export class AppComponent {
     if (localStorage.getItem('getToken') !== null){
       this.token = localStorage.getItem('getToken')
       this.role = localStorage.getItem('userData')
-    
+      // this.name = localStorage.getItem('name')
+ 
+      
     }
   }
 

@@ -30,10 +30,10 @@ export class MenuListComponent implements OnInit {
 
     this.subs.sink = this.menuService.getMenu(pagination).subscribe((resp: any) => {
       
-      this.paginator.length = resp.data?.GetAllRecipes?.count;
+      this.paginator.length = resp.data?.GetAllRecipesNotLogin?.count;
       // this.paginator.pageSize = this.pageSizeOptions[0];
       
-      this.menu = resp.data.GetAllRecipes.data_recipes;
+      this.menu = resp.data.GetAllRecipesNotLogin.data_recipes;
       console.log(this.menu)
       console.log(resp)
     })

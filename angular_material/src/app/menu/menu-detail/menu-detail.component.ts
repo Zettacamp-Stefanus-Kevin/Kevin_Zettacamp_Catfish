@@ -40,14 +40,22 @@ export class MenuDetailComponent implements OnInit {
       }
       this.menuService.addCart(this.detailForm.value).subscribe((resp) => {
         this.detailForm.value
-      });
+        Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: 'Your Menu Add to Cart',
+        });
+        this.dialog.close();
+      },err=>{
+        Swal.fire({
+          icon: 'error',
+          title: 'EH, kamu lupa ya?',
+          text: err.message,
+        });
+      }
+      );
       console.log(this.detailForm.value);
-      Swal.fire({
-        icon: 'success',
-        title: 'Success',
-        text: 'Your Menu Add to Cart',
-      });
-      this.dialog.close();
+      
     } else {
       Swal.fire({
         icon: 'error',

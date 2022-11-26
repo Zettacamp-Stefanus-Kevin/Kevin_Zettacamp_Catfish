@@ -21,6 +21,7 @@ export class CartListComponent implements OnInit {
   order_id: any;
   order: any;
   user: any;
+  data: any;
 
   constructor(
     private cartService: CartService,
@@ -34,17 +35,16 @@ export class CartListComponent implements OnInit {
 
   init() {
     this.subs.sink = this.cartService.getCart().valueChanges.subscribe((resp: any) => {
-      const data = resp.data.GetOrder;
-      this.price = resp.data.GetOrder.total_price.toLocaleString('ID')
-      this.order = resp.data.GetOrder.order_date
-      this.order_id = resp.data.GetOrder.id
-      this.user = (resp.data.GetOrder.user_id.first_name +' '+ resp.data.GetOrder.user_id.last_name +'...')
+      this.data = resp?.data?.GetOrder;
+      this.price = resp?.data?.GetOrder?.total_price?.toLocaleString('ID')
+      this.order = resp?.data?.GetOrder?.order_date
+      this.order_id = resp?.data?.GetOrder?.id
+      this.user = (resp?.data?.GetOrder?.user_id?.first_name +' '+ resp?.data?.GetOrder?.user_id?.last_name +'...')
       console.log(this.user);
-      
 
       let menus: any = [];
 
-      data.menu.forEach((item: any) => {
+      this.data.menu.forEach((item: any) => {
         menus.push({
           ...item
         })
@@ -68,7 +68,8 @@ export class CartListComponent implements OnInit {
           text: resp.data.OrderNow.order_status,
           footer: "Sorry, You have Menu Out of Stock"
         });
- 
+        this.data = []
+        this.cartService.getCart().refetch()
       } else {
         Swal.fire({
           icon: 'success',
@@ -77,16 +78,16 @@ export class CartListComponent implements OnInit {
         });
       }
       
-      this.init()
+      this.cartService.getCart().refetch()
     }, err=>{
       Swal.fire({
         icon: 'error',
-        title: err.message
+        title: 'Error',
+        text: err.message
+        
       });
     });
-    
-   
+    this.cartService.getCart().refetch()
   }
-  
 
 }

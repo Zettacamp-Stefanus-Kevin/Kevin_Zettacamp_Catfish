@@ -23,7 +23,7 @@ export class HistoryComponent implements OnInit {
   private subs = new SubSink();
   cart : cart[] = []
 
-  displayedColumns: string[] = ['role', 'name', 'order_date', 'recipe_name', 'price', 'status'];
+  displayedColumns: string[] = ['role', 'name', 'recipe_name', 'order_date', 'price', 'status'];
   dataSource = new MatTableDataSource([])
 
   constructor(private cartService: CartService,
@@ -33,6 +33,10 @@ export class HistoryComponent implements OnInit {
   ngOnInit(): void {
     this.init(this.paginator)
     this.filterStatus()
+    this.filterName()
+    this.filterDate()
+    this.filterMenu()
+    
   }
 
   init(paginationObj:any) {
@@ -42,7 +46,7 @@ export class HistoryComponent implements OnInit {
       limit: paginationObj?.limit ?? 5,
     }
 
-    this.subs.sink = this.cartService.getTransaction(pagination, this.statusFil).subscribe(resp => {
+    this.subs.sink = this.cartService.getTransaction(pagination, this.searchSatus, this.searchName, this.searchDate, this.searchMenu ).subscribe(resp => {
 
       this.paginator.length = resp.data.GetAllTransactions.count;
       console.log(this.paginator.length);
@@ -82,15 +86,47 @@ status: status[] = [
 ];
 
   statusFilter = new FormControl();
-  statusFil:any
-
-  value = ''
+  searchSatus:any
+  value = '';
 
   filterStatus() {
     this.statusFilter.valueChanges.pipe(debounceTime(300)).subscribe((val) => {
-      this.statusFil = val
+      this.searchSatus = val
       console.log(val);
       
+      this.init(true)
+    });
+  }
+
+//filter nama===================
+  nameFilter = new FormControl();
+  searchName : any;
+
+ filterName() {
+    this.nameFilter.valueChanges.pipe(debounceTime(300)).subscribe((val) => {
+      this.searchName = val
+      this.init(true)
+    });
+  }
+
+  //filter date===================
+  dateFilter = new FormControl();
+  searchDate : any;
+
+  filterDate() {
+    this.dateFilter.valueChanges.pipe(debounceTime(300)).subscribe((val) => {
+      this.searchDate = val
+      this.init(true)
+    });
+  }
+
+  //filter menu===================
+  menuFilter = new FormControl();
+  searchMenu : any;
+
+  filterMenu() {
+    this.menuFilter.valueChanges.pipe(debounceTime(300)).subscribe((val) => {
+      this.searchMenu = val
       this.init(true)
     });
   }

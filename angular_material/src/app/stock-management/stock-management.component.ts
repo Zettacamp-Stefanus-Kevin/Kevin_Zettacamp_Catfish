@@ -8,8 +8,13 @@ import { StockManagementInputComponent } from './stock-management-input/stock-ma
 import { StockManagementUpdateComponent } from './stock-management-update/stock-management-update.component';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import Swal from 'sweetalert2';
+import { FormControl } from '@angular/forms';
+import { debounceTime } from 'rxjs';
 
-
+export interface status{
+  value : string;
+  viewValue: string;
+}
 @Component({
   selector: 'app-stock-management',
   templateUrl: './stock-management.component.html',
@@ -30,21 +35,24 @@ export class StockManagementComponent implements OnInit {
 
   ngOnInit(): void {
     this.init(this.paginator)
+    this.filterIngredient()
+    this.filterStatus()
+    // this.filterStock()
   }
 
-  init(paginationObj: any) {
+  init(paginationObj: any, ) {
 
     const pagination: any = {
       page: paginationObj?.page ?? 1,
       limit: paginationObj?.limit ?? 5,
     }
 
-    this.subs.sink = this.stockService.getStock(pagination).subscribe(resp => {
+    this.subs.sink = this.stockService.getStock(pagination,this.searchIngredient, this.searchStatus).subscribe(resp => {
 
       this.paginator.length = resp.data.GetAllIngredients.count;
       // this.paginator.pageSize = this.pageSizeOptions[0];
 
-      this.stock.push(resp.data.GetAllIngredients.data)
+      // this.stock.push(resp.data.GetAllIngredients.data)
       this.dataSource = new MatTableDataSource(resp.data.GetAllIngredients.data)
       console.log(this.stock);
       console.log(resp);
@@ -98,6 +106,53 @@ export class StockManagementComponent implements OnInit {
 
     );
   }
+
+  //Ingredients FIlter===================================
+
+  ingredientFilter = new FormControl();
+  searchIngredient : any;
+
+  filterIngredient(){
+    this.ingredientFilter.valueChanges.subscribe((val)=>{
+      this.searchIngredient = val;
+      this.init(true)
+    })
+  }
+
+    //stock FIlter===================================
+
+    stockFilter = new FormControl();
+    searchStock! : number;
+  
+    filterStock(){
+      this.stockFilter.valueChanges.subscribe((val)=>{
+        this.searchStock = val;
+        this.init(true)
+      })
+    }
+  
+
+   //Status FIlter=======================================
+
+   status : status[] = [
+    {value: 'active', viewValue : 'All'},
+    {value : 'unpublish', viewValue: 'not Active'},
+    {value : 'active', viewValue: 'Active'},
+   ];
+
+   statusFilter = new FormControl();
+   searchStatus:any
+   value = '';
+
+   filterStatus(){
+    this.statusFilter.valueChanges.subscribe((val)=>{
+      this.searchStatus = val;
+      this.init(true)
+    })
+   }
+
+
+
 
   @ViewChild('paginator') paginator!: MatPaginator
 

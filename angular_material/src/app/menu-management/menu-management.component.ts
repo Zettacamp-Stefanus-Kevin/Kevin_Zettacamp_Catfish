@@ -8,7 +8,13 @@ import { MenuManagementInputComponent } from './menu-management-input/menu-manag
 import { MenuManagementUpdateComponent } from './menu-management-update/menu-management-update.component';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import Swal from 'sweetalert2';
+import copy from 'fast-copy';
+import { FormControl } from '@angular/forms';
 
+export interface status{
+  value : string;
+  viewValue: string;
+}
 @Component({
   selector: 'app-menu-management',
   templateUrl: './menu-management.component.html',
@@ -21,36 +27,17 @@ export class MenuManagementComponent implements OnInit {
 
   filterRecipeName: string = ""
 
-  displayedColumns: string[] = ['recipe_name', 'ingredients', 'description', 'remain_order', 'price', 'status', 'actions'];
+  displayedColumns: string[] = ['recipe_name', 'ingredients', 'description', 'hightlight', 'specialoffers', 'remain_order', 'price', 'status', 'actions'];
   dataSource = new MatTableDataSource([])
 
   constructor(private menuService: MenuManagementService,
     private dialog: MatDialog
   ) { }
 
-  // Accent(value: string): string {
-  //   let accent:string[] = value.split('');
-  //   accent = accent.map(data => {
-  //     const splited = data.normalize('NFD').split('');
-  //     return splited[0]
-  //   })
-  //   return accent.join('');
-  // }
-
-  // filterByRecipeName() {
-  //   let fil = this.menu
-  //   fil = fil.filter(data => {
-  //     let name = data.recipe_name;
-  //     name = name.toLowerCase();
-  //     name = name.replace(/[.\s,]/g, '');
-  //     name = this.Accent(name)
-  //     return name.includes(this.Accent(this.filterName.toLowerCase().replace(/[.\s,]/g, '')))
-  //   })
-  //   this.dataSource.data = fil
-  // }
-
   ngOnInit(): void {
     this.init(this.paginator)
+    this.filterName()
+    this.filterStatus()
   }
 
   init(paginationObj: any) {
@@ -60,7 +47,7 @@ export class MenuManagementComponent implements OnInit {
       limit: paginationObj?.limit ?? 5,
     }
 
-    this.subs.sink = this.menuService.getRecipe(pagination).subscribe(resp => {
+    this.subs.sink = this.menuService.getRecipe(pagination, this.searchName, this.searchStatus).subscribe(resp => {
 
       this.paginator.length = resp.data.GetAllRecipes.count;
 
@@ -93,7 +80,7 @@ export class MenuManagementComponent implements OnInit {
     );
   }
 
-  a:any
+  a: any
 
   onEdit(parameter: any) {
     console.log(parameter);
@@ -110,12 +97,11 @@ export class MenuManagementComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if(result){
+      if (result) {
         this.init(result)
       }
       console.log('The dialog was closed');
     }
-
     );
   }
 
@@ -128,19 +114,19 @@ export class MenuManagementComponent implements OnInit {
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete now!'
-    }).then((result:any) => {
-      if (result.isConfirmed){
+    }).then((result: any) => {
+      if (result.isConfirmed) {
         this.menuService.deleteRecipe(parameter).subscribe(resp => {
           Swal.fire({
             title: 'Deleted!',
             text: "this menu has been deleted",
             icon: 'success',
-        })
+          })
           this.init(true)
         })
       }
     })
-    
+
     console.log(parameter);
   }
 
@@ -148,34 +134,114 @@ export class MenuManagementComponent implements OnInit {
 
   checked = false;
 
-  
-  onChanged(event: any, element: any) {
-    const check = {
-      id: element.id,
-      status: event.checked ? 'active' : 'unpublish'
-    };
-    // if(check.status === 'active'){
-    //   check.status = 'active'
-    // }else if(check.status === 'unpublish'){
-    //   check.status = 'unpublish'
-    // }
-    // Swal.fire({
-    //   title: 'Are you sure want change status to ' + check.status + '?',
-    //   showDenyButton: false,
-    //   showCancelButton: true,
-    //   showConfirmButton: true,
-    //   denyButtonText: `Yes`,
-    // }).then((result)=>{
-    //   if(result.isConfirmed){
-    //     this.menuService.updatepublish(check).subscribe(() => {
-    //       Swal.fire({
-    //         title: 'you have been change status to ' + check.status
-    //       })
-    //       this.init(true)
-    //     })
-    //   }
-    // })                                  
+  //toogle--------------------------------------------------------
+
+  onChanged(check: any) {
+    check = copy(check)
+    if (check.status === 'active') {
+      check.status = 'unpublish'
+    } else if (check.status === 'unpublish') {
+      check.status = 'active'
+    }
+    Swal.fire({
+      title: 'Are you sure want change status to ' + check.status + '?',
+      showDenyButton: false,
+      showCancelButton: true,
+      showConfirmButton: true,
+      denyButtonText: `Yes`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.menuService.updatepublish(check).subscribe(() => {
+          Swal.fire({
+            title: 'you have been change status to ' + check.status
+          })
+          this.init(true)
+        })
+      }
+    })
   }
+
+  onHigh(check: any) {
+    check = copy(check)
+    if (check.is_hightlighted === true) {
+      check.is_hightlighted = false
+    } else if (check.is_hightlighted === false) {
+      check.is_hightlighted = true
+    }
+    Swal.fire({
+      title: 'Are you sure want change this menu to ' + check.is_hightlighted + '?',
+      showDenyButton: false,
+      showCancelButton: true,
+      showConfirmButton: true,
+      denyButtonText: `Yes`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.menuService.updateHighlight(check).subscribe(() => {
+          Swal.fire({
+            title: 'you have been change status to ' + check.is_hightlighted
+          })
+          this.init(true)
+        })
+      }
+    })
+  }
+
+  onSpecial(check: any) {
+    check = copy(check)
+    if (check.is_special_offers === true) {
+      check.is_special_offers = false
+    } else if (check.is_special_offers === false) {
+      check.is_special_offers = true
+    }
+    Swal.fire({
+      title: 'Are you sure want change this menu to ' + check.is_special_offers + '?',
+      showDenyButton: false,
+      showCancelButton: true,
+      showConfirmButton: true,
+      denyButtonText: `Yes`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.menuService.updateSPrice(check).subscribe(() => {
+          Swal.fire({
+            title: 'you have been change status to ' + check.is_special_offers
+          })
+          this.init(true)
+        })
+      }
+    })
+  }
+
+//names FIlter===================================
+
+  nameFilter = new FormControl();
+  searchName : any;
+
+  filterName(){
+    this.nameFilter.valueChanges.subscribe((val)=>{
+      this.searchName = val;
+      this.init(true)
+    })
+  }
+
+   //Status FIlter=======================================
+
+   status : status[] = [
+    {value: 'active', viewValue : 'All'},
+    {value : 'unpublish', viewValue: 'Not Active'},
+    {value : 'active', viewValue: 'Active'},
+    {value : 'deleted', viewValue: 'Deleted'},
+   ];
+
+   statusFilter = new FormControl();
+   searchStatus:any
+   value = '';
+
+   filterStatus(){
+    this.statusFilter.valueChanges.subscribe((val)=>{
+      this.searchStatus = val;
+      this.init(true)
+    })
+   }
 
 
 

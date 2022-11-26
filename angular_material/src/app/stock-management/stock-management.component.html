@@ -12,19 +12,37 @@
 
         <!-- Name Column -->
         <ng-container matColumnDef="nama">
-            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <th mat-header-cell *matHeaderCellDef> Name <br>
+                <mat-form-field >
+                    <mat-label>Search Ingredients</mat-label>
+                    <input matInput [formControl]="ingredientFilter">
+                </mat-form-field>
+            </th>
             <td mat-cell *matCellDef="let element"> {{element.name}} </td>
         </ng-container>
 
         <!-- Stock Column -->
         <ng-container matColumnDef="stock">
-            <th mat-header-cell *matHeaderCellDef> Stock </th>
+            <th mat-header-cell *matHeaderCellDef> Stock <br>
+                <!-- <mat-form-field >
+                    <mat-label>Search Stock</mat-label>
+                    <input matInput type="number" [formControl]="stockFilter">
+                </mat-form-field> -->
+            </th>
             <td mat-cell *matCellDef="let element"> {{element.stock}} </td>
         </ng-container>
 
         <!-- Status Column -->
         <ng-container matColumnDef="status">
-            <th mat-header-cell *matHeaderCellDef> Status </th>
+            <th mat-header-cell *matHeaderCellDef> Status <br>
+                <mat-form-field>
+                    <mat-select [formControl]="statusFilter" [(ngModel)]="value">
+                        <mat-option *ngFor="let stat of status" [value]="stat.value">
+                            {{stat.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </th>
             <td mat-cell *matCellDef="let element">
                 <mat-icon [ngStyle]="{'color':'green'}" *ngIf="element.status === 'active'">done</mat-icon>
                 <mat-icon [ngStyle]="{'color':'red'}" *ngIf="element.status === 'deleted'">close</mat-icon>

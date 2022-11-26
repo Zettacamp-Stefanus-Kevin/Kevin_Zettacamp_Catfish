@@ -15,7 +15,7 @@
       <button class="change" mat-icon-button (click)="sidenav.open()"  *ngIf="role=='admin'"  >
         <mat-icon>menu</mat-icon>
       </button>
-      <a class="change"><div routerLink="/homepage"   routerLinkActive="active">RESTORAN</div></a>
+      <a class="change"><div routerLink="/homepage"   routerLinkActive="active">PRAEDULCIS</div></a>
     </div>
     <div class="wrap">
       <a mat-button class="cart" routerLink="/cart"  *ngIf="token"  routerLinkActive="active">
@@ -23,7 +23,10 @@
       <a class="change"><div routerLink="/about"   routerLinkActive="active">About</div></a>
       <a class="change"><div routerLink="/menu"   routerLinkActive="active">Menu</div> </a>
       <a class="change"><div routerLink="/login" *ngIf="!token"  routerLinkActive="active" >Login</div></a>
-      <a class="change"><div routerLink="/login" *ngIf="token"   (click)="onLogout()">Logout</div></a>
+      <a class="change" [matMenuTriggerFor]="menu"><div >{{role}}</div></a>
+      <mat-menu #menu="matMenu">
+          <button class="buttom" mat-menu-item  routerLink="/login" routerLinkActive="active" *ngIf="token" (click)="onLogout()">Logout</button>
+      </mat-menu>
     </div>
   </mat-toolbar>
   <router-outlet></router-outlet>

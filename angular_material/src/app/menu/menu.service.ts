@@ -10,32 +10,72 @@ export class MenuService {
 
   constructor(private apolo: Apollo) { }
 
+  // getMenu(pagination: any): Observable<any> {
+    
+  //   return this.apolo.query({
+  //     query: gql`
+  //     query Query ($limit: Int, $page: Int, $recipeName: String){
+  //       GetAllRecipes(limit: $limit, page: $page, recipe_name: $recipeName) {
+  //         maxPage
+  //         page
+  //         count
+  //         data_recipes {
+  //           id
+  //           price
+  //           recipe_name
+  //           status
+  //           remain_order
+  //           description
+  //           image
+  //           ingredients {
+  //             ids {
+  //               name
+  //               stock
+  //             }
+  //           }
+  //         }
+  //       }
+  //     }
+  //     `,
+  //     variables: {
+  //       ...pagination, status : 'active'
+  //     },
+  //     fetchPolicy: "network-only"
+  //   })
+  // }
+
   getMenu(pagination: any): Observable<any> {
     
     return this.apolo.query({
       query: gql`
-      query Query ($limit: Int, $page: Int, $recipeName: String){
-        GetAllRecipes(limit: $limit, page: $page, recipe_name: $recipeName) {
+      query Query($page: Int, $limit: Int, $recipeName: String) {
+        GetAllRecipesNotLogin(page: $page, limit: $limit, recipe_name: $recipeName) {
+          count
           maxPage
           page
-          count
           data_recipes {
             id
-            price
-            recipe_name
-            status
-            remain_order
             description
             image
+            is_hightlighted
+            is_special_offers
+            price
+            recipe_name
+            remain_order
+            status
             ingredients {
+              stock_used
               ids {
                 name
+                status
+                id
                 stock
               }
             }
           }
         }
       }
+      
       `,
       variables: {
         ...pagination, status : 'active'
