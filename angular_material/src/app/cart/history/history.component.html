@@ -1,0 +1,81 @@
+<div style="background-color: #100F0F; ">
+    <div class="container">
+        <h1>Riwayat Pesanan</h1>
+
+        <button class="add" mat-button color="primary" routerLink="../cart">
+            <mat-icon>backspace</mat-icon>
+        </button>
+    </div>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" [fixedLayout]="true">
+
+        <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Role -->
+        <ng-container matColumnDef="role">
+            <th mat-header-cell *matHeaderCellDef> Role </th>
+            <td mat-cell *matCellDef="let element">{{element.user_id.role}} </td>
+        </ng-container>
+
+        <!-- Role -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Name
+                <!-- <mat-form-field>
+                    <label>Search Name : </label>
+                    <input matInput class="search" type="text" id="filter" [(ngModel)]="filterRecipeName"
+                        (ngModelChange)="filterName()" />
+                </mat-form-field> -->
+
+            </th>
+            <td mat-cell *matCellDef="let element">
+                {{element.user_id.first_name}}{{element.user_id.last_name}}
+            </td>
+        </ng-container>
+
+        <!-- Order Date -->
+        <ng-container matColumnDef="order_date">
+            <th mat-header-cell *matHeaderCellDef> Order_date </th>
+            <td mat-cell *matCellDef="let element"> {{element.order_date}} </td>
+        </ng-container>
+
+        <!-- Recipe Name -->
+        <ng-container matColumnDef="recipe_name">
+            <th mat-header-cell *matHeaderCellDef> Menu </th>
+            <td mat-cell *matCellDef="let element">
+                <p *ngFor="let recipe of element.menu">{{recipe.recipe_id.recipe_name}}</p>
+            </td>
+        </ng-container>
+
+        <!-- Status Column -->
+        <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef> Status <br>
+                <mat-form-field>
+                    <mat-select [formControl]="statusFilter" [(ngModel)]="value">
+                      <mat-option *ngFor="let stat of status" [value]="stat.value">
+                        {{stat.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field> 
+
+            </th>
+            <td mat-cell *matCellDef="let element"> {{element.order_status}} </td>
+        </ng-container>
+
+        <!-- Price Column -->
+        <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef> Price </th>
+            <td mat-cell *matCellDef="let element"> {{element.total_price}} </td>
+        </ng-container>
+
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator #paginator (page)="onPagination($event)" [pageSizeOptions]="[5, 10, 25, 50]"
+        aria-label="Select page">
+    </mat-paginator>
+
+</div>

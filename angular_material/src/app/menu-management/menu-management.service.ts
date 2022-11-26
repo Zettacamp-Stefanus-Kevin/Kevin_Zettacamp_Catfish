@@ -26,6 +26,7 @@ export class MenuManagementService {
             status
             description
             price
+            status
             ingredients {
               ids {
                 id
@@ -38,15 +39,13 @@ export class MenuManagementService {
         }
       }
       `, variables: {
-        ...pagination,
+        page : pagination.page, limit : pagination.limit
       },
       fetchPolicy: 'network-only'
     })
   }
 
   getIngredient( ):Observable<any> {
-
-    
     return this.apolo.query({
       query: gql`
       query Data($limit: Int) {
@@ -111,35 +110,56 @@ export class MenuManagementService {
   }
 
 
-  updateRecipe(data: menu) {
-    let id = data.id
+  updateRecipe(data: any) {
+    let updateRecipesId = data.id
     let recipe_name = data.recipe_name
     let input = data.ingredients
-    console.log(id)
+    let price = data.price
+    console.log(updateRecipesId)
     return this.apolo.mutate({
       mutation: gql
         `
-      mutation Mutation($input: [ingredient_id_input], $recipe_name: String) {
-        CreateRecipes(input: $input, recipe_name: $recipe_name) {
-          id
-          image
-          recipe_name
-          price
-          description
-          ingredients {
-            ids {
-              name
-              stock
+        mutation Mutation($input: [ingredient_id_input], $recipe_name: String, $price: Int, $updateRecipesId: ID) {
+          UpdateRecipes(input: $input, recipe_name: $recipe_name, price: $price, id: $updateRecipesId) {
+            id
+            image
+            recipe_name
+            price
+            description
+            ingredients {
+              ids {
+                id
+                name
+                stock
+                __typename
+              }
+              stock_used
+              __typename
             }
-            stock_used
+            __typename
           }
         }
-      }
       `,
-      variables: { id, recipe_name, input }
-    }).subscribe((subs) =>
-      console.log(subs)
-    )
+      variables: { updateRecipesId, recipe_name, input, price}
+    })
+  }
+
+  updatepublish(data : any){
+    let updateRecipesId = data.id
+    let status = data.status
+    return this.apolo.mutate({
+      mutation: gql
+      `
+      mutation update($updateRecipesId: ID, $status: String) {
+        UpdateRecipes(id: $updateRecipesId, status: $status) {
+          status
+          id
+        }
+      }
+      
+      `,
+      variables: { updateRecipesId, status}
+    })
   }
 
 

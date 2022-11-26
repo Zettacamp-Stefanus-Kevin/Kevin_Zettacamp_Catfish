@@ -21,23 +21,24 @@ export class MenuDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    let data = Number(this.menu.remain_order)
+    
     this.detailForm = new FormGroup({
       'id': new FormControl(null),
-      'amount': new FormControl(null, [Validators.required]),
+      'amount': new FormControl(null, [Validators.required, Validators.min(1),Validators.max(data)]),
       'note': new FormControl(null),
     })
     this.detailForm.patchValue(this.menu)
     console.log(this.menu)
   }
- 
 
   onSubmit() {
     if (this.detailForm.valid) {
       const bebas = {
-        id : this.menu.id,
+        id: this.menu.id,
         ...this.detailForm.value
       }
-      this.menuService.addCart(this.detailForm.value).subscribe((resp)=> {
+      this.menuService.addCart(this.detailForm.value).subscribe((resp) => {
         this.detailForm.value
       });
       console.log(this.detailForm.value);

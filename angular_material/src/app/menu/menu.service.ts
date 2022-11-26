@@ -38,7 +38,7 @@ export class MenuService {
       }
       `,
       variables: {
-        ...pagination,
+        ...pagination, status : 'active'
       },
       fetchPolicy: "network-only"
     })

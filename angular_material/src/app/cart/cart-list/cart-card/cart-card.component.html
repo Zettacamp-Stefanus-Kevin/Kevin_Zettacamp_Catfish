@@ -4,25 +4,25 @@
             <img class="imge" [src]="menu.recipe_id.image" alt="">
         </div>
         <div class="right">
-            <p>Nama : {{menu.recipe_id.recipe_name}}</p>
-            <p>Harga : Rp {{menu.recipe_id.price.toLocaleString('ID')}}</p>
-            <p >Amout :
+            <h2>Nama : {{menu.recipe_id.recipe_name}}</h2>
+            <h2>Harga : Rp {{menu.recipe_id.price.toLocaleString('ID')}}</h2>
+            <h2 >Amout :
                 
-                <button [disabled]="menu.amount === 0" class="edit" (click)="minus(menu.id)">
+                <button mat-button [disabled]="menu.amount === 1" class="edit" (click)="minus(menu.id)">
                     <mat-icon> remove_circle_outline </mat-icon>
                 </button>
                 {{menu.amount}}
-                <button [disabled]="menu.amount >= menu.recipe_id.remain_order" class="edit" (click)="plus(menu.id)">
+                <button mat-button [disabled]="menu.amount >= menu.recipe_id.remain_order" class="edit" (click)="plus(menu.id)">
                     <mat-icon> add_circle_outline  </mat-icon>
                 </button>
                 
                 <sub> *max yang bisa dipesan : {{menu.recipe_id.remain_order}}</sub>
-            </p>
-            <p>Note : {{menu.note}}
-                <a class="edit" (click)="editOrder(menu)">
+            </h2>
+            <h2>Note : {{menu.note}}
+                <button mat-button class="edit" (click)="editOrder(menu)">
                     <mat-icon>edit</mat-icon>
-                </a>
-            </p>
+                </button>
+            </h2>
             <button class="trash" mat-button (click)="deleteStock(menu)">
                 <mat-icon> restore_from_trash</mat-icon>
             </button>

@@ -40,7 +40,60 @@ export class CartService {
     })
   }
 
-  // getTransaction(){}
+  getTransaction(pagination: any, status:any): Observable<any> {
+
+    let statusFilter : any = ""
+    if (status) {
+      statusFilter = status
+    }  
+    console.log(statusFilter);
+    
+
+    return this.apolo.query({
+      query: gql
+        `
+      query History($filter: allTransaction_input, $limit: Int, $page: Int, $statusFilter : String) {
+        GetAllTransactions(filter: {order_status:$statusFilter}, limit: $limit, page: $page) {
+          count
+          maxPage
+          page
+          data {
+            id
+            order_date
+            order_status
+            status
+            total_price
+            menu {
+              id
+              amount
+              note
+              recipe_id {
+                id
+                recipe_name
+                price
+                remain_order
+                status
+              }
+            }
+            user_id {
+              email
+              id
+              role
+              status
+              first_name
+              last_name
+            }
+          }
+        }
+      }
+      `,
+      variables: {
+        ...pagination, statusFilter
+      },
+      fetchPolicy: 'network-only'
+    })
+  }
+
 
   deleteCart(parameter: any): Observable<any> {
     const id = parameter
@@ -74,7 +127,7 @@ export class CartService {
     })
   }
 
-  decrAmount(parameter: any): Observable < any > {
+  decrAmount(parameter: any): Observable<any> {
     const id = parameter
     return this.apolo.mutate({
       mutation: gql`
@@ -88,7 +141,7 @@ export class CartService {
     })
   }
 
-  incrAmount(parameter: any): Observable < any > {
+  incrAmount(parameter: any): Observable<any> {
     const id = parameter
     return this.apolo.mutate({
       mutation: gql`
@@ -103,8 +156,8 @@ export class CartService {
   }
 
   updateNote(parameter: any) {
-    let {editNoteId, newNote} = parameter
-    
+    let { editNoteId, newNote } = parameter
+
     return this.apolo.mutate({
       mutation: gql`
       mutation update($editNoteId: ID, $newNote: String) {

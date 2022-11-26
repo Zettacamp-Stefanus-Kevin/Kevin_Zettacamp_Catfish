@@ -67,6 +67,21 @@ h2{
     margin-left: auto;
 }
 
+.unpublish{
+    text-align: center;
+    font-size: 50%;
+}
+
+h4{
+    color: rgb(178, 43, 43);
+    font-size: large;
+}
+
+h3{
+    color: #F0A500;   
+    margin-left: auto;
+}
+
 .footer {
     justify-content: right;
 }

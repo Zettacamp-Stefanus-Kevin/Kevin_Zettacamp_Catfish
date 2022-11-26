@@ -1,10 +1,14 @@
 <p>menu-card works!</p>
 
 <div class="wrapper">
+    <div class="unpublish" *ngIf="recipe.status == 'unpublish' ">
+        <h4>menu ini {{recipe.status}}</h4>
+    </div>
     <div class="container header">
 
         <section class="title">
             <h1>{{recipe.recipe_name}}</h1>
+            <h3>Available : {{recipe.remain_order}}</h3>
             <h3>price Rp{{recipe.price.toLocaleString('ID')}}</h3>
             <button mat-button (click)="info(recipe)">details...</button>
         </section>
@@ -18,11 +22,14 @@
     </div>
     <div class="text">
         {{recipe.description}}
+       
     </div>
     <div class="container footer">
-        <button mat-button (click)="addCart(recipe)" [disabled]="recipe.remain_order === 0">
-            <mat-icon *ngIf="recipe.remain_order >0">add_shopping_cart</mat-icon> Add to cart
-        </button>
+        
+            <button  mat-button (click)="addCart(recipe)" [disabled]="recipe.remain_order === 0">
+                <mat-icon *ngIf="recipe.remain_order >0">add_shopping_cart</mat-icon> Add to cart
+            </button>
+        
         <h2 *ngIf="recipe.remain_order === 0"> This Menu Out of Stock</h2>
     </div>
 </div>

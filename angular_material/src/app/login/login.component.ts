@@ -32,13 +32,15 @@ export class LoginComponent implements OnInit {
   onSubmit(loginForm: any) {
     if (this.loginForm.valid) {
       this.subs.sink = this.loginService.getToken(loginForm).subscribe((data) => {
+        this.loginService.getToken(loginForm).subscribe()
         console.log(data.data.Login.token)
         console.log(data.data.Login.email)
         console.log(data.data.Login.role)
-        let adminToken = data.data.Login.token;
+        let adminToken = data?.data?.Login?.token;
+        let role = data?.data?.Login?.role
         
         localStorage.setItem('getToken', adminToken);
-        localStorage.setItem('userData', data.data.Login.role);
+        localStorage.setItem('userData', role);
 
         console.log('berhasil')
         this.loginForm.reset();
@@ -46,21 +48,21 @@ export class LoginComponent implements OnInit {
 
         Swal.fire({
           icon: 'success',
-          text: 'Data Complete',
-          title: "Success"
+          title: "Hello " + data?.data?.Login?.role,
+          text: 'Welcome to our Restaurant' 
+          
         });
         this.router.navigate(['homepage']).then(() => {
           window.location.reload()
         })
       })
 
-
     } else {
       console.log('gagal');
       Swal.fire({
         icon: 'error',
+        title: "Error",
         text: "Data not Completed",
-        title: "Error"
       });
     }
   }

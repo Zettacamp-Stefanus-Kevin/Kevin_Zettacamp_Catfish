@@ -7,10 +7,12 @@ import { CartListComponent } from './cart-list/cart-list.component';
 import { CartCardComponent } from './cart-list/cart-card/cart-card.component';
 import { CartUpdateComponent } from './cart-update/cart-update.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HistoryComponent } from './history/history.component';
 
 const routes: Routes = [
   {path: "", redirectTo: '/cart/list', pathMatch: 'full'},
-  { path: "list", component: CartListComponent }
+  { path: "list", component: CartListComponent },
+  { path: "history", component: HistoryComponent }
 ]
 
 @NgModule({
@@ -18,7 +20,8 @@ const routes: Routes = [
     CartComponent,
     CartListComponent,
     CartCardComponent,
-    CartUpdateComponent
+    CartUpdateComponent,
+    HistoryComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +32,8 @@ const routes: Routes = [
   exports:[
     CartComponent,
     CartListComponent,
-    CartCardComponent
+    CartCardComponent,
+    HistoryComponent
   ]
 })
 export class CartModule { }

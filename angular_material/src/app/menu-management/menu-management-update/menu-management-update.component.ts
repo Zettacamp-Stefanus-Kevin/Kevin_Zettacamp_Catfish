@@ -16,6 +16,7 @@ export class MenuManagementUpdateComponent implements OnInit {
   recipeForm: any
 
   ingredients: any = []
+  
 
 
   constructor(private menuService: MenuManagementService,
@@ -31,7 +32,6 @@ export class MenuManagementUpdateComponent implements OnInit {
       'price': new FormControl(null, [Validators.required]),
       'ingredients': new FormArray([])
     })
-    // this.recipeForm.patchValue(this.menu)
 
 
     
@@ -41,6 +41,7 @@ export class MenuManagementUpdateComponent implements OnInit {
     })
 
     let tempIngeridient = {
+      id : this.menu.id,
       recipe_name: this.menu.recipe_name,
       price: this.menu.price,
     };
@@ -87,21 +88,28 @@ export class MenuManagementUpdateComponent implements OnInit {
   onSubmit() {
     console.log(this.recipeForm.value);
     
+    const a = {
+      id : this.menu.id,
+      ...this.recipeForm.value
+    }
+    console.log(a);
+    
     if (this.recipeForm.valid) {
-      this.menuService.updateRecipe(this.recipeForm.value)
+      this.menuService.updateRecipe(a).subscribe((resp)=>{
+        this.ingredients = resp
+      })
+      // .then(()=>{
+      //   this.dialog.close(true)
+      // })
       console.log('berhasil');
-      Swal.fire({
-        icon: 'success',
-        title: 'Success',
-        text: 'Your work has been saved',
-      });
-      this.dialog.close();
+      this.dialog.close(true);
     } else {
       console.log('gagal');
       Swal.fire({
         icon: 'error',
         title: 'Failed',
         text: 'Try again',
+        confirmButtonAriaLabel : "OK"
       });
 
       this.recipeForm.markAllAsTouched();

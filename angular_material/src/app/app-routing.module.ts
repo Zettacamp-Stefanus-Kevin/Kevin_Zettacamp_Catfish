@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { RoleGuard } from './login/role.guard';
+import { TokenGuard } from './login/token.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/homepage', pathMatch: 'full' },
@@ -7,9 +9,9 @@ const routes: Routes = [
   { path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule) },
   { path: 'menu', loadChildren: () => import('./menu/menu.module').then(m => m.MenuModule) },
   { path: 'about', loadChildren: () => import('./about/about.module').then(m => m.AboutModule) },
-  { path: 'cart', loadChildren: () => import('./cart/cart.module').then(m => m.CartModule) },
-  { path: 'stock_management', loadChildren: () => import('./stock-management/stock-management.module').then(m => m.StockManagementModule) },
-  { path: 'menu_management', loadChildren: () => import('./menu-management/menu-management.module').then(m => m.MenuManagementModule) }
+  { path: 'cart', loadChildren: () => import('./cart/cart.module').then(m => m.CartModule), canActivate:[TokenGuard]},
+  { path: 'stock_management', loadChildren: () => import('./stock-management/stock-management.module').then(m => m.StockManagementModule), canActivate:[TokenGuard && RoleGuard] },
+  { path: 'menu_management', loadChildren: () => import('./menu-management/menu-management.module').then(m => m.MenuManagementModule), canActivate:[TokenGuard && RoleGuard] }
 ];
 
 @NgModule({

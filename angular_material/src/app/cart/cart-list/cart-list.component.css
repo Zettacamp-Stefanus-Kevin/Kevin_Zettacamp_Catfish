@@ -8,6 +8,11 @@
 }
 
 
+a{
+    margin-right: auto;
+    color: rgb(171, 37, 37);
+}
+
 button {
     border-radius: 2rem;
     background-color: white;

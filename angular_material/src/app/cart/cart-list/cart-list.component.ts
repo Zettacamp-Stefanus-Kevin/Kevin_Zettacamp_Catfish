@@ -4,6 +4,7 @@ import { SubSink } from 'subsink';
 import Swal from 'sweetalert2';
 import { cart } from '../cart';
 import { CartService } from '../cart.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -20,7 +21,12 @@ export class CartListComponent implements OnInit {
   order_id: any;
   order: any;
   user: any;
-  constructor(private cartService: CartService) { }
+
+  constructor(
+    private cartService: CartService,
+    private router : Router
+
+    ) { }
 
   ngOnInit(): void {
     this.init()
@@ -62,21 +68,25 @@ export class CartListComponent implements OnInit {
           text: resp.data.OrderNow.order_status,
           footer: "Sorry, You have Menu Out of Stock"
         });
-        this.init()
+ 
       } else {
         Swal.fire({
           icon: 'success',
           title: 'pesanan anda pada tanggal ' + resp.data.OrderNow.order_date,
           text: resp.data.OrderNow.order_status
         });
-        this.init()
       }
       
+      this.init()
+    }, err=>{
+      Swal.fire({
+        icon: 'error',
+        title: err.message
+      });
     });
     
    
   }
-
-
+  
 
 }
