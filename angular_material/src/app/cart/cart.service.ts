@@ -52,8 +52,8 @@ export class CartService {
     return this.apolo.query({
       query: gql
         `
-      query History($filter: allTransaction_input, $limit: Int, $page: Int, $statusFilter : String) {
-        GetAllTransactions(filter: {order_status:$statusFilter}, limit: $limit, page: $page) {
+      query History($orderStatus: enum_order_status, $limit: Int, $page: Int) {
+        GetAllTransactions(order_status: $orderStatus, limit: $limit, page: $page) {
           count
           maxPage
           page
@@ -88,7 +88,7 @@ export class CartService {
       }
       `,
       variables: {
-        ...pagination, statusFilter
+        ...pagination, order_status: statusFilter
       },
       fetchPolicy: 'network-only'
     })
