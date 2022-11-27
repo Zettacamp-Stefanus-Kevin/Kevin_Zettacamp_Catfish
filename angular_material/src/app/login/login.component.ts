@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 import { LoginService } from './login.service';
 import { SubSink } from 'subsink';
 import { LocalState } from '@apollo/client/core/LocalState';
-
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +13,8 @@ import { LocalState } from '@apollo/client/core/LocalState';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
+  selectedLang = 'en';
 
   private subs = new SubSink();
 
@@ -24,8 +26,13 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private loginService: LoginService,
+    private translate:TranslateService
   ) { }
 
+  setLanguage(lang: string) {
+    this.translate.use(lang);
+  }
+  
   ngOnInit(): void {
     // localStorage.setItem('getToken', '');
     //     localStorage.setItem('userData', '');

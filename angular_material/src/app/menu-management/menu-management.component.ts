@@ -226,7 +226,7 @@ export class MenuManagementComponent implements OnInit {
    //Status FIlter=======================================
 
    status : status[] = [
-    {value: 'active', viewValue : 'All'},
+    {value: '', viewValue : 'All'},
     {value : 'unpublish', viewValue: 'Not Active'},
     {value : 'active', viewValue: 'Active'},
     {value : 'deleted', viewValue: 'Deleted'},

@@ -1,0 +1,15 @@
+{
+    "menu": "Menu",
+    "menu-management": "Manajemen Menu",
+    "stock-management": "Manajemen Stok",
+    "about": "Tentang",
+    "cart": "Keranjang",
+    "login": "Masuk",
+    "logout": "Keluar",
+
+    "email": "Surel",
+    "password": "Password",
+    "add_card": "Tambahkan ke Keranjang",
+    "submit": "Kirim",
+    "cancel": "Batalkan"
+}

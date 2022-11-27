@@ -135,7 +135,7 @@ export class StockManagementComponent implements OnInit {
    //Status FIlter=======================================
 
    status : status[] = [
-    {value: 'active', viewValue : 'All'},
+    {value: '', viewValue : 'All'},
     {value : 'unpublish', viewValue: 'not Active'},
     {value : 'active', viewValue: 'Active'},
    ];

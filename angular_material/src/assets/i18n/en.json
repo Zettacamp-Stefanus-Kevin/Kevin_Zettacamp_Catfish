@@ -1,0 +1,15 @@
+{
+    "menu": "Menu",
+    "menuManagement": "Menu Management",
+    "stockManagement": "Stock Management",
+    "about": "About",
+    "cart": "Cart",
+    "login": "Login",
+    "logout": "Logout",
+
+    "email": "Email",
+    "password": "Password",
+    "add_card": "Add to Card",
+    "submit": "Submit",
+    "cancel": "Cancel"
+}

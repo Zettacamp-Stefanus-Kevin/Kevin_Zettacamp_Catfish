@@ -13,7 +13,9 @@ import { AboutModule } from './about/about.module';
 import { StockManagementModule } from './stock-management/stock-management.module';
 import { MenuManagementModule } from './menu-management/menu-management.module';
 import { GraphQLModule } from './graphql.module';
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpClient, HttpClientModule  } from '@angular/common/http'; 
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 @NgModule({
   declarations: [
@@ -33,9 +35,24 @@ import { HttpClientModule } from '@angular/common/http';
     StockManagementModule,
     MenuManagementModule,
     GraphQLModule,
-    HttpClientModule
+    HttpClientModule,
+    TranslateModule.forRoot({
+      defaultLanguage: 'en',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
+  ],
+  exports:[
+    TranslateModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+export class SharedModule { }
+export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
+  return new TranslateHttpLoader(http, '/assets/i18n/', '.json');
+}

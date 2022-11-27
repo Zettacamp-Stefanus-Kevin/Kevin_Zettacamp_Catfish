@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from './login/login.component';
 import { Router } from '@angular/router';
+import { TranslateService } from "@ngx-translate/core";
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
 
+  selectedLang = 'en';
 
   title = 'angular_material';
   token : string | null = ""
@@ -16,7 +19,8 @@ export class AppComponent {
   // name  : any;
 
 
-  constructor(private router:Router) { }
+  constructor(private router:Router,
+    private translate: TranslateService) { }
 
   ngOnInit() {
 
@@ -25,7 +29,6 @@ export class AppComponent {
       this.role = localStorage.getItem('userData')
       // this.name = localStorage.getItem('name')
  
-      
     }
   }
 
@@ -37,6 +40,9 @@ export class AppComponent {
     })
   }
 
+  setLanguage(lang: string) {
+    this.translate.use(lang);
+  }
 
 }
 

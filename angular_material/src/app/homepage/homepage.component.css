@@ -65,6 +65,10 @@ h1{
 
 }
 
+.pict{
+    background-color: #1B2430;
+    color: #F0A500;
+}
 
 .pict > .wrapper {
     display: flex;
@@ -102,6 +106,7 @@ footer{
 .wrapper{
     display: flex;
     width: 100%;
+    
 }
 
 .wrap{
