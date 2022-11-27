@@ -35,7 +35,7 @@ export class StockManagementService {
 
     return this.apolo.query({
       query: gql`
-      query Query($name: String,  $status: status,  $limit: Int, $page: Int){
+      query Query($name: String, $status: String,  $limit: Int, $page: Int){
         GetAllIngredients (name: $name,  status: $status, limit: $limit, page: $page) {
           maxPage
           page

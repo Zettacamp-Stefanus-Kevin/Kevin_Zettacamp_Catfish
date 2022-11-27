@@ -58,7 +58,10 @@ export class MenuService {
             description
             image
             is_hightlighted
-            is_special_offers
+            is_special_offers{
+              status
+              discount
+            }
             price
             recipe_name
             remain_order

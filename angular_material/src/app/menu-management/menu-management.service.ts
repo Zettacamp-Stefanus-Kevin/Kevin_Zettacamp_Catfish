@@ -27,7 +27,7 @@ export class MenuManagementService {
     return this.apolo.query({
       query: gql
         `
-      query GetAllTransactions ($page: Int, $limit: Int, $status: status, $recipeName: String) {
+      query GetAllTransactions ($page: Int, $limit: Int, $status: String, $recipeName: String) {
         GetAllRecipes (status: $status, recipe_name: $recipeName, page: $page, limit: $limit) {
           count
           maxPage
@@ -38,7 +38,10 @@ export class MenuManagementService {
             remain_order
             status
             is_hightlighted
-            is_special_offers
+            is_special_offers{
+              status
+              discount
+            }
             description
             price
             status
