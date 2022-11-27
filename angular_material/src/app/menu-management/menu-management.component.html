@@ -1,8 +1,8 @@
 <div style="background-color: #100F0F; ">
     <div class="container">
-        <h1>Menu-Management</h1>
+        <h1>{{"menuManagement" | translate }}</h1>
 
-        <button class="add" mat-raised-button color="primary" (click)="openDialog()"> Add New Menu </button>
+        <button class="add" mat-raised-button color="primary" (click)="openDialog()"> {{"addNewMenu" | translate }}  </button>
     </div>
 
     <!-- <label>Search Name : </label>
@@ -15,7 +15,7 @@
 
         <!-- Name Column -->
         <ng-container matColumnDef="recipe_name">
-            <th mat-header-cell *matHeaderCellDef> Name Recipe <br>
+            <th mat-header-cell *matHeaderCellDef> {{"recipename" | translate }} <br>
                 <mat-form-field>
                     <mat-label>Search Ingredients</mat-label>
                     <input matInput [formControl]="nameFilter">
@@ -26,7 +26,7 @@
 
         <!-- Ingredients Column -->
         <ng-container matColumnDef="ingredients">
-            <th mat-header-cell *matHeaderCellDef> Ingredients</th>
+            <th mat-header-cell *matHeaderCellDef> {{"ingredients" | translate }}</th>
             <td mat-cell *matCellDef="let element">
                 <div *ngFor="let item of element.ingredients">
                     {{item.ids.name}} = {{item.stock_used}}
@@ -36,13 +36,13 @@
 
         <!-- Description Column -->
         <ng-container matColumnDef="description">
-            <th mat-header-cell *matHeaderCellDef> Description </th>
+            <th mat-header-cell *matHeaderCellDef> {{"description" | translate }} </th>
             <td mat-cell *matCellDef="let element"> {{element.description}} </td>
         </ng-container>
 
         <!-- Hightlighted Column -->
         <ng-container matColumnDef="hightlight">
-            <th mat-header-cell *matHeaderCellDef> Hightlight </th>
+            <th mat-header-cell *matHeaderCellDef> {{"highlight" | translate }} </th>
             <td mat-cell *matCellDef="let element"> {{element.is_hightlighted}} <br>
                 <mat-slide-toggle class="example-margin" color="primary" [checked]="element.is_hightlighted== true"
                     (change)="onHigh(element)"> </mat-slide-toggle>
@@ -51,22 +51,27 @@
 
         <!-- Special_Offers Column -->
         <ng-container matColumnDef="specialoffers">
-            <th mat-header-cell *matHeaderCellDef> Special Offers </th>
-            <td mat-cell *matCellDef="let element"> {{element.is_special_offers}}<br>
-                <mat-slide-toggle class="example-margin" color="primary" [checked]="element.is_special_offers== true"
+            <th mat-header-cell *matHeaderCellDef> {{"specialOffers" | translate }} </th>
+            <td mat-cell *matCellDef="let element"> 
+                <!-- <div *ngFor="let item of element.is_special_offers">
+                    {{item.status}}<br>
+                </div> -->
+                {{element.is_special_offers.status}}<br>
+                <mat-slide-toggle class="example-margin" color="primary" [checked]="element.is_special_offers.status== true"
                     (change)="onSpecial(element)"> </mat-slide-toggle>
+                
             </td>
         </ng-container>
 
         <!-- Price Column -->
         <ng-container matColumnDef="price">
-            <th mat-header-cell *matHeaderCellDef> Price </th>
+            <th mat-header-cell *matHeaderCellDef> {{"price" | translate }} </th>
             <td mat-cell *matCellDef="let element"> {{element.price}} </td>
         </ng-container>
 
         <!-- Status Column -->
         <ng-container matColumnDef="status">
-            <th mat-header-cell *matHeaderCellDef> Status <br>
+            <th mat-header-cell *matHeaderCellDef> {{"status" | translate }} <br>
                 <mat-form-field>
                     <mat-select [formControl]="statusFilter" [(ngModel)]="value">
                         <mat-option *ngFor="let stat of status" [value]="stat.value">
@@ -84,13 +89,13 @@
 
         <!-- Remain_order Column -->
         <ng-container matColumnDef="remain_order">
-            <th mat-header-cell *matHeaderCellDef> Stock </th>
+            <th mat-header-cell *matHeaderCellDef> {{"stock" | translate }} </th>
             <td mat-cell *matCellDef="let element"> {{element.remain_order}}</td>
         </ng-container>
 
         <!-- Actions Column -->
         <ng-container matColumnDef="actions" class="actions">
-            <th mat-header-cell *matHeaderCellDef>Action</th>
+            <th mat-header-cell *matHeaderCellDef>{{"action" | translate }}</th>
             <td mat-cell *matCellDef="let element">
                 <mat-list class="actions-button">
                     <mat-list-item>

@@ -42,6 +42,7 @@ color: #E6B325;
     color: #E6B325;
 }
 
+
 .buttom{
     background-color: #F4F4F4;
     color: #100F0F;
@@ -52,4 +53,10 @@ color: #E6B325;
     background-color:  #E6B325 !important; 
   }
   
+
+  .option{
+    background-color: #E6B325;
+    color: #100F0F;
+    text-align: left;
+  }
     

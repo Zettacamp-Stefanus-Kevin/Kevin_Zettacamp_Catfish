@@ -4,9 +4,9 @@
             <img class="imge" [src]="menu.recipe_id.image" alt="">
         </div>
         <div class="right">
-            <h2>Nama : {{menu.recipe_id.recipe_name}}</h2>
-            <h2>Harga : Rp {{menu.recipe_id.price.toLocaleString('ID')}}</h2>
-            <h2 >Amout :
+            <h2>{{"name" | translate }} : {{menu.recipe_id.recipe_name}}</h2>
+            <h2>{{"price" | translate }} : Rp {{menu.recipe_id.price.toLocaleString('ID')}}</h2>
+            <h2 >{{"amount" | translate }} :
                 
                 <button mat-button [disabled]="menu.amount === 1" class="edit" (click)="minus(menu.id)">
                     <mat-icon> remove_circle_outline </mat-icon>
@@ -16,9 +16,9 @@
                     <mat-icon> add_circle_outline  </mat-icon>
                 </button>
                 
-                <sub> *max yang bisa dipesan : {{menu.recipe_id.remain_order}}</sub>
+                <sub> *{{"maxOrder" | translate }} : {{menu.recipe_id.remain_order}}</sub>
             </h2>
-            <h2>Note : {{menu.note}}
+            <h2>{{"notes" | translate }} : {{menu.note}}
                 <button mat-button class="edit" (click)="editOrder(menu)">
                     <mat-icon>edit</mat-icon>
                 </button>

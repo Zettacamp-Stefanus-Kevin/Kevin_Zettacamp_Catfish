@@ -2,7 +2,7 @@
 
     <mat-form-field appearance="fill">
         <!-- <p> you can order {{detailForm.remain_order}}</p> -->
-        <mat-label> Amount </mat-label>
+        <mat-label> {{"amount" | translate }} </mat-label>
         <input matInput type="number" formControlName="amount">
         <!-- <mat-error *ngIf="this.detailForm.get('amount')?.invalid"> This field is required ! </mat-error> -->
         <mat-error *ngIf="this.detailForm.get('amount')?.errors?.['max']"> Stock tidak Mencukupi </mat-error>
@@ -10,13 +10,13 @@
     </mat-form-field><br>
 
     <mat-form-field appearance="fill">
-        <mat-label> Note </mat-label>
+        <mat-label> {{"notes" | translate }} </mat-label>
         <input matInput type="text" formControlName="note">
     </mat-form-field><br>
 
     <div class="button">
-        <button type="button" mat-raised-button color="warn" (click)="onClick()"> Cancel </button>
+        <button type="button" mat-raised-button color="warn" (click)="onClick()"> {{"cancel" | translate }} </button>
         <button type="submit" mat-raised-button color="accent" [disabled]="detailForm.invalid"
-            > Submit </button>
+            > {{"submit" | translate }} </button>
     </div>
 </form>

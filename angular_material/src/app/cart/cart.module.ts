@@ -8,6 +8,9 @@ import { CartCardComponent } from './cart-list/cart-card/cart-card.component';
 import { CartUpdateComponent } from './cart-update/cart-update.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HistoryComponent } from './history/history.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { HttpLoaderFactory } from '../app.module';
+import { HttpClient } from '@angular/common/http';
 
 const routes: Routes = [
   {path: "", redirectTo: '/cart/list', pathMatch: 'full'},
@@ -27,7 +30,15 @@ const routes: Routes = [
     CommonModule,
     AngularMaterialModule,
     ReactiveFormsModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    TranslateModule.forChild({
+      defaultLanguage: 'en',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   exports:[
     CartComponent,

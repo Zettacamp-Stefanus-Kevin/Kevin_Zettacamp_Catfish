@@ -19,16 +19,20 @@
         <div routerLink="/homepage" routerLinkActive="active">PRAEDULCIS</div>
       </a>
     </div>
-    <div class="language">
+    <!-- <div class="language">
       <mat-form-field class="input" appearance="outline">
-        <mat-label>Language</mat-label>
+        <mat-label>EN</mat-label>
         <mat-select [(value)]="selectedLang" #lang (valueChange)="setLanguage(lang.value)">
-          <mat-option value="en">English</mat-option>
-          <mat-option value="id">Indonesian</mat-option>
+          <mat-option value="en"><img src="../assets/pictures/EN.png">EN</mat-option>
+          <mat-option value="id"><img src="../assets/pictures/ID.png">ID</mat-option>
         </mat-select>
       </mat-form-field>
-    </div>
+    </div> -->
     <div class="wrap">
+        <mat-select [(value)]="selectedLang" #lang (valueChange)="setLanguage(lang.value)">
+          <mat-option value="en" class="option"><img style="size: 10px;" src="../assets/pictures/EN.png">EN</mat-option>
+          <mat-option value="id" class="option"><img src="../assets/pictures/ID.png">ID</mat-option>
+        </mat-select>
       <a mat-button class="cart" routerLink="/cart" *ngIf="token" routerLinkActive="active">
         <mat-icon>shopping_cart</mat-icon>
       </a>
@@ -49,6 +53,7 @@
           (click)="onLogout()">{{"logout" | translate }}</button>
       </mat-menu>
     </div>
+    
   </mat-toolbar>
   <router-outlet></router-outlet>
 </mat-sidenav-container>

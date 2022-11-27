@@ -27,7 +27,7 @@ export class MenuManagementComponent implements OnInit {
 
   filterRecipeName: string = ""
 
-  displayedColumns: string[] = ['recipe_name', 'ingredients', 'description', 'hightlight', 'specialoffers', 'remain_order', 'price', 'status', 'actions'];
+  displayedColumns: string[] = ['recipe_name', 'ingredients', 'hightlight', 'specialoffers', 'remain_order', 'price', 'status', 'actions'];
   dataSource = new MatTableDataSource([])
 
   constructor(private menuService: MenuManagementService,
@@ -188,13 +188,13 @@ export class MenuManagementComponent implements OnInit {
 
   onSpecial(check: any) {
     check = copy(check)
-    if (check.is_special_offers === true) {
-      check.is_special_offers = false
-    } else if (check.is_special_offers === false) {
-      check.is_special_offers = true
+    if (check.is_special_offers.status === true) {
+      check.is_special_offers.status  = false
+    } else if (check.is_special_offers.status  === false) {
+      check.is_special_offers.status  = true
     }
     Swal.fire({
-      title: 'Are you sure want change this menu to ' + check.is_special_offers + '?',
+      title: 'Are you sure want change this menu to ' + check.is_special_offers.status  + '?',
       showDenyButton: false,
       showCancelButton: true,
       showConfirmButton: true,
@@ -203,7 +203,7 @@ export class MenuManagementComponent implements OnInit {
       if (result.isConfirmed) {
         this.menuService.updateSPrice(check).subscribe(() => {
           Swal.fire({
-            title: 'you have been change status to ' + check.is_special_offers
+            title: 'you have been change status to ' + check.is_special_offers.status 
           })
           this.init(true)
         })

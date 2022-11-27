@@ -1,15 +1,54 @@
 {
     "menu": "Menu",
-    "menu-management": "Manajemen Menu",
-    "stock-management": "Manajemen Stok",
+    "menuManagement" : "Manajemen Menu",
+    "stockManagement" : "Manajemen Stok",
     "about": "Tentang",
     "cart": "Keranjang",
     "login": "Masuk",
     "logout": "Keluar",
 
     "email": "Surel",
-    "password": "Password",
-    "add_card": "Tambahkan ke Keranjang",
+    "password": "Kata Sandi",
     "submit": "Kirim",
-    "cancel": "Batalkan"
+    "close" : "Tutup",
+
+    "addCart": "Tambahkan ke Keranjang",
+    "cancel": "Batalkan",
+    "amount" : "Jumlah",
+    "notes" : "Catatan",
+    "available" : "Tersedia",
+    "price" : "Harga",
+    "detail" : "detail",
+    "outOfStock" : "Menu kehabisan stok",
+
+    "menuHighlight" : "Menu Sorotan",
+    "specialOffers" : "Penawaran Khusus",
+    "location"  : "Lokasi",
+    "contact"   : "Kontak",
+    "orderHere" : "Pesan Disini",
+    "sendMessage" : "Send Us a Message",
+
+    "hello" : "Halo",
+    "orderHistory" : "Riwayat Pesanan",
+    "orderDate" : "Tanggal Pesanan",
+    "totalPrice" : "Total Harga",
+    "continueShopping" : "lanjutkan Belanja",
+    "orderMenu" : "Pesan Menu",
+    "name" : "Nama",
+    "maxOrder" : "Pesanan Maks",
+
+    "role" : "Peran",
+    "status" : "Status",
+
+    "ingredientName" : "Nama Bahan",
+    "stock" : "Stok",
+    "action" : "Aksi",
+    "recipeName" : "nama Resep",
+    "ingredients" : "bahan",
+    "description" : "Deskripsi",
+    "highlight" : "Sorotan",
+    "addNewMenu" : "Tambah Menu Baru",
+    "addNewIngredient" : "Tambah Bahan Baru"
+
+    
 }

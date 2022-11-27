@@ -9,7 +9,46 @@
 
     "email": "Email",
     "password": "Password",
-    "add_card": "Add to Card",
     "submit": "Submit",
-    "cancel": "Cancel"
+    "close": "Close",
+
+    "addCart": "Add to Cart",
+    "cancel": "Cancel",
+    "amount" : "Amount",
+    "notes" : "Notes",
+    "available" : "Available",
+    "price" : "Price",
+    "detail" : "details",
+    "outOfStock" : "This Menu Out of Stock",
+
+    "menuHighlight" : "Menu Highlight",
+    "specialOffers" : "Special Offers",
+    "location"  : "Our Location",
+    "contact"   : "Contact US",
+    "orderHere" : "Order Here",
+    "sendMessage" : "Send Us a Message",
+
+    "hello" : "Hello",
+    "orderHistory" : "Order History",
+    "orderDate" : "Order Date",
+    "totalPrice" : "Total Price",
+    "continueShopping" : "Continue Shopping",
+    "orderMenu" : "Order Menu",
+    "name" : "Name",
+    "maxOrder" : "Max Order",
+
+    "role" : "Role",
+    "status" : "Status",
+
+    "ingredientName" : "Ingredient Name",
+    "stock" : "Stock",
+    "action" : "Action",
+    "recipeName" : "Recipe Name",
+    "ingredients" : "Ingredients",
+    "description" : "Description",
+    "highlight" : "Highlight",
+    "addNewMenu" : "Add New Menu",
+    "addNewIngredient" : "Add New Ingredient"
+
+
 }

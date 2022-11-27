@@ -8,6 +8,9 @@ import { MenuCardComponent } from './menu-list/menu-card/menu-card.component';
 import { MenuDetailComponent } from './menu-detail/menu-detail.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MenuInfoComponent } from './menu-info/menu-info.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { HttpLoaderFactory } from '../app.module';
+import { HttpClient } from '@angular/common/http';
 
 const routes: Routes = [
   {path: "", redirectTo: '/menu/list', pathMatch: 'full'},
@@ -27,7 +30,15 @@ const routes: Routes = [
     CommonModule,
     AngularMaterialModule,
     ReactiveFormsModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    TranslateModule .forChild({
+      defaultLanguage: 'en',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   exports: [
     MenuComponent,
