@@ -46,7 +46,7 @@
         <div routerLink="/login" *ngIf="!token" routerLinkActive="active">{{"login" | translate }}</div>
       </a>
       <a class="change" [matMenuTriggerFor]="menu">
-        <div>{{role}}</div>
+        <div>{{name}}</div>
       </a>
       <mat-menu #menu="matMenu">
         <button class="buttom" mat-menu-item routerLink="/login" routerLinkActive="active" *ngIf="token"

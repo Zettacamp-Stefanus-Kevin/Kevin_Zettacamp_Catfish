@@ -1,8 +1,9 @@
-body,html{
+body,
+html {
     height: 100%;
 }
 
-.container{
+.container {
     width: 85%;
     margin-top: 60px;
     padding: 20px 0px;
@@ -12,14 +13,14 @@ body,html{
     color: #F4F4F4;
 }
 
-.add{
+.add {
 
     margin-left: auto;
     /* background-color:#F0A500 ; */
-    color:#F0A500  ;
+    color: #F0A500;
 }
 
-table{
+table {
     width: 85%;
     margin-left: auto;
     margin-right: auto;
@@ -28,17 +29,16 @@ table{
 
 }
 
-
-.actions-button{
+.actions-button {
     display: flex;
 }
 
-
-mat-paginator{
-    background-color:  #F0A500;
+mat-paginator {
+    position: fixed;
+    background-color: #F0A500;
     color: #100F0F;
     z-index: 1;
     bottom: 0;
-    margin-right: auto;
-    margin-left: auto;
+    left: 0;
+    right: 0;
 }

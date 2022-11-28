@@ -14,28 +14,32 @@ export class AppComponent {
   selectedLang = 'en';
 
   title = 'angular_material';
-  token : string | null = ""
+  token: string | null = ""
   role: string | null = "";
-  // name  : any;
+  name: any;
 
 
-  constructor(private router:Router,
+  constructor(private router: Router,
     private translate: TranslateService) { }
 
   ngOnInit() {
+    this.init();
 
-    if (localStorage.getItem('getToken') !== null){
+  }
+
+  init() {
+    if (localStorage.getItem('getToken') !== null) {
       this.token = localStorage.getItem('getToken')
       this.role = localStorage.getItem('userData')
-      // this.name = localStorage.getItem('name')
- 
+      this.name = localStorage.getItem('name')
     }
   }
 
-  onLogout(){
+  onLogout() {
     localStorage.removeItem('getToken');
     localStorage.removeItem('userData');
-    this.router.navigate(['']).then(()=>{
+    localStorage.removeItem('name');
+    this.router.navigate(['']).then(() => {
       window.location.reload()
     })
   }
@@ -46,5 +50,5 @@ export class AppComponent {
 
 }
 
-    
+
 

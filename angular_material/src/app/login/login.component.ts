@@ -26,8 +26,9 @@ export class LoginComponent implements OnInit {
   ) { }
   
   ngOnInit(): void {
-    // localStorage.setItem('getToken', '');
-    //     localStorage.setItem('userData', '');
+    localStorage.setItem('getToken', '');
+        localStorage.setItem('userData', '');
+        localStorage.setItem('name', '');
   }
 
   onSubmit(loginForm: any) {
@@ -38,13 +39,17 @@ export class LoginComponent implements OnInit {
         })
         let adminToken: any
         let role: any
+        let name : any
          adminToken = data?.data?.Login?.token;
          role = data?.data?.Login?.role
+         name = data?.data?.Login?.first_name
         
         localStorage.setItem('getToken', adminToken);
         localStorage.setItem('userData', role);
+        localStorage.setItem('name', name);
         console.log(data.data.Login.token)
         console.log(data.data.Login.role)
+        console.log(data.data.Login.first_name)
 
         console.log('berhasil')
         this.loginForm.reset();
@@ -52,7 +57,7 @@ export class LoginComponent implements OnInit {
 
         Swal.fire({
           icon: 'success',
-          title: "Hello " + data?.data?.Login?.role,
+          title: "Hello " + data?.data?.Login?.first_name,
           text: 'Welcome to our Restaurant' 
           
         }).then(()=>{

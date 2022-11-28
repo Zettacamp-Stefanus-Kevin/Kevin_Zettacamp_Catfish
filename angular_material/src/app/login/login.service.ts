@@ -26,6 +26,7 @@ export class LoginService {
         id
         email
         role
+        first_name
         user_type
           {
           name
@@ -34,7 +35,6 @@ export class LoginService {
         }
       }
       `,
-      variables: { email, password }
     })
     // .subscribe((data)=>{
     //   console.log(data)

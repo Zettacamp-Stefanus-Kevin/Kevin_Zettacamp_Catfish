@@ -5,9 +5,10 @@
         <h4>menu ini {{recipe.status}}</h4>
     </div>
     <div class="container header">
-
+    
         <section class="title">
-            <h1>{{recipe.recipe_name}}</h1>
+            <h1>{{recipe.recipe_name}} <mat-icon *ngIf="recipe.is_hightlighted === true">thumb_up</mat-icon></h1>
+            <p *ngIf="recipe.is_special_offers.status === true"><mat-icon >star</mat-icon> Special Offers</p>
             <h3>{{"available" | translate }} : {{recipe.remain_order}}</h3>
             <h3>{{"price" | translate }} Rp{{recipe.price.toLocaleString('ID')}}</h3>
             <button mat-button (click)="info(recipe)">{{"detail" | translate }}...</button>
