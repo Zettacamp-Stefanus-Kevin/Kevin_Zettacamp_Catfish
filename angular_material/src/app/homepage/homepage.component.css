@@ -128,3 +128,16 @@ footer > img{
     height: 98%;
     padding: auto;
 }
+
+.addFooter{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: left !important;
+}
+.addFooter>h4{
+    color: #F0A500;
+    text-align: center !important;
+}

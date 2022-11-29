@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { cart } from '../cart';
 import { CartService } from '../cart.service';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -25,7 +26,8 @@ export class CartListComponent implements OnInit {
 
   constructor(
     private cartService: CartService,
-    private router : Router
+    private router : Router,
+    private translate : TranslateService
 
     ) { }
 
@@ -64,16 +66,16 @@ export class CartListComponent implements OnInit {
       if (resp.data.OrderNow.order_status == 'failed') {
         Swal.fire({
           icon: 'error',
-          title: 'pesanan anda pada tanggal ' + resp.data.OrderNow.order_date,
+          title: this.translate.instant("pesanan anda pada tanggal") + resp.data.OrderNow.order_date,
           text: resp.data.OrderNow.order_status,
-          footer: "Sorry, You have Menu Out of Stock"
+          footer: this.translate.instant("Sorry, You have Menu Out of Stock")
         });
         this.data = []
         this.cartService.getCart().refetch()
       } else {
         Swal.fire({
           icon: 'success',
-          title: 'pesanan anda pada tanggal ' + resp.data.OrderNow.order_date,
+          title: this.translate.instant("pesanan anda pada tanggal") + resp.data.OrderNow.order_date,
           text: resp.data.OrderNow.order_status
         });
       }
@@ -82,7 +84,7 @@ export class CartListComponent implements OnInit {
     }, err=>{
       Swal.fire({
         icon: 'error',
-        title: 'Error',
+        title: this.translate.instant("Error"),
         text: err.message
         
       });

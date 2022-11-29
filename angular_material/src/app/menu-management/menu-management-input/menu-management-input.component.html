@@ -47,14 +47,15 @@
                 <!-- <mat-error *ngIf="this.recipeForm.get('price')?.invalid"> This field is required ! </mat-error> -->
             </mat-form-field><br>
 
-            <button mat-raised-button (click)="onRemove(i)">Remove</button>
+            <button class="buttom" type="button" mat-button color="warn" (click)="onRemove(i)">Remove</button>
 
         </div>
-        <button type="button" mat-raised-button color="accent" (click)="addIngredient()">Add ingredient</button>
+        <button  type="button" mat-button color="accent" (click)="addIngredient()">Add ingredient</button>
     </div>
 
-
+    <div class="button">
     <button type="button" mat-raised-button color="warn" (click)="onClick()"> Cancel </button>
     <button type="submit" mat-raised-button color="accent" [disabled]="recipeForm.invalid" (click)="onSubmit()"> Submit </button>
+    </div>
     
 </form>

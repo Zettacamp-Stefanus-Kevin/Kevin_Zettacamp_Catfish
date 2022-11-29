@@ -4,12 +4,12 @@ body {
 }
 
 .header{
-   display: flex;
-   flex-direction: column;
-   width: 50%;
-   margin-right: auto;
-   margin-left: auto;
-}
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+ }
 
 form {
     border: 1px solid #E6B325;
@@ -46,8 +46,7 @@ raise-button {
 .button{
     border-radius: 1rem;
     border: 2px solid #E6B325;
-    color:  #F4F4F4;
-    
+    color:  #F4F4F4;  
 }
 
 ::ng-deep .mat-form-field-label {

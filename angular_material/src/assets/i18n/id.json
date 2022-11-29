@@ -11,6 +11,7 @@
     "password": "Kata Sandi",
     "submit": "Kirim",
     "close" : "Tutup",
+    "register" : "Registrasi",
 
     "addCart": "Tambahkan ke Keranjang",
     "cancel": "Batalkan",
@@ -48,7 +49,36 @@
     "description" : "Deskripsi",
     "highlight" : "Sorotan",
     "addNewMenu" : "Tambah Menu Baru",
-    "addNewIngredient" : "Tambah Bahan Baru"
+    "addNewIngredient" : "Tambah Bahan Baru",
 
+
+
+
+    "Success" : "Berhasil",
+    "Error" : "Error",
+    "Failed" : "Gagal",
+    "Deleted!" : "Dihapus!",
+    "Cancel" : "Batalkan",
     
+    
+    "Welcome to our Restaurant" : "Selamat Datang di Restoran Kami",
+    "Data not Completed" : "Data Belum Lengkap",
+
+    "Try again" : "Coba Lagi",
+    "Did You Forget?" : "EH, kamu lupa ya?",
+    "Your Menu Add to Cart" : "Menu Anda Berhasil Ditambahkan ke Keranjang",
+    "Your Order by Date" : "Pesanan Anda Pada Tanggal",
+    "Sorry, You have Menu Out of Stock" : "Maaf, Menu Anda Habis",
+    "Your work has been saved" : "Kerjaan Anda sudah Tersimpan",
+    "this menu has been deleted": "Menu ini berhasil dihapus",
+    "Are you sure?" : "Apa Kamu Yakin?",
+    "this menu will be permanently deleted!" : "Menu ini akan dihapus secara Permanen!",
+    "Yes, delete now!" : "ya, Hapus Sekarang!",
+    "you have been change status to" : "anda telah mengubah status menjadi",
+    "Are you sure want change this menu to" : "Anda yakin ingin mengubah Menu ",
+    "Yes, exit now" : "Ya, Keluar Sekarang",
+    "are you sure to exit?" : "Anda yakin keluar Sekarang?",
+    "Thank for Coming" : "Terima Kasih Telah Datang"
+
+
 }

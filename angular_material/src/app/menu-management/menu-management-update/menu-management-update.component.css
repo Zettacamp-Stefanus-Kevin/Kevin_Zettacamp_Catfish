@@ -1,19 +1,36 @@
 form {
-    width: 90%;
-    height: 90%;
-    justify-content: center;
-    text-align: center;
-    border: 2px solid;
-    margin: 5px;
-}
-
-.wrapper {
-    justify-content: center;
-    text-align: center;
-    border: 1px solid;
-
-}
-
-.ingredient {
     display: flex;
+    flex-direction: column;
+    border: 2px solid;
+    border-radius: 1rem;
+    padding: 15px;
+    margin: 1px 10px;
+}
+
+.button{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border: 1px solid ;
+    border-radius: 1rem;
+    padding: 15px;
+    align-items: center; 
+}
+
+.ingredient{
+    display: flex;
+    gap: 2rem;
+}
+
+.buttom{
+    height: 80%;
 }

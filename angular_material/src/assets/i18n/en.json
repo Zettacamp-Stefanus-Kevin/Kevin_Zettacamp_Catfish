@@ -11,6 +11,7 @@
     "password": "Password",
     "submit": "Submit",
     "close": "Close",
+    "register" : "Register",
 
     "addCart": "Add to Cart",
     "cancel": "Cancel",
@@ -48,7 +49,35 @@
     "description" : "Description",
     "highlight" : "Highlight",
     "addNewMenu" : "Add New Menu",
-    "addNewIngredient" : "Add New Ingredient"
+    "addNewIngredient" : "Add New Ingredient",
+
+
+
+
+    "Success" :  "Success",
+    "Error" : "Error",
+    "Failed" : "Failed" ,
+    "Deleted!" : "Deleted!",
+    "Cancel" : "Cancel",
+    
+    "Welcome to our Restaurant" : "Selamat Datang di Restoran Kami",
+    "Data not Completed" : "Data Belum Lengkap",
+
+    "Try again" : "Try again",
+    "Did You Forget?" : "Did You Forget?",
+    "Your Menu Add to Cart" : "Your Menu Add to Cart",
+    "Your Order by Date" : "Your Order by Date",
+    "Sorry, You have Menu Out of Stock" : "Sorry, You have Menu Out of Stock",
+    "Your work has been saved" : "Your work has been saved",
+    "this menu has been deleted": "This Menu has Been Deleted",
+    "Are you sure?" : "Are you sure?",
+    "this menu will be permanently deleted!" : "this menu will be permanently deleted!",
+    "Yes, delete now!" : "Yes, delete now!",
+    "you have been change status to" : "you have been change status to",
+    "Are you sure want change this menu to" : "Are you sure want change this menu to",
+    "Yes, exit now" : "Yes, exit now",
+    "are you sure to exit?" : "are you sure to exit?",
+    "Thank for Coming" : "Thank for Coming"
 
 
 }

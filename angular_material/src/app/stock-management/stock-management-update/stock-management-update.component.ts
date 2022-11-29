@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { TranslateService } from '@ngx-translate/core';
 import Swal from 'sweetalert2'
 import { stock } from '../stock';
 import { StockManagementService } from '../stock-management.service';
@@ -18,6 +19,7 @@ export class StockManagementUpdateComponent implements OnInit {
   constructor(private stockService: StockManagementService,
     public dialog: MatDialogRef<StockManagementUpdateComponent>,
     @Inject(MAT_DIALOG_DATA) public stock: stock ,
+    private translate : TranslateService
   ) { }
 
   ngOnInit(): void {
@@ -42,8 +44,8 @@ export class StockManagementUpdateComponent implements OnInit {
       console.log('gagal');
       Swal.fire({
         icon: 'error',
-        title: 'Failed',
-        text: 'Try again',
+        title: this.translate.instant("Failed"),
+        text: this.translate.instant("Try again"),
       });
 
       this.stockForm.markAllAsTouched();

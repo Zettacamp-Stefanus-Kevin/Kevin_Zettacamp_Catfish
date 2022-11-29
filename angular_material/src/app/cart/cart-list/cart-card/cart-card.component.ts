@@ -3,6 +3,7 @@ import { CartService } from '../../cart.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CartUpdateComponent } from '../../cart-update/cart-update.component';
 import Swal from 'sweetalert2';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-cart-card',
@@ -15,6 +16,7 @@ export class CartCardComponent implements OnInit {
 
   constructor(private cartService: CartService,
     private dialog: MatDialog,
+    private translate : TranslateService
   ) { }
 
   ngOnInit(): void {
@@ -59,8 +61,8 @@ export class CartCardComponent implements OnInit {
       })
         Swal.fire({
           icon: 'success',
-          title: 'Success',
-          text: 'Your work has been saved',
+          title: this.translate.instant("Success"),
+          text: this.translate.instant("Your work has been saved"),
         });
         this.init()
       console.log('The dialog was closed');

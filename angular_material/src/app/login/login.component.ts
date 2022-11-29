@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { LoginService } from './login.service';
 import { SubSink } from 'subsink';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login',
@@ -16,19 +17,27 @@ export class LoginComponent implements OnInit {
   private subs = new SubSink();
 
   loginForm: any = new FormGroup({
-    email: new FormControl(null, Validators.required),
-    password: new FormControl(null, Validators.required)
+    email: new FormControl(null, [Validators.required,Validators.email]),
+    password: new FormControl(null,[Validators.required])
   });
 
   constructor(
     private router: Router,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private translate : TranslateService,
   ) { }
   
   ngOnInit(): void {
-    localStorage.setItem('getToken', '');
-        localStorage.setItem('userData', '');
-        localStorage.setItem('name', '');
+    // localStorage.setItem('getToken', '');
+    //     localStorage.setItem('userData', '');
+    //     localStorage.setItem('name', '');
+  }
+
+  getErrorMessage() {
+    if (this.loginForm.get('email').hasError('required')) {
+      return 'You must input your email';
+    }
+    return this.loginForm.get('email').hasError('email') ? 'Not a valid email' : '';
   }
 
   onSubmit(loginForm: any) {
@@ -57,8 +66,8 @@ export class LoginComponent implements OnInit {
 
         Swal.fire({
           icon: 'success',
-          title: "Hello " + data?.data?.Login?.first_name,
-          text: 'Welcome to our Restaurant' 
+          title: this.translate.instant("hello") + data?.data?.Login?.first_name,
+          text:  this.translate.instant("Welcome to our Restaurant")
           
         }).then(()=>{
           this.router.navigate(['homepage']).then(() => {
@@ -72,8 +81,8 @@ export class LoginComponent implements OnInit {
       console.log('gagal');
       Swal.fire({
         icon: 'error',
-        title: "Error",
-        text: "Data not Completed",
+        title: this.translate.instant("Error"),
+        text: this.translate.instant("Data not Completed")
       });
     }
   }

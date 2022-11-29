@@ -5,6 +5,7 @@ import { menu } from '../menu';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import Swal from 'sweetalert2'
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-menu-management-update',
@@ -17,11 +18,10 @@ export class MenuManagementUpdateComponent implements OnInit {
 
   ingredients: any = []
   
-
-
   constructor(private menuService: MenuManagementService,
     private stockService: StockManagementService,
     public dialog: MatDialogRef<MenuManagementUpdateComponent>,
+    private translate : TranslateService,
     @Inject(MAT_DIALOG_DATA) public menu: any,
   ) { }
 
@@ -32,9 +32,6 @@ export class MenuManagementUpdateComponent implements OnInit {
       'price': new FormControl(null, [Validators.required]),
       'ingredients': new FormArray([])
     })
-
-
-    
 
     this.menuService.getIngredient().subscribe((val: any) => {
       this.ingredients = val.data.GetAllIngredients.data
@@ -51,25 +48,19 @@ export class MenuManagementUpdateComponent implements OnInit {
 
     if (this.menu?.ingredients) {
       for(let ingredient of this.menu?.ingredients) {
-        
         ingredients.push({
           ingredient_id: ingredient.ingredient_id,
           stock_used: ingredient.stock_used,
         })
         this.addIngredient();
       }
-    
       const temp = {
         ...tempIngeridient,
         ingredients: ingredients,
       };
       console.log(temp);
-      
-
       this.recipeForm.patchValue(temp);
     }
-
-
   }
 
   addIngredient() {
@@ -77,7 +68,6 @@ export class MenuManagementUpdateComponent implements OnInit {
       ingredient_id: new FormControl(null,),
       stock_used: new FormControl(null,),
     });
-
     (<FormArray>this.recipeForm.get('ingredients')).push(item)
   }
 
@@ -107,13 +97,17 @@ export class MenuManagementUpdateComponent implements OnInit {
       console.log('gagal');
       Swal.fire({
         icon: 'error',
-        title: 'Failed',
-        text: 'Try again',
+        title: this.translate.instant("Failed"),
+        text: this.translate.instant("Try again"),
         confirmButtonAriaLabel : "OK"
       });
 
       this.recipeForm.markAllAsTouched();
     }
+  }
+  
+  onRemove(data : any){
+    
   }
 
 }

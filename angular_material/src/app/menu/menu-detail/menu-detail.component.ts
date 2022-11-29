@@ -4,6 +4,7 @@ import { MenuService } from '../menu.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
 import { menu } from '../menu';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -17,6 +18,7 @@ export class MenuDetailComponent implements OnInit {
 
   constructor(private menuService: MenuService,
     public dialog: MatDialogRef<MenuDetailComponent>,
+    private translate : TranslateService,
     @Inject(MAT_DIALOG_DATA) public menu: menu,
   ) { }
 
@@ -42,14 +44,14 @@ export class MenuDetailComponent implements OnInit {
         this.detailForm.value
         Swal.fire({
           icon: 'success',
-          title: 'Success',
-          text: 'Your Menu Add to Cart',
+          title: this.translate.instant("Success"),
+          text: this.translate.instant("Your Menu Add to Cart"),
         });
         this.dialog.close();
       },err=>{
         Swal.fire({
           icon: 'error',
-          title: 'EH, kamu lupa ya?',
+          title: this.translate.instant("EH, kamu lupa ya?"),
           text: err.message,
         });
       }
@@ -59,8 +61,8 @@ export class MenuDetailComponent implements OnInit {
     } else {
       Swal.fire({
         icon: 'error',
-        title: 'Failed',
-        text: 'Try again',
+        title: this.translate.instant("Failed"),
+        text: this.translate.instant("Try again"),
       });
       this.detailForm.markAllAsTouched();
     }

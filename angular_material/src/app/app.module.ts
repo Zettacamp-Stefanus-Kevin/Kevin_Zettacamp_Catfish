@@ -12,10 +12,12 @@ import { CartModule } from './cart/cart.module';
 import { AboutModule } from './about/about.module';
 import { StockManagementModule } from './stock-management/stock-management.module';
 import { MenuManagementModule } from './menu-management/menu-management.module';
+
 import { GraphQLModule } from './graphql.module';
 import { HttpClient, HttpClientModule  } from '@angular/common/http'; 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { RegisterModule } from './register/register.module';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
     AngularMaterialModule,
     HomepageModule,
     LoginModule,
+    RegisterModule,
     MenuModule,
     CartModule,
     AboutModule,

@@ -1,4 +1,3 @@
-<p>stock-management-update works!</p>
 
 
 <form mat-dialog-content [formGroup]="stockForm" (ngSubmit)="onSubmit()">
@@ -15,7 +14,8 @@
         <mat-error *ngIf="this.stockForm.get('stock')?.invalid"> This field is required !</mat-error>
     </mat-form-field><br>
 
-
+    <div class="button">
     <button type="button" mat-raised-button color="warn" (click)="onClick()"> Cancel </button>
     <button type="submit" mat-raised-button color="accent" [disabled]="stockForm.invalid"> Submit </button>
+    </div>
 </form>

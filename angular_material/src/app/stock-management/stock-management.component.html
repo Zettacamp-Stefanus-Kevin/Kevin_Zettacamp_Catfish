@@ -5,7 +5,8 @@
         <button class="add" mat-raised-button color="primary" (click)="openDialog()"> {{"addNewIngredient" | translate }}  </button>
     </div>
 
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" [fixedLayout]="true">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8"  [fixedLayout]="true">
+        <!-- matSort (matSortChange)="sortData($event)" -->
 
         <!--- Note that these columns can be defined in any order.
             The actual rendered columns are set as a property on the row definition" -->
@@ -55,13 +56,14 @@
             <td mat-cell *matCellDef="let element">
                 <mat-list class="actions-button">
                     <mat-list-item>
-                        <button mat-flat-button color="primary" matTooltip="Edit">
-                            <mat-icon (click)="onEdit(element)">edit</mat-icon>
+                        <button mat-flat-button color="primary" matTooltip="Edit" (click)="onEdit(element)">
+                            <mat-icon>edit</mat-icon>
                         </button>
                     </mat-list-item>
                     <mat-list-item>
-                        <button mat-flat-button color="warn" matTooltip="Delete">
-                            <mat-icon (click)="onClick(element.id)">delete</mat-icon>
+                        <button mat-flat-button color="warn" matTooltip="Delete" (click)="onClick(element.id)"
+                        [disabled]="element.status == 'deleted'">
+                            <mat-icon >delete</mat-icon>
                         </button>
                     </mat-list-item>
                 </mat-list>

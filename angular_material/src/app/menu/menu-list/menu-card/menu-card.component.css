@@ -18,11 +18,13 @@
     width: 60%;
     padding: 1rem;
     justify-content: center;
+    display: flex;
 }
 
 .pict {
     width: 100%;
     height: 200px;
+    border-radius: 2rem;
 }
 
 .title {
@@ -92,5 +94,21 @@ button {
     color: #F0A500;
 }
 
+.SO{
+    position: absolute;
+    z-index: 1;
+    /* background-image: url(https://www.pngplay.com/wp-content/uploads/7/Discount-Free-PNG.png); */
+}
+.soImg{
+    position: absolute;
+    z-index: 1;
+    width: 15% !important;
+    height: 200px;
+    /* margin-left: -450px; */
+    /* filter: grayscale(90%) */
+}
 
+.PD{
+    display: flex;
+}
 

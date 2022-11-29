@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { TranslateService } from '@ngx-translate/core';
 import Swal from 'sweetalert2';
 import { CartService } from '../cart.service';
 import { menutrans } from '../menutrans';
@@ -16,6 +17,7 @@ export class CartUpdateComponent implements OnInit {
 
   constructor(private cartService: CartService,
     public dialog: MatDialogRef<CartUpdateComponent>,
+    private translate : TranslateService,
     @Inject(MAT_DIALOG_DATA) public cart: any) { }
 
   ngOnInit(): void {
@@ -44,8 +46,8 @@ export class CartUpdateComponent implements OnInit {
     } else {
       Swal.fire({
         icon: 'error',
-        title: 'Failed',
-        text: 'Try again',
+        title: this.translate.instant("Failed"),
+        text: this.translate.instant("Try again"),
       });
       this.noteForm.markAllAsTouched();
     }

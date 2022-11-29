@@ -201,11 +201,11 @@ export class MenuManagementService {
 
   updateSPrice(data: any) {
     let updateRecipesId = data.id
-    let isSpecialOffers = data.is_special_offers
+    let isSpecialOffers = data.is_special_offers.status
     return this.apolo.mutate({
       mutation: gql
         `
-      mutation update($updateRecipesId: ID,  $isSpecialOffers: Boolean) {
+      mutation update($updateRecipesId: ID,  $isSpecialOffers: special_offers_input)) {
         UpdateRecipes(id: $updateRecipesId,  is_special_offers: $isSpecialOffers) {
           id
           is_special_offers
@@ -213,7 +213,7 @@ export class MenuManagementService {
       }
       
       `,
-      variables: { updateRecipesId, isSpecialOffers}
+      variables: { updateRecipesId, is_special_offers : isSpecialOffers}
     })
   }
 

@@ -10,6 +10,7 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import Swal from 'sweetalert2';
 import copy from 'fast-copy';
 import { FormControl } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 
 export interface status{
   value : string;
@@ -31,7 +32,8 @@ export class MenuManagementComponent implements OnInit {
   dataSource = new MatTableDataSource([])
 
   constructor(private menuService: MenuManagementService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private translate : TranslateService
   ) { }
 
   ngOnInit(): void {
@@ -63,15 +65,15 @@ export class MenuManagementComponent implements OnInit {
 
   openDialog() {
     const dialogRef = this.dialog.open(MenuManagementInputComponent, {
-      width: '100%', height: '100%'
+      width: '100%', height: '75%'
     });
 
     dialogRef.afterClosed().subscribe(result => {
       this.menuService.addRecipe(result).subscribe(() => {
         Swal.fire({
           icon: 'success',
-          title: 'Success',
-          text: 'Your work has been saved',
+          title: this.translate.instant("Success"),
+          text: this.translate.instant("Your work has been saved"),
         });
         this.init(true)
       })
@@ -92,7 +94,7 @@ export class MenuManagementComponent implements OnInit {
     console.log(bebas);
 
     const dialogRef = this.dialog.open(MenuManagementUpdateComponent, {
-      width: '100%', height: '100%',
+      width: '100%', height: '75%',
       data: bebas || null
     });
 
@@ -107,20 +109,21 @@ export class MenuManagementComponent implements OnInit {
 
   onDelete(parameter: any) {
     Swal.fire({
-      title: 'Are you sure?',
-      text: "this menu will be permanently deleted!",
       icon: 'warning',
+      title: this.translate.instant("Are you sure?"),
+      text: this.translate.instant("this menu will be permanently deleted!"),
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete now!'
+      confirmButtonText: this.translate.instant("Yes, delete now!"),
+      cancelButtonText: this.translate.instant("Cancel")
     }).then((result: any) => {
       if (result.isConfirmed) {
         this.menuService.deleteRecipe(parameter).subscribe(resp => {
           Swal.fire({
-            title: 'Deleted!',
-            text: "this menu has been deleted",
             icon: 'success',
+            title: this.translate.instant("Deleted!"),
+            text: this.translate.instant("this menu has been deleted"),
           })
           this.init(true)
         })
@@ -153,7 +156,7 @@ export class MenuManagementComponent implements OnInit {
       if (result.isConfirmed) {
         this.menuService.updatepublish(check).subscribe(() => {
           Swal.fire({
-            title: 'you have been change status to ' + check.status
+            title: this.translate.instant("you have been change status to") + check.status
           })
           this.init(true)
         })
@@ -169,7 +172,7 @@ export class MenuManagementComponent implements OnInit {
       check.is_hightlighted = true
     }
     Swal.fire({
-      title: 'Are you sure want change this menu to ' + check.is_hightlighted + '?',
+      title: this.translate.instant("Are you sure want change this menu to") + check.is_hightlighted + '?',
       showDenyButton: false,
       showCancelButton: true,
       showConfirmButton: true,
@@ -178,7 +181,7 @@ export class MenuManagementComponent implements OnInit {
       if (result.isConfirmed) {
         this.menuService.updateHighlight(check).subscribe(() => {
           Swal.fire({
-            title: 'you have been change status to ' + check.is_hightlighted
+            title: this.translate.instant("you have been change status to") + check.is_hightlighted
           })
           this.init(true)
         })
@@ -194,7 +197,7 @@ export class MenuManagementComponent implements OnInit {
       check.is_special_offers.status  = true
     }
     Swal.fire({
-      title: 'Are you sure want change this menu to ' + check.is_special_offers.status  + '?',
+      title: this.translate.instant("Are you sure want change this menu to") + check.is_special_offers.status  + '?',
       showDenyButton: false,
       showCancelButton: true,
       showConfirmButton: true,
@@ -203,7 +206,7 @@ export class MenuManagementComponent implements OnInit {
       if (result.isConfirmed) {
         this.menuService.updateSPrice(check).subscribe(() => {
           Swal.fire({
-            title: 'you have been change status to ' + check.is_special_offers.status 
+            title: this.translate.instant("you have been change status to") + check.is_special_offers.status 
           })
           this.init(true)
         })

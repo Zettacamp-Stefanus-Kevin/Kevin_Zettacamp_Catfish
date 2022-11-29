@@ -10,6 +10,8 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import Swal from 'sweetalert2';
 import { FormControl } from '@angular/forms';
 import { debounceTime } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
+import {Sort} from '@angular/material/sort';
 
 export interface status{
   value : string;
@@ -28,10 +30,42 @@ export class StockManagementComponent implements OnInit {
   displayedColumns: string[] = ['nama', 'stock', 'status', 'actions'];
   dataSource = new MatTableDataSource
 
+
+
   constructor(
     private stockService: StockManagementService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private translate : TranslateService,
   ) { }
+
+  
+
+  // sortData(sort: Sort) {
+  //   const data = this.displayedColumns.slice();
+  //   if (!sort.active || sort.direction === '') {
+  //     this.stock = data;
+  //     return;
+  //   }
+
+  //   this.stock = data.sort((a, b) => {
+  //     const isAsc = sort.direction === 'asc';
+  //     switch (sort.active) {
+  //       case 'name':
+  //         return compare(a.name, b.name, isAsc);
+  //       case 'calories':
+  //         return compare(a.calories, b.calories, isAsc);
+  //       case 'fat':
+  //         return compare(a.fat, b.fat, isAsc);
+  //       case 'carbs':
+  //         return compare(a.carbs, b.carbs, isAsc);
+  //       case 'protein':
+  //         return compare(a.protein, b.protein, isAsc);
+  //       default:
+  //         return 0;
+  //     }
+  //   });
+  // }
+
 
   ngOnInit(): void {
     this.init(this.paginator)
@@ -61,7 +95,7 @@ export class StockManagementComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(StockManagementInputComponent, {
-      width: '50%', height: '50%'
+      width: '30%', height: '40%'
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -69,8 +103,8 @@ export class StockManagementComponent implements OnInit {
       console.log('berhasil');
       Swal.fire({
         icon: 'success',
-        title: 'Success',
-        text: 'Your work has been saved',
+        title: this.translate.instant("Success"),
+        text: this.translate.instant("Your work has been saved"),
       });
       this.init(this.paginator)
       console.log('The dialog was closed');
@@ -97,8 +131,8 @@ export class StockManagementComponent implements OnInit {
       console.log('berhasil');
       Swal.fire({
         icon: 'success',
-        title: 'Success',
-        text: 'Your work has been saved',
+        title: this.translate.instant("Success"),
+        text: this.translate.instant("Your work has been saved"),
       });
       this.init(this.paginator)
       console.log('The dialog was closed');
@@ -167,5 +201,7 @@ export class StockManagementComponent implements OnInit {
     }
     this.init(pagination)
   }
+
+  
 
 }

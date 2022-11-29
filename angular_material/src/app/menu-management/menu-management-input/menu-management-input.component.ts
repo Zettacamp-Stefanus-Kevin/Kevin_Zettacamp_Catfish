@@ -5,6 +5,7 @@ import { menu } from '../menu';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import Swal from 'sweetalert2'
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-menu-management-input',
@@ -18,7 +19,8 @@ export class MenuManagementInputComponent implements OnInit {
   ingredients: any
 
   constructor(private menuService: MenuManagementService,
-    public dialog: MatDialogRef<MenuManagementInputComponent>
+    public dialog: MatDialogRef<MenuManagementInputComponent>,
+    private translate : TranslateService
     ) { }
 
   ngOnInit(): void {
@@ -63,8 +65,8 @@ export class MenuManagementInputComponent implements OnInit {
     } else {
       Swal.fire({
         icon: 'error',
-        title: 'Failed',
-        text: 'Try again',
+        title: this.translate.instant("Failed"),
+        text: this.translate.instant("Try again"),
       });
       this.recipeForm.markAllAsTouched();
     }
