@@ -6,7 +6,7 @@
         <h3 style="color: #F4F4F4;">Log in to your account </h3><br>
     </div>
 
-    <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+    <form class="form" [formGroup]="loginForm">
         <mat-form-field appearance="outline">
             <mat-label>
                 <mat-icon> mail_outline</mat-icon> {{"email" | translate }}
@@ -25,8 +25,8 @@
         </mat-form-field><br>
 
         <div class="footer">
+            <button mat-button class="button"  (click)="onSubmit(loginForm.value)">Log in<mat-icon>keyboard_return</mat-icon></button>
             <button mat-button class="button" routerLink="../register">{{"register" | translate }} </button>
-            <button mat-button class="button">Log in<mat-icon>keyboard_return</mat-icon></button>
         </div>
     </form>
 </body>

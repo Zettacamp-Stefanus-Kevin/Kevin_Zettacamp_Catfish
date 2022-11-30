@@ -156,7 +156,7 @@ export class MenuManagementComponent implements OnInit {
       if (result.isConfirmed) {
         this.menuService.updatepublish(check).subscribe(() => {
           Swal.fire({
-            title: this.translate.instant("you have been change status to") + check.status
+            title: this.translate.instant("you have been change status to ") + check.status
           })
           this.init(true)
         })
@@ -172,7 +172,7 @@ export class MenuManagementComponent implements OnInit {
       check.is_hightlighted = true
     }
     Swal.fire({
-      title: this.translate.instant("Are you sure want change this menu to") + check.is_hightlighted + '?',
+      title: this.translate.instant("Are you sure want change this menu to ") + check.is_hightlighted + '?',
       showDenyButton: false,
       showCancelButton: true,
       showConfirmButton: true,
@@ -181,7 +181,7 @@ export class MenuManagementComponent implements OnInit {
       if (result.isConfirmed) {
         this.menuService.updateHighlight(check).subscribe(() => {
           Swal.fire({
-            title: this.translate.instant("you have been change status to") + check.is_hightlighted
+            title: this.translate.instant("you have been change status to ") + check.is_hightlighted
           })
           this.init(true)
         })
@@ -197,7 +197,7 @@ export class MenuManagementComponent implements OnInit {
       check.is_special_offers.status  = true
     }
     Swal.fire({
-      title: this.translate.instant("Are you sure want change this menu to") + check.is_special_offers.status  + '?',
+      title: this.translate.instant("Are you sure want change this menu to ") + check.is_special_offers.status  + '?',
       showDenyButton: false,
       showCancelButton: true,
       showConfirmButton: true,
@@ -206,7 +206,7 @@ export class MenuManagementComponent implements OnInit {
       if (result.isConfirmed) {
         this.menuService.updateSPrice(check).subscribe(() => {
           Swal.fire({
-            title: this.translate.instant("you have been change status to") + check.is_special_offers.status 
+            title: this.translate.instant("you have been change status to ") + check.is_special_offers.status 
           })
           this.init(true)
         })

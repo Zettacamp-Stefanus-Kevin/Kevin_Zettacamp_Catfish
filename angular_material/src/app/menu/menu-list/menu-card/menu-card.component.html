@@ -26,16 +26,16 @@
             </div>
             <img class="pict" *ngIf="recipe.remain_order > 0" [src]="recipe.image" alt="Menu_makanan">
             <div *ngIf="recipe.remain_order === 0">
-                <img class="pict" [src]="recipe.image" alt="Menu_makanan">
+                <img class="pict" [src]="recipe.image" alt="Menu_makanan" style="filter: grayscale(90%)" >
                 <img class="pict front" src="https://www.nicepng.com/png/full/202-2025134_sold-out-transparent.png"
                     alt="Menu_makanan">
             </div>
         </div>
     </div>
-    <div class="text">
+    <!-- <div class="text">
         {{recipe.description}}
 
-    </div>
+    </div> -->
     <div class="container footer">
 
         <button mat-button (click)="addCart(recipe)" [disabled]="recipe.remain_order === 0">

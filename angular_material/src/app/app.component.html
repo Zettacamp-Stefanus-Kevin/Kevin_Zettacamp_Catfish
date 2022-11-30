@@ -31,8 +31,14 @@
     <div class="wrap">
 
       <mat-select [(value)]="selectedLang" #lang (valueChange)="setLanguage(lang.value)">
-        <mat-option value="en" class="option"><img src="../assets/pictures/EN.png">EN</mat-option>
-        <mat-option value="id" class="option"><img src="../assets/pictures/ID.png">ID</mat-option>
+        <mat-option value="en" class="option">
+          <!-- <img src="../assets/pictures/EN.png"> -->
+          EN
+        </mat-option>
+        <mat-option value="id" class="option">
+          <!-- <img src="../assets/pictures/ID.png"> -->
+          ID
+        </mat-option>
       </mat-select>
       <a mat-button class="cart" routerLink="/cart" *ngIf="token" routerLinkActive="active" matTooltip="Cart">
         <mat-icon matBadge="{{cartLength}}" matBadgeColor="warn">shopping_cart</mat-icon>
@@ -50,9 +56,10 @@
         <div>{{name}}</div>
       </a>
       <mat-menu #menu="matMenu">
-        <button class="buttom" mat-menu-item routerLink="/profil" routerLinkActive="active" *ngIf="token">Profil</button>
-        <button class="buttom" mat-menu-item routerLinkActive="active" *ngIf="token"
-          (click)="onLogout()">{{"logout" | translate }}</button>
+        <button class="buttom" mat-menu-item routerLink="/profil" routerLinkActive="active"
+          *ngIf="token">Profil</button>
+        <button class="buttom" mat-menu-item routerLinkActive="active" *ngIf="token" (click)="onLogout()">{{"logout" |
+          translate }}</button>
       </mat-menu>
     </div>
 

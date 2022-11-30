@@ -15,7 +15,7 @@
         <button  mat-button color="primary" routerLink="../../list"> 
             {{"continueShopping" | translate }}
         </button>
-        <button mat-button (click)="orderMenu(order_id)">
+        <button mat-button (click)="orderMenu(order_id)" *ngIf="cart">
             {{"orderMenu" | translate }}
         </button>
     </mat-card-actions>

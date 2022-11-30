@@ -29,6 +29,7 @@ export class AppComponent {
 
   ngOnInit() {
     this.init();
+    this.getBadge();
 
   }
 
@@ -71,9 +72,11 @@ export class AppComponent {
     this.translate.use(lang);
   }
 
+
   getBadge() {
     this.subs.sink = this.cartService.getCart().valueChanges.subscribe((item: any) => {
-      this.cartLength = item.data.GetOrder.menu.length
+      this.cartLength = item?.data?.GetOrder?.menu.length
+      console.log(item);
     });
     console.log(this.cartLength);
   }

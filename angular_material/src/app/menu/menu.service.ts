@@ -45,7 +45,6 @@ export class MenuService {
   // }
 
   getMenu(pagination: any): Observable<any> {
-    
     return this.apolo.query({
       query: gql`
       query Query($page: Int, $limit: Int, $recipeName: String) {

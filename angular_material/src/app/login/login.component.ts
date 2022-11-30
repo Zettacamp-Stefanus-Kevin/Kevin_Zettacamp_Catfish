@@ -43,9 +43,9 @@ export class LoginComponent implements OnInit {
   onSubmit(loginForm: any) {
     if (this.loginForm.valid) {
       this.subs.sink = this.loginService.getToken(loginForm).subscribe((data) => {
-        this.loginService.getToken(this.loginForm.value).subscribe((data)=>{
+        // this.loginService.getToken(this.loginForm.value).subscribe((data)=>{
 
-        })
+        // })
         let adminToken: any
         let role: any
         let name : any
@@ -75,7 +75,14 @@ export class LoginComponent implements OnInit {
           })
         });
        
-      })
+      },err=>{
+        Swal.fire({
+          icon: 'error',
+          title: this.translate.instant("Error"),
+          text: err.message
+        });
+      }
+      )
 
     } else {
       console.log('gagal');

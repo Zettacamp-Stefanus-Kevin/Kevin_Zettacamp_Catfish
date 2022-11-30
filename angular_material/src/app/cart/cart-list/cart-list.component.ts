@@ -77,10 +77,13 @@ export class CartListComponent implements OnInit {
           icon: 'success',
           title: this.translate.instant("pesanan anda pada tanggal") + resp.data.OrderNow.order_date,
           text: resp.data.OrderNow.order_status
-        });
-      }
+        }).then(()=>{
+          this.router.navigate(["cart"]).then(()=>{
+            window.location.reload()
+          })
+        })  
+      }   
       
-      this.cartService.getCart().refetch()
     }, err=>{
       Swal.fire({
         icon: 'error',

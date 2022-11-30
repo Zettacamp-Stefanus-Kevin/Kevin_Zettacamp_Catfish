@@ -14,7 +14,6 @@ html {
 }
 
 .add {
-
     margin-left: auto;
     /* background-color:#F0A500 ; */
     color: #F0A500;
@@ -26,7 +25,6 @@ table {
     margin-right: auto;
     background-color: #F4F4F4;
     margin-bottom: 250px;
-
 }
 
 .actions-button {

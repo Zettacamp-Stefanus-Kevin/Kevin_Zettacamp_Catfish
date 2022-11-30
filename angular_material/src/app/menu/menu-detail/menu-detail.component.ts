@@ -23,6 +23,10 @@ export class MenuDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.init()
+  }
+
+  init(){
     let data = Number(this.menu.remain_order)
     
     this.detailForm = new FormGroup({
@@ -54,6 +58,7 @@ export class MenuDetailComponent implements OnInit {
           title: this.translate.instant("EH, kamu lupa ya?"),
           text: err.message,
         });
+        this.init();
       }
       );
       console.log(this.detailForm.value);
@@ -64,11 +69,10 @@ export class MenuDetailComponent implements OnInit {
         title: this.translate.instant("Failed"),
         text: this.translate.instant("Try again"),
       });
+      this.init();
       this.detailForm.markAllAsTouched();
     }
-
   }
-
   onClick() {
     this.dialog.close();
   }

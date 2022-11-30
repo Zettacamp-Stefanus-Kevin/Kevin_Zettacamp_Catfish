@@ -7,7 +7,7 @@ import { HttpHeaders } from '@angular/common/http';
 // const uri = environment?.apiUrl; // <-- add the URL of the GraphQL server here
 // const token: any = localStorage?.getItem('token');
 // const uri = 'https://9577-103-236-192-220.ap.ngrok.io/graphql'
-const uri = 'https://6834-103-236-192-220.ap.ngrok.io/graphql'// <-- add the URL of the GraphQL server here
+const uri = 'https://lazy-blue-moose-yoke.cyclic.app/'// <-- add the URL of the GraphQL server here
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
   const http = httpLink.create({ uri });
   const authLink = new ApolloLink((operation, forward) => {

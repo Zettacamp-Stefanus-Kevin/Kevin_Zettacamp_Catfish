@@ -43,9 +43,13 @@ color: #F4F4F4;
     color: #E6B325;
 }
 
+.change{
+  width: auto;
+}
 .change.active {
     color: #E6B325 !important;
     border: 1px solid #E6B325;
+    padding: auto;
   }
 
 

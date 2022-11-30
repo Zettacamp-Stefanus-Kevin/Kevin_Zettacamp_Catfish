@@ -22,6 +22,7 @@ export class RoleGuard implements CanActivate {
     if (role == "admin") {
       return true;
     }else {
+      this.router.navigate(['homepage']);
       return false;
     }
   }

@@ -7,7 +7,7 @@
         </button>
     </div>
 
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" [fixedLayout]="true">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
         <!--- Note that these columns can be defined in any order.
             The actual rendered columns are set as a property on the row definition" -->
@@ -73,7 +73,7 @@
 
         <!-- Price Column -->
         <ng-container matColumnDef="price">
-            <th mat-header-cell *matHeaderCellDef> {{"price" | translate }} </th>
+            <th mat-header-cell *matHeaderCellDef> {{"price" | translate }}<br> </th>
             <td mat-cell *matCellDef="let element"> {{element.total_price}} </td>
         </ng-container>
 
