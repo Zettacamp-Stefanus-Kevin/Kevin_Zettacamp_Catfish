@@ -1,87 +1,58 @@
 <header class="header">
     <div class="header_caption">
-        <h1 class="text">PRAEDULCIS<h4 class="text">Western Restaurant</h4>
+        <h1 class="text">PRAEDULCIS
+            <h4 class="text">Western Restaurant</h4>
         </h1>
 
     </div>
 </header>
 
+<section>
+
+</section>
+
 <body>
     <section class="par1">
-        <h1>Our Menu</h1>
-        <p>Organic Greens. Naturally raised and hormone-free meats. Non-GMO cooking oils. Cuban food is one of the most
-            flavorful cuisines in the world, but at Havana Grill we believe it should be healthy too. Havana Grill
-            combines traditional, flavorful Cuban cuisine with the purest and most natural ingredients we can find to
-            create food that is not only delicious and flavorful but also good for you. Our goal is to create authentic
-            Cuban cuisine that is organic and locally sourced whenever possible. It's comfort food with a conscience.
-        </p>
-        <button routerLink="/menu" routerLinkActive="active">Order Here</button>
+        <div class="carousel">
+            <h1>Our Highlight</h1>
+            <carousel [height]="350" [width]="600" cellWidth='100%' [loop]="true" [autoplay]="true"
+                [autoplayInterval]="2000" [images]="images2">
+                <div #cell class="carousel-cell" *ngFor="let img of images">
+                    <h3>{{img.recipe_name}}</h3>
+                    <img class="imge" src="{{img.image}}">
+                </div>
+            </carousel>
+        </div>
+
+        <div class="about">
+            <h1>About</h1>
+            <p>Organic Greens. Naturally raised and hormone-free meats. Non-GMO cooking oils. Cuban food is one of the
+                most
+                flavorful cuisines in the world, but at Havana Grill we believe it should be healthy too. Havana Grill
+                combines traditional, flavorful Cuban cuisine with the purest and most natural ingredients we can find
+                to
+                create food that is not only delicious and flavorful but also good for you. Our goal is to create
+                authentic
+                Cuban cuisine that is organic and locally sourced whenever possible. It's comfort food with a
+                conscience.
+            </p>
+            <button routerLink="/menu" routerLinkActive="active">Order Here</button>
+        </div>
     </section>
 
     <section class="pict">
         <h1>Special Price</h1>
         <div class="wrapper">
-
-            <div class="card"><img
-                    src="http://cdn.cnn.com/cnnnext/dam/assets/171005130059-cambodia-cuisine-fine-dining-embassy-sticky-rice-balls.jpg">
+            <!-- <div *ngFor="let get of deals"> </div> -->
+            <div class="card" *ngFor="let disc of diskon">
+                <img class="imge" [src]="disc.image" alt="" style="position: absolute;">
+                <h2 style="position: relative; text-decoration: line-through;">Price : {{disc.price|currency:'Rp '}}</h2>
             </div>
+            <!-- <h2 style="position: relative;">Price : {{get.is_special_offers.discount|currency:'Rp '}}</h2> -->
 
-            <div class="card"><img
-                    src="https://www.theakyra.com/files/2915/2874/0146/Fine_Dining_Restaurants_Chiang_Mai.jpg"> </div>
-
-            <div class="card"><img
-                    src="https://chefstableware.co.uk/wp-content/uploads/2016/03/untitled-3-of-102-1024x682.jpg"> </div>
-
-            <div class="card"><img
-                    src="https://images.squarespace-cdn.com/content/v1/54e4aef0e4b002fddcd4baa2/1567605336212-JYZVN2620PIQTL2S95BI/DSC_0359.jpg">
-            </div>
-
-            <div class="card"><img
-                    src="https://www.visitmelbourne.com/-/media/images/daylesford-and-the-macedon-ranges/food-and-wine/restaurants-and-cafes/lake-house-dining_dmr_r_1453161_1150x863.jpg?ts=20150828300225 ">
-            </div>
-
-            <div class="card"><img src="https://i.pinimg.com/originals/dc/0a/59/dc0a59145f03824ae69e357398b9c77f.jpg">
-            </div>
         </div>
+        <mat-paginator  #paginator (page)="onPagination($event)" [pageSizeOptions]="[3]" aria-label="Select page"></mat-paginator>
     </section>
-
-    <section class="pict">
-        <h1>Favorite in Praedulcis</h1>
-        <div class="wrapper">
-
-            <div class="card"><img
-                    src="http://cdn.cnn.com/cnnnext/dam/assets/171005130059-cambodia-cuisine-fine-dining-embassy-sticky-rice-balls.jpg">
-            </div>
-
-            <div class="card"><img
-                    src="https://www.theakyra.com/files/2915/2874/0146/Fine_Dining_Restaurants_Chiang_Mai.jpg"> </div>
-
-            <div class="card"><img
-                    src="https://chefstableware.co.uk/wp-content/uploads/2016/03/untitled-3-of-102-1024x682.jpg"> </div>
-
-            <div class="card"><img
-                    src="https://images.squarespace-cdn.com/content/v1/54e4aef0e4b002fddcd4baa2/1567605336212-JYZVN2620PIQTL2S95BI/DSC_0359.jpg">
-            </div>
-
-            <div class="card"><img
-                    src="https://www.visitmelbourne.com/-/media/images/daylesford-and-the-macedon-ranges/food-and-wine/restaurants-and-cafes/lake-house-dining_dmr_r_1453161_1150x863.jpg?ts=20150828300225 ">
-            </div>
-
-            <div class="card"><img src="https://i.pinimg.com/originals/dc/0a/59/dc0a59145f03824ae69e357398b9c77f.jpg">
-            </div>
-        </div>
-    </section>
-
-    <!-- <div *ngFor="let recipe of ">
-        <div class="PD" *ngIf="recipe.is_special_offers.status === true">
-            <img class="pict" [src]="recipe.image" alt="Menu_makanan" style="filter: grayscale(90%)">
-            <h3 style="text-decoration: line-through;">{{"price" | translate }}
-                Rp{{recipe.price.toLocaleString('ID')}}</h3>
-            <h3>{{"price" | translate }} Rp{{recipe.price.toLocaleString('ID')}}</h3>
-        </div>
-    </div> -->
-
-
     <footer>
         <h2>Our Location</h2>
         <div class="wrap">

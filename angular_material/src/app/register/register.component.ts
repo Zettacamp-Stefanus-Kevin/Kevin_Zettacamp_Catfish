@@ -13,6 +13,8 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class RegisterComponent implements OnInit {
 
+  hide = true
+
   constructor(private registerService : RegisterService,
     private router : Router,
     private translate : TranslateService) { }

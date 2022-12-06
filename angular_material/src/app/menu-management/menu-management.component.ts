@@ -28,7 +28,7 @@ export class MenuManagementComponent implements OnInit {
 
   filterRecipeName: string = ""
 
-  displayedColumns: string[] = ['recipe_name', 'ingredients', 'hightlight', 'specialoffers', 'remain_order', 'price', 'status', 'actions'];
+  displayedColumns: string[] = ['recipe_name', 'ingredients', 'specialoffers', 'remain_order', 'price', 'status', 'actions'];
   dataSource = new MatTableDataSource([])
 
   constructor(private menuService: MenuManagementService,

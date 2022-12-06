@@ -18,6 +18,7 @@ import { HttpClient, HttpClientModule  } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { RegisterModule } from './register/register.module';
+import { TransactionManagementModule } from './transaction-management/transaction-management.module';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { RegisterModule } from './register/register.module';
     AboutModule,
     StockManagementModule,
     MenuManagementModule,
+    TransactionManagementModule,
     GraphQLModule,
     HttpClientModule,
     TranslateModule.forRoot({

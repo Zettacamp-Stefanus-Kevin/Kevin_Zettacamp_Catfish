@@ -37,6 +37,13 @@ raise-button {
     background-color: #E6B325;
 }
 
+.improv{
+    display: flex;
+    justify-content: center;
+    gap: 5%;
+    width: 100%;
+}
+
 .footer{
     display: flex;
     justify-content: center;

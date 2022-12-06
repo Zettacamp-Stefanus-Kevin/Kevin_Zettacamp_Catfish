@@ -1,9 +1,16 @@
+/* body{
+    overflow-x: hidden;
+    overflow-y: hidden;
+} */
 
 .header {
     margin-top: 60px;
     background-image: url(/../../assets/pictures/background_homepage_1.jpg);
+    /* background-repeat: no-repeat; */
+    background-size: 50%;
     position: relative;
-    height: 80%;
+    z-index: -5;
+    height: 60%;
     width: 100%;
 }
 
@@ -18,7 +25,7 @@
     height: 100%;
     width: 100%;
     position: absolute;
-    z-index: 1;
+    z-index: -2;
     top: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.4);
@@ -42,22 +49,53 @@ h4 {
 }
 
 .par1 {
-    padding: 10%;
-    text-align: justify;
-    background-color: #F4F4F4;
+    width: 100%;
+    /* background-color: #F4F4F4; */
+    color: #F0A500;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;background-color: #1B2430;
+}
+
+.carousel{
+    width: 35%;
+    z-index: 0;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.carousel-cell >.imge{
+    width: 100%;
+    background-color: #100F0F;
+    opacity: 70%;
+}
+
+.carousel-cell >h3{
+    position: absolute;
+    z-index: 5;
+    font-weight: 500;
+    font-size: 35px;
+    padding: 160px;
+    text-align: center;
+    justify-content: center;
     color: #1A1C20;
+    outline-color: #f4f4f4;
+}
+
+.about{
+    width: 50%;
+    padding: 10px;
+    margin-left: auto;
     text-align: center;
 }
 
-
-h1{
-    border: 1px solid #100F0F;
-    border-radius: 1rem;
-    margin : 5px 400px;
+.about > h1{
+    margin : 5px 300px;
     padding: 25px;
 }
 
-.par1 > button{
+.par1 >.about > button{
     background-color: #F0A500;
     color: #1A1C20;
     padding: 10px;
@@ -84,6 +122,7 @@ h1{
     width: 30%;
     border: 1px solid #1B2430;
     padding: 10px;
+    margin-bottom: 19%;
 }
 
  .card > img{

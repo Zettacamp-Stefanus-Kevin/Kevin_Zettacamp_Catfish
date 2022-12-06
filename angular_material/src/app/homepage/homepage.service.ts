@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable } from '@apollo/client';
 import { Apollo, gql } from 'apollo-angular';
 
 @Injectable({
@@ -11,39 +10,52 @@ export class HomepageService {
 
 
   getMenu() {
-    return this.apolo.query({
+    return this.apolo.watchQuery({
       query: gql`
-      query Query() {
-        GetAllRecipesNotLogin() {
+      query Query($isHightlighted: Boolean) {
+        GetAllRecipesNotLogin(is_hightlighted: $isHightlighted) {
           data_recipes {
             id
             description
             image
+            price
+            recipe_name
+            status
             is_hightlighted
             is_special_offers{
               status
               discount
             }
+          }
+        }
+      }
+      
+      `, variables : {"isHightlighted": false},
+    })
+  }
+
+  getDiskon() {
+    return this.apolo.watchQuery({
+      query: gql`
+      query Query($isHightlighted: Boolean) {
+        GetAllRecipesNotLogin(is_hightlighted: $isHightlighted) {
+          data_recipes {
+            id
+            description
+            image
             price
             recipe_name
-            remain_order
             status
-            ingredients {
-              stock_used
-              ids {
-                name
-                status
-                id
-                stock
-              }
+            is_hightlighted
+            is_special_offers{
+              status
+              discount
             }
           }
         }
       }
       
-      `,
-      variables: {
-      },
+      `, variables : {"isSpecialOffers": false},
     })
   }
 

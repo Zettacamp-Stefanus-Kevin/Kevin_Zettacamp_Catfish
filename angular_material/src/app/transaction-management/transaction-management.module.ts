@@ -1,26 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomepageComponent } from './homepage.component';
+import { TransactionManagementComponent } from './transaction-management.component';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
+import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpLoaderFactory } from '../app.module';
 import { HttpClient } from '@angular/common/http';
-import {IvyCarouselModule} from 'angular-responsive-carousel2';
 
-
-const routes:Routes = [
-  {path:"", component:HomepageComponent } ,
+const routes: Routes = [
+  { path: "", component: TransactionManagementComponent },
 ]
 
 @NgModule({
   declarations: [
-    HomepageComponent
+    TransactionManagementComponent
   ],
   imports: [
     CommonModule,
     AngularMaterialModule,
-    IvyCarouselModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes),
     TranslateModule.forChild({
       defaultLanguage: 'en',
@@ -31,8 +30,8 @@ const routes:Routes = [
       }
     })
   ],
-  exports:[
-    HomepageComponent
+  exports: [
+    TransactionManagementComponent
   ]
 })
-export class HomepageModule { }
+export class TransactionManagementModule { }

@@ -23,7 +23,7 @@ export class HistoryComponent implements OnInit {
   private subs = new SubSink();
   cart : cart[] = []
 
-  displayedColumns: string[] = ['role', 'name', 'recipe_name', 'order_date', 'price', 'status'];
+  displayedColumns: string[] = ['recipe_name', 'order_date', 'price', 'status'];
   dataSource = new MatTableDataSource([])
 
   constructor(private cartService: CartService,

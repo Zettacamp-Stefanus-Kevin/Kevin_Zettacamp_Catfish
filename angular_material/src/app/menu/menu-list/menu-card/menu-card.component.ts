@@ -17,7 +17,12 @@ export class MenuCardComponent implements OnInit {
 
   constructor(private dialog: MatDialog) { }
 
+  token: string | null = ""
+
   ngOnInit(): void {
+    if (localStorage.getItem('getToken') !== null) {
+      this.token = localStorage.getItem('getToken')
+    }
   }
 
   info(parameter: any) {

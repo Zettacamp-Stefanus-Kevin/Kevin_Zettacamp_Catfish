@@ -8,7 +8,7 @@
 }
 
 
-a{
+a {
     margin-right: auto;
     color: rgb(171, 37, 37);
 }
@@ -22,4 +22,26 @@ mat-card-actions {
     display: flex;
     justify-content: center;
     gap: 20px;
+}
+
+.noOrder1 {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 90%;
+    border-radius: 5%;
+    border: 5px  white;
+    border-style: dashed;
+}
+
+.noOrder2 {
+    color: #100F0F;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 400;
+    position: absolute;
+    padding: 200px 530px;
+
+
 }

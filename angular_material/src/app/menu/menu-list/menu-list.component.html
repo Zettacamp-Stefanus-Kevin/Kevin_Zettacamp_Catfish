@@ -2,7 +2,7 @@
 
 <div class="container">
     <app-menu-card *ngFor="let item of menu" [recipe]="item"></app-menu-card>
-</div>
+</div><br><br><br>
 
 
 <mat-paginator  #paginator (page)="onPagination($event)" [pageSizeOptions]="[5, 10]" aria-label="Select page"></mat-paginator>

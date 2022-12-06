@@ -13,7 +13,8 @@ const routes: Routes = [
   { path: 'about', loadChildren: () => import('./about/about.module').then(m => m.AboutModule) },
   { path: 'cart', loadChildren: () => import('./cart/cart.module').then(m => m.CartModule), canActivate:[TokenGuard]},
   { path: 'stock_management', loadChildren: () => import('./stock-management/stock-management.module').then(m => m.StockManagementModule), canActivate:[TokenGuard , RoleGuard] },
-  { path: 'menu_management', loadChildren: () => import('./menu-management/menu-management.module').then(m => m.MenuManagementModule), canActivate:[TokenGuard , RoleGuard] }
+  { path: 'menu_management', loadChildren: () => import('./menu-management/menu-management.module').then(m => m.MenuManagementModule), canActivate:[TokenGuard , RoleGuard] },
+  { path: 'transaction_management', loadChildren: () => import('./transaction-management/transaction-management.module').then(m => m.TransactionManagementModule), canActivate:[TokenGuard , RoleGuard] },
 ];
 
 @NgModule({

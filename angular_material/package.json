@@ -23,6 +23,7 @@
     "@apollo/client": "^3.7.1",
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
+    "angular-responsive-carousel2": "^0.0.6",
     "apollo-angular": "^4.1.0",
     "fast-copy": "^3.0.0",
     "graphql": "^16",

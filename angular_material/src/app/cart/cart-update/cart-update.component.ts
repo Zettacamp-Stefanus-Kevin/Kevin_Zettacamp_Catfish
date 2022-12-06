@@ -51,18 +51,6 @@ export class CartUpdateComponent implements OnInit {
       });
       this.noteForm.markAllAsTouched();
     }
-
-    // this.dialog.close(this.noteForm.value);
-    // console.log(this.noteForm.value);
-    // if (this.noteForm.valid) {
-    // } else {
-    //   Swal.fire({
-    //     icon: 'error',
-    //     title: 'Failed',
-    //     text: 'Try again',
-    //   });
-    //   this.noteForm.markAllAsTouched();
-    // }
   }
 
   onClick() {

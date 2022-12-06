@@ -7,6 +7,9 @@
       <a mat-list-item class="icon" routerLink="/menu_management" *ngIf="role=='admin'" routerLinkActive="active">
         <mat-icon>restaurant_menu</mat-icon> {{"menuManagement" | translate }}
       </a>
+      <a mat-list-item class="icon" routerLink="/transaction_management" *ngIf="role=='admin'" routerLinkActive="active">
+        <mat-icon>dvr</mat-icon> Transaction Management
+      </a>
     </mat-nav-list>
   </mat-sidenav>
 
@@ -40,8 +43,10 @@
           ID
         </mat-option>
       </mat-select>
-      <a mat-button class="cart" routerLink="/cart" *ngIf="token" routerLinkActive="active" matTooltip="Cart">
+      <!-- <h1 *ngIf="role=='user'">{{data.balance|currency:'Rp '}} </h1> -->
+      <a mat-button class="cart" routerLink="/cart"  routerLinkActive="active" matTooltip="Cart">
         <mat-icon matBadge="{{cartLength}}" matBadgeColor="warn">shopping_cart</mat-icon>
+        <!-- *ngIf="role=='user'" -->
       </a>
       <button mat-button class="change" routerLink="/about" routerLinkActive="active">
         {{"about" | translate }}

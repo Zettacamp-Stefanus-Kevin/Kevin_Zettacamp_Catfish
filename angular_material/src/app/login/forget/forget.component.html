@@ -1,4 +1,6 @@
-<form mat-dialog-content [formGroup]="noteForm" (ngSubmit)="onSubmit()">
+<p>forget works!</p>
+
+<form mat-dialog-content [formGroup]="forgetForm" (ngSubmit)="onSubmit()">
 
     <mat-form-field appearance="fill">
         <mat-label> {{"note" | translate }} </mat-label>
@@ -7,7 +9,8 @@
 
     <div class="button">
         <button type="button" mat-raised-button color="warn" (click)="onClick()"> {{"cancel" | translate }} </button>
-        <button type="submit" mat-raised-button color="accent" [disabled]="noteForm.invalid">{{"submit" | translate }}
+        <button type="submit" mat-raised-button color="accent" [disabled]="forgetForm.invalid">{{"submit" | translate }}
         </button>
     </div>
+    
 </form>

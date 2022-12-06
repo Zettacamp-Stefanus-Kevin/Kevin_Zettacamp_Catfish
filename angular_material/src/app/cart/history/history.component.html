@@ -1,4 +1,4 @@
-<div style="background-color: #100F0F; ">
+<body style="background-color: #100F0F; ">
     <div class="container">
         <h1>{{"orderHistory" | translate }}</h1>
 
@@ -13,13 +13,13 @@
             The actual rendered columns are set as a property on the row definition" -->
 
         <!-- Role -->
-        <ng-container matColumnDef="role">
+        <!-- <ng-container matColumnDef="role">
             <th mat-header-cell *matHeaderCellDef> {{"role" | translate }} </th>
             <td mat-cell *matCellDef="let element">{{element.user_id.role}} </td>
-        </ng-container>
+        </ng-container> -->
 
         <!-- Name -->
-        <ng-container matColumnDef="name">
+        <!-- <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef>{{"name" | translate }} <br>
                 <mat-form-field floatLabel="never">
                     <mat-label> Search Name </mat-label>
@@ -29,7 +29,7 @@
             <td mat-cell *matCellDef="let element">
                 {{element.user_id.first_name}}{{element.user_id.last_name}}
             </td>
-        </ng-container>
+        </ng-container> -->
 
         <!-- Order Date -->
         <ng-container matColumnDef="order_date">
@@ -87,4 +87,4 @@
         aria-label="Select page">
     </mat-paginator>
 
-</div>
+</body>

@@ -1,4 +1,4 @@
-<div style="background-color: #100F0F; ">
+<body style="background-color: #100F0F; ">
     <div class="container">
         <h1>{{"menuManagement" | translate }}</h1>
 
@@ -41,13 +41,13 @@
         </ng-container>
 
         <!-- Hightlighted Column -->
-        <ng-container matColumnDef="hightlight">
+        <!-- <ng-container matColumnDef="hightlight">
             <th mat-header-cell *matHeaderCellDef> {{"highlight" | translate }} </th>
             <td mat-cell *matCellDef="let element"> {{element.is_hightlighted}} <br>
                 <mat-slide-toggle class="example-margin" color="primary" [checked]="element.is_hightlighted== true"
                     (change)="onHigh(element)"> </mat-slide-toggle>
             </td>
-        </ng-container>
+        </ng-container> -->
 
         <!-- Special_Offers Column -->
         <ng-container matColumnDef="specialoffers">
@@ -116,9 +116,9 @@
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+    </table><br><br><br>
 
     <mat-paginator #paginator (page)="onPagination($event)" [pageSizeOptions]="[5, 10]" aria-label="Select page">
     </mat-paginator>
 
-</div>
+</body>

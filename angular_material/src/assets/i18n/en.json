@@ -12,6 +12,7 @@
     "submit": "Submit",
     "close": "Close",
     "register" : "Register",
+    "forgetPassword" : "Forget Password",
 
     "addCart": "Add to Cart",
     "cancel": "Cancel",
@@ -37,6 +38,7 @@
     "orderMenu" : "Order Menu",
     "name" : "Name",
     "maxOrder" : "Max Order",
+    "toMenu" : "Back to Menu",
 
     "role" : "Role",
     "status" : "Status",

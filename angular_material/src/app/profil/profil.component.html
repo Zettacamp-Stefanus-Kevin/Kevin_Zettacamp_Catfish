@@ -1,10 +1,26 @@
 <p>profil works!</p>
 
+<body>
+    <div class="wrapper">
+        <h1 style="text-align: center;">PRAEDULCIS</h1>
+        <div class="body">
+            <div class="profil">
+                <h2 style="text-align: center;">Profil</h2>
+              
+                    <p>Name = {{data.first_name}} {{data.last_name}} </p>
+                    <p>ID Number = {{data.id}} </p>
+                    <p>Email = {{data.email}} </p>
+                    <p>Password = ************* </p>
 
+                <div align="end" class="button">
+                    <button mat-button color="primary" (click)="Edit()">Edit</button>
+                </div>
+            </div>
 
-
-
-
-
-
-<h1>halaman profil</h1>
+            <div class="balance">
+                <h2 style="text-align: center;"> Balance</h2>
+                <h1>{{data.balance|currency:'Rp '}} </h1>
+            </div>
+        </div>
+    </div>
+</body>

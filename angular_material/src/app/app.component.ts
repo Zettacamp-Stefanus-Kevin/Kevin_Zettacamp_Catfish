@@ -4,6 +4,7 @@ import { TranslateService } from "@ngx-translate/core";
 import Swal from 'sweetalert2';
 import { SubSink } from 'subsink';
 import { CartService } from './cart/cart.service';
+import { ProfilService } from './profil/profil.service';
 
 @Component({
   selector: 'app-root',
@@ -16,21 +17,24 @@ export class AppComponent {
   private subs = new SubSink();
 
   title = 'angular_material';
-  token: string | null = ""
+  token: string | null = "";
   role: string | null = "";
   name: any;
+  data: any;
+  email:any;
 
   cartLength : any
 
 
   constructor(private router: Router,
     private translate: TranslateService,
-    private cartService : CartService) { }
+    private cartService : CartService,
+    private profilService: ProfilService) { }
 
   ngOnInit() {
     this.init();
     this.getBadge();
-
+    this.balance();
   }
 
   init() {
@@ -60,6 +64,7 @@ export class AppComponent {
           localStorage.removeItem('getToken');
           localStorage.removeItem('userData');
           localStorage.removeItem('name');
+          localStorage.removeItem('email');
           this.router.navigate(['login']).then(()=>{
             window.location.reload()
           })
@@ -74,12 +79,20 @@ export class AppComponent {
 
 
   getBadge() {
-    this.subs.sink = this.cartService.getCart().valueChanges.subscribe((item: any) => {
-      this.cartLength = item?.data?.GetOrder?.menu.length
+    this.subs.sink = this.cartService?.getCart()?.valueChanges?.subscribe((item: any) => {
+      this.cartLength = item?.data?.GetOrder?.menu?.length
       console.log(item);
     });
     console.log(this.cartLength);
   }
+
+  balance(){
+    this.email = localStorage.getItem('email')
+    this.subs.sink = this.profilService.getUser(this.email).valueChanges.subscribe((resp: any) => {
+      this.data = resp?.data?.GetOneUser
+    })
+  }
+ 
 
 }
 

@@ -38,7 +38,10 @@
     </div> -->
     <div class="container footer">
 
-        <button mat-button (click)="addCart(recipe)" [disabled]="recipe.remain_order === 0">
+        <button mat-button routerLink="/login" [disabled]="recipe.remain_order === 0" *ngIf="!token" >
+            <mat-icon *ngIf="recipe.remain_order >0">add_shopping_cart</mat-icon>{{"addCart" | translate }}
+        </button>
+        <button mat-button (click)="addCart(recipe)" [disabled]="recipe.remain_order === 0"  *ngIf="token">
             <mat-icon *ngIf="recipe.remain_order >0">add_shopping_cart</mat-icon>{{"addCart" | translate }}
         </button>
 

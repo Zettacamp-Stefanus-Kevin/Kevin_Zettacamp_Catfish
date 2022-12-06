@@ -9,6 +9,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpLoaderFactory } from '../app.module';
+import { ForgetComponent } from './forget/forget.component';
 
 const routes:Routes = [
   {path:"", component:LoginComponent } ,
@@ -17,7 +18,8 @@ const routes:Routes = [
 
 @NgModule({
   declarations: [
-    LoginComponent
+    LoginComponent,
+    ForgetComponent
   ],
   imports: [
     CommonModule,
@@ -36,7 +38,8 @@ const routes:Routes = [
     })
   ],
   exports: [
-    LoginComponent
+    LoginComponent,
+    ForgetComponent
   ]
 })
 export class LoginModule { }

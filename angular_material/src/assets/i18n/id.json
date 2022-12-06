@@ -12,6 +12,7 @@
     "submit": "Kirim",
     "close" : "Tutup",
     "register" : "Registrasi",
+    "forgetPassword" : "Lupa Kata Sandi",
 
     "addCart": "Tambahkan ke Keranjang",
     "cancel": "Batalkan",
@@ -37,6 +38,7 @@
     "orderMenu" : "Pesan Menu",
     "name" : "Nama",
     "maxOrder" : "Pesanan Maks",
+    "toMenu" : "Ke Menu",
 
     "role" : "Peran",
     "status" : "Status",

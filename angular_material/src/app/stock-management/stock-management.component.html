@@ -1,4 +1,4 @@
-<div style="background-color: #100F0F;">
+<body style="background-color: #100F0F;">
     <div class="container">
         <h1>{{"stockManagement" | translate }} </h1>
 
@@ -72,9 +72,9 @@
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+    </table><br><br><br>
 
     <mat-paginator #paginator (page)="onPagination($event)" [pageSizeOptions]="[5, 10, 20]" aria-label="Select page">
     </mat-paginator>
 
-</div>
+</body>

@@ -41,4 +41,16 @@ export class LoginService {
     // })
   }
 
+  updateToken(){
+    return this.apolo.mutate({
+      mutation: gql`
+      mutation Mutation($email: String) {
+        UpdateUser(email: $email) {
+          email
+        }
+      }
+      `
+    })
+  }
+
 }

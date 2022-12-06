@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuService } from 'src/app/menu/menu.service';
 import { SubSink } from 'subsink';
 import Swal from 'sweetalert2';
 import { cart } from '../cart';
@@ -23,6 +22,7 @@ export class CartListComponent implements OnInit {
   order: any;
   user: any;
   data: any;
+  amount: any;
 
   constructor(
     private cartService: CartService,
@@ -41,6 +41,7 @@ export class CartListComponent implements OnInit {
       this.price = resp?.data?.GetOrder?.total_price?.toLocaleString('ID')
       this.order = resp?.data?.GetOrder?.order_date
       this.order_id = resp?.data?.GetOrder?.id
+      this.amount = resp?.data?.GetOrder?.menu.amount
       this.user = (resp?.data?.GetOrder?.user_id?.first_name +' '+ resp?.data?.GetOrder?.user_id?.last_name +'...')
       console.log(this.user);
 

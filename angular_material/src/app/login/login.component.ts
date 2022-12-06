@@ -5,6 +5,8 @@ import Swal from 'sweetalert2';
 import { LoginService } from './login.service';
 import { SubSink } from 'subsink';
 import { TranslateService } from '@ngx-translate/core';
+import { ForgetComponent } from './forget/forget.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +18,8 @@ export class LoginComponent implements OnInit {
 
   private subs = new SubSink();
 
+  hide = true
+
   loginForm: any = new FormGroup({
     email: new FormControl(null, [Validators.required,Validators.email]),
     password: new FormControl(null,[Validators.required])
@@ -25,6 +29,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private loginService: LoginService,
     private translate : TranslateService,
+    private dialog : MatDialog
   ) { }
   
   ngOnInit(): void {
@@ -49,13 +54,16 @@ export class LoginComponent implements OnInit {
         let adminToken: any
         let role: any
         let name : any
+        let email : any
          adminToken = data?.data?.Login?.token;
          role = data?.data?.Login?.role
          name = data?.data?.Login?.first_name
+         email = data?.data?.Login?.email
         
         localStorage.setItem('getToken', adminToken);
         localStorage.setItem('userData', role);
         localStorage.setItem('name', name);
+        localStorage.setItem('email', email);
         console.log(data.data.Login.token)
         console.log(data.data.Login.role)
         console.log(data.data.Login.first_name)
@@ -93,5 +101,29 @@ export class LoginComponent implements OnInit {
       });
     }
   }
+
+  forget(){
+    const dialogRef = this.dialog.open(ForgetComponent, {
+          width: '30%', height: '30%', 
+        });
+  }
+
+  // forget() {
+  //   const dialogRef = this.dialog.open(ForgetComponent, {
+  //     width: '30%', height: '30%', 
+  //   });
+
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     this.loginService.updateToken(result).subscribe((item)=>{
+  //       this.b = item.data
+  //     })
+  //       Swal.fire({
+  //         icon: 'success',
+  //         title: this.translate.instant("Success"),
+  //         text: this.translate.instant("Your work has been saved"),
+  //       });
+  //     console.log('The dialog was closed');
+  //   });
+  // }
 
 }
