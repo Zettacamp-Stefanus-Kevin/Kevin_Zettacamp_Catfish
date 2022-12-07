@@ -21,17 +21,17 @@ export class LoginComponent implements OnInit {
   hide = true
 
   loginForm: any = new FormGroup({
-    email: new FormControl(null, [Validators.required,Validators.email]),
-    password: new FormControl(null,[Validators.required])
+    email: new FormControl(null, [Validators.required, Validators.email]),
+    password: new FormControl(null, [Validators.required])
   });
 
   constructor(
     private router: Router,
     private loginService: LoginService,
-    private translate : TranslateService,
-    private dialog : MatDialog
+    private translate: TranslateService,
+    private dialog: MatDialog
   ) { }
-  
+
   ngOnInit(): void {
     // localStorage.setItem('getToken', '');
     //     localStorage.setItem('userData', '');
@@ -53,13 +53,13 @@ export class LoginComponent implements OnInit {
         // })
         let adminToken: any
         let role: any
-        let name : any
-        let email : any
-         adminToken = data?.data?.Login?.token;
-         role = data?.data?.Login?.role
-         name = data?.data?.Login?.first_name
-         email = data?.data?.Login?.email
-        
+        let name: any
+        let email: any
+        adminToken = data?.data?.Login?.token;
+        role = data?.data?.Login?.role
+        name = data?.data?.Login?.first_name
+        email = data?.data?.Login?.email
+
         localStorage.setItem('getToken', adminToken);
         localStorage.setItem('userData', role);
         localStorage.setItem('name', name);
@@ -75,15 +75,15 @@ export class LoginComponent implements OnInit {
         Swal.fire({
           icon: 'success',
           title: this.translate.instant("hello") + data?.data?.Login?.first_name,
-          text:  this.translate.instant("Welcome to our Restaurant")
-          
-        }).then(()=>{
+          text: this.translate.instant("Welcome to our Restaurant")
+
+        }).then(() => {
           this.router.navigate(['homepage']).then(() => {
             window.location.reload()
           })
         });
-       
-      },err=>{
+
+      }, err => {
         Swal.fire({
           icon: 'error',
           title: this.translate.instant("Error"),
@@ -102,10 +102,16 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  forget(){
+  forget() {
     const dialogRef = this.dialog.open(ForgetComponent, {
-          width: '30%', height: '30%', 
-        });
+      width: '50%', height: '50%',
+    });
+    
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if (result) {
+        this.router.navigate(['homepage'])
+      }
+    });
   }
 
   // forget() {

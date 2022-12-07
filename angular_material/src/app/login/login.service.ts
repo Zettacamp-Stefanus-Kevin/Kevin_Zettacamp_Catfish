@@ -44,12 +44,36 @@ export class LoginService {
   updateToken(){
     return this.apolo.mutate({
       mutation: gql`
-      mutation Mutation($email: String) {
-        UpdateUser(email: $email) {
+      mutation Mutation($email: String, $password: String) {
+        UpdateUser(email: $email, password: $password) {
           email
+          password
         }
       }
       `
+    })
+  }
+
+  getUser(data: any) {
+    console.log(data);
+    
+    return this.apolo.watchQuery({
+      query: gql`
+      query Query($email: String) {
+        GetOneUser(email: $email) {
+          id
+          first_name
+          last_name
+          email
+          password
+          balance
+          question_answer
+        }
+      }
+      `, variables: {
+        email: data
+      },
+      fetchPolicy: 'network-only'
     })
   }
 

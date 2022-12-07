@@ -1,16 +1,21 @@
 
 <body>
-    <form mat-dialog-content [formGroup]="forgetForm">
+    <form mat-dialog-content [formGroup]="updateForm">
 
         <mat-form-field appearance="fill">
             <mat-label> Email </mat-label>
             <input matInput type="text" formControlName="email">
         </mat-form-field><br>
 
+        <mat-form-field appearance="fill">
+            <mat-label> Password </mat-label>
+            <input matInput type="text" formControlName="email">
+        </mat-form-field><br>
+
         <div class="wrapbutton">
             <button type="button" class="button" mat-raised-button (click)="onClick()"> {{"cancel" | translate }}
             </button>
-            <button type="submit" class="button" mat-raised-button (click)="reset()" [disabled]="forgetForm.invalid">
+            <button type="submit" class="button" mat-raised-button (click)="reset()" [disabled]="updateForm.invalid">
                 {{"submit" |  translate }}
             </button>
         </div>

@@ -10,6 +10,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpLoaderFactory } from '../app.module';
 import { ForgetComponent } from './forget/forget.component';
+import { UpdateComponent } from './forget/update/update.component';
 
 const routes:Routes = [
   {path:"", component:LoginComponent } ,
@@ -19,7 +20,8 @@ const routes:Routes = [
 @NgModule({
   declarations: [
     LoginComponent,
-    ForgetComponent
+    ForgetComponent,
+    UpdateComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,15 @@
+body{
+    /* background-color: #1A1C20; */
+    background-color: black;
+    color:#F4F4F4;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.button{
+    border-radius: 1rem;
+    border: 2px solid #E6B325;
+    color: #E6B325;
+    /* color:  #F4F4F4; */
+}

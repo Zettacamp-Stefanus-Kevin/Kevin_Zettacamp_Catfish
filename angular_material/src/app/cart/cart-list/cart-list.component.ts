@@ -23,6 +23,7 @@ export class CartListComponent implements OnInit {
   user: any;
   data: any;
   amount: any;
+  menu: any;
 
   constructor(
     private cartService: CartService,
@@ -42,6 +43,7 @@ export class CartListComponent implements OnInit {
       this.order = resp?.data?.GetOrder?.order_date
       this.order_id = resp?.data?.GetOrder?.id
       this.amount = resp?.data?.GetOrder?.menu.amount
+      this.menu = resp?.data?.GetOrder?.menu.length
       this.user = (resp?.data?.GetOrder?.user_id?.first_name +' '+ resp?.data?.GetOrder?.user_id?.last_name +'...')
       console.log(this.user);
 

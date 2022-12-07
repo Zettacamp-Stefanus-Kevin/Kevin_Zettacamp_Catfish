@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RegisterService } from './register.service';
 import { Router } from '@angular/router';
-
 import Swal from 'sweetalert2';
 import { TranslateService } from '@ngx-translate/core';
 

@@ -39,8 +39,6 @@ raise-button {
 
 .improv{
     display: flex;
-    justify-content: center;
-    gap: 5%;
     width: 100%;
 }
 
@@ -54,7 +52,6 @@ raise-button {
     border-radius: 1rem;
     border: 2px solid #E6B325;
     color:  #F4F4F4;
-    
 }
 
 ::ng-deep .mat-form-field-label {
