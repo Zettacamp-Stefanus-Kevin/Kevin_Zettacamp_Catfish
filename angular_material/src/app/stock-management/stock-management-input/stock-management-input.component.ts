@@ -1,32 +1,35 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {
+  MatDialog,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+} from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 import { stock } from '../stock';
 import { StockManagementService } from '../stock-management.service';
 
 @Component({
   selector: 'app-stock-management-input',
   templateUrl: './stock-management-input.component.html',
-  styleUrls: ['./stock-management-input.component.css']
+  styleUrls: ['./stock-management-input.component.css'],
 })
 export class StockManagementInputComponent implements OnInit {
+  stockForm!: FormGroup;
 
-  stockForm!: FormGroup
-
-
-  constructor(private stockService: StockManagementService,
+  constructor(
+    private stockService: StockManagementService,
     public dialog: MatDialogRef<StockManagementInputComponent>,
     @Inject(MAT_DIALOG_DATA) public stock: stock,
-    private translate : TranslateService
-  ) { }
+    private translate: TranslateService
+  ) {}
 
   ngOnInit(): void {
     this.stockForm = new FormGroup({
-      'name': new FormControl(null, [Validators.required]),
-      'stock': new FormControl(null, [Validators.required]),
-    })
+      name: new FormControl(null, [Validators.required]),
+      stock: new FormControl(null, [Validators.required]),
+    });
   }
 
   onClick(): void {
@@ -36,7 +39,7 @@ export class StockManagementInputComponent implements OnInit {
   onSubmit() {
     // if (this.stockForm.valid) {
     //   this.stockService.addStock(this.stockForm.value)
-    //   console.log('berhasil');
+
     //   Swal.fire({
     //     icon: 'success',
     //     title: 'Success',
@@ -44,7 +47,7 @@ export class StockManagementInputComponent implements OnInit {
     //   });
     //   this.dialog.close();
     // } else {
-    //   console.log('gagal');
+
     //   Swal.fire({
     //     icon: 'error',
     //     title: 'Failed',
@@ -55,17 +58,15 @@ export class StockManagementInputComponent implements OnInit {
     // }
 
     if (this.stockForm.valid) {
-      this.dialog.close(this.stockForm.value)
+      this.dialog.close(this.stockForm.value);
     } else {
-      console.log('gagal');
       Swal.fire({
         icon: 'error',
-        title: this.translate.instant("Failed"),
-        text: this.translate.instant("Try again"),
+        title: this.translate.instant('Failed'),
+        text: this.translate.instant('Try again'),
       });
 
       this.stockForm.markAllAsTouched();
     }
   }
-
 }
