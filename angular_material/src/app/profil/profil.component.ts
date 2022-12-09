@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SubSink } from 'subsink';
 import { ProfilService } from './profil.service';
 
@@ -8,28 +9,41 @@ import { ProfilService } from './profil.service';
   styleUrls: ['./profil.component.css'],
 })
 export class ProfilComponent implements OnInit {
+  data: any = {};
   hide = true;
   private subs = new SubSink();
-  data: any;
+
   email: any;
   role = '';
 
-  constructor(private profilService: ProfilService) {}
+  userForm = this.fb.group({
+    first_name: this.fb.control('', Validators.required),
+    last_name: this.fb.control('', Validators.required),
+    email: this.fb.control('', [Validators.required, Validators.email]),
+    password: this.fb.control('', Validators.required),
+  });
+
+  constructor(private profilService: ProfilService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    this.init();
+    this.init().then(() => {
+      this.userForm.controls['first_name'].disable();
+    });
   }
 
-  init() {
+  init(): any {
     this.email = localStorage.getItem('email');
-
     this.subs.sink = this.profilService
       .getUser(this.email)
       .valueChanges.subscribe((resp: any) => {
         this.data = resp?.data?.GetOneUser;
-        this.role = resp?.data?.GetOneUser.role;
+        this.userForm.patchValue(this.data);
       });
   }
 
-  Edit() {}
+  onSubmit() {}
+
+  onEdit() {
+    this.userForm.enable();
+  }
 }

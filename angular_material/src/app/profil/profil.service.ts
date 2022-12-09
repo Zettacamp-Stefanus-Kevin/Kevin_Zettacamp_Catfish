@@ -29,4 +29,38 @@ export class ProfilService {
       fetchPolicy: 'network-only',
     });
   }
+
+  updateUser(data: any) {
+    const email = data.email;
+    const password = data.password;
+    const firstName = data.first_name;
+    const lastName = data.last_name;
+    return this.apolo.mutate({
+      mutation: gql`
+        mutation UpdateUser(
+          $email: String
+          $password: String
+          $firstName: String
+          $lastName: String
+        ) {
+          UpdateUser(
+            email: $email
+            password: $password
+            first_name: $firstName
+            last_name: $lastName
+          ) {
+            email
+            first_name
+            id
+            last_name
+            password
+            role
+            status
+          }
+        }
+      `,
+      variables: { lastName, firstName, email, password },
+      fetchPolicy: 'network-only',
+    });
+  }
 }

@@ -1,26 +1,58 @@
-<p>profil works!</p>
-
 <body>
-  <div class="wrapper">
-    <h1 style="text-align: center">PRAEDULCIS</h1>
-    <div class="body">
-      <div class="profil">
-        <h2 style="text-align: center">Profil</h2>
-
-        <p>Name = {{ data.first_name }} {{ data.last_name }}</p>
-        <p>ID Number = {{ data.id }}</p>
-        <p>Email = {{ data.email }}</p>
-        <p>Password = *************</p>
-
-        <div align="end" class="button">
-          <button mat-button color="primary" (click)="Edit()">Edit</button>
-        </div>
-      </div>
-
-      <div class="balance" *ngIf="role !== 'admin'">
-        <h2 style="text-align: center">Balance</h2>
-        <h1>{{ data.balance | currency : "Rp " }}</h1>
-      </div>
+  <form class="form" [formGroup]="userForm">
+    <div class="form-field">
+      <mat-form-field appearance="fill">
+        <mat-label>
+          <mat-icon>person_outline</mat-icon> {{ "first_name" | translate }}
+        </mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="first_name"
+          placeholder="enter first_name"
+        />
+      </mat-form-field>
     </div>
-  </div>
+    <div class="form-field">
+      <mat-form-field appearance="fill">
+        <mat-label>
+          <mat-icon>person_outline</mat-icon> {{ "last_name" | translate }}
+        </mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="last_name"
+          placeholder="enter last_name"
+        />
+      </mat-form-field>
+    </div>
+    <div class="form-field">
+      <mat-form-field appearance="fill">
+        <mat-label>
+          <mat-icon> mail_outline</mat-icon> {{ "email" | translate }}
+        </mat-label>
+        <input
+          matInput
+          type="email"
+          formControlName="email"
+          placeholder="input email"
+        />
+      </mat-form-field>
+    </div>
+    <div class="form-field">
+      <mat-form-field appearance="fill">
+        <mat-label>
+          <mat-icon>lock</mat-icon> {{ "password" | translate }}
+        </mat-label>
+        <input
+          type="password"
+          matInput
+          formControlName="password"
+          placeholder="enter password"
+        />
+      </mat-form-field>
+    </div>
+    <button mat-raised-button (click)="onEdit()">Edit</button>
+    <button mat-raised-button *ngIf="userForm?.enable()">Submit</button>
+  </form>
 </body>

@@ -35,7 +35,6 @@ export class AppComponent {
   ngOnInit() {
     this.init();
     if (localStorage.getItem('getToken')) {
-      this.balance();
       this.getBadge();
     }
   }
