@@ -1,77 +1,82 @@
 .navatas {
-    justify-content: space-between;
-    background-color: #100F0F;
-    color: #F4F4F4;
-    position: fixed;
-    z-index: 2;
-    padding: 20px;
-    vertical-align: middle;
+  justify-content: space-between;
+  background-color: #100f0f;
+  color: #f4f4f4;
+  position: fixed;
+  z-index: 2;
+  padding: 20px;
+  vertical-align: middle;
 }
 
 .left {
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-    gap: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  gap: 20px;
 }
 
 mat-sidenav {
-    background-color: #100F0F;
+  background-color: #100f0f;
 }
 
-.icon{
-    color: #F4F4F4 ;
+.icon {
+  color: #f4f4f4;
 }
 
-a.active{
-    color: #E6B325 !important; 
-  }
-  
+a.active {
+  color: #e6b325 !important;
+}
+
 .wrap {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    text-align: center;
-    gap: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+  gap: 20px;
 }
 
-.cart{
-color: #F4F4F4;
+.cart {
+  color: #f4f4f4;
 }
 
 .change:hover {
-    color: #E6B325;
+  color: #e6b325;
 }
 
-.change{
-  width: auto;
+.change {
+  font-size: 1.2rem;
+  width: fit-content;
+  height: fit-content;
+  padding-right: 1rem;
 }
 .change.active {
-    color: #E6B325 !important;
-    border: 1px solid #E6B325;
-    padding: auto;
-  }
-
-
-.buttom{
-    background-color: #F4F4F4;
-    color: #100F0F;
-    font-weight: bold;
+  color: #e6b325 !important;
+  width: fit-content;
+  border: 1px solid #e6b325;
+  padding-right: 1rem;
 }
 
-.buttom.hover{
-    background-color:  #E6B325 !important; 
-  }
-/* binggung */
-  mat-menu:active{
-    color: #E6B325 !important;
-    border: 1px solid #E6B325;
-  }
-  
+.buttom {
+  background-color: #f4f4f4;
+  color: #100f0f;
+  font-weight: bold;
+}
 
-  .option{
-    background-color: #E6B325;
-    color: #100F0F;
-    text-align: left;
-  }
-    
+.buttom.hover {
+  background-color: #e6b325 !important;
+}
+/* binggung */
+mat-menu:active {
+  color: #e6b325 !important;
+  border: 1px solid #e6b325;
+}
+
+.option {
+  background-color: #e6b325;
+  color: #100f0f;
+  text-align: left;
+}
+
+button {
+  padding-right: 1rem;
+}
