@@ -1,34 +1,3 @@
-.header {
-    margin-top: 60px;
-    background-image: url(/../../assets/pictures/background_homepage_1.jpg);
-    /* background-repeat: no-repeat; */
-    background-size: 50%;
-    position: relative;
-    z-index: -5;
-    height: 60%;
-    width: 100%;
-}
-
-.header_caption {
-    border: 1.5px solid transparent;
-    text-align: center;
-    height: fit-content;  
-}
-
-.header::before {
-    content: '';
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    z-index: -2;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.4);
-}
-
-.header_caption > h1 {
-    border: 1.5px solid;
-    margin: 75px 500px 1px 500px;
-    font-size: 40px;
-    padding: 35px;
+body {
+  padding: 5rem;
 }

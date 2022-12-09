@@ -1,10 +1,47 @@
-<p>transaction-management works!</p>
+<body>
+  <mat-form-field appearance="fill">
+    <mat-label>Choose a date</mat-label>
+    <input
+      matInput
+      [matDatepicker]="picker"
+      (dateChange)="dateChange($event)"
+    />
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
 
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- User Column -->
+    <ng-container matColumnDef="user_name">
+      <th mat-header-cell *matHeaderCellDef class="name-field">User Name</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.user_id.first_name }}
+      </td>
+    </ng-container>
 
-<header class="header">
-    <div class="header_caption">
-        <h1 class="text">PRAEDULCIS
-            <h4 class="text">Western Restaurant</h4>
-        </h1>
-    </div>
-</header>
+    <!-- Menu -->
+    <ng-container matColumnDef="order_menu">
+      <th mat-header-cell *matHeaderCellDef>Order Menu</th>
+      <td mat-cell *matCellDef="let element">
+        <p *ngFor="let recipe of element.menu">
+          {{ recipe.recipe_id.recipe_name }}
+        </p>
+      </td>
+    </ng-container>
+
+    <!-- Total Price -->
+    <ng-container matColumnDef="total_price">
+      <th mat-header-cell *matHeaderCellDef>Total Price</th>
+      <td mat-cell *matCellDef="let element">{{ element.total_price }}</td>
+    </ng-container>
+
+    <!-- Date -->
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef>Date</th>
+      <td mat-cell *matCellDef="let element">{{ element.order_date }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</body>
