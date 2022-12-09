@@ -12,6 +12,7 @@ export class ProfilComponent implements OnInit {
   private subs = new SubSink();
   data: any;
   email: any;
+  role = '';
 
   constructor(private profilService: ProfilService) {}
 
@@ -26,6 +27,7 @@ export class ProfilComponent implements OnInit {
       .getUser(this.email)
       .valueChanges.subscribe((resp: any) => {
         this.data = resp?.data?.GetOneUser;
+        this.role = resp?.data?.GetOneUser.role;
       });
   }
 
