@@ -3,11 +3,10 @@ import { Apollo, gql } from 'apollo-angular';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CartService {
-
-  constructor(private apolo: Apollo) { }
+  constructor(private apolo: Apollo) {}
 
   getCart() {
     return this.apolo.watchQuery({
@@ -36,105 +35,117 @@ export class CartService {
         }
       }
       `),
-      fetchPolicy: 'network-only'
-    })
+      fetchPolicy: 'network-only',
+    });
   }
 
-  getTransaction(pagination: any, status:any, name:any, date:any, menu:any): Observable<any> {
-
-    let statusFilter : any = ""
+  getTransaction(
+    pagination: any,
+    status: any,
+    name: any,
+    date: any,
+    menu: any
+  ): Observable<any> {
+    let statusFilter: any = '';
     if (status) {
-      statusFilter = status
-    }  
-    console.log(statusFilter);
+      statusFilter = status;
+    }
 
-    let nameFilter : any = ""
+    let nameFilter: any = '';
     if (name) {
-      nameFilter = name
-    }  
-    console.log(nameFilter);
+      nameFilter = name;
+    }
 
-    let dateFilter : any = ""
+    let dateFilter: any = '';
     if (date) {
-      dateFilter = date
-    }  
-    console.log(dateFilter);
+      dateFilter = date;
+    }
 
-    let menuFilter : any = ""
+    let menuFilter: any = '';
     if (menu) {
-      menuFilter = menu
-    }  
-    console.log(menuFilter);
-    
+      menuFilter = menu;
+    }
 
     return this.apolo.query({
-      query: gql
-        `
-      query History($orderStatus: String, $lastNameUser: String, $recipeName: String, $orderDate: String, $limit: Int, $page: Int) {
-        GetAllTransactions(order_status: $orderStatus, last_name_user: $lastNameUser, recipe_name: $recipeName,
-          order_date: $orderDate, limit: $limit, page: $page,) {
-          count
-          maxPage
-          page
-          data {
-            id
-            order_date
-            order_status
-            status
-            total_price
-            menu {
+      query: gql`
+        query History(
+          $orderStatus: String
+          $lastNameUser: String
+          $recipeName: String
+          $orderDate: String
+          $limit: Int
+          $page: Int
+        ) {
+          GetAllTransactions(
+            order_status: $orderStatus
+            last_name_user: $lastNameUser
+            recipe_name: $recipeName
+            order_date: $orderDate
+            limit: $limit
+            page: $page
+          ) {
+            count
+            maxPage
+            page
+            data {
               id
-              amount
-              note
-              recipe_id {
-                id
-                recipe_name
-                price
-                remain_order
-                status
-              }
-            }
-            user_id {
-              email
-              id
-              role
+              order_date
+              order_status
               status
-              first_name
-              last_name
+              total_price
+              menu {
+                id
+                amount
+                note
+                recipe_id {
+                  id
+                  recipe_name
+                  price
+                  remain_order
+                  status
+                }
+              }
+              user_id {
+                email
+                id
+                role
+                status
+                first_name
+                last_name
+              }
             }
           }
         }
-      }
       `,
       variables: {
-        ...pagination, orderStatus: statusFilter, lastNameUser : nameFilter, recipeName: menuFilter,
-        orderDate: dateFilter
+        ...pagination,
+        orderStatus: statusFilter,
+        lastNameUser: nameFilter,
+        recipeName: menuFilter,
+        orderDate: dateFilter,
       },
-      fetchPolicy: 'network-only'
-    })
+      fetchPolicy: 'network-only',
+    });
   }
 
-
   deleteCart(parameter: any): Observable<any> {
-    const id = parameter
+    const id = parameter;
     return this.apolo.mutate({
-      mutation: gql
-        `
-      mutation DeleteCart($deleteCartId: ID) {
-        deleteCart(id: $deleteCartId) {
-          id
+      mutation: gql`
+        mutation DeleteCart($deleteCartId: ID) {
+          deleteCart(id: $deleteCartId) {
+            id
+          }
         }
-      }
       `,
-      variables: { deleteCartId: parameter.id }
-    })
+      variables: { deleteCartId: parameter.id },
+    });
   }
 
   orderMenu(parameter: any): Observable<any> {
-    const id = parameter
+    const id = parameter;
     return this.apolo.mutate({
-      mutation: gql
-        `
+      mutation: gql`
         mutation Mutation($id: ID) {
           OrderNow(id: $id) {
             id
@@ -143,51 +154,50 @@ export class CartService {
           }
         }
       `,
-      variables: { id }
-    })
+      variables: { id },
+    });
   }
 
   decrAmount(parameter: any): Observable<any> {
-    const id = parameter
+    const id = parameter;
     return this.apolo.mutate({
       mutation: gql`
-      mutation update($id: ID) {
-        DecrAmount(id: $id) {
-          status
+        mutation update($id: ID) {
+          DecrAmount(id: $id) {
+            status
+          }
         }
-      }
       `,
-      variables: { id }
-    })
+      variables: { id },
+    });
   }
 
   incrAmount(parameter: any): Observable<any> {
-    const id = parameter
+    const id = parameter;
     return this.apolo.mutate({
       mutation: gql`
-      mutation update($id: ID) {
-        IncrAmount(id: $id) {
-          status
+        mutation update($id: ID) {
+          IncrAmount(id: $id) {
+            status
+          }
         }
-      }
       `,
-      variables: { id }
-    })
+      variables: { id },
+    });
   }
 
   updateNote(parameter: any) {
-    let { editNoteId, newNote } = parameter
+    let { editNoteId, newNote } = parameter;
 
     return this.apolo.mutate({
       mutation: gql`
-      mutation update($editNoteId: ID, $newNote: String) {
-        EditNote(id: $editNoteId, newNote: $newNote) {
-          status
+        mutation update($editNoteId: ID, $newNote: String) {
+          EditNote(id: $editNoteId, newNote: $newNote) {
+            status
+          }
         }
-      }
       `,
-      variables: { editNoteId, newNote }
-    })
+      variables: { editNoteId, newNote },
+    });
   }
-
 }
