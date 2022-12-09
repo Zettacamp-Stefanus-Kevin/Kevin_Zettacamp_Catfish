@@ -1,36 +1,50 @@
 import { Injectable } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
-import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RegisterService {
+  constructor(private apolo: Apollo) {}
 
-  constructor(private apolo: Apollo) { }
-
-  setRegister(data: any): Observable<any> {
-    let firstname = data.firstname
-    let lastname = data. lastname
-    let email = data.email
-    let password = data.password
-    console.log(data)
+  setRegister(data: any) {
+    const first_name = data.first_name;
+    const last_name = data.last_name;
+    const email = data.email;
+    const password = data.password;
+    const question_answer = data.question_answer;
 
     return this.apolo.mutate({
-      mutation: gql
-      `
-      mutation Mutation($email: String, $password: String, $firstName: String, $lastName: String) {
-        CreateUser(email: $email, password: $password, first_name: $firstName, last_name: $lastName) {
-          email
-          first_name
-          last_name
-          password
+      mutation: gql`
+        mutation Mutation(
+          $email: String
+          $password: String
+          $first_name: String
+          $last_name: String
+          $question_answer: String
+        ) {
+          CreateUser(
+            email: $email
+            password: $password
+            first_name: $first_name
+            last_name: $last_name
+            question_answer: $question_answer
+          ) {
+            email
+            first_name
+            last_name
+            password
+            question_answer
+          }
         }
-      }
       `,
-      variables: { first_name : firstname, last_name : lastname, email : email, password : password }
-    })
+      variables: {
+        first_name,
+        last_name,
+        email,
+        password,
+        question_answer,
+      },
+    });
   }
-
-
 }
