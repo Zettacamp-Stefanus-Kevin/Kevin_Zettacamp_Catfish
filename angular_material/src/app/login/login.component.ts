@@ -92,8 +92,8 @@ export class LoginComponent implements OnInit {
 
   forget() {
     const dialogRef = this.dialog.open(ForgetComponent, {
-      width: '50%',
-      height: '50%',
+      width: 'fit-content',
+      height: 'fit-content',
     });
 
     dialogRef.afterClosed().subscribe((result: any) => {

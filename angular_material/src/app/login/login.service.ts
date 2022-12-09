@@ -49,7 +49,7 @@ export class LoginService {
   }
 
   getUser(data: any) {
-    return this.apolo.watchQuery({
+    return this.apolo.query({
       query: gql`
         query Query($email: String) {
           GetOneUser(email: $email) {
@@ -67,6 +67,30 @@ export class LoginService {
         email: data,
       },
       fetchPolicy: 'network-only',
+    });
+  }
+
+  forgetPassword(data: any) {
+    const email = data.email;
+    const password = data.password;
+    const answer = data.answer;
+    return this.apolo.mutate({
+      mutation: gql`
+        mutation ForgetPassword(
+          $email: String
+          $answer: String
+          $password: String
+        ) {
+          ForgetPassword(
+            email: $email
+            answer: $answer
+            newPassword: $password
+          ) {
+            result
+          }
+        }
+      `,
+      variables: { email, password, answer },
     });
   }
 }

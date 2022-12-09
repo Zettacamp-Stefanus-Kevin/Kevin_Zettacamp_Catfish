@@ -1,19 +1,71 @@
-
 <body>
-    <form mat-dialog-content [formGroup]="forgetForm">
-
-        <mat-form-field appearance="fill">
-            <mat-label> Email </mat-label>
-            <input matInput type="text" formControlName="email">
-        </mat-form-field><br>
-
-        <div class="wrapbutton">
-            <button type="button" class="button" mat-raised-button (click)="onClick()"> {{"cancel" | translate }}
-            </button>
-            <button type="submit" class="button" mat-raised-button (click)="reset()" [disabled]="forgetForm.invalid">
-                {{"submit" |  translate }}
-            </button>
+  <mat-vertical-stepper [linear]="false" #stepper animationDuration="500">
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Fill out your email</ng-template>
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Ex: user@user.com"
+            formControlName="firstCtrl"
+            required
+          />
+        </mat-form-field>
+        <div>
+          <button mat-button (click)="onFirstStepDone()">Next</button>
         </div>
-
-    </form>
+      </form>
+    </mat-step>
+    <mat-step [completed]="false" [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>What was your chilhood name?</ng-template>
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="What was your chilhood name?"
+            formControlName="secondCtrl"
+            required
+          />
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="onSecondStepDone()">Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [completed]="false" [stepControl]="thirdFormGroup">
+      <form [formGroup]="thirdFormGroup">
+        <ng-template matStepLabel>Fill out your password</ng-template>
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Address"
+            formControlName="thirdCtrl"
+            required
+          />
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="onThirdStepDone()">Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [completed]="false" [stepControl]="fourthFormGroup">
+      <form [formGroup]="fourthFormGroup">
+        <ng-template matStepLabel>Fill out your password again!</ng-template>
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Address"
+            formControlName="fourthCtrl"
+            required
+          />
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="onFourthStepDone()">Submit</button>
+        </div>
+      </form>
+    </mat-step>
+  </mat-vertical-stepper>
 </body>
