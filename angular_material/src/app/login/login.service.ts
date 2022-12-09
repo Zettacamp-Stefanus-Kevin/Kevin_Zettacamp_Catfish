@@ -23,6 +23,7 @@ export class LoginService {
         id
         email
         role
+        balance
         first_name
         user_type
           {

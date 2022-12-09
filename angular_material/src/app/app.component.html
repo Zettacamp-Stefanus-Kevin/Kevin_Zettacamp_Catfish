@@ -69,7 +69,7 @@
           ID
         </mat-option>
       </mat-select>
-      <h1 *ngIf="role == 'user'">{{ data?.balance | currency : "Rp. " }}</h1>
+      <h1 *ngIf="role == 'user'">{{ balance | currency : "Rp. " }}</h1>
       <a
         mat-button
         class="cart"

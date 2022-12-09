@@ -21,6 +21,7 @@ export class AppComponent {
   public name: any;
   public data: any;
   public email: any;
+  public balance: any;
 
   cartLength: any;
 
@@ -44,6 +45,7 @@ export class AppComponent {
       this.token = localStorage.getItem('getToken');
       this.role = localStorage.getItem('userData');
       this.name = localStorage.getItem('name');
+      this.balance = localStorage.getItem('balance');
     }
   }
 
@@ -84,14 +86,5 @@ export class AppComponent {
       },
       () => {}
     );
-  }
-
-  balance() {
-    this.email = localStorage.getItem('email');
-    this.subs.sink = this.profilService
-      .getUser(this.email)
-      .valueChanges.subscribe((resp: any) => {
-        this.data = resp?.data?.GetOneUser;
-      });
   }
 }

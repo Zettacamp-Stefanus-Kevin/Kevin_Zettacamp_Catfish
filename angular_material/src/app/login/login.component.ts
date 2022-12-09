@@ -51,15 +51,18 @@ export class LoginComponent implements OnInit {
           let role: any;
           let name: any;
           let email: any;
+          let balance: number;
           adminToken = data?.data?.Login?.token;
           role = data?.data?.Login?.role;
           name = data?.data?.Login?.first_name;
           email = data?.data?.Login?.email;
+          balance = data?.data?.Login?.balance;
 
           localStorage.setItem('getToken', adminToken);
           localStorage.setItem('userData', role);
           localStorage.setItem('name', name);
           localStorage.setItem('email', email);
+          localStorage.setItem('balance', JSON.stringify(balance));
 
           Swal.fire({
             icon: 'success',
@@ -71,6 +74,7 @@ export class LoginComponent implements OnInit {
             this.appComponent.role = role;
             this.appComponent.token = adminToken;
             this.appComponent.name = name;
+            this.appComponent.balance = balance;
           });
         },
         (err) => {
