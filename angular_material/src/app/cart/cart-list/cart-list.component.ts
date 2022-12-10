@@ -5,6 +5,7 @@ import { cart } from '../cart';
 import { CartService } from '../cart.service';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-cart-list',
@@ -26,7 +27,8 @@ export class CartListComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private router: Router,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private appComponent: AppComponent
   ) {}
 
   ngOnInit(): void {
@@ -83,7 +85,7 @@ export class CartListComponent implements OnInit {
             text: resp.data.OrderNow.order_status,
           }).then(() => {
             this.router.navigate(['cart']).then(() => {
-              window.location.reload();
+              this.appComponent.balance -= this.price;
             });
           });
         }
