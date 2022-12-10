@@ -1,58 +1,70 @@
 <body>
-  <form class="form" [formGroup]="userForm">
-    <div class="form-field">
-      <mat-form-field appearance="fill">
-        <mat-label>
-          <mat-icon>person_outline</mat-icon> {{ "first_name" | translate }}
-        </mat-label>
-        <input
-          matInput
-          type="text"
-          formControlName="first_name"
-          placeholder="enter first_name"
-        />
-      </mat-form-field>
+  <div class="data">
+    <div class="profile">
+      <form class="form" [formGroup]="userForm">
+        <div class="form-field">
+          <mat-form-field appearance="fill">
+            <mat-label>
+              <mat-icon>person_outline</mat-icon> {{ "first_name" | translate }}
+            </mat-label>
+            <input
+              matInput
+              type="text"
+              formControlName="first_name"
+              placeholder="enter first_name"
+            />
+          </mat-form-field>
+        </div>
+        <div class="form-field">
+          <mat-form-field appearance="fill">
+            <mat-label>
+              <mat-icon>person_outline</mat-icon> {{ "last_name" | translate }}
+            </mat-label>
+            <input
+              matInput
+              type="text"
+              formControlName="last_name"
+              placeholder="enter last_name"
+            />
+          </mat-form-field>
+        </div>
+        <div class="form-field">
+          <mat-form-field appearance="fill">
+            <mat-label>
+              <mat-icon> mail_outline</mat-icon> {{ "email" | translate }}
+            </mat-label>
+            <input
+              matInput
+              type="email"
+              formControlName="email"
+              placeholder="input email"
+            />
+          </mat-form-field>
+        </div>
+        <div class="form-field">
+          <mat-form-field appearance="fill">
+            <mat-label>
+              <mat-icon>lock</mat-icon> {{ "password" | translate }}
+            </mat-label>
+            <input
+              type="password"
+              matInput
+              formControlName="password"
+              placeholder="enter password"
+            />
+          </mat-form-field>
+        </div>
+        <button mat-raised-button (click)="onEdit()" *ngIf="!isEdit">
+          Edit
+        </button>
+        <button mat-raised-button (click)="onSubmit()" *ngIf="isEdit">
+          Submit
+        </button>
+      </form>
     </div>
-    <div class="form-field">
-      <mat-form-field appearance="fill">
-        <mat-label>
-          <mat-icon>person_outline</mat-icon> {{ "last_name" | translate }}
-        </mat-label>
-        <input
-          matInput
-          type="text"
-          formControlName="last_name"
-          placeholder="enter last_name"
-        />
-      </mat-form-field>
+    <div class="balance" *ngIf="data.balance > 0">
+      <div class="title-balance">Total Balance:</div>
+      <div class="amount-balance">{{ data.balance | currency : "Rp. " }}</div>
     </div>
-    <div class="form-field">
-      <mat-form-field appearance="fill">
-        <mat-label>
-          <mat-icon> mail_outline</mat-icon> {{ "email" | translate }}
-        </mat-label>
-        <input
-          matInput
-          type="email"
-          formControlName="email"
-          placeholder="input email"
-        />
-      </mat-form-field>
-    </div>
-    <div class="form-field">
-      <mat-form-field appearance="fill">
-        <mat-label>
-          <mat-icon>lock</mat-icon> {{ "password" | translate }}
-        </mat-label>
-        <input
-          type="password"
-          matInput
-          formControlName="password"
-          placeholder="enter password"
-        />
-      </mat-form-field>
-    </div>
-    <button mat-raised-button (click)="onEdit()">Edit</button>
-    <button mat-raised-button *ngIf="userForm?.enable()">Submit</button>
-  </form>
+  </div>
 </body>

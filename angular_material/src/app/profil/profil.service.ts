@@ -30,11 +30,16 @@ export class ProfilService {
     });
   }
 
-  updateUser(data: any) {
-    const email = data.email;
-    const password = data.password;
-    const firstName = data.first_name;
-    const lastName = data.last_name;
+  updateUser(
+    newFirst?: string,
+    newLast?: string,
+    newEmail?: string,
+    newPass?: string
+  ) {
+    const email = newEmail;
+    const password = newPass;
+    const firstName = newFirst;
+    const lastName = newLast;
     return this.apolo.mutate({
       mutation: gql`
         mutation UpdateUser(

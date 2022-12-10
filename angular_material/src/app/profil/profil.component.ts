@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SubSink } from 'subsink';
+import Swal from 'sweetalert2';
+import { AppComponent } from '../app.component';
 import { ProfilService } from './profil.service';
 
 @Component({
@@ -15,20 +17,24 @@ export class ProfilComponent implements OnInit {
 
   email: any;
   role = '';
+  isEdit = false;
 
-  userForm = this.fb.group({
+  userForm: any = this.fb.group({
     first_name: this.fb.control('', Validators.required),
     last_name: this.fb.control('', Validators.required),
     email: this.fb.control('', [Validators.required, Validators.email]),
     password: this.fb.control('', Validators.required),
   });
 
-  constructor(private profilService: ProfilService, private fb: FormBuilder) {}
+  constructor(
+    private profilService: ProfilService,
+    private fb: FormBuilder,
+    private appComponent: AppComponent
+  ) {}
 
   ngOnInit(): void {
-    this.init().then(() => {
-      this.userForm.controls['first_name'].disable();
-    });
+    this.init();
+    this.userForm.disable();
   }
 
   init(): any {
@@ -41,9 +47,423 @@ export class ProfilComponent implements OnInit {
       });
   }
 
-  onSubmit() {}
+  onSubmit() {
+    if (
+      this.userForm.value.first_name != this.data.first_name &&
+      this.userForm.value.last_name != this.data.last_name &&
+      this.userForm.value.email != this.data.email &&
+      this.userForm.value.password != this.data.password
+    ) {
+      this.profilService
+        .updateUser(
+          this.userForm.value.first_name,
+          this.userForm.value.last_name,
+          this.userForm.value.email,
+          this.userForm.value.password
+        )
+        .subscribe(() => {
+          Swal.fire(
+            'Profile changed',
+            'Your profile data has been changed!',
+            'success'
+          ).then(
+            () => {
+              this.appComponent.name = this.userForm.value.first_name;
+              localStorage.setItem('name', this.userForm.value.first_name);
+
+              this.isEdit = false;
+              this.userForm.disable();
+            },
+            (err) => {
+              Swal.fire('Profile not changed', err, 'error');
+            }
+          );
+        });
+    } else if (
+      this.userForm.value.email != this.data.email &&
+      this.userForm.value.last_name != this.data.last_name &&
+      this.userForm.value.password != this.data.password
+    ) {
+      this.profilService
+        .updateUser(
+          undefined,
+          this.userForm.value.last_name,
+          this.userForm.value.email,
+          this.userForm.value.password
+        )
+        .subscribe(() => {
+          Swal.fire(
+            'Profile changed',
+            'Your profile data has been changed!',
+            'success'
+          ).then(
+            () => {
+              this.isEdit = false;
+              this.userForm.disable();
+            },
+            (err) => {
+              Swal.fire('Profile not changed', err, 'error');
+            }
+          );
+        });
+    } else if (
+      this.userForm.value.first_name != this.data.first_name &&
+      this.userForm.value.email != this.data.email &&
+      this.userForm.value.password != this.data.password
+    ) {
+      this.profilService
+        .updateUser(
+          this.userForm.value.first_name,
+          undefined,
+          this.userForm.value.email,
+          this.userForm.value.password
+        )
+        .subscribe(() => {
+          Swal.fire(
+            'Profile changed',
+            'Your profile data has been changed!',
+            'success'
+          ).then(
+            () => {
+              this.appComponent.name = this.userForm.value.first_name;
+              localStorage.setItem('name', this.userForm.value.first_name);
+
+              this.isEdit = false;
+              this.userForm.disable();
+            },
+            (err) => {
+              Swal.fire('Profile not changed', err, 'error');
+            }
+          );
+        });
+    } else if (
+      this.userForm.value.first_name != this.data.first_name &&
+      this.userForm.value.last_name != this.data.last_name &&
+      this.userForm.value.password != this.data.password
+    ) {
+      this.profilService
+        .updateUser(
+          this.userForm.value.first_name,
+          this.userForm.value.last_name,
+          undefined,
+          this.userForm.value.password
+        )
+        .subscribe(() => {
+          Swal.fire(
+            'Profile changed',
+            'Your profile data has been changed!',
+            'success'
+          ).then(
+            () => {
+              this.appComponent.name = this.userForm.value.first_name;
+              localStorage.setItem('name', this.userForm.value.first_name);
+
+              this.isEdit = false;
+              this.userForm.disable();
+            },
+            (err) => {
+              Swal.fire('Profile not changed', err, 'error');
+            }
+          );
+        });
+    } else if (
+      this.userForm.value.first_name != this.data.first_name &&
+      this.userForm.value.last_name != this.data.last_name &&
+      this.userForm.value.email != this.data.email
+    ) {
+      this.profilService
+        .updateUser(
+          this.userForm.value.first_name,
+          this.userForm.value.last_name,
+          this.userForm.value.email,
+          undefined
+        )
+        .subscribe(() => {
+          Swal.fire(
+            'Profile changed',
+            'Your profile data has been changed!',
+            'success'
+          ).then(
+            () => {
+              this.appComponent.name = this.userForm.value.first_name;
+              localStorage.setItem('name', this.userForm.value.first_name);
+
+              this.isEdit = false;
+              this.userForm.disable();
+            },
+            (err) => {
+              Swal.fire('Profile not changed', err, 'error');
+            }
+          );
+        });
+    } else if (
+      this.userForm.value.last_name != this.data.last_name &&
+      this.userForm.value.password != this.data.password
+    ) {
+      this.profilService
+        .updateUser(
+          undefined,
+          this.userForm.value.last_name,
+          undefined,
+          this.userForm.value.password
+        )
+        .subscribe(() => {
+          Swal.fire(
+            'Profile changed',
+            'Your profile data has been changed!',
+            'success'
+          ).then(
+            () => {
+              this.isEdit = false;
+              this.userForm.disable();
+            },
+            (err) => {
+              Swal.fire('Profile not changed', err, 'error');
+            }
+          );
+        });
+    } else if (
+      this.userForm.value.first_name != this.data.first_name &&
+      this.userForm.value.password != this.data.password
+    ) {
+      this.profilService
+        .updateUser(
+          this.userForm.value.first_name,
+          undefined,
+          undefined,
+          this.userForm.value.password
+        )
+        .subscribe(() => {
+          Swal.fire(
+            'Profile changed',
+            'Your profile data has been changed!',
+            'success'
+          ).then(
+            () => {
+              this.appComponent.name = this.userForm.value.first_name;
+              localStorage.setItem('name', this.userForm.value.first_name);
+
+              this.isEdit = false;
+              this.userForm.disable();
+            },
+            (err) => {
+              Swal.fire('Profile not changed', err, 'error');
+            }
+          );
+        });
+    } else if (
+      this.userForm.value.first_name != this.data.first_name &&
+      this.userForm.value.last_name != this.data.last_name
+    ) {
+      this.profilService
+        .updateUser(
+          this.userForm.value.first_name,
+          this.userForm.value.last_name,
+          undefined,
+          undefined
+        )
+        .subscribe(() => {
+          Swal.fire(
+            'Profile changed',
+            'Your profile data has been changed!',
+            'success'
+          ).then(
+            () => {
+              this.appComponent.name = this.userForm.value.first_name;
+              localStorage.setItem('name', this.userForm.value.first_name);
+
+              this.isEdit = false;
+              this.userForm.disable();
+            },
+            (err) => {
+              Swal.fire('Profile not changed', err, 'error');
+            }
+          );
+        });
+    } else if (
+      this.userForm.value.email != this.data.email &&
+      this.userForm.value.password != this.data.password
+    ) {
+      this.profilService
+        .updateUser(
+          undefined,
+          undefined,
+          this.userForm.value.email,
+          this.userForm.value.password
+        )
+        .subscribe(() => {
+          Swal.fire(
+            'Profile changed',
+            'Your profile data has been changed!',
+            'success'
+          ).then(
+            () => {
+              this.isEdit = false;
+              this.userForm.disable();
+            },
+            (err) => {
+              Swal.fire('Profile not changed', err, 'error');
+            }
+          );
+        });
+    } else if (
+      this.userForm.value.email != this.data.email &&
+      this.userForm.value.last_name != this.data.last_name
+    ) {
+      this.profilService
+        .updateUser(
+          undefined,
+          this.userForm.value.last_name,
+          this.userForm.value.email,
+          undefined
+        )
+        .subscribe(() => {
+          Swal.fire(
+            'Profile changed',
+            'Your profile data has been changed!',
+            'success'
+          ).then(
+            () => {
+              this.isEdit = false;
+              this.userForm.disable();
+            },
+            (err) => {
+              Swal.fire('Profile not changed', err, 'error');
+            }
+          );
+        });
+    } else if (
+      this.userForm.value.email != this.data.email &&
+      this.userForm.value.first_name != this.data.first_name
+    ) {
+      this.profilService
+        .updateUser(
+          this.userForm.value.first_name,
+          undefined,
+          this.userForm.value.email,
+          undefined
+        )
+        .subscribe(() => {
+          Swal.fire(
+            'Profile changed',
+            'Your profile data has been changed!',
+            'success'
+          ).then(
+            () => {
+              this.appComponent.name = this.userForm.value.first_name;
+              localStorage.setItem('name', this.userForm.value.first_name);
+
+              this.isEdit = false;
+              this.userForm.disable();
+            },
+            (err) => {
+              Swal.fire('Profile not changed', err, 'error');
+            }
+          );
+        });
+    } else if (this.userForm.value.first_name != this.data.first_name) {
+      this.profilService
+        .updateUser(
+          this.userForm.value.first_name,
+          undefined,
+          undefined,
+          undefined
+        )
+        .subscribe(() => {
+          Swal.fire(
+            'Profile changed',
+            'Your profile data has been changed!',
+            'success'
+          ).then(
+            () => {
+              this.appComponent.name = this.userForm.value.first_name;
+              localStorage.setItem('name', this.userForm.value.first_name);
+              this.isEdit = false;
+              this.userForm.disable();
+            },
+            (err) => {
+              Swal.fire('Profile not changed', err, 'error');
+            }
+          );
+        });
+    } else if (this.userForm.value.last_name != this.data.last_name) {
+      this.profilService
+        .updateUser(
+          undefined,
+          this.userForm.value.last_name,
+          undefined,
+          undefined
+        )
+        .subscribe(() => {
+          Swal.fire(
+            'Profile changed',
+            'Your profile data has been changed!',
+            'success'
+          ).then(
+            () => {
+              this.isEdit = false;
+              this.userForm.disable();
+            },
+            (err) => {
+              Swal.fire('Profile not changed', err, 'error');
+            }
+          );
+        });
+    } else if (this.userForm.value.password != this.data.password) {
+      this.profilService
+        .updateUser(
+          undefined,
+          undefined,
+          undefined,
+          this.userForm.value.password
+        )
+        .subscribe(() => {
+          Swal.fire(
+            'Profile changed',
+            'Your profile data has been changed!',
+            'success'
+          ).then(
+            () => {
+              this.isEdit = false;
+              this.userForm.disable();
+            },
+            (err) => {
+              Swal.fire('Profile not changed', err, 'error');
+            }
+          );
+        });
+    } else if (this.userForm.value.email != this.data.email) {
+      this.profilService
+        .updateUser(undefined, undefined, this.userForm.value.email, undefined)
+        .subscribe(() => {
+          Swal.fire(
+            'Profile changed',
+            'Your profile data has been changed!',
+            'success'
+          ).then(
+            () => {
+              this.isEdit = false;
+              this.userForm.disable();
+            },
+            (err) => {
+              Swal.fire('Profile not changed', err, 'error');
+            }
+          );
+        });
+    } else {
+      Swal.fire(
+        'Profile changed',
+        'Your profile data has been changed!',
+        'success'
+      ).then(() => {
+        this.isEdit = false;
+        this.userForm.disable();
+      });
+    }
+  }
 
   onEdit() {
     this.userForm.enable();
+    this.isEdit = true;
   }
 }
