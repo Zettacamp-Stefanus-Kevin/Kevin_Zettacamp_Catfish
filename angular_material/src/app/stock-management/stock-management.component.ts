@@ -52,6 +52,8 @@ export class StockManagementComponent implements OnInit {
       .getStock(pagination, this.searchIngredient, this.searchStatus)
       .subscribe((resp) => {
         this.paginator.length = resp.data.GetAllIngredients.count;
+        console.log(resp);
+        
         // this.paginator.pageSize = this.pageSizeOptions[0];
 
         // this.stock.push(resp.data.GetAllIngredients.data)

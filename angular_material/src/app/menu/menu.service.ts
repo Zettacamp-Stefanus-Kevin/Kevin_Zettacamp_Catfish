@@ -43,14 +43,20 @@ export class MenuService {
   //   })
   // }
 
-  getMenu(pagination: any): Observable<any> {
+  getMenu(pagination: any, kategori:any): Observable<any> {
+    let kategoriFilter: any = '';
+    if (kategori) {
+      kategoriFilter = kategori;
+    }
+
     return this.apolo.query({
       query: gql`
-        query Query($page: Int, $limit: Int, $recipeName: String) {
+        query Query($page: Int, $limit: Int, $recipeName: String, $category: String) {
           GetAllRecipesNotLogin(
             page: $page
             limit: $limit
-            recipe_name: $recipeName
+            recipe_name: $recipeName,
+            category: $category
           ) {
             count
             maxPage
@@ -83,7 +89,7 @@ export class MenuService {
       `,
       variables: {
         ...pagination,
-        status: 'active',
+        status: 'active',  category  : kategoriFilter 
       },
       fetchPolicy: 'network-only',
     });

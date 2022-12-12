@@ -34,6 +34,7 @@ export class MenuManagementUpdateComponent implements OnInit {
       id: new FormControl(null),
       recipe_name: new FormControl(null, [Validators.required]),
       price: new FormControl(null, [Validators.required]),
+      discount : new FormControl(null, [Validators.required]),
       ingredients: new FormArray([]),
     });
 
@@ -45,6 +46,7 @@ export class MenuManagementUpdateComponent implements OnInit {
       id: this.menu.id,
       recipe_name: this.menu.recipe_name,
       price: this.menu.price,
+      discount: this.menu.discount
     };
 
     let ingredients: any = [];

@@ -3,7 +3,13 @@ import { SubSink } from 'subsink';
 import { MenuService } from '../menu.service';
 import { menu } from '../menu';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { debounceTime } from 'rxjs';
+import { FormControl } from '@angular/forms';
 
+export interface kategory {
+  value: string;
+  viewValue: string;
+}
 @Component({
   selector: 'app-menu-list',
   templateUrl: './menu-list.component.html',
@@ -17,6 +23,7 @@ export class MenuListComponent implements OnInit {
 
   ngOnInit(): void {
     this?.init(this.paginator);
+    this.filterKategori();
   }
 
   init(paginationObj: any) {
@@ -26,12 +33,31 @@ export class MenuListComponent implements OnInit {
     };
 
     this.subs.sink = this.menuService
-      .getMenu(pagination)
+      .getMenu(pagination, this.searchKategori)
       .subscribe((resp: any) => {
         this.paginator.length = resp.data?.GetAllRecipesNotLogin?.count;
 
         this.menu = resp.data.GetAllRecipesNotLogin.data_recipes;
       });
+  }
+
+  //filter kategory===================
+  kategori: kategory[] = [
+    { value: '', viewValue: 'All' },
+    { value: 'side dish', viewValue: 'Side Dish' },
+    { value: 'appetizer', viewValue: 'Appetizer' }
+  ];
+
+  kategoriFilter = new FormControl();
+  searchKategori: any;
+  value = '';
+
+  filterKategori() {
+    this.kategoriFilter.valueChanges.pipe(debounceTime(300)).subscribe((val) => {
+      this.searchKategori = val;
+
+      this.init(true);
+    });
   }
 
   @ViewChild('paginator') paginator!: MatPaginator;

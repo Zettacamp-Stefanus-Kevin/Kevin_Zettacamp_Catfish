@@ -1,8 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { debounceTime } from 'rxjs';
 import { SubSink } from 'subsink';
 import { MenuDetailComponent } from '../../menu-detail/menu-detail.component';
 import { MenuInfoComponent } from '../../menu-info/menu-info.component';
+
+
 
 @Component({
   selector: 'app-menu-card',
@@ -12,7 +16,7 @@ import { MenuInfoComponent } from '../../menu-info/menu-info.component';
 export class MenuCardComponent implements OnInit {
   @Input() recipe: any;
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog) { }
 
   token: string | null = '';
 
@@ -29,7 +33,7 @@ export class MenuCardComponent implements OnInit {
       data: parameter || null,
       // data : parameter
     });
-    dialogRef.afterClosed().subscribe((result) => {});
+    dialogRef.afterClosed().subscribe((result) => { });
   }
 
   addCart(parameter: any) {
@@ -42,6 +46,9 @@ export class MenuCardComponent implements OnInit {
       data: parameter || null,
     });
 
-    dialogRef.afterClosed().subscribe((result) => {});
+    dialogRef.afterClosed().subscribe((result) => { });
   }
+
+  
+
 }

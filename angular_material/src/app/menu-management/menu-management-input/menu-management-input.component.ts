@@ -11,6 +11,10 @@ import {
 import Swal from 'sweetalert2';
 import { TranslateService } from '@ngx-translate/core';
 
+export interface kategory {
+  value: string;
+  viewValue: string;
+}
 @Component({
   selector: 'app-menu-management-input',
   templateUrl: './menu-management-input.component.html',
@@ -20,6 +24,13 @@ export class MenuManagementInputComponent implements OnInit {
   recipeForm: any;
 
   ingredients: any;
+  
+
+  kategori: kategory[] = [
+    { value: '', viewValue: 'All' },
+    { value: 'side dish', viewValue: 'Side Dish' },
+    { value: 'appetizer', viewValue: 'Appetizer' }
+  ];
 
   constructor(
     private menuService: MenuManagementService,
@@ -31,7 +42,9 @@ export class MenuManagementInputComponent implements OnInit {
     this.recipeForm = new FormGroup({
       recipe_name: new FormControl(null, [Validators.required]),
       image: new FormControl(null, [Validators.required]),
+      category: new FormControl(null, [Validators.required]),
       price: new FormControl(null, [Validators.required]),
+   
       description: new FormControl(null, [Validators.required]),
       ingredients: new FormArray([]),
     });
@@ -39,6 +52,7 @@ export class MenuManagementInputComponent implements OnInit {
     this.menuService.getIngredient().subscribe((val: any) => {
       this.ingredients = val.data.GetAllIngredients.data;
     });
+   
   }
 
   addIngredient() {
@@ -68,5 +82,11 @@ export class MenuManagementInputComponent implements OnInit {
       });
       this.recipeForm.markAllAsTouched();
     }
+  }
+
+  onTest(event:any){
+    console.log(event);
+    
+
   }
 }

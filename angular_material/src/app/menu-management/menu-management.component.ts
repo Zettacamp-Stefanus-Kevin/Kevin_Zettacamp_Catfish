@@ -30,8 +30,8 @@ export class MenuManagementComponent implements OnInit {
   displayedColumns: string[] = [
     'recipe_name',
     'ingredients',
-    'specialoffers',
     'remain_order',
+    'discount',
     'price',
     'status',
     'actions',
@@ -64,7 +64,8 @@ export class MenuManagementComponent implements OnInit {
         // this.paginator.pageSize = this.pageSizeOptions[0];
 
         this.menu.push(resp.data.GetAllRecipes.data_recipes);
-
+        console.log(this.menu);
+        
         this.dataSource.data = resp.data.GetAllRecipes.data_recipes;
       });
   }
@@ -81,8 +82,14 @@ export class MenuManagementComponent implements OnInit {
           icon: 'success',
           title: this.translate.instant('Success'),
           text: this.translate.instant('Your work has been saved'),
-        });
+        }
+        );
         this.init(true);
+      }, err => {
+        Swal.fire({
+          icon : 'error',
+          text: err.message
+        })
       });
     });
   }
@@ -169,65 +176,65 @@ export class MenuManagementComponent implements OnInit {
     });
   }
 
-  onHigh(check: any) {
-    check = copy(check);
-    if (check.is_hightlighted === true) {
-      check.is_hightlighted = false;
-    } else if (check.is_hightlighted === false) {
-      check.is_hightlighted = true;
-    }
-    Swal.fire({
-      title:
-        this.translate.instant('Are you sure want change this menu to ') +
-        check.is_hightlighted +
-        '?',
-      showDenyButton: false,
-      showCancelButton: true,
-      showConfirmButton: true,
-      denyButtonText: `Yes`,
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.menuService.updateHighlight(check).subscribe(() => {
-          Swal.fire({
-            title:
-              this.translate.instant('you have been change status to ') +
-              check.is_hightlighted,
-          });
-          this.init(true);
-        });
-      }
-    });
-  }
+  // onHigh(check: any) {
+  //   check = copy(check);
+  //   if (check.is_hightlighted === true) {
+  //     check.is_hightlighted = false;
+  //   } else if (check.is_hightlighted === false) {
+  //     check.is_hightlighted = true;
+  //   }
+  //   Swal.fire({
+  //     title:
+  //       this.translate.instant('Are you sure want change this menu to ') +
+  //       check.is_hightlighted +
+  //       '?',
+  //     showDenyButton: false,
+  //     showCancelButton: true,
+  //     showConfirmButton: true,
+  //     denyButtonText: `Yes`,
+  //   }).then((result) => {
+  //     if (result.isConfirmed) {
+  //       this.menuService.updateHighlight(check).subscribe(() => {
+  //         Swal.fire({
+  //           title:
+  //             this.translate.instant('you have been change status to ') +
+  //             check.is_hightlighted,
+  //         });
+  //         this.init(true);
+  //       });
+  //     }
+  //   });
+  // }
 
-  onSpecial(check: any) {
-    check = copy(check);
-    if (check.is_special_offers.status === true) {
-      check.is_special_offers.status = false;
-    } else if (check.is_special_offers.status === false) {
-      check.is_special_offers.status = true;
-    }
-    Swal.fire({
-      title:
-        this.translate.instant('Are you sure want change this menu to ') +
-        check.is_special_offers.status +
-        '?',
-      showDenyButton: false,
-      showCancelButton: true,
-      showConfirmButton: true,
-      denyButtonText: `Yes`,
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.menuService.updateSPrice(check).subscribe(() => {
-          Swal.fire({
-            title:
-              this.translate.instant('you have been change status to ') +
-              check.is_special_offers.status,
-          });
-          this.init(true);
-        });
-      }
-    });
-  }
+  // onSpecial(check: any) {
+  //   check = copy(check);
+  //   if (check.is_special_offers.status === true) {
+  //     check.is_special_offers.status = false;
+  //   } else if (check.is_special_offers.status === false) {
+  //     check.is_special_offers.status = true;
+  //   }
+  //   Swal.fire({
+  //     title:
+  //       this.translate.instant('Are you sure want change this menu to ') +
+  //       check.is_special_offers.status +
+  //       '?',
+  //     showDenyButton: false,
+  //     showCancelButton: true,
+  //     showConfirmButton: true,
+  //     denyButtonText: `Yes`,
+  //   }).then((result) => {
+  //     if (result.isConfirmed) {
+  //       this.menuService.updateSPrice(check).subscribe(() => {
+  //         Swal.fire({
+  //           title:
+  //             this.translate.instant('you have been change status to ') +
+  //             check.is_special_offers.status,
+  //         });
+  //         this.init(true);
+  //       });
+  //     }
+  //   });
+  // }
 
   //names FIlter===================================
 

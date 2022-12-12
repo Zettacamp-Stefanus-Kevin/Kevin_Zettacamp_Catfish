@@ -20,6 +20,12 @@ export class MenuManagementService {
       statusFilter = status;
     }
 
+    console.log(pagination);
+    console.log(name);
+    console.log(status);
+
+    
+    
     return this.apolo.query({
       query: gql`
         query GetAllTransactions(
@@ -42,6 +48,7 @@ export class MenuManagementService {
               id
               remain_order
               status
+              category
               is_hightlighted
               is_special_offers {
                 status
@@ -103,12 +110,14 @@ export class MenuManagementService {
     });
   }
 
-  addRecipe(data: menu): Observable<any> {
+  addRecipe(data: any): Observable<any> {
     let recipe_name = data.recipe_name;
     let price = data.price;
     let description = data.description;
     let image = data.image;
     let input = data.ingredients;
+    let category = data.category;
+    let discount = data.discount;
 
     return this.apolo.mutate({
       mutation: gql`
@@ -118,6 +127,8 @@ export class MenuManagementService {
           $description: String
           $price: Int
           $image: String
+          $category: String
+          $discount: Int
         ) {
           CreateRecipes(
             input: $input
@@ -125,11 +136,17 @@ export class MenuManagementService {
             description: $description
             price: $price
             image: $image
+            discount: $discount
+            category: $category
           ) {
             description
             image
             price
             recipe_name
+            category
+            is_special_offers {
+              discount
+            }
             ingredients {
               stock_used
               ids {
@@ -140,7 +157,7 @@ export class MenuManagementService {
           }
         }
       `,
-      variables: { recipe_name, price, description, image, input },
+      variables: { recipe_name, price, description, image, input, category, discount },
     });
   }
 
@@ -149,6 +166,7 @@ export class MenuManagementService {
     let recipe_name = data.recipe_name;
     let input = data.ingredients;
     let price = data.price;
+    let discount = data.discount;
 
     return this.apolo.mutate({
       mutation: gql`
@@ -157,12 +175,14 @@ export class MenuManagementService {
           $recipe_name: String
           $price: Int
           $updateRecipesId: ID
+          $discount: Int
         ) {
           UpdateRecipes(
             input: $input
             recipe_name: $recipe_name
             price: $price
             id: $updateRecipesId
+            discount: $discount
           ) {
             id
             image
@@ -183,7 +203,7 @@ export class MenuManagementService {
           }
         }
       `,
-      variables: { updateRecipesId, recipe_name, input, price },
+      variables: { updateRecipesId, recipe_name, input, price, discount },
     });
   }
 
@@ -224,18 +244,17 @@ export class MenuManagementService {
 
   updateSPrice(data: any) {
     let updateRecipesId = data.id;
-    let isSpecialOffers = data.is_special_offers;
+    let statusSpecialOffers = data.is_special_offers;
     return this.apolo.mutate({
       mutation: gql`
-      mutation update($updateRecipesId: ID,  $statusSpecialOffers: Boolean)) {
-        UpdateRecipes(id: $updateRecipesId, status_special_offers: $statusSpecialOffers) {
+      mutation update($updateRecipesId: ID, $statusSpecialOffers: Boolean)) {
+        UpdateRecipes(id: $updateRecipesId, statusSpecialOffers: $statusSpecialOffers) {
           id
           is_special_offers
         }
       }
-      
       `,
-      variables: { updateRecipesId, status_special_offers: isSpecialOffers },
+      variables: { updateRecipesId, statusSpecialOffers }
     });
   }
 }
