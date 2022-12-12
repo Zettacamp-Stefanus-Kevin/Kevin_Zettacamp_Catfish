@@ -28,8 +28,7 @@ export class AppComponent {
   constructor(
     private router: Router,
     private translate: TranslateService,
-    private cartService: CartService,
-    private profilService: ProfilService
+    private cartService: CartService
   ) {}
 
   ngOnInit() {
