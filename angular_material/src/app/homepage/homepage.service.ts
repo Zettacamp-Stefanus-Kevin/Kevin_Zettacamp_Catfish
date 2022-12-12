@@ -35,8 +35,8 @@ export class HomepageService {
   getDiskon() {
     return this.apolo.watchQuery({
       query: gql`
-        query Query($isHightlighted: Boolean) {
-          GetAllRecipesNotLogin(is_hightlighted: $isHightlighted) {
+        query Query($is_special_offers: Boolean) {
+          GetAllRecipesNotLogin(is_special_offers: $is_special_offers) {
             data_recipes {
               id
               description
@@ -54,7 +54,7 @@ export class HomepageService {
           }
         }
       `,
-      variables: { isSpecialOffers: false },
+      variables: { is_special_offers: true },
     });
   }
 }

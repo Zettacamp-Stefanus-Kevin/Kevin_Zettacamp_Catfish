@@ -55,21 +55,20 @@ export class StockManagementService {
     let name = data.name;
     let stock = data.stock;
 
-    return this.apolo
-      .mutate({
-        mutation: gql`
-          mutation Mutation($id: ID, $stock: Int, $name: String) {
-            UpdateIngredients(id: $id, stock: $stock, name: $name) {
-              id
-              name
-              status
-              stock
-            }
+    return this.apolo.mutate({
+      mutation: gql`
+        mutation Mutation($id: ID, $stock: Int, $name: String) {
+          UpdateIngredients(id: $id, stock: $stock, name: $name) {
+            id
+            name
+            status
+            stock
           }
-        `,
-        variables: { id, name, stock },
-      })
-      .subscribe();
+        }
+      `,
+      variables: { id, name, stock },
+      fetchPolicy: 'network-only',
+    });
   }
 
   addStock(data: stock) {
@@ -106,6 +105,7 @@ export class StockManagementService {
         }
       `,
       variables: { id: parameter },
+      fetchPolicy: 'network-only',
     });
   }
 }

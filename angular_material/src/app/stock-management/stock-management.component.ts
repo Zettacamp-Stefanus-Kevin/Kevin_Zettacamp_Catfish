@@ -35,32 +35,6 @@ export class StockManagementComponent implements OnInit {
     private translate: TranslateService
   ) {}
 
-  // sortData(sort: Sort) {
-  //   const data = this.displayedColumns.slice();
-  //   if (!sort.active || sort.direction === '') {
-  //     this.stock = data;
-  //     return;
-  //   }
-
-  //   this.stock = data.sort((a, b) => {
-  //     const isAsc = sort.direction === 'asc';
-  //     switch (sort.active) {
-  //       case 'name':
-  //         return compare(a.name, b.name, isAsc);
-  //       case 'calories':
-  //         return compare(a.calories, b.calories, isAsc);
-  //       case 'fat':
-  //         return compare(a.fat, b.fat, isAsc);
-  //       case 'carbs':
-  //         return compare(a.carbs, b.carbs, isAsc);
-  //       case 'protein':
-  //         return compare(a.protein, b.protein, isAsc);
-  //       default:
-  //         return 0;
-  //     }
-  //   });
-  // }
-
   ngOnInit(): void {
     this.init(this.paginator);
     this.filterIngredient();
@@ -107,7 +81,23 @@ export class StockManagementComponent implements OnInit {
 
   onClick(parameter: any) {
     this.stockService.deleteStock(parameter).subscribe((resp) => {
-      this.init(this.paginator);
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire('Deleted!', 'Your file has been deleted.', 'success').then(
+            () => {
+              this.init(this.paginator);
+            }
+          );
+        }
+      });
     });
   }
 
@@ -119,14 +109,16 @@ export class StockManagementComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      this.stockService.updateStock(result);
-
-      Swal.fire({
-        icon: 'success',
-        title: this.translate.instant('Success'),
-        text: this.translate.instant('Your work has been saved'),
+      this.stockService.updateStock(result).subscribe((data) => {
+        console.log(data);
+        Swal.fire({
+          icon: 'success',
+          title: this.translate.instant('Success'),
+          text: this.translate.instant('Your work has been saved'),
+        }).then(() => {
+          this.init(this.paginator);
+        });
       });
-      this.init(this.paginator);
     });
   }
 
