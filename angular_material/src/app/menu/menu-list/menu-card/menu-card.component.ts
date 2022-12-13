@@ -17,13 +17,17 @@ export class MenuCardComponent implements OnInit {
   @Input() recipe: any;
 
   constructor(private dialog: MatDialog) { }
-
+  data : any
+ 
   token: string | null = '';
+  role: string | null = '';
 
   ngOnInit(): void {
     if (localStorage.getItem('getToken') !== null) {
       this.token = localStorage.getItem('getToken');
+      this.role = localStorage.getItem('userData');
     }
+    
   }
 
   info(parameter: any) {

@@ -26,6 +26,7 @@ export class MenuListComponent implements OnInit {
     this.filterKategori();
   }
 
+
   init(paginationObj: any) {
     const pagination: any = {
       page: paginationObj?.page ?? 1,
@@ -38,6 +39,9 @@ export class MenuListComponent implements OnInit {
         this.paginator.length = resp.data?.GetAllRecipesNotLogin?.count;
 
         this.menu = resp.data.GetAllRecipesNotLogin.data_recipes;
+
+        console.log(this.menu);
+        
       });
   }
 
