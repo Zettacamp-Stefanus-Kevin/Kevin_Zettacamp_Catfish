@@ -6,30 +6,26 @@ import { AngularMaterialModule } from '../angular-material/angular-material.modu
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpLoaderFactory } from '../app.module';
 import { HttpClient } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
-const routes:Routes = [
-  {path:"", component:ProfilComponent } ,
-]
+const routes: Routes = [{ path: '', component: ProfilComponent }];
 
 @NgModule({
-  declarations: [
-    ProfilComponent
-  ],
+  declarations: [ProfilComponent],
   imports: [
     CommonModule,
     AngularMaterialModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes),
     TranslateModule.forChild({
       defaultLanguage: 'en',
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    })
+        deps: [HttpClient],
+      },
+    }),
   ],
-  exports:[
-    ProfilComponent
-  ]
+  exports: [ProfilComponent],
 })
-export class ProfilModule { }
+export class ProfilModule {}

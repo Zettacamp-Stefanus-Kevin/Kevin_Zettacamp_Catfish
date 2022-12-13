@@ -1,10 +1,22 @@
-<p>menu-list works!</p>
+<body style="background-color: #100F0F;">
+    <p>menu-list works!</p>
+    <br><br><br>
+    <div class="select">
+        <mat-select [formControl]="kategoriFilter" [(ngModel)]="value">
+            <mat-option *ngFor="let stat of kategori" [value]="stat.value">
+                {{stat.viewValue}}
+            </mat-option>
+        </mat-select>
+    </div>
 
-<div class="container">
-    <app-menu-card *ngFor="let item of menu" [recipe]="item"></app-menu-card>
-</div><br><br><br>
+    <div class="container">
+        <app-menu-card *ngFor="let item of menu" [recipe]="item"></app-menu-card>
+    </div><br><br><br>
 
 
-<mat-paginator  #paginator (page)="onPagination($event)" [pageSizeOptions]="[5, 10]" aria-label="Select page"></mat-paginator>
+    <mat-paginator #paginator (page)="onPagination($event)" [pageSizeOptions]="[5, 10]"
+        aria-label="Select page"></mat-paginator>
 
-<div *ngIf=""></div>
+    <div *ngIf=""></div>
+
+</body>

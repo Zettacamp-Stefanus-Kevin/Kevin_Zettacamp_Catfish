@@ -8,5 +8,6 @@ export interface menu{
     price : number;
     status : string;
     image : string;
+    category : string;
 
 }

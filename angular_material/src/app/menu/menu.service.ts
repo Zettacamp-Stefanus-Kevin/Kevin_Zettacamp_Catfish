@@ -4,14 +4,13 @@ import { Observable } from 'rxjs';
 import { menu } from './menu';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MenuService {
-
-  constructor(private apolo: Apollo) { }
+  constructor(private apolo: Apollo) {}
 
   // getMenu(pagination: any): Observable<any> {
-    
+
   //   return this.apolo.query({
   //     query: gql`
   //     query Query ($limit: Int, $page: Int, $recipeName: String){
@@ -44,75 +43,82 @@ export class MenuService {
   //   })
   // }
 
-  getMenu(pagination: any): Observable<any> {
+  getMenu(pagination: any, kategori:any): Observable<any> {
+    let kategoriFilter: any = '';
+    if (kategori) {
+      kategoriFilter = kategori;
+    }
+
     return this.apolo.query({
       query: gql`
-      query Query($page: Int, $limit: Int, $recipeName: String) {
-        GetAllRecipesNotLogin(page: $page, limit: $limit, recipe_name: $recipeName) {
-          count
-          maxPage
-          page
-          data_recipes {
-            id
-            description
-            image
-            is_hightlighted
-            is_special_offers{
-              status
-              discount
-            }
-            price
-            recipe_name
-            remain_order
-            status
-            ingredients {
-              stock_used
-              ids {
-                name
+        query Query($page: Int, $limit: Int, $recipeName: String, $category: String) {
+          GetAllRecipesNotLogin(
+            page: $page
+            limit: $limit
+            recipe_name: $recipeName,
+            category: $category
+          ) {
+            count
+            maxPage
+            page
+            data_recipes {
+              id
+              description
+              image
+              is_hightlighted
+              is_special_offers {
                 status
-                id
-                stock
+                discount
+              }
+              price
+              recipe_name
+              remain_order
+              status
+              ingredients {
+                stock_used
+                ids {
+                  name
+                  status
+                  id
+                  stock
+                }
               }
             }
           }
         }
-      }
-      
       `,
       variables: {
-        ...pagination, status : 'active'
+        ...pagination,
+        status: 'active',  category  : kategoriFilter 
       },
-      fetchPolicy: "network-only"
-    })
+      fetchPolicy: 'network-only',
+    });
   }
 
   addCart(data: any): Observable<any> {
-    console.log('haskjdh', data);
-    
-    let recipe_id = data.id
-    let amount = data.amount
-    let note = data.note
+    let recipe_id = data.id;
+    let amount = data.amount;
+    let note = data.note;
     return this.apolo.mutate({
       mutation: gql`
-      mutation AddCart ($input: transactions_menu_input) {
-        addCart(input: $input) {
-          id
-          order_date
-          status
-          total_price
-          menu {
-            recipe_id {
-              id  
+        mutation AddCart($input: transactions_menu_input) {
+          addCart(input: $input) {
+            id
+            order_date
+            status
+            total_price
+            menu {
+              recipe_id {
+                id
+              }
+              amount
+              note
             }
-            amount
-            note
           }
         }
-      }
-
       `,
-      variables: { input: { recipe_id, amount, note } }
-    })
+      variables: { input: { recipe_id, amount, note } },
+    });
   }
 
   // getPage(): Observable<any> {
@@ -129,8 +135,4 @@ export class MenuService {
   //     `
   //   })
   // }
-
-
-
-
 }

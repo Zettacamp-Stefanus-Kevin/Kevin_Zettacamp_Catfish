@@ -3,44 +3,56 @@ import { MenuManagementService } from '../menu-management.service';
 import { StockManagementService } from 'src/app/stock-management/stock-management.service';
 import { menu } from '../menu';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import Swal from 'sweetalert2'
+import {
+  MatDialog,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+} from '@angular/material/dialog';
+import Swal from 'sweetalert2';
 import { TranslateService } from '@ngx-translate/core';
 
+export interface kategory {
+  value: string;
+  viewValue: string;
+}
 @Component({
   selector: 'app-menu-management-input',
   templateUrl: './menu-management-input.component.html',
-  styleUrls: ['./menu-management-input.component.css']
+  styleUrls: ['./menu-management-input.component.css'],
 })
 export class MenuManagementInputComponent implements OnInit {
+  recipeForm: any;
 
-  recipeForm: any
+  ingredients: any;
+  
 
-  ingredients: any
+  kategori: kategory[] = [
+    { value: '', viewValue: 'All' },
+    { value: 'side dish', viewValue: 'Side Dish' },
+    { value: 'appetizer', viewValue: 'Appetizer' }
+  ];
 
-  constructor(private menuService: MenuManagementService,
+  constructor(
+    private menuService: MenuManagementService,
     public dialog: MatDialogRef<MenuManagementInputComponent>,
-    private translate : TranslateService
-    ) { }
+    private translate: TranslateService
+  ) {}
 
   ngOnInit(): void {
     this.recipeForm = new FormGroup({
-      'recipe_name': new FormControl(null, [Validators.required]),
-      'image': new FormControl(null, [Validators.required]),
-      'price': new FormControl(null, [Validators.required]),
-      'description': new FormControl(null, [Validators.required]),
-      'ingredients': new FormArray([])
-    })
-    
+      recipe_name: new FormControl(null, [Validators.required]),
+      image: new FormControl(null, [Validators.required]),
+      category: new FormControl(null, [Validators.required]),
+      price: new FormControl(null, [Validators.required]),
+   
+      description: new FormControl(null, [Validators.required]),
+      ingredients: new FormArray([]),
+    });
 
     this.menuService.getIngredient().subscribe((val: any) => {
-
-      this.ingredients = val.data.GetAllIngredients.data
-      console.log(val)
-      console.log(val.data.GetAllIngredients.data);
-    })
-    console.log(this.ingredients)
-
+      this.ingredients = val.data.GetAllIngredients.data;
+    });
+   
   }
 
   addIngredient() {
@@ -48,7 +60,7 @@ export class MenuManagementInputComponent implements OnInit {
       ingredient_id: new FormControl(null, Validators.required),
       stock_used: new FormControl(null, Validators.required),
     });
-    (<FormArray>this.recipeForm.get('ingredients')).push(item)
+    (<FormArray>this.recipeForm.get('ingredients')).push(item);
   }
 
   onClick(): void {
@@ -65,12 +77,16 @@ export class MenuManagementInputComponent implements OnInit {
     } else {
       Swal.fire({
         icon: 'error',
-        title: this.translate.instant("Failed"),
-        text: this.translate.instant("Try again"),
+        title: this.translate.instant('Failed'),
+        text: this.translate.instant('Try again'),
       });
       this.recipeForm.markAllAsTouched();
     }
-
   }
 
+  onTest(event:any){
+    console.log(event);
+    
+
+  }
 }

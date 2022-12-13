@@ -1,74 +1,59 @@
 body {
-    background-image: url(/../../assets/pictures/background_homepage_3.jpg);
-    padding: 30px;
+  background-image: url(/../../assets/pictures/background_homepage_3.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 100px;
 }
 
-.header{
-   display: flex;
-   flex-direction: column;
-   width: 50%;
-   margin-right: auto;
-   margin-left: auto;
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  width: 50%;
+  gap: 0.5rem;
 }
 
 form {
-    border: 1px solid #E6B325;
-    width: 50%;
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    margin-top: 30px;
-    background-color: transparent;
-    color: #F4F4F4;
+  padding: 30px 0;
+  width: 100%;
+  border: 1px solid #e6b325;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #f4f4f4;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
 }
 
 mat-form-field {
-    width: 100%;
-    color: #F4F4F4;
+  width: 80%;
+  color: #f4f4f4;
 }
 
 mat-label {
-    color: #F4F4F4;
+  color: #f4f4f4;
 }
 
-raise-button {
-    width: 50%;
-    background-color: #E6B325;
+.improv {
+  margin-top: 20px;
+  display: flex;
+  width: 100%;
 }
 
-.improv{
-    display: flex;
-    width: 100%;
+.button {
+  border-radius: 50px;
+  padding: 5px;
+  font-size: 1.2rem;
+  font-weight: 400;
+  border: 2px solid #e6b325;
+  color: #f4f4f4;
+  width: 80%;
 }
 
-.footer{
-    display: flex;
-    justify-content: center;
-    gap: 10%;
-}
-
-.button{
-    border-radius: 1rem;
-    border: 2px solid #E6B325;
-    color:  #F4F4F4;
-}
-
-::ng-deep .mat-form-field-label {
-    /*change color of label*/
-    color: #E6B325 !important;
-}
-
-::ng-deep.mat-form-field-underline {
-    /*change color of underline*/
-    background-color: #E6B325 !important;
-}
-
-::ng-deep.mat-form-field-border {
-    /*change color of underline*/
-    background-color: #E6B325 !important;
-}
 ::ng-deep.mat-form-field-ripple {
-    /*change color of underline when focused*/
-    background-color: #E6B325 !important;
+  background-color: #e6b325 !important;
 }

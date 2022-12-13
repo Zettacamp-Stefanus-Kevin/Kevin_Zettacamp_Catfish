@@ -1,34 +1,48 @@
 <mat-card class="wrap">
-
-    
-
-    <div class="wrapper">
-        <div class="left">
-            <img class="imge" [src]="menu.recipe_id.image" alt="">
-        </div>
-        <div class="right">
-            <h2>{{"name" | translate }} : {{menu.recipe_id.recipe_name}}</h2>
-            <h2>{{"price" | translate }} : Rp {{menu.recipe_id.price.toLocaleString('ID')}}</h2>
-            <h2 >{{"amount" | translate }} :
-                
-                <button mat-button [disabled]="menu.amount === 1" class="edit" (click)="minus(menu.id)">
-                    <mat-icon> remove_circle_outline </mat-icon>
-                </button>
-                {{menu.amount}}
-                <button mat-button [disabled]="menu.amount >= menu.recipe_id.remain_order" class="edit" (click)="plus(menu.id)">
-                    <mat-icon> add_circle_outline  </mat-icon>
-                </button>
-                
-                <sub> *{{"maxOrder" | translate }} : {{menu.recipe_id.remain_order}}</sub>
-            </h2>
-            <h2>{{"notes" | translate }} : {{menu.note}}
-                <button mat-button class="edit" (click)="editOrder(menu)">
-                    <mat-icon>edit</mat-icon>
-                </button>
-            </h2>
-            <button class="trash" mat-button (click)="deleteStock(menu)">
-                <mat-icon> restore_from_trash</mat-icon>
-            </button>
-        </div>
+  <div class="wrapper">
+    <div class="left">
+      <img class="imge" [src]="menu.recipe_id.image" alt="" />
     </div>
+    <div class="right">
+      <h2>{{ "name" | translate }} : {{ menu.recipe_id.recipe_name }}</h2>
+      <h2>
+        {{ "price" | translate }} : Rp
+        {{ menu.recipe_id.price.toLocaleString("ID") }}
+      </h2>
+      <h2>
+        {{ "amount" | translate }} :
+
+        <button
+          mat-button
+          [disabled]="menu.amount === 1"
+          class="edit"
+          (click)="minus(menu.id)"
+        >
+          <mat-icon> remove_circle_outline </mat-icon>
+        </button>
+        {{ menu.amount }}
+        <button
+          mat-button
+          [disabled]="menu.amount >= menu.recipe_id.remain_order"
+          class="edit"
+          (click)="plus(menu.id)"
+        >
+          <mat-icon> add_circle_outline </mat-icon>
+        </button>
+
+        <sub>
+          *{{ "maxOrder" | translate }} : {{ menu.recipe_id.remain_order }}</sub
+        >
+      </h2>
+      <h2>
+        {{ "notes" | translate }} : {{ menu.note }}
+        <button mat-button class="edit" (click)="editOrder(menu)">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </h2>
+      <button class="trash" mat-button (click)="deleteStock(menu)">
+        <mat-icon> restore_from_trash</mat-icon>
+      </button>
+    </div>
+  </div>
 </mat-card>

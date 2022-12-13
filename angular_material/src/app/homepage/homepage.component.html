@@ -1,97 +1,128 @@
 <header class="header">
-    <div class="header_caption">
-        <h1 class="text">PRAEDULCIS
-            <h4 class="text">Western Restaurant</h4>
-        </h1>
-
-    </div>
+  <div class="header_caption">
+    <h1 class="text">
+      PRAEDULCIS
+      <h4 class="text">Western Restaurant</h4>
+    </h1>
+  </div>
 </header>
 
-<section>
-
-</section>
-
-<body>
-    <section class="par1">
-        <div class="carousel">
-            <h1>Our Highlight</h1>
-            <carousel [height]="350" [width]="600" cellWidth='100%' [loop]="true" [autoplay]="true"
-                [autoplayInterval]="2000" [images]="images2">
-                <div #cell class="carousel-cell" *ngFor="let img of images">
-                    <h3>{{img.recipe_name}}</h3>
-                    <img class="imge" src="{{img.image}}">
-                </div>
-            </carousel>
+<main>
+  <section class="par1">
+    <div class="carousel">
+      <h1>Menu Highlight</h1>
+      <carousel
+        [height]="350"
+        [width]="600"
+        cellWidth="100%"
+        [loop]="true"
+        [autoplay]="true"
+        [autoplayInterval]="2000"
+        [images]="images2"
+      >
+        <div #cell class="carousel-cell" *ngFor="let img of images">
+          <h3>{{ img.recipe_name }}</h3>
+          <img class="imge" src="{{ img.image }}" />
         </div>
+      </carousel>
+    </div>
 
-        <div class="about">
-            <h1>About</h1>
-            <p>Organic Greens. Naturally raised and hormone-free meats. Non-GMO cooking oils. Cuban food is one of the
-                most
-                flavorful cuisines in the world, but at Havana Grill we believe it should be healthy too. Havana Grill
-                combines traditional, flavorful Cuban cuisine with the purest and most natural ingredients we can find
-                to
-                create food that is not only delicious and flavorful but also good for you. Our goal is to create
-                authentic
-                Cuban cuisine that is organic and locally sourced whenever possible. It's comfort food with a
-                conscience.
-            </p>
-            <button routerLink="/menu" routerLinkActive="active">Order Here</button>
-        </div>
-    </section>
+    <div class="about">
+      <h1>About</h1>
+      <p>
+        Organic Greens. Naturally raised and hormone-free meats. Non-GMO cooking
+        oils. Cuban food is one of the most flavorful cuisines in the world, but
+        at Havana Grill we believe it should be healthy too. Havana Grill
+        combines traditional, flavorful Cuban cuisine with the purest and most
+        natural ingredients we can find to create food that is not only
+        delicious and flavorful but also good for you. Our goal is to create
+        authentic Cuban cuisine that is organic and locally sourced whenever
+        possible. It's comfort food with a conscience.
+      </p>
+      <button routerLink="/menu" routerLinkActive="active">Order Here</button>
+    </div>
+  </section>
 
-    <section class="pict">
-        <h1>Special Price</h1>
-        <div class="wrapper">
-            <!-- <div *ngFor="let get of deals"> </div> -->
-            <div class="card" *ngFor="let disc of diskon">
-                <img class="imge" [src]="disc.image" alt="" style="position: absolute;">
-                <h2 style="position: relative; text-decoration: line-through;">Price : {{disc.price|currency:'Rp '}}</h2>
-            </div>
-            <!-- <h2 style="position: relative;">Price : {{get.is_special_offers.discount|currency:'Rp '}}</h2> -->
-
-        </div>
-        <mat-paginator  #paginator (page)="onPagination($event)" [pageSizeOptions]="[3]" aria-label="Select page"></mat-paginator>
-    </section>
-    <footer>
-        <h2>Our Location</h2>
-        <div class="wrap">
-            <div class="cardFooter">
-                <span style="font-weight:bold;">PRAEDULCIS</span>
-                <p> 5450 Clairemont Mesa Blvd.</p>
-                <p> Suite G</p>
-                <p> San Diego, CA 92117</p>
-                <span style="font-weight:bold;">(858) 430-6878</span>
-                <span style="font-weight:bold;">praedulcis@gmail.com</span>
-            </div>
-            <div class="cardFooter">
-                HOURS
-                <p><span style="font-weight:bold;">Monday - Sunday: </span>11:00 am - 9:00 pm</p>
-            </div>
-
-        </div>
+  <section class="pict">
+    <h1>Special Offers</h1>
+    <div class="wrapper">
+      <div class="card" *ngFor="let disc of diskon">
         <img
-            src="https://api.mapbox.com/styles/v1/mapbox/dark-v9/static/pin-l-marker+d00(-117.173585,32.834587)/-117.173585,32.834587,15/1280x400@2x?access_token=pk.eyJ1IjoianBvcG1lbnUiLCJhIjoiY2pyZ3IzN2VmMDAwODN5cWphN3NmejliaiJ9.2amq9P56QgKaMEGyxW7ayQ">
-
-        <div class="addFooter">
-            <h4>Made with <mat-icon>favorite_border</mat-icon> Team_1_ZettaCamp</h4>
-            <p style="color:#E6B325;  text-align: center !important;">
-                _____________________________________________________________________________________________________
+          class="imge"
+          [src]="disc.image"
+          alt=""
+          style="position: absolute"
+        />
+        <h2>{{ disc.is_special_offers.discount }}%</h2>
+        <div class="detail-card">
+          <div class="name-card">{{ disc.recipe_name }}</div>
+          <div class="price-card">
+            <p class="original-price">
+              {{ disc.price | currency : "Rp. " }}
             </p>
-            <h3>Our Location</h3>
-            <span style="font-weight:bold;">PRAEDULCIS</span>
-            <p> 5450 Clairemont Mesa Blvd.</p>
-            <p> Suite G</p>
-            <p> San Diego, CA 92117</p>
-            <span style="font-weight:bold;">(858) 430-6878</span>
-            <span style="font-weight:bold;">Team1.ZettaCamp@praedulcis.com</span><br>
-            <span style="font-weight:bold;">Monday - Sunday: </span>
-            <p>11:00 am - 9:00 pm</p>
+            <p class="disc-price">
+              Price:
+              {{ disc.is_special_offers.price_discount | currency : "Rp. " }}
+            </p>
+          </div>
         </div>
-        <p>________________________________________________________________________________________________________________________________________________
-        </p>
-    </footer>
+      </div>
+    </div>
+    <mat-paginator
+      #paginator
+      (page)="onPagination($event)"
+      [pageSizeOptions]="[3]"
+      aria-label="Select page"
+    ></mat-paginator>
+  </section>
+</main>
 
+<footer>
+  <h2>Our Location</h2>
+  <div class="wrap">
+    <div class="cardFooter">
+      <span style="font-weight: bold">PRAEDULCIS</span>
+      <p>5450 Clairemont Mesa Blvd.</p>
+      <p>Suite G</p>
+      <p>San Diego, CA 92117</p>
+      <p style="font-weight: bold">(858) 430-6878</p>
+      <p style="font-weight: bold">praedulcis@gmail.com</p>
+    </div>
+    <div class="cardFooter">
+      If you require further support, please contact our Customer Information
+      Center on
+      <p>
+        <span style="font-weight: bold">Monday - Sunday: </span>11:00 am - 9:00
+        pm
+      </p>
+      <p style="font-weight: bold; font-size: 1.5rem; color: #e6b325">
+        (858) 430-6878
+      </p>
 
+      <p>
+        Our team is available on Monday - Sunday, 11am - 9pm (except public
+        holidays).
+      </p>
+    </div>
+  </div>
+  <img
+    src="https://api.mapbox.com/styles/v1/mapbox/dark-v9/static/pin-l-marker+d00(-117.173585,32.834587)/-117.173585,32.834587,15/1280x400@2x?access_token=pk.eyJ1IjoianBvcG1lbnUiLCJhIjoiY2pyZ3IzN2VmMDAwODN5cWphN3NmejliaiJ9.2amq9P56QgKaMEGyxW7ayQ"
+  />
 
-</body>
+  <div class="addFooter">
+    <h4>Made with <mat-icon>favorite_border</mat-icon> Team_1_ZettaCamp</h4>
+    <hr style="color: #e6b325; width: 50%" />
+    <!-- <h3>Our Location</h3>
+    <span style="font-weight: bold">PRAEDULCIS</span>
+    <p>5450 Clairemont Mesa Blvd.</p>
+    <p>Suite G</p>
+    <p>San Diego, CA 92117</p>
+    <span style="font-weight: bold">(858) 430-6878</span>
+    <span style="font-weight: bold">Team1.ZettaCamp@praedulcis.com</span><br />
+    <span style="font-weight: bold">Monday - Sunday: </span>
+    <p>11:00 am - 9:00 pm</p> -->
+  </div>
+  <!-- <p>
+    ________________________________________________________________________________________________________________________________________________
+  </p> -->
+</footer>

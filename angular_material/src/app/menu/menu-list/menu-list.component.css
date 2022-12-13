@@ -16,3 +16,22 @@ mat-paginator{
     margin-right: auto;
     margin-left: auto;
 }
+
+.select{
+    width: 25%;
+    margin-right: auto;
+    margin-left: 10%;
+}
+
+mat-select {
+    background-color: #f4f4f4 ;
+    color:#f4f4f4 ;
+    padding: 10px;
+    border-radius: 50px;
+    border : 4px solid #F0A500
+}
+
+mat-option{
+    background-color: #f4f4f4;
+    color:#F0A500 ;
+}

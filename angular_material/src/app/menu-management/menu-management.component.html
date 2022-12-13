@@ -17,7 +17,7 @@
         <ng-container matColumnDef="recipe_name">
             <th mat-header-cell *matHeaderCellDef> {{"recipename" | translate }} <br>
                 <mat-form-field>
-                    <mat-label>Search Ingredients</mat-label>
+                    <mat-label>Search Recipes</mat-label>
                     <input matInput [formControl]="nameFilter">
                 </mat-form-field>
             </th>
@@ -50,17 +50,23 @@
         </ng-container> -->
 
         <!-- Special_Offers Column -->
-        <ng-container matColumnDef="specialoffers">
+        <!-- <ng-container matColumnDef="specialoffers">
             <th mat-header-cell *matHeaderCellDef> {{"specialOffers" | translate }} </th>
-            <td mat-cell *matCellDef="let element"> 
+            <td mat-cell *matCellDef="let element">  -->
                 <!-- <div *ngFor="let item of element.is_special_offers">
                     {{item.status}}<br>
                 </div> -->
-                {{element.is_special_offers.status}}<br>
+                <!-- {{element.is_special_offers.status}}<br>
                 <mat-slide-toggle class="example-margin" color="primary" [checked]="element.is_special_offers.status== true"
                     (change)="onSpecial(element)"> </mat-slide-toggle>
                 
             </td>
+        </ng-container> -->
+
+        <!-- Discount Column -->
+        <ng-container matColumnDef="discount">
+            <th mat-header-cell *matHeaderCellDef> Discount </th>
+            <td mat-cell *matCellDef="let element"> {{element.is_special_offers.discount}} </td>
         </ng-container>
 
         <!-- Price Column -->

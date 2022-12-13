@@ -13,10 +13,10 @@ import { HttpLoaderFactory } from '../app.module';
 import { HttpClient } from '@angular/common/http';
 
 const routes: Routes = [
-  {path: "", redirectTo: '/cart/list', pathMatch: 'full'},
-  { path: "list", component: CartListComponent },
-  { path: "history", component: HistoryComponent }
-]
+  { path: '', redirectTo: '/cart/list', pathMatch: 'full' },
+  { path: 'list', component: CartListComponent },
+  { path: 'history', component: HistoryComponent },
+];
 
 @NgModule({
   declarations: [
@@ -24,7 +24,7 @@ const routes: Routes = [
     CartListComponent,
     CartCardComponent,
     CartUpdateComponent,
-    HistoryComponent
+    HistoryComponent,
   ],
   imports: [
     CommonModule,
@@ -36,15 +36,15 @@ const routes: Routes = [
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    })
+        deps: [HttpClient],
+      },
+    }),
   ],
-  exports:[
+  exports: [
     CartComponent,
     CartListComponent,
     CartCardComponent,
-    HistoryComponent
-  ]
+    HistoryComponent,
+  ],
 })
-export class CartModule { }
+export class CartModule {}
