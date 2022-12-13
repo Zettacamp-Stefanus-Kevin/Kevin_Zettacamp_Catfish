@@ -19,12 +19,6 @@ export class MenuManagementService {
     if (status) {
       statusFilter = status;
     }
-
-    console.log(pagination);
-    console.log(name);
-    console.log(status);
-
-    
     
     return this.apolo.query({
       query: gql`
@@ -48,6 +42,7 @@ export class MenuManagementService {
               id
               remain_order
               status
+              image
               category
               is_hightlighted
               is_special_offers {
@@ -82,8 +77,8 @@ export class MenuManagementService {
   getIngredient(): Observable<any> {
     return this.apolo.query({
       query: gql`
-        query Data($limit: Int) {
-          GetAllIngredients(limit: $limit) {
+        query Data($limit: Int, $status:String) {
+          GetAllIngredients(limit: $limit, status: $status) {
             data {
               name
               stock
@@ -92,7 +87,7 @@ export class MenuManagementService {
           }
         }
       `,
-      variables: { limit: 200 },
+      variables: { limit: 200, status:"active" },
     });
   }
 

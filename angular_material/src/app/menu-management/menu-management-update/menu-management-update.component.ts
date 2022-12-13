@@ -11,6 +11,11 @@ import {
 import Swal from 'sweetalert2';
 import { TranslateService } from '@ngx-translate/core';
 
+
+export interface kategory {
+  value: string;
+  viewValue: string;
+}
 @Component({
   selector: 'app-menu-management-update',
   templateUrl: './menu-management-update.component.html',
@@ -20,6 +25,13 @@ export class MenuManagementUpdateComponent implements OnInit {
   recipeForm: any;
 
   ingredients: any = [];
+
+  kategori: kategory[] = [
+    { value: 'side dish', viewValue: 'Side Dish' },
+    { value: 'appetizer', viewValue: 'Appetizer' },
+    { value: 'dessert', viewValue: 'Dessert'},
+    { value: 'cocktail', viewValue: 'Cocktail'}
+  ];
 
   constructor(
     private menuService: MenuManagementService,
@@ -33,6 +45,9 @@ export class MenuManagementUpdateComponent implements OnInit {
     this.recipeForm = new FormGroup({
       id: new FormControl(null),
       recipe_name: new FormControl(null, [Validators.required]),
+      image: new FormControl(null, [Validators.required]),
+      category: new FormControl(null, [Validators.required]),
+      description: new FormControl(null, [Validators.required]),
       price: new FormControl(null, [Validators.required]),
       discount : new FormControl(null, [Validators.required]),
       ingredients: new FormArray([]),
@@ -44,7 +59,10 @@ export class MenuManagementUpdateComponent implements OnInit {
 
     let tempIngeridient = {
       id: this.menu.id,
-      recipe_name: this.menu.recipe_name,
+      recipe_name: this.menu.recipe_name, 
+      image: this.menu.image,
+      category: this.menu.category,
+      description: this.menu.description,
       price: this.menu.price,
       discount: this.menu.discount
     };
@@ -107,5 +125,7 @@ export class MenuManagementUpdateComponent implements OnInit {
     }
   }
 
-  onRemove(data: any) {}
+  onRemove(data: any) {
+    this.recipeForm.get('ingredients').removeAt(data);
+  }
 }

@@ -69,6 +69,7 @@ export class MenuService {
               is_special_offers {
                 status
                 discount
+                price_discount
               }
               price
               recipe_name

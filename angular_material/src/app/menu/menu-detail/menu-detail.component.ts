@@ -38,6 +38,7 @@ export class MenuDetailComponent implements OnInit {
         Validators.required,
         Validators.min(1),
         Validators.max(data),
+        Validators.pattern('[0-9]*'),
       ]),
       note: new FormControl(null),
     });

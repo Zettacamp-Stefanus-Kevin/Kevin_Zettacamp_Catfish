@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   apiUrl: 'https://lazy-blue-moose-yoke.cyclic.app/',
+  // apiUrl : 'https://api.team-1.zettacamp-upn.zetta-demo.space/graphql',
   // tokenKey: 'token'
   // user: 'user'
 };

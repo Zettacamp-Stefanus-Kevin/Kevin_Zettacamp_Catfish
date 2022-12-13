@@ -33,7 +33,7 @@ export class StockManagementComponent implements OnInit {
     private stockService: StockManagementService,
     private dialog: MatDialog,
     private translate: TranslateService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.init(this.paginator);
@@ -53,7 +53,7 @@ export class StockManagementComponent implements OnInit {
       .subscribe((resp) => {
         this.paginator.length = resp.data.GetAllIngredients.count;
         console.log(resp);
-        
+
         // this.paginator.pageSize = this.pageSizeOptions[0];
 
         // this.stock.push(resp.data.GetAllIngredients.data)
@@ -77,30 +77,43 @@ export class StockManagementComponent implements OnInit {
         title: this.translate.instant('Success'),
         text: this.translate.instant('Your work has been saved'),
       });
-      this.init(this.paginator);
+      this.init(true);
     });
   }
 
-  onClick(parameter: any) {
-    this.stockService.deleteStock(parameter).subscribe((resp) => {
+  onDeleted(parameter: any) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then((result: any) => {
+      if (result.isConfirmed) {
+        this.stockService.deleteStock(parameter).subscribe((resp) => {
+          Swal.fire({
+            icon: 'success',
+            title: this.translate.instant('Deleted!'),
+            text: this.translate.instant('this menu has been deleted'),
+          });
+          this.init(true);
+        },(err) => {
+          Swal.fire({
+            icon: 'error',
+            title: this.translate.instant('Error'),
+            text: err.message,
+          });
+        })
+      }
+    },(err) => {
       Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!',
-      }).then((result) => {
-        if (result.isConfirmed) {
-          Swal.fire('Deleted!', 'Your file has been deleted.', 'success').then(
-            () => {
-              this.init(this.paginator);
-            }
-          );
-        }
+        icon: 'error',
+        title: this.translate.instant('Error'),
+        text: err.message,
       });
-    });
+    })
   }
 
   onEdit(parameter: any) {
@@ -118,7 +131,7 @@ export class StockManagementComponent implements OnInit {
           title: this.translate.instant('Success'),
           text: this.translate.instant('Your work has been saved'),
         }).then(() => {
-          this.init(this.paginator);
+          this.init(true);
         });
       });
     });

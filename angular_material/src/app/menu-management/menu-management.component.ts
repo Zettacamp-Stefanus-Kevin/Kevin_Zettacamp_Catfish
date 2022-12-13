@@ -51,6 +51,7 @@ export class MenuManagementComponent implements OnInit {
   }
 
   init(paginationObj: any) {
+
     const pagination: any = {
       page: paginationObj?.page ?? 1,
       limit: paginationObj?.limit ?? 5,
@@ -100,6 +101,7 @@ export class MenuManagementComponent implements OnInit {
     const bebas: any = {
       ...parameter,
       ingredients: parameter.ingredients.map((ingredient: any) => {
+        this.init(true)
         return {
           ingredient_id: ingredient.ids.id,
           stock_used: ingredient.stock_used,
@@ -116,7 +118,7 @@ export class MenuManagementComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.init(result);
+        // this.init(true);
       }
     });
   }
@@ -149,12 +151,12 @@ export class MenuManagementComponent implements OnInit {
 
   //toogle--------------------------------------------------------
 
-  onChanged(check: any) {
+  onChanged(event : any, check: any ) {
     check = copy(check);
     if (check.status === 'active') {
-      check.status = 'unpublish';
+      check.status = 'unpublish'
     } else if (check.status === 'unpublish') {
-      check.status = 'active';
+      check.status = 'active'
     }
     Swal.fire({
       title: 'Are you sure want change status to ' + check.status + '?',
@@ -165,14 +167,17 @@ export class MenuManagementComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.menuService.updatepublish(check).subscribe(() => {
+          this.init(true);
           Swal.fire({
             title:
               this.translate.instant('you have been change status to ') +
               check.status,
           });
-          this.init(true);
         });
+      } else{
+        event.source.checked = !event.source.checked
       }
+      
     });
   }
 
