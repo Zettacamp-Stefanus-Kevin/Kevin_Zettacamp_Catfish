@@ -61,7 +61,7 @@
                         </button>
                     </mat-list-item>
                     <mat-list-item>
-                        <button mat-flat-button color="warn" matTooltip="Delete" (click)="onClick(element.id)"
+                        <button mat-flat-button color="warn" matTooltip="Delete" (click)="onDeleted(element.id)"
                         [disabled]="element.status == 'deleted'">
                             <mat-icon >delete</mat-icon>
                         </button>

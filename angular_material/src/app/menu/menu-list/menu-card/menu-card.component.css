@@ -110,5 +110,8 @@ button {
 
 .PD{
     display: flex;
+    margin-right: auto;margin-left: auto;
+    /* flex-direction: column;
+    margin-right: auto; */
 }
 

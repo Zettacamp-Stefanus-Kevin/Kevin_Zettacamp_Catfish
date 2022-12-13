@@ -45,7 +45,9 @@ export class MenuListComponent implements OnInit {
   kategori: kategory[] = [
     { value: '', viewValue: 'All' },
     { value: 'side dish', viewValue: 'Side Dish' },
-    { value: 'appetizer', viewValue: 'Appetizer' }
+    { value: 'appetizer', viewValue: 'Appetizer' },
+    { value: 'dessert', viewValue: 'Dessert'},
+    { value: 'cocktail', viewValue: 'Cocktail'}
   ];
 
   kategoriFilter = new FormControl();

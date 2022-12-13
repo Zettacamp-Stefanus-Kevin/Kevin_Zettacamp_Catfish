@@ -42,6 +42,7 @@ mat-card-actions {
     font-weight: 400;
     position: absolute;
     padding: 200px 530px;
+    margin-right: auto;margin-left: auto;
 
 
 }

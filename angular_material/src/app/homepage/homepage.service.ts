@@ -28,7 +28,7 @@ export class HomepageService {
           }
         }
       `,
-      variables: { isHightlighted: false },
+      variables: { isHightlighted: true },
     });
   }
 

@@ -11,13 +11,13 @@
             </h1>
             <h3>{{"available" | translate }} : {{recipe.remain_order}}</h3>
             <div class="PD" *ngIf="recipe.is_special_offers.status === true">
-                <h3 style="text-decoration: line-through;">{{"price" | translate }}
-                    Rp{{recipe.price.toLocaleString('ID')}}</h3>
-                <h3>{{"price" | translate }} Rp{{recipe.price.toLocaleString('ID')}}</h3>
+                <h3 >{{"price" | translate }}
+                    <span style="text-decoration: line-through; font-size:smaller;">{{recipe.price | currency : "Rp. "}}</span></h3>
+                <h3 style="font-size:large;">{{recipe.is_special_offers.price_discount | currency : "Rp. "}}</h3>
             </div>
 
             <h3 *ngIf="recipe.is_special_offers.status === false">{{"price" | translate }}
-                Rp{{recipe.price.toLocaleString('ID')}}</h3>
+                {{recipe.price | currency : "Rp. " }}</h3>
 
             <button mat-button (click)="info(recipe)">{{"detail" | translate }}...</button>
         </section>

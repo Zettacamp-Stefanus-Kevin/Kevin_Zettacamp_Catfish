@@ -1,3 +1,42 @@
-body {
-  padding: 5rem;
+body,
+html {
+   margin-top: 50px;
+}
+
+.container {
+    width: 85%;
+    margin-top: 60px;
+    padding: 20px 0px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    color: #F4F4F4;
+}
+
+.add {
+    margin-left: auto;
+    /* background-color:#F0A500 ; */
+    color: #F0A500;
+}
+
+table {
+    margin-top: 50px;
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #F4F4F4;
+}
+
+.actions-button {
+    display: flex;
+}
+
+mat-paginator {
+    position: fixed;
+    background-color: #F0A500;
+    color: #100F0F;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
