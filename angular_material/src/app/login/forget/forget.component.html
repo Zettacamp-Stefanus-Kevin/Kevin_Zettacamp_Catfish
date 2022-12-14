@@ -4,12 +4,8 @@
       <form [formGroup]="firstFormGroup">
         <ng-template matStepLabel>Fill out your email</ng-template>
         <mat-form-field>
-          <input
-            matInput
-            placeholder="Ex: user@user.com"
-            formControlName="firstCtrl"
-            required
-          />
+          <input matInput placeholder="Ex: user@user.com" formControlName="firstCtrl" required />
+          <mat-error *ngIf="firstFormGroup.get('firstCtrl').invalid">'You must input your email'</mat-error>
         </mat-form-field>
         <div>
           <button mat-button (click)="onFirstStepDone()">Next</button>
@@ -20,12 +16,10 @@
       <form [formGroup]="secondFormGroup">
         <ng-template matStepLabel>What was your chilhood name?</ng-template>
         <mat-form-field>
-          <input
-            matInput
-            placeholder="What was your chilhood name?"
-            formControlName="secondCtrl"
-            required
-          />
+          <input matInput placeholder="What was your chilhood name?" formControlName="secondCtrl" required />
+          <mat-error *ngIf="this.secondFormGroup.get('secondCtrl')?.invalid">
+            This field is required !
+          </mat-error>
         </mat-form-field>
         <div>
           <button mat-button matStepperPrevious>Back</button>
@@ -37,12 +31,10 @@
       <form [formGroup]="thirdFormGroup">
         <ng-template matStepLabel>Fill out your password</ng-template>
         <mat-form-field>
-          <input
-            matInput
-            placeholder="New Password"
-            formControlName="thirdCtrl"
-            required
-          />
+          <input matInput placeholder="New Password" formControlName="thirdCtrl" required />
+          <!-- <mat-error *ngIf="this.thirdFormGroup.get('thirdCtrl')?.invalid">
+            This field is required !
+          </mat-error> -->
         </mat-form-field>
         <div>
           <button mat-button matStepperPrevious>Back</button>
@@ -54,12 +46,10 @@
       <form [formGroup]="fourthFormGroup">
         <ng-template matStepLabel>Fill out your password again!</ng-template>
         <mat-form-field>
-          <input
-            matInput
-            placeholder="Re-Password"
-            formControlName="fourthCtrl"
-            required
-          />
+          <input matInput placeholder="Re-Password" formControlName="fourthCtrl" required />
+          <!-- <mat-error *ngIf="this.fourthFormGroup.get('fourthCtrl')?.invalid">
+            This field is required !
+          </mat-error> -->
         </mat-form-field>
         <div>
           <button mat-button matStepperPrevious>Back</button>

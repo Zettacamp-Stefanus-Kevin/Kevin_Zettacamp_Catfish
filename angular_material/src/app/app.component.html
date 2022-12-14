@@ -1,31 +1,14 @@
 <mat-sidenav-container fullscreen>
   <mat-sidenav #sidenav>
     <mat-nav-list (click)="sidenav.close()">
-      <a
-        mat-list-item
-        class="icon"
-        routerLink="/stock_management"
-        *ngIf="role == 'admin'"
-        routerLinkActive="active"
-      >
+      <a mat-list-item class="icon" routerLink="/stock_management" *ngIf="role == 'admin'" routerLinkActive="active">
         <mat-icon>store</mat-icon> {{ "stockManagement" | translate }}
       </a>
-      <a
-        mat-list-item
-        class="icon"
-        routerLink="/menu_management"
-        *ngIf="role == 'admin'"
-        routerLinkActive="active"
-      >
+      <a mat-list-item class="icon" routerLink="/menu_management" *ngIf="role == 'admin'" routerLinkActive="active">
         <mat-icon>restaurant_menu</mat-icon> {{ "menuManagement" | translate }}
       </a>
-      <a
-        mat-list-item
-        class="icon"
-        routerLink="/transaction_management"
-        *ngIf="role == 'admin'"
-        routerLinkActive="active"
-      >
+      <a mat-list-item class="icon" routerLink="/transaction_management" *ngIf="role == 'admin'"
+        routerLinkActive="active">
         <mat-icon>dvr</mat-icon> Transaction Management
       </a>
     </mat-nav-list>
@@ -33,12 +16,7 @@
 
   <mat-toolbar class="navatas">
     <div class="left">
-      <button
-        class="change"
-        mat-icon-button
-        (click)="sidenav.open()"
-        *ngIf="role == 'admin'"
-      >
+      <button class="change" mat-icon-button (click)="sidenav.open()" *ngIf="role == 'admin'">
         <mat-icon>menu</mat-icon>
       </button>
       <a class="change">
@@ -55,11 +33,7 @@
       </mat-form-field>
     </div> -->
     <div class="wrap">
-      <mat-select
-        [(value)]="selectedLang"
-        #lang
-        (valueChange)="setLanguage(lang.value)"
-      >
+      <mat-select [(value)]="selectedLang" #lang (valueChange)="setLanguage(lang.value)">
         <mat-option value="en" class="option">
           <!-- <img src="../assets/pictures/EN.png"> -->
           EN
@@ -70,17 +44,8 @@
         </mat-option>
       </mat-select>
       <h1 *ngIf="role == 'user'">{{ balance | currency : "Rp. " }}</h1>
-      <a
-        mat-button
-        class="cart"
-        routerLink="/cart"
-        routerLinkActive="active"
-        matTooltip="Cart"
-        *ngIf="role === 'user'"
-      >
-        <mat-icon matBadge="{{ cartLength }}" matBadgeColor="warn"
-          >shopping_cart</mat-icon
-        >
+      <a mat-button class="cart" routerLink="/cart" routerLinkActive="active" matTooltip="Cart" *ngIf="role === 'user'">
+        <mat-icon matBadge="{{ cartLength }}" matBadgeColor="warn">shopping_cart</mat-icon>
       </a>
       <!-- <button
         mat-button
@@ -90,43 +55,20 @@
       >
         {{ "about" | translate }}
       </button> -->
-      <button
-        mat-button
-        class="change"
-        routerLink="/menu"
-        routerLinkActive="active"
-      >
+      <button mat-button class="change" routerLink="/menu" routerLinkActive="active">
         {{ "menu" | translate }}
       </button>
-      <button
-        mat-button
-        class="change"
-        routerLink="/login"
-        *ngIf="token === ''"
-        routerLinkActive="active"
-      >
+      <button mat-button class="change" routerLink="/login" *ngIf="token === ''" routerLinkActive="active">
         {{ "login" | translate }}
       </button>
       <a class="change" [matMenuTriggerFor]="menu" *ngIf="token !== ''">
         <div>{{ name }}</div>
       </a>
       <mat-menu #menu="matMenu">
-        <button
-          class="buttom"
-          mat-menu-item
-          routerLink="/profil"
-          routerLinkActive="active"
-          *ngIf="token"
-        >
+        <button class="buttom" mat-menu-item routerLink="/profil" routerLinkActive="active" *ngIf="token">
           Profil
         </button>
-        <button
-          class="buttom"
-          mat-menu-item
-          routerLinkActive="active"
-          *ngIf="token"
-          (click)="onLogout()"
-        >
+        <button class="buttom" mat-menu-item routerLinkActive="active" *ngIf="token" (click)="onLogout()">
           {{ "logout" | translate }}
         </button>
       </mat-menu>

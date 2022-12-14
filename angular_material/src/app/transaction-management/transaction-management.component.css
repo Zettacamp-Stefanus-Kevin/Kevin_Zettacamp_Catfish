@@ -3,7 +3,7 @@ html {
    margin-top: 50px;
 }
 
-.container {
+.container{
     width: 85%;
     margin-top: 60px;
     padding: 20px 0px;
@@ -20,7 +20,6 @@ html {
 }
 
 table {
-    margin-top: 50px;
     width: 85%;
     margin-left: auto;
     margin-right: auto;

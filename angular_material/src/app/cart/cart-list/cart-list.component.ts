@@ -6,6 +6,7 @@ import { CartService } from '../cart.service';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { AppComponent } from 'src/app/app.component';
+import { ProfilService } from 'src/app/profil/profil.service';
 
 @Component({
   selector: 'app-cart-list',
@@ -28,11 +29,15 @@ export class CartListComponent implements OnInit {
     private cartService: CartService,
     private router: Router,
     private translate: TranslateService,
-    private appComponent: AppComponent
-  ) {}
+    private appComponent: AppComponent, private profileService: ProfilService
+  ) { }
 
   ngOnInit(): void {
     this.init();
+  }
+
+  getall() {
+    this.cartService.getRefcard().subscribe(() => { })
   }
 
   init() {
@@ -40,7 +45,7 @@ export class CartListComponent implements OnInit {
       .getCart()
       .valueChanges.subscribe((resp: any) => {
         this.data = resp?.data?.GetOrder;
-        this.price = resp?.data?.GetOrder?.total_price?.toLocaleString('ID');
+        this.price = resp?.data?.GetOrder?.total_price;
         this.order = resp?.data?.GetOrder?.order_date;
         this.order_id = resp?.data?.GetOrder?.id;
         this.amount = resp?.data?.GetOrder?.menu.amount;
@@ -75,7 +80,8 @@ export class CartListComponent implements OnInit {
             footer: this.translate.instant('Sorry, You have Menu Out of Stock'),
           });
           this.data = [];
-          this.cartService.getCart().refetch();
+          this.getall();
+          this.init();
         } else {
           Swal.fire({
             icon: 'success',
@@ -85,7 +91,13 @@ export class CartListComponent implements OnInit {
             text: resp.data.OrderNow.order_status,
           }).then(() => {
             this.router.navigate(['cart']).then(() => {
-              this.appComponent.balance -= this.price;
+              const email = localStorage.getItem('email')
+              this.subs.sink = this.profileService.getUser(email).valueChanges.subscribe((resp: any) => {
+                this.appComponent = resp?.data?.GetOneUser?.balance
+                localStorage.setItem('balance', resp?.data?.GetOneUser?.balance)
+              });
+               this.getall();
+               this.init();
             });
           });
         }
@@ -98,6 +110,6 @@ export class CartListComponent implements OnInit {
         });
       }
     );
-    this.cartService.getCart().refetch();
   }
+  
 }

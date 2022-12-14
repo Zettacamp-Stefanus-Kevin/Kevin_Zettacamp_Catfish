@@ -42,9 +42,9 @@ export class ForgetComponent implements OnInit {
     private fb: FormBuilder,
     private dialog: MatDialog,
     private router: Router
-  ) {}
+  ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   @ViewChild('stepper') stepper: any;
 
@@ -70,6 +70,15 @@ export class ForgetComponent implements OnInit {
         }
       );
     }
+  }
+
+  getErrorMessage() {
+    if (this.firstFormGroup.get('email').hasError('required')) {
+      return 'You must input your email';
+    }
+    return this.firstFormGroup.get('email').hasError('email')
+      ? 'Not a valid email'
+      : '';
   }
 
   onSecondStepDone() {

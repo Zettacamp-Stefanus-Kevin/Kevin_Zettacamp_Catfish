@@ -39,6 +39,37 @@ export class CartService {
     });
   }
 
+  getRefcard() {
+    return this.apolo.query({
+      query: gql(`
+      query GetOrder {
+        GetOrder {
+            id
+            order_date
+            total_price
+            menu {
+              amount
+              id
+              note
+              recipe_id {
+               id
+               recipe_name
+               remain_order
+               image
+               price
+              }
+            }
+            user_id {
+              first_name
+              last_name
+            }
+        }
+      }
+      `),
+      fetchPolicy: 'network-only',
+    });
+  }
+
   getTransaction(
     pagination: any,
     status: any,
@@ -169,6 +200,7 @@ export class CartService {
         }
       `,
       variables: { id },
+      fetchPolicy: 'network-only',
     });
   }
 
@@ -183,6 +215,7 @@ export class CartService {
         }
       `,
       variables: { id },
+      fetchPolicy: 'network-only',
     });
   }
 
@@ -198,6 +231,7 @@ export class CartService {
         }
       `,
       variables: { editNoteId, newNote },
+      fetchPolicy: 'network-only',
     });
   }
 }

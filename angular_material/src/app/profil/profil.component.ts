@@ -30,7 +30,7 @@ export class ProfilComponent implements OnInit {
     private profilService: ProfilService,
     private fb: FormBuilder,
     private appComponent: AppComponent
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.init();
@@ -39,9 +39,7 @@ export class ProfilComponent implements OnInit {
 
   init(): any {
     this.email = localStorage.getItem('email');
-    this.subs.sink = this.profilService
-      .getUser(this.email)
-      .valueChanges.subscribe((resp: any) => {
+    this.subs.sink = this.profilService.getUser(this.email).valueChanges.subscribe((resp: any) => {
         this.data = resp?.data?.GetOneUser;
         this.userForm.patchValue(this.data);
       });

@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { debounceTime } from 'rxjs';
 import { SubSink } from 'subsink';
+import Swal from 'sweetalert2';
 import { MenuDetailComponent } from '../../menu-detail/menu-detail.component';
 import { MenuInfoComponent } from '../../menu-info/menu-info.component';
 
@@ -51,6 +52,15 @@ export class MenuCardComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => { });
+  }
+
+  notLogin(){
+    if (!this.token){
+      Swal.fire({
+        icon: "warning",
+        text: "You need login before add menu"
+      })
+    }
   }
 
   

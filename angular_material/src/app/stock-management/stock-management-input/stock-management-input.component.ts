@@ -28,7 +28,7 @@ export class StockManagementInputComponent implements OnInit {
   ngOnInit(): void {
     this.stockForm = new FormGroup({
       name: new FormControl(null, [Validators.required]),
-      stock: new FormControl(null, [Validators.required]),
+      stock: new FormControl(null, [Validators.required,Validators.min(1),Validators.pattern("^[0-9]")]),
     });
   }
 

@@ -28,7 +28,8 @@ export class AppComponent {
   constructor(
     private router: Router,
     private translate: TranslateService,
-    private cartService: CartService
+    private cartService: CartService,
+    private profilService: ProfilService
   ) {}
 
   ngOnInit() {
@@ -45,6 +46,9 @@ export class AppComponent {
       this.name = localStorage.getItem('name');
       this.balance = localStorage.getItem('balance');
     }
+    // this.subs.sink = this.profilService.getUser(this.email).valueChanges.subscribe((resp: any) => {
+    //   this.data = resp?.data?.GetOneUser;
+    // });
   }
 
   onLogout() {

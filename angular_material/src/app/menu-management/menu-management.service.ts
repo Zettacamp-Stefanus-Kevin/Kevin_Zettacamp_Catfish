@@ -44,9 +44,7 @@ export class MenuManagementService {
               status
               image
               category
-              is_hightlighted
               is_special_offers {
-                status
                 discount
               }
               description

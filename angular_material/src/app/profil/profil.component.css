@@ -28,6 +28,20 @@ body .data .balance {
   -o-border-radius: 50px;
 }
 
+body .data .balance {
+  display: flex;
+  flex-direction: column;
+}
+
+.title-balance, 
+.amount-balance{
+  font-size: 250%;
+  line-height: normal;
+  margin-right: auto;
+  margin-left: auto;
+  color: #F0A500 ;
+}
+
 mat-form-field {
   width: 100%;
   margin-bottom: 10px;

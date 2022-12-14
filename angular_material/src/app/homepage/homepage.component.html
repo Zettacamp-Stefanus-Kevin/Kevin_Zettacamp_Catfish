@@ -46,7 +46,7 @@
   <section class="pict">
     <h1>Special Offers</h1>
     <div class="wrapper">
-      <div class="card" *ngFor="let disc of diskon">
+      <div class="card" *ngFor="let disc of diskon" routerLink="/menu">
         <img
           class="imge"
           [src]="disc.image"
@@ -67,12 +67,16 @@
         </div>
       </div>
     </div>
-    <mat-paginator
+    <div class="btn-actions" *ngIf="menuLength > 10">
+      <a (click)="onPrevious()">&larr; {{ "menu.prev" | translate }}</a>
+      <a (click)="onNext()">{{ "menu.next" | translate }} &rarr;</a>
+    </div>
+    <!-- <mat-paginator
       #paginator
       (page)="onPagination($event)"
       [pageSizeOptions]="[3]"
       aria-label="Select page"
-    ></mat-paginator>
+    ></mat-paginator> -->
   </section>
 </main>
 

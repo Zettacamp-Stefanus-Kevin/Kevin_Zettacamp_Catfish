@@ -65,9 +65,7 @@ export class MenuService {
               id
               description
               image
-              is_hightlighted
               is_special_offers {
-                status
                 discount
                 price_discount
               }
@@ -75,6 +73,7 @@ export class MenuService {
               recipe_name
               remain_order
               status
+              sold
               ingredients {
                 stock_used
                 ids {

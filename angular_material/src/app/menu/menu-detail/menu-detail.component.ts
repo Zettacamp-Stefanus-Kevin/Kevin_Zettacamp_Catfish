@@ -23,7 +23,7 @@ export class MenuDetailComponent implements OnInit {
     public dialog: MatDialogRef<MenuDetailComponent>,
     private translate: TranslateService,
     @Inject(MAT_DIALOG_DATA) public menu: menu
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.init();
@@ -38,7 +38,7 @@ export class MenuDetailComponent implements OnInit {
         Validators.required,
         Validators.min(1),
         Validators.max(data),
-        Validators.pattern('[0-9]*'),
+        Validators.pattern("^[0-9]+$")
       ]),
       note: new FormControl(null),
     });

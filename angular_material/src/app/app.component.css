@@ -52,7 +52,6 @@ a.active {
 .change.active {
   color: #e6b325 !important;
   width: fit-content;
-  border: 1px solid #e6b325;
   padding-right: 1rem;
 }
 

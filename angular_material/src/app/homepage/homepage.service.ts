@@ -19,9 +19,7 @@ export class HomepageService {
               price
               recipe_name
               status
-              is_hightlighted
               is_special_offers {
-                status
                 discount
               }
             }
@@ -44,9 +42,7 @@ export class HomepageService {
               price
               recipe_name
               status
-              is_hightlighted
               is_special_offers {
-                status
                 discount
                 price_discount
               }

@@ -44,6 +44,12 @@ export class MenuManagementComponent implements OnInit {
     private translate: TranslateService
   ) {}
 
+ pagination: any = {
+    page: 1,
+    limit: 5,
+  };
+
+
   ngOnInit(): void {
     this.init(this.paginator);
     this.filterName();
@@ -52,13 +58,13 @@ export class MenuManagementComponent implements OnInit {
 
   init(paginationObj: any) {
 
-    const pagination: any = {
+    this.pagination = {
       page: paginationObj?.page ?? 1,
       limit: paginationObj?.limit ?? 5,
     };
 
     this.subs.sink = this.menuService
-      .getRecipe(pagination, this.searchName, this.searchStatus)
+      .getRecipe(this.pagination, this.searchName, this.searchStatus)
       .subscribe((resp) => {
         this.paginator.length = resp.data.GetAllRecipes.count;
 
@@ -85,7 +91,7 @@ export class MenuManagementComponent implements OnInit {
           text: this.translate.instant('Your work has been saved'),
         }
         );
-        this.init(true);
+        this.init(this.pagination);
       }, err => {
         Swal.fire({
           icon : 'error',
@@ -101,7 +107,7 @@ export class MenuManagementComponent implements OnInit {
     const bebas: any = {
       ...parameter,
       ingredients: parameter.ingredients.map((ingredient: any) => {
-        this.init(true)
+        this.init(this.pagination)
         return {
           ingredient_id: ingredient.ids.id,
           stock_used: ingredient.stock_used,
@@ -141,7 +147,7 @@ export class MenuManagementComponent implements OnInit {
             title: this.translate.instant('Deleted!'),
             text: this.translate.instant('this menu has been deleted'),
           });
-          this.init(true);
+          this.init(this.pagination);
         });
       }
     });
@@ -167,7 +173,7 @@ export class MenuManagementComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.menuService.updatepublish(check).subscribe(() => {
-          this.init(true);
+          this.init(this.pagination);
           Swal.fire({
             title:
               this.translate.instant('you have been change status to ') +

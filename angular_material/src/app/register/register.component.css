@@ -13,6 +13,7 @@ body {
 
 form {
   border: 1px solid #e6b325;
+  border-radius: 50px;
   width: 50%;
   padding: 40px;
   display: flex;

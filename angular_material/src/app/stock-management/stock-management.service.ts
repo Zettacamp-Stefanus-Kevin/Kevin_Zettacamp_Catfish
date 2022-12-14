@@ -92,7 +92,7 @@ export class StockManagementService {
       .subscribe();
   }
 
-  deleteStock(parameter: any): Observable<any> {
+  deleteStock(parameter: any) {
     const id = parameter;
     return this.apolo.mutate({
       mutation: gql`

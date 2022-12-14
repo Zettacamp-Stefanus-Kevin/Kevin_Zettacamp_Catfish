@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
 
   getErrorMessage() {
     if (this.loginForm.get('email').hasError('required')) {
-      return 'You must input your email';
+      return 'This field is required !';
     }
     return this.loginForm.get('email').hasError('email')
       ? 'Not a valid email'

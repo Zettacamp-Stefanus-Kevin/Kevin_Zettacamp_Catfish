@@ -26,8 +26,13 @@ export class StockManagementComponent implements OnInit {
   private subs = new SubSink();
   stock: stock[] = [];
 
-  displayedColumns: string[] = ['nama', 'stock', 'status', 'actions'];
+  displayedColumns: string[] = ['nama', 'stock', 'actions'];
   dataSource = new MatTableDataSource();
+
+  pagination: any = {
+    page: 1,
+    limit: 5,
+  };
 
   constructor(
     private stockService: StockManagementService,
@@ -43,13 +48,13 @@ export class StockManagementComponent implements OnInit {
   }
 
   init(paginationObj: any) {
-    const pagination: any = {
+    this.pagination = {
       page: paginationObj?.page ?? 1,
       limit: paginationObj?.limit ?? 5,
     };
 
     this.subs.sink = this.stockService
-      .getStock(pagination, this.searchIngredient, this.searchStatus)
+      .getStock(this.pagination, this.searchIngredient, this.searchStatus)
       .subscribe((resp) => {
         this.paginator.length = resp.data.GetAllIngredients.count;
         console.log(resp);
@@ -77,7 +82,7 @@ export class StockManagementComponent implements OnInit {
         title: this.translate.instant('Success'),
         text: this.translate.instant('Your work has been saved'),
       });
-      this.init(true);
+      this.init(this.pagination);
     });
   }
 
@@ -98,7 +103,7 @@ export class StockManagementComponent implements OnInit {
             title: this.translate.instant('Deleted!'),
             text: this.translate.instant('this menu has been deleted'),
           });
-          this.init(true);
+          this.init(this.pagination);
         },(err) => {
           Swal.fire({
             icon: 'error',
@@ -116,6 +121,7 @@ export class StockManagementComponent implements OnInit {
     })
   }
 
+
   onEdit(parameter: any) {
     const dialogRef = this.dialog.open(StockManagementUpdateComponent, {
       width: '50%',
@@ -131,10 +137,18 @@ export class StockManagementComponent implements OnInit {
           title: this.translate.instant('Success'),
           text: this.translate.instant('Your work has been saved'),
         }).then(() => {
-          this.init(true);
+          this.init(this.pagination);
         });
       });
     });
+  }
+
+  onSortName(){
+    // if (this.=== 1) {
+    //   this.= -1;
+    // } else {
+    //   this.= 1;
+    // }
   }
 
   //Ingredients FIlter===================================

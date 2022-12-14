@@ -7,7 +7,7 @@
     </div>
     <div class="container header">
         <section class="title">
-            <h1>{{recipe.recipe_name}} <mat-icon *ngIf="recipe.is_hightlighted === true">favorite</mat-icon>
+            <h1>{{recipe.recipe_name}} <mat-icon *ngIf="recipe.sold > 15">favorite</mat-icon>
             </h1>
             <h3>{{"available" | translate }} : {{recipe.remain_order}}</h3>
             <div class="PD" *ngIf="recipe.is_special_offers.discount > 5  ">
@@ -16,13 +16,16 @@
                 <h3 style="font-size:large;">{{recipe.is_special_offers.price_discount | currency : "Rp. "}}</h3>
             </div>
 
-            <h3 *ngIf="recipe.is_special_offers.status.discount < 5  ">
-                {{recipe.price | currency : "Rp. "}}</h3>
+            <div  *ngIf="recipe.is_special_offers.discount <= 5 "> 
+                <h3  >
+                    {{recipe.price | currency : "Rp. "}}</h3>
+            </div>
+          
 
             <button mat-button (click)="info(recipe)">{{"detail" | translate }}...</button>
         </section>
         <div class="card">
-            <div *ngIf="recipe.is_special_offers.status === true">
+            <div *ngIf="recipe.is_special_offers.discount> 5">
                 <img class="soImg" src="../../../../assets/pictures/pngwing.com.png">
             </div>
             <img class="pict" *ngIf="recipe.remain_order > 0" [src]="recipe.image" alt="Menu_makanan">
@@ -39,7 +42,7 @@
     </div> -->
     <div class="container footer">
 
-        <button mat-button routerLink="/login" [disabled]="recipe.remain_order === 0" *ngIf="!token" >
+        <button mat-button (click)="notLogin()" routerLink="/login" [disabled]="recipe.remain_order === 0" *ngIf="!token" >
             <mat-icon *ngIf="recipe.remain_order >0">add_shopping_cart</mat-icon>{{"addCart" | translate }}
         </button>
         <button mat-button (click)="addCart(recipe)" [disabled]="recipe.remain_order === 0 || role === 'admin'"  *ngIf="token">

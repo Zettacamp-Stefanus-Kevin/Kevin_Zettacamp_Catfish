@@ -16,6 +16,11 @@ export class HomepageComponent implements OnInit {
   diskon: any;
   deals: any;
 
+
+  menu: any = [];
+  menuLength: any;
+  page = 1;
+
   constructor(private homeService: HomepageService) {}
 
   ngOnInit(): void {
@@ -42,9 +47,29 @@ export class HomepageComponent implements OnInit {
       });
   }
 
+
+  onNext() {
+    const maxPage = Math.ceil(this.menuLength / 10);
+    if (this.page === maxPage) {
+      this.page = maxPage;
+    } else {
+      this.page += 1;
+      this.init2();
+    }
+  }
+
+  onPrevious() {
+    if (this.page === 1) {
+      this.page = 1;
+    } else {
+      this.page -= 1;
+      this.init2();
+    }
+  }
+
   @ViewChild('paginator') paginator!: MatPaginator;
 
-  pageSizeOptions: number[] = [5];
+  pageSizeOptions: number[] = [3];
 
   onPagination(event: any) {
     const pagination = {

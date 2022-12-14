@@ -29,7 +29,7 @@ export class StockManagementUpdateComponent implements OnInit {
     this.stockForm = new FormGroup({
       id: new FormControl(null),
       name: new FormControl(null),
-      stock: new FormControl(null, [Validators.required]),
+      stock: new FormControl(null, [Validators.required,Validators.min(1),Validators.pattern("^[0-9]+$")]),
     });
     this.stockForm.patchValue(this.stock);
   }
