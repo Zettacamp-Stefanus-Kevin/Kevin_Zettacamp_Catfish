@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { TranslateService } from '@ngx-translate/core';
 import { debounceTime } from 'rxjs';
 import { SubSink } from 'subsink';
 import Swal from 'sweetalert2';
@@ -17,7 +18,8 @@ import { MenuInfoComponent } from '../../menu-info/menu-info.component';
 export class MenuCardComponent implements OnInit {
   @Input() recipe: any;
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog,
+    private translate : TranslateService,) { }
   data : any
  
   token: string | null = '';
@@ -58,7 +60,7 @@ export class MenuCardComponent implements OnInit {
     if (!this.token){
       Swal.fire({
         icon: "warning",
-        text: "You need login before add menu"
+        text: this.translate.instant("You need login before add menu")
       })
     }
   }

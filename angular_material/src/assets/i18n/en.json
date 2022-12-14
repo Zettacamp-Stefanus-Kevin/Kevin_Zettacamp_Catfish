@@ -2,6 +2,7 @@
     "menu": "Menu",
     "menuManagement": "Menu Management",
     "stockManagement": "Stock Management",
+    "Transaction Management":"Transaction Management",
     "about": "About",
     "cart": "Cart",
     "login": "Login",
@@ -9,10 +10,47 @@
 
     "email": "Email",
     "password": "Password",
+    "edit": "Edit",
     "submit": "Submit",
     "close": "Close",
     "register" : "Register",
     "forgetPassword" : "Forget Password",
+    "Search Name":"Search Name",
+    "Search Date":"Search Date",
+    "Search Menu":"Search Menu",
+
+    "belum punya akun?" : "Don't have an account yet?",
+    "lupa detail login anda?" : "forgot your login details?",
+    "Log in to your account" : "Log in to your account",
+    "This field is required !" : "This field is required !",
+    "Fill out your email": "Fill out your email",
+    "What was your chilhood name?": "What was your chilhood name?",
+    "You must input your email":"You must input your email",
+    "Next":"Next",
+    "Back": "Back",
+    "Fill out your password":"Fill out your password",
+    "Fill out your password again!": "Fill out your password again!",
+    "Register your account here":"Register your account here",
+    "What was your childhood name?":"What was your childhood name?",
+
+    "Answer wrong":"Answer wrong",
+    "Password changed":"Password changed",
+    "Email not Found": "Email not Found",
+    "Not a valid email":"Not a valid email",
+    "The email has been used":"The email has been used",
+    "Profile changed":"Profile changed",
+    "Profile not changed":"Profile not changed",
+    "Your profile data has been changed!":"Your profile data has been changed!",
+    "You need login before add menu":"You need login before add menu",
+
+    "All":"All",
+    "Cocktail": "Cocktail",
+    "Dessert" :"Dessert",
+    "Appetizer" :"Appetizer",
+    "Side Dish" :"Side Dish",
+    "Main Course" : "Main Course",
+    "Mocktail" : "Mocktail",
+    "Drink" : "Drink",
 
     "addCart": "Add to Cart",
     "cancel": "Cancel",
@@ -22,13 +60,16 @@
     "price" : "Price",
     "detail" : "details",
     "outOfStock" : "This Menu Out of Stock",
+    "Total Balance":"Total Balance",
 
+    "Order Here":"Order Here",
     "menuHighlight" : "Menu Highlight",
     "specialOffers" : "Special Offers",
     "location"  : "Our Location",
     "contact"   : "Contact US",
     "orderHere" : "Order Here",
     "sendMessage" : "Send Us a Message",
+    "Our Location":"Our Location",
 
     "hello" : "Hello",
     "orderHistory" : "Order History",
@@ -42,6 +83,8 @@
 
     "role" : "Role",
     "status" : "Status",
+    "First Name":"First Name",
+    "Last Name":"Last Name",
 
     "ingredientName" : "Ingredient Name",
     "stock" : "Stock",
@@ -52,8 +95,6 @@
     "highlight" : "Highlight",
     "addNewMenu" : "Add New Menu",
     "addNewIngredient" : "Add New Ingredient",
-
-
 
 
     "Success" :  "Success",
@@ -80,6 +121,5 @@
     "Yes, exit now" : "Yes, exit now",
     "are you sure to exit?" : "are you sure to exit?",
     "Thank for Coming" : "Thank for Coming"
-
 
 }

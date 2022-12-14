@@ -104,19 +104,19 @@ export class MenuManagementService {
   }
 
   addRecipe(data: any): Observable<any> {
-    let recipe_name = data.recipe_name;
+    let recipeName = data.recipeName;
     let price = data.price;
-    let description = data.description;
+    let desription = data.description;
     let image = data.image;
     let input = data.ingredients;
     let category = data.category;
-    let discount = data.discount;
+    let discount = data.is_hightlighted.discount;
 
     return this.apolo.mutate({
       mutation: gql`
         mutation Mutation(
           $input: [ingredient_id_input]
-          $recipe_name: String
+          $recipeName: String
           $description: String
           $price: Int
           $image: String
@@ -125,7 +125,7 @@ export class MenuManagementService {
         ) {
           CreateRecipes(
             input: $input
-            recipe_name: $recipe_name
+            recipe_name: $recipeName
             description: $description
             price: $price
             image: $image
@@ -150,13 +150,16 @@ export class MenuManagementService {
           }
         }
       `,
-      variables: { recipe_name, price, description, image, input, category, discount },
+      variables: { recipeName, price, desription, image, input, category, discount },
     });
   }
 
   updateRecipe(data: any) {
     let updateRecipesId = data.id;
     let recipe_name = data.recipe_name;
+    let image = data.image;
+    let description = data.description;
+    let category = data.category;
     let input = data.ingredients;
     let price = data.price;
     let discount = data.discount;
@@ -164,17 +167,23 @@ export class MenuManagementService {
     return this.apolo.mutate({
       mutation: gql`
         mutation Mutation(
-          $input: [ingredient_id_input]
-          $recipe_name: String
-          $price: Int
           $updateRecipesId: ID
+          $price: Int
+          $input: [ingredient_id_input]
+          $recipeName: String
+          $image: String
+          $desription: String
+          $category: String
           $discount: Int
         ) {
           UpdateRecipes(
-            input: $input
-            recipe_name: $recipe_name
-            price: $price
             id: $updateRecipesId
+            price: $price
+            input: $input
+            recipe_name: $recipeName
+            image: $image
+            desription: $desription
+            category: $category
             discount: $discount
           ) {
             id
@@ -196,7 +205,7 @@ export class MenuManagementService {
           }
         }
       `,
-      variables: { updateRecipesId, recipe_name, input, price, discount },
+      variables: { updateRecipesId, recipe_name, input, price, discount,image, description,category },
     });
   }
 

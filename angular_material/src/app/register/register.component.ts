@@ -44,7 +44,7 @@ export class RegisterComponent implements OnInit {
         (err) => {
           Swal.fire({
             icon: 'error',
-            title: 'The email has been used',
+            title: this.translate.instant('The email has been used'),
           }).then(() => {
             this.router.navigate(['register']);
           });
@@ -63,10 +63,10 @@ export class RegisterComponent implements OnInit {
 
   getErrorMessage() {
     if (this.registerForm.get('email').hasError('required')) {
-      return 'You must input your email';
+      return  this.translate.instant('You must input your email');
     }
     return this.registerForm.get('email').hasError('email')
-      ? 'Not a valid email'
+      ? this.translate.instant( 'Not a valid email')
       : '';
   }
 }

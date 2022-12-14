@@ -5,34 +5,23 @@
     </div>
     <div class="right">
       <h2>{{ "name" | translate }} : {{ menu.recipe_id.recipe_name }}</h2>
-      <h2>
+      <h2 >
         {{ "price" | translate }} : Rp
-        {{ menu.recipe_id.price.toLocaleString("ID") }}
+        {{ menu.recipe_id.is_special_offers.price_discount.toLocaleString("ID") }}
       </h2>
       <h2>
         {{ "amount" | translate }} :
 
-        <button
-          mat-button
-          [disabled]="menu.amount === 1"
-          class="edit"
-          (click)="minus(menu.id)"
-        >
+        <button mat-button [disabled]="menu.amount === 1" class="edit" (click)="minus(menu.id)">
           <mat-icon> remove_circle_outline </mat-icon>
         </button>
         {{ menu.amount }}
-        <button
-          mat-button
-          [disabled]="menu.amount >= menu.recipe_id.remain_order"
-          class="edit"
-          (click)="plus(menu.id)"
-        >
+        <button mat-button [disabled]="menu.amount >= menu.recipe_id.remain_order" class="edit" (click)="plus(menu.id)">
           <mat-icon> add_circle_outline </mat-icon>
         </button>
 
         <sub>
-          *{{ "maxOrder" | translate }} : {{ menu.recipe_id.remain_order }}</sub
-        >
+          *{{ "maxOrder" | translate }} : {{ menu.recipe_id.remain_order }}</sub>
       </h2>
       <h2>
         {{ "notes" | translate }} : {{ menu.note }}

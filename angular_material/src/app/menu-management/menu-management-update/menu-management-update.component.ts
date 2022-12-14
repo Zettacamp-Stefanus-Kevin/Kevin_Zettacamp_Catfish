@@ -64,7 +64,7 @@ export class MenuManagementUpdateComponent implements OnInit {
       category: this.menu.category,
       description: this.menu.description,
       price: this.menu.price,
-      discount: this.menu.discount
+      discount: this.menu.is_special_offers.discount
     };
 
     let ingredients: any = [];

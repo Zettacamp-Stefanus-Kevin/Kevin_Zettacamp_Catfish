@@ -5,7 +5,7 @@
         <div class="form-field">
           <mat-form-field appearance="fill">
             <mat-label>
-              <mat-icon>person_outline</mat-icon> {{ "first_name" | translate }}
+              <mat-icon>person_outline</mat-icon> {{ "First Name" | translate }}
             </mat-label>
             <input
               matInput
@@ -18,7 +18,7 @@
         <div class="form-field">
           <mat-form-field appearance="fill">
             <mat-label>
-              <mat-icon>person_outline</mat-icon> {{ "last_name" | translate }}
+              <mat-icon>person_outline</mat-icon> {{ "Last Name" | translate }}
             </mat-label>
             <input
               matInput
@@ -55,15 +55,15 @@
           </mat-form-field>
         </div>
         <button mat-raised-button (click)="onEdit()" *ngIf="!isEdit">
-          Edit
+          {{ "edit" | translate }}
         </button>
         <button mat-raised-button (click)="onSubmit()" *ngIf="isEdit">
-          Submit
+          {{ "submit" | translate }}
         </button>
       </form>
     </div>
     <div class="balance" *ngIf="data.balance > 0">
-      <div class="title-balance">Total Balance:</div>
+      <div class="title-balance">{{ "Total Balance" | translate }}:</div>
       <div class="amount-balance">{{ data.balance | currency : "Rp. " }}</div>
     </div>
   </div>

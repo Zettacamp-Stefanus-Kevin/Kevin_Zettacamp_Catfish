@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
           Swal.fire({
             icon: 'success',
             title:
-              this.translate.instant('hello ') + data?.data?.Login?.first_name,
+              this.translate.instant('hello ') + data?.data?.Login?.first_name + data?.data?.Login?.last_name ,
             text: this.translate.instant('Welcome to our Restaurant'),
           }).then(() => {
             this.router.navigate(['homepage']);

@@ -42,9 +42,9 @@ export class MenuManagementComponent implements OnInit {
     private menuService: MenuManagementService,
     private dialog: MatDialog,
     private translate: TranslateService
-  ) {}
+  ) { }
 
- pagination: any = {
+  pagination: any = {
     page: 1,
     limit: 5,
   };
@@ -72,7 +72,7 @@ export class MenuManagementComponent implements OnInit {
 
         this.menu.push(resp.data.GetAllRecipes.data_recipes);
         console.log(this.menu);
-        
+
         this.dataSource.data = resp.data.GetAllRecipes.data_recipes;
       });
   }
@@ -94,7 +94,7 @@ export class MenuManagementComponent implements OnInit {
         this.init(this.pagination);
       }, err => {
         Swal.fire({
-          icon : 'error',
+          icon: 'error',
           text: err.message
         })
       });
@@ -124,7 +124,12 @@ export class MenuManagementComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        // this.init(true);
+        Swal.fire({
+          icon: 'success',
+          title: this.translate.instant('Success'),
+          text: this.translate.instant('Your work has been saved'),
+        });
+        this.init(this.pagination);
       }
     });
   }
@@ -148,6 +153,11 @@ export class MenuManagementComponent implements OnInit {
             text: this.translate.instant('this menu has been deleted'),
           });
           this.init(this.pagination);
+        }, err => {
+          Swal.fire({
+            icon: 'error',
+            text: err.message
+          })
         });
       }
     });
@@ -157,7 +167,7 @@ export class MenuManagementComponent implements OnInit {
 
   //toogle--------------------------------------------------------
 
-  onChanged(event : any, check: any ) {
+  onChanged(event: any, check: any) {
     check = copy(check);
     if (check.status === 'active') {
       check.status = 'unpublish'
@@ -180,10 +190,10 @@ export class MenuManagementComponent implements OnInit {
               check.status,
           });
         });
-      } else{
+      } else {
         event.source.checked = !event.source.checked
       }
-      
+
     });
   }
 

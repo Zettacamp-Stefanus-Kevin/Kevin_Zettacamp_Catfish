@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class CartService {
-  constructor(private apolo: Apollo) {}
+  constructor(private apolo: Apollo) { }
 
   getCart() {
     return this.apolo.watchQuery({
@@ -26,6 +26,9 @@ export class CartService {
                remain_order
                image
                price
+               is_special_offers {
+                price_discount
+              }
               }
             }
             user_id {

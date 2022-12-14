@@ -5,6 +5,7 @@ import { menu } from '../menu';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { debounceTime } from 'rxjs';
 import { FormControl } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 
 export interface kategory {
   value: string;
@@ -19,7 +20,8 @@ export class MenuListComponent implements OnInit {
   private subs = new SubSink();
   menu: menu[] = [];
 
-  constructor(private menuService: MenuService) {}
+  constructor(private menuService: MenuService,
+    private translate : TranslateService,) {}
 
   ngOnInit(): void {
     this?.init(this.paginator);
@@ -47,11 +49,15 @@ export class MenuListComponent implements OnInit {
 
   //filter kategory===================
   kategori: kategory[] = [
-    { value: '', viewValue: 'All' },
-    { value: 'side dish', viewValue: 'Side Dish' },
-    { value: 'appetizer', viewValue: 'Appetizer' },
-    { value: 'dessert', viewValue: 'Dessert'},
-    { value: 'cocktail', viewValue: 'Cocktail'}
+    { value: '', viewValue:  this.translate.instant('All') },
+    { value: 'appetizer', viewValue:  this.translate.instant('Appetizer')},
+    { value: 'main course', viewValue: this.translate.instant('Main Course')},
+    { value: 'dessert', viewValue: this.translate.instant('Dessert')},
+    { value: 'side dish', viewValue:  this.translate.instant('Side Dish')},
+    { value: 'cocktail', viewValue: this.translate.instant('Cocktail')},
+    { value: 'mocktail', viewValue: this.translate.instant('Mocktail')},
+    { value: 'drink', viewValue: this.translate.instant('Drink')},
+   
   ];
 
   kategoriFilter = new FormControl();

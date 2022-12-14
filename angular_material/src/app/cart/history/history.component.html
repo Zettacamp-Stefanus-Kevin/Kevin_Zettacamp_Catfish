@@ -35,7 +35,7 @@
         <ng-container matColumnDef="order_date">
             <th mat-header-cell *matHeaderCellDef> {{"orderDate" | translate }} <br>
                 <mat-form-field floatLabel="never">
-                    <mat-label> Search Date </mat-label>
+                    <mat-label>  {{ "Search Date" | translate }}</mat-label>
                     <input matInput type="date"  [formControl]="dateFilter">
                 </mat-form-field>
             </th>
@@ -46,7 +46,7 @@
         <ng-container matColumnDef="recipe_name">
             <th mat-header-cell *matHeaderCellDef> {{"menu" | translate }} <br>
                 <mat-form-field floatLabel="never">
-                    <mat-label> Search Menu </mat-label>
+                    <mat-label> {{ "Search Menu" | translate }}</mat-label>
                     <input matInput [formControl]="menuFilter">
                 </mat-form-field>
             </th>

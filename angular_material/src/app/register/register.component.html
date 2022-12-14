@@ -4,7 +4,7 @@
 <body>
   <div class="header">
     <h1 style="color: #e6b325">PRAEDULCIS</h1>
-    <h3 style="color: #f4f4f4">Register your account here </h3>
+    <h3 style="color: #f4f4f4">{{ "Register your account here " | translate }}</h3>
     <br />
   </div>
 
@@ -15,7 +15,7 @@
       </mat-label>
       <input matInput type="text" formControlName="first_name" placeholder="enter first_name" />
       <mat-error *ngIf="this.registerForm.get('first_name')?.invalid">
-        This field is required !
+        {{ "This field is required !" | translate }}
       </mat-error> </mat-form-field><br />
 
     <mat-form-field appearance="fill">
@@ -24,7 +24,7 @@
       </mat-label>
       <input matInput type="text" formControlName="last_name" placeholder="enter last_name" />
       <mat-error *ngIf="this.registerForm.get('last_name')?.invalid">
-        This field is required !
+        {{ "This field is required !" | translate }}
       </mat-error> </mat-form-field><br />
 
     <mat-form-field appearance="fill">
@@ -38,11 +38,11 @@
 
     <mat-form-field appearance="fill">
       <mat-label>
-        <mat-icon>question_answer</mat-icon> What was your childhood name?
+        <mat-icon>question_answer</mat-icon> {{ "What was your childhood name?" | translate }}
       </mat-label>
       <input matInput type="text" formControlName="question_answer" placeholder="input answer" />
       <mat-error *ngIf="this.registerForm.get('last_name')?.invalid">
-        This field is required !
+        {{ "This field is required !" | translate }}
       </mat-error> </mat-form-field><br />
 
     <mat-form-field appearance="fill">
@@ -55,7 +55,7 @@
         <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
       </button>
       <mat-error *ngIf="this.registerForm.get('password')?.invalid">
-        This field is required !
+        {{ "This field is required !" | translate }}
       </mat-error> </mat-form-field><br />
 
     <div class="footer">

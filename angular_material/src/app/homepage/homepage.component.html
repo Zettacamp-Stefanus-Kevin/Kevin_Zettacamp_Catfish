@@ -10,7 +10,7 @@
 <main>
   <section class="par1">
     <div class="carousel">
-      <h1>Menu Highlight</h1>
+      <h1>{{ "menuHighlight" | translate }}</h1>
       <carousel
         [height]="350"
         [width]="600"
@@ -28,7 +28,7 @@
     </div>
 
     <div class="about">
-      <h1>About</h1>
+      <h1>{{ "about" | translate }}</h1>
       <p>
         Organic Greens. Naturally raised and hormone-free meats. Non-GMO cooking
         oils. Cuban food is one of the most flavorful cuisines in the world, but
@@ -39,12 +39,12 @@
         authentic Cuban cuisine that is organic and locally sourced whenever
         possible. It's comfort food with a conscience.
       </p>
-      <button routerLink="/menu" routerLinkActive="active">Order Here</button>
+      <button routerLink="/menu" routerLinkActive="active">{{ "Order Here" | translate }}</button>
     </div>
   </section>
 
   <section class="pict">
-    <h1>Special Offers</h1>
+    <h1>{{ "specialOffers" | translate }}</h1>
     <div class="wrapper">
       <div class="card" *ngFor="let disc of diskon" routerLink="/menu">
         <img
@@ -68,8 +68,8 @@
       </div>
     </div>
     <div class="btn-actions" *ngIf="menuLength > 10">
-      <a (click)="onPrevious()">&larr; {{ "menu.prev" | translate }}</a>
-      <a (click)="onNext()">{{ "menu.next" | translate }} &rarr;</a>
+      <a (click)="onPrevious()">&larr; Prev </a>
+      <a (click)="onNext()"> Next &rarr;</a>
     </div>
     <!-- <mat-paginator
       #paginator
@@ -80,8 +80,12 @@
   </section>
 </main>
 
+<div class="banner">
+  <img src="https://static.cordonbleu.edu/Files/MediaFile/59676.jpg">
+</div>
+
 <footer>
-  <h2>Our Location</h2>
+  <h2>{{ "Our Location" | translate }}</h2>
   <div class="wrap">
     <div class="cardFooter">
       <span style="font-weight: bold">PRAEDULCIS</span>

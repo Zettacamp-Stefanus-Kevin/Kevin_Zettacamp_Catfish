@@ -2,34 +2,34 @@
   <mat-vertical-stepper [linear]="false" #stepper animationDuration="500">
     <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup">
-        <ng-template matStepLabel>Fill out your email</ng-template>
+        <ng-template matStepLabel>{{ "Fill out your email" | translate }}</ng-template>
         <mat-form-field>
           <input matInput placeholder="Ex: user@user.com" formControlName="firstCtrl" required />
-          <mat-error *ngIf="firstFormGroup.get('firstCtrl').invalid">'You must input your email'</mat-error>
+          <mat-error *ngIf="firstFormGroup.get('firstCtrl').invalid"> {{ "You must input your email" | translate }}</mat-error>
         </mat-form-field>
         <div>
-          <button mat-button (click)="onFirstStepDone()">Next</button>
+          <button mat-button (click)="onFirstStepDone()">{{ "Next" | translate }}</button>
         </div>
       </form>
     </mat-step>
     <mat-step [completed]="false" [stepControl]="secondFormGroup">
       <form [formGroup]="secondFormGroup">
-        <ng-template matStepLabel>What was your chilhood name?</ng-template>
+        <ng-template matStepLabel>{{ "What was your chilhood name?" | translate }}</ng-template>
         <mat-form-field>
           <input matInput placeholder="What was your chilhood name?" formControlName="secondCtrl" required />
           <mat-error *ngIf="this.secondFormGroup.get('secondCtrl')?.invalid">
-            This field is required !
+            {{ "This field is required !" | translate }}
           </mat-error>
         </mat-form-field>
         <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button (click)="onSecondStepDone()">Next</button>
+          <button mat-button matStepperPrevious>{{ "Back" | translate }}</button>
+          <button mat-button (click)="onSecondStepDone()">{{ "Next" | translate }}</button>
         </div>
       </form>
     </mat-step>
     <mat-step [completed]="false" [stepControl]="thirdFormGroup">
       <form [formGroup]="thirdFormGroup">
-        <ng-template matStepLabel>Fill out your password</ng-template>
+        <ng-template matStepLabel>{{ "Fill out your password" | translate }}</ng-template>
         <mat-form-field>
           <input matInput placeholder="New Password" formControlName="thirdCtrl" required />
           <!-- <mat-error *ngIf="this.thirdFormGroup.get('thirdCtrl')?.invalid">
@@ -37,14 +37,14 @@
           </mat-error> -->
         </mat-form-field>
         <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button (click)="onThirdStepDone()">Next</button>
+          <button mat-button matStepperPrevious>{{ "Back" | translate }}</button>
+          <button mat-button (click)="onThirdStepDone()">{{ "Next" | translate }}</button>
         </div>
       </form>
     </mat-step>
     <mat-step [completed]="false" [stepControl]="fourthFormGroup">
       <form [formGroup]="fourthFormGroup">
-        <ng-template matStepLabel>Fill out your password again!</ng-template>
+        <ng-template matStepLabel>{{ "Fill out your password again!" | translate }}</ng-template>
         <mat-form-field>
           <input matInput placeholder="Re-Password" formControlName="fourthCtrl" required />
           <!-- <mat-error *ngIf="this.fourthFormGroup.get('fourthCtrl')?.invalid">
@@ -52,8 +52,8 @@
           </mat-error> -->
         </mat-form-field>
         <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button (click)="onFourthStepDone()">Submit</button>
+          <button mat-button matStepperPrevious>{{ "Back" | translate }}</button>
+          <button mat-button (click)="onFourthStepDone()">{{ "submit" | translate }}</button>
         </div>
       </form>
     </mat-step>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 import { SubSink } from 'subsink';
 import Swal from 'sweetalert2';
 import { AppComponent } from '../app.component';
@@ -29,7 +30,8 @@ export class ProfilComponent implements OnInit {
   constructor(
     private profilService: ProfilService,
     private fb: FormBuilder,
-    private appComponent: AppComponent
+    private appComponent: AppComponent,
+    private translate : TranslateService
   ) { }
 
   ngOnInit(): void {
@@ -59,11 +61,14 @@ export class ProfilComponent implements OnInit {
           this.userForm.value.email,
           this.userForm.value.password
         )
+        
         .subscribe(() => {
-          Swal.fire(
-            'Profile changed',
-            'Your profile data has been changed!',
-            'success'
+          Swal.fire
+            ({
+              icon: 'success',
+              title: this.translate.instant('Profile changed'),
+              text: this.translate.instant('Your profile data has been changed!')}
+           
           ).then(
             () => {
               this.appComponent.name = this.userForm.value.first_name;
@@ -73,7 +78,10 @@ export class ProfilComponent implements OnInit {
               this.userForm.disable();
             },
             (err) => {
-              Swal.fire('Profile not changed', err, 'error');
+              Swal.fire({
+              icon: 'error',
+              title: this.translate.instant('Profile not changed'),
+              text: err});
             }
           );
         });
@@ -90,17 +98,20 @@ export class ProfilComponent implements OnInit {
           this.userForm.value.password
         )
         .subscribe(() => {
-          Swal.fire(
-            'Profile changed',
-            'Your profile data has been changed!',
-            'success'
-          ).then(
+          Swal.fire({
+            icon: 'success',
+            title: this.translate.instant('Profile changed'),
+            text: this.translate.instant('Your profile data has been changed!')
+          }).then(
             () => {
               this.isEdit = false;
               this.userForm.disable();
             },
             (err) => {
-              Swal.fire('Profile not changed', err, 'error');
+              Swal.fire({
+                icon: 'error',
+                title: this.translate.instant('Profile not changed'),
+                text: err});
             }
           );
         });
@@ -117,11 +128,11 @@ export class ProfilComponent implements OnInit {
           this.userForm.value.password
         )
         .subscribe(() => {
-          Swal.fire(
-            'Profile changed',
-            'Your profile data has been changed!',
-            'success'
-          ).then(
+          Swal.fire({
+            icon: 'success',
+            title: this.translate.instant('Profile changed'),
+            text: this.translate.instant('Your profile data has been changed!')
+          }).then(
             () => {
               this.appComponent.name = this.userForm.value.first_name;
               localStorage.setItem('name', this.userForm.value.first_name);
@@ -130,7 +141,10 @@ export class ProfilComponent implements OnInit {
               this.userForm.disable();
             },
             (err) => {
-              Swal.fire('Profile not changed', err, 'error');
+              Swal.fire({
+                icon: 'error',
+                title: this.translate.instant('Profile not changed'),
+                text: err});
             }
           );
         });
@@ -147,11 +161,11 @@ export class ProfilComponent implements OnInit {
           this.userForm.value.password
         )
         .subscribe(() => {
-          Swal.fire(
-            'Profile changed',
-            'Your profile data has been changed!',
-            'success'
-          ).then(
+          Swal.fire({
+            icon: 'success',
+            title: this.translate.instant('Profile changed'),
+            text: this.translate.instant('Your profile data has been changed!')
+          }).then(
             () => {
               this.appComponent.name = this.userForm.value.first_name;
               localStorage.setItem('name', this.userForm.value.first_name);
@@ -160,7 +174,10 @@ export class ProfilComponent implements OnInit {
               this.userForm.disable();
             },
             (err) => {
-              Swal.fire('Profile not changed', err, 'error');
+              Swal.fire({
+                icon: 'error',
+                title: this.translate.instant('Profile not changed'),
+                text: err});
             }
           );
         });
@@ -177,11 +194,11 @@ export class ProfilComponent implements OnInit {
           undefined
         )
         .subscribe(() => {
-          Swal.fire(
-            'Profile changed',
-            'Your profile data has been changed!',
-            'success'
-          ).then(
+          Swal.fire({
+            icon: 'success',
+            title: this.translate.instant('Profile changed'),
+            text: this.translate.instant('Your profile data has been changed!')
+          }).then(
             () => {
               this.appComponent.name = this.userForm.value.first_name;
               localStorage.setItem('name', this.userForm.value.first_name);
@@ -190,7 +207,10 @@ export class ProfilComponent implements OnInit {
               this.userForm.disable();
             },
             (err) => {
-              Swal.fire('Profile not changed', err, 'error');
+              Swal.fire({
+                icon: 'error',
+                title: this.translate.instant('Profile not changed'),
+                text: err});
             }
           );
         });
@@ -206,17 +226,20 @@ export class ProfilComponent implements OnInit {
           this.userForm.value.password
         )
         .subscribe(() => {
-          Swal.fire(
-            'Profile changed',
-            'Your profile data has been changed!',
-            'success'
-          ).then(
+          Swal.fire({
+            icon: 'success',
+            title: this.translate.instant('Profile changed'),
+            text: this.translate.instant('Your profile data has been changed!')
+          }).then(
             () => {
               this.isEdit = false;
               this.userForm.disable();
             },
             (err) => {
-              Swal.fire('Profile not changed', err, 'error');
+              Swal.fire({
+                icon: 'error',
+                title: this.translate.instant('Profile not changed'),
+                text: err});
             }
           );
         });
@@ -232,11 +255,11 @@ export class ProfilComponent implements OnInit {
           this.userForm.value.password
         )
         .subscribe(() => {
-          Swal.fire(
-            'Profile changed',
-            'Your profile data has been changed!',
-            'success'
-          ).then(
+          Swal.fire({
+            icon: 'success',
+            title: this.translate.instant('Profile changed'),
+            text: this.translate.instant('Your profile data has been changed!')
+          }).then(
             () => {
               this.appComponent.name = this.userForm.value.first_name;
               localStorage.setItem('name', this.userForm.value.first_name);
@@ -245,7 +268,10 @@ export class ProfilComponent implements OnInit {
               this.userForm.disable();
             },
             (err) => {
-              Swal.fire('Profile not changed', err, 'error');
+              Swal.fire({
+                icon: 'error',
+                title: this.translate.instant('Profile not changed'),
+                text: err});
             }
           );
         });
@@ -261,11 +287,11 @@ export class ProfilComponent implements OnInit {
           undefined
         )
         .subscribe(() => {
-          Swal.fire(
-            'Profile changed',
-            'Your profile data has been changed!',
-            'success'
-          ).then(
+          Swal.fire({
+            icon: 'success',
+            title: this.translate.instant('Profile changed'),
+            text: this.translate.instant('Your profile data has been changed!')
+          }).then(
             () => {
               this.appComponent.name = this.userForm.value.first_name;
               localStorage.setItem('name', this.userForm.value.first_name);
@@ -274,7 +300,10 @@ export class ProfilComponent implements OnInit {
               this.userForm.disable();
             },
             (err) => {
-              Swal.fire('Profile not changed', err, 'error');
+              Swal.fire({
+                icon: 'error',
+                title: this.translate.instant('Profile not changed'),
+                text: err});
             }
           );
         });
@@ -290,17 +319,20 @@ export class ProfilComponent implements OnInit {
           this.userForm.value.password
         )
         .subscribe(() => {
-          Swal.fire(
-            'Profile changed',
-            'Your profile data has been changed!',
-            'success'
-          ).then(
+          Swal.fire({
+            icon: 'success',
+            title: this.translate.instant('Profile changed'),
+            text: this.translate.instant('Your profile data has been changed!')
+          }).then(
             () => {
               this.isEdit = false;
               this.userForm.disable();
             },
             (err) => {
-              Swal.fire('Profile not changed', err, 'error');
+              Swal.fire({
+                icon: 'error',
+                title: this.translate.instant('Profile not changed'),
+                text: err});
             }
           );
         });
@@ -316,17 +348,20 @@ export class ProfilComponent implements OnInit {
           undefined
         )
         .subscribe(() => {
-          Swal.fire(
-            'Profile changed',
-            'Your profile data has been changed!',
-            'success'
-          ).then(
+          Swal.fire({
+            icon: 'success',
+            title: this.translate.instant('Profile changed'),
+            text: this.translate.instant('Your profile data has been changed!')
+          }).then(
             () => {
               this.isEdit = false;
               this.userForm.disable();
             },
             (err) => {
-              Swal.fire('Profile not changed', err, 'error');
+              Swal.fire({
+                icon: 'error',
+                title: this.translate.instant('Profile not changed'),
+                text: err});
             }
           );
         });
@@ -342,11 +377,11 @@ export class ProfilComponent implements OnInit {
           undefined
         )
         .subscribe(() => {
-          Swal.fire(
-            'Profile changed',
-            'Your profile data has been changed!',
-            'success'
-          ).then(
+          Swal.fire({
+            icon: 'success',
+            title: this.translate.instant('Profile changed'),
+            text: this.translate.instant('Your profile data has been changed!')
+          }).then(
             () => {
               this.appComponent.name = this.userForm.value.first_name;
               localStorage.setItem('name', this.userForm.value.first_name);
@@ -355,7 +390,10 @@ export class ProfilComponent implements OnInit {
               this.userForm.disable();
             },
             (err) => {
-              Swal.fire('Profile not changed', err, 'error');
+              Swal.fire({
+                icon: 'error',
+                title: this.translate.instant('Profile not changed'),
+                text: err});
             }
           );
         });
@@ -368,11 +406,11 @@ export class ProfilComponent implements OnInit {
           undefined
         )
         .subscribe(() => {
-          Swal.fire(
-            'Profile changed',
-            'Your profile data has been changed!',
-            'success'
-          ).then(
+          Swal.fire({
+            icon: 'success',
+            title: this.translate.instant('Profile changed'),
+            text: this.translate.instant('Your profile data has been changed!')
+          }).then(
             () => {
               this.appComponent.name = this.userForm.value.first_name;
               localStorage.setItem('name', this.userForm.value.first_name);
@@ -380,7 +418,10 @@ export class ProfilComponent implements OnInit {
               this.userForm.disable();
             },
             (err) => {
-              Swal.fire('Profile not changed', err, 'error');
+              Swal.fire({
+                icon: 'error',
+                title: this.translate.instant('Profile not changed'),
+                text: err});
             }
           );
         });
@@ -393,17 +434,20 @@ export class ProfilComponent implements OnInit {
           undefined
         )
         .subscribe(() => {
-          Swal.fire(
-            'Profile changed',
-            'Your profile data has been changed!',
-            'success'
-          ).then(
+          Swal.fire({
+            icon: 'success',
+            title: this.translate.instant('Profile changed'),
+            text: this.translate.instant('Your profile data has been changed!')
+          }).then(
             () => {
               this.isEdit = false;
               this.userForm.disable();
             },
             (err) => {
-              Swal.fire('Profile not changed', err, 'error');
+              Swal.fire({
+                icon: 'error',
+                title: this.translate.instant('Profile not changed'),
+                text: err});
             }
           );
         });
@@ -416,17 +460,20 @@ export class ProfilComponent implements OnInit {
           this.userForm.value.password
         )
         .subscribe(() => {
-          Swal.fire(
-            'Profile changed',
-            'Your profile data has been changed!',
-            'success'
-          ).then(
+          Swal.fire({
+            icon: 'success',
+            title: this.translate.instant('Profile changed'),
+            text: this.translate.instant('Your profile data has been changed!')
+          }).then(
             () => {
               this.isEdit = false;
               this.userForm.disable();
             },
             (err) => {
-              Swal.fire('Profile not changed', err, 'error');
+              Swal.fire({
+                icon: 'error',
+                title: this.translate.instant('Profile not changed'),
+                text: err});
             }
           );
         });
@@ -434,26 +481,29 @@ export class ProfilComponent implements OnInit {
       this.profilService
         .updateUser(undefined, undefined, this.userForm.value.email, undefined)
         .subscribe(() => {
-          Swal.fire(
-            'Profile changed',
-            'Your profile data has been changed!',
-            'success'
-          ).then(
+          Swal.fire({
+            icon: 'success',
+            title: this.translate.instant('Profile changed'),
+            text: this.translate.instant('Your profile data has been changed!')
+          }).then(
             () => {
               this.isEdit = false;
               this.userForm.disable();
             },
             (err) => {
-              Swal.fire('Profile not changed', err, 'error');
+              Swal.fire({
+                icon: 'error',
+                title: this.translate.instant('Profile not changed'),
+                text: err});
             }
           );
         });
     } else {
-      Swal.fire(
-        'Profile changed',
-        'Your profile data has been changed!',
-        'success'
-      ).then(() => {
+      Swal.fire({
+        icon: 'success',
+        title: this.translate.instant('Profile changed'),
+        text: this.translate.instant('Your profile data has been changed!')
+      }).then(() => {
         this.isEdit = false;
         this.userForm.disable();
       });

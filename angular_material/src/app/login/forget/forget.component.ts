@@ -41,7 +41,8 @@ export class ForgetComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
     private dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private translate: TranslateService,
   ) { }
 
   ngOnInit(): void { }
@@ -60,7 +61,7 @@ export class ForgetComponent implements OnInit {
         },
         (err: any) => {
           Swal.fire({
-            title: 'Email not Found',
+            title: this.translate.instant('Email not Found'),
             text: err,
             icon: 'error',
           }).then(() => {
@@ -72,14 +73,14 @@ export class ForgetComponent implements OnInit {
     }
   }
 
-  getErrorMessage() {
-    if (this.firstFormGroup.get('email').hasError('required')) {
-      return 'You must input your email';
-    }
-    return this.firstFormGroup.get('email').hasError('email')
-      ? 'Not a valid email'
-      : '';
-  }
+  // getErrorMessage() {
+  //   if (this.firstFormGroup.get('email').hasError('required')) {
+  //     return 'You must input your email';
+  //   }
+  //   return this.firstFormGroup.get('email').hasError('email')
+  //     ? 'Not a valid email'
+  //     : '';
+  // }
 
   onSecondStepDone() {
     if (!this.secondFormGroup.valid) {
@@ -115,7 +116,7 @@ export class ForgetComponent implements OnInit {
         this.loginService.forgetPassword(value).subscribe(
           (data: any) => {
             Swal.fire({
-              title: 'Password changed',
+              title: this.translate.instant('Password changed' ),
               text: data.result,
               icon: 'success',
             });
@@ -123,7 +124,7 @@ export class ForgetComponent implements OnInit {
           },
           (err) => {
             Swal.fire({
-              title: 'Answer wrong',
+              title: this.translate.instant('Answer wrong' ),
               text: err,
               icon: 'error',
             }).then(() => {
