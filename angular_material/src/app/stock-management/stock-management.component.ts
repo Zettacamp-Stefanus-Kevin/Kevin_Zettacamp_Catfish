@@ -77,14 +77,20 @@ export class StockManagementComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      this.stockService.addStock(result);
-
+      this.stockService.addStock(result).subscribe((result) => {
+        Swal.fire({
+          icon: 'success',
+          title: this.translate.instant('Success'),
+          text: this.translate.instant('Your work has been saved'),
+        });
+        this.init(this.pagination, this.isSort);
+      },err => {
       Swal.fire({
-        icon: 'success',
-        title: this.translate.instant('Success'),
-        text: this.translate.instant('Your work has been saved'),
+        icon: 'error',
+        title: this.translate.instant('Error'),
+        text: err.message,
       });
-      this.init(this.pagination, this.isSort);
+    })
     });
   }
 
@@ -141,6 +147,18 @@ export class StockManagementComponent implements OnInit {
         }).then(() => {
           this.init(this.pagination, this.isSort);
         });
+      },(err) => {
+        Swal.fire({
+          icon: 'error',
+          title: this.translate.instant('Error'),
+          text: err.message,
+        });
+      });
+    },(err) => {
+      Swal.fire({
+        icon: 'error',
+        title: this.translate.instant('Error'),
+        text: err.message,
       });
     });
   }

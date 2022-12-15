@@ -91,7 +91,7 @@ export class StockManagementService {
         `,
         variables: { name, stock },
       })
-      .subscribe();
+      
   }
 
   deleteStock(parameter: any) {

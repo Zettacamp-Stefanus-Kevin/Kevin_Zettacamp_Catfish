@@ -37,7 +37,8 @@ export class MenuManagementComponent implements OnInit {
     'actions',
   ];
   dataSource = new MatTableDataSource([]);
-  z: string;
+  
+  view: string;
 
   constructor(
     private menuService: MenuManagementService,
@@ -170,14 +171,14 @@ export class MenuManagementComponent implements OnInit {
 
   onChanged(event: any, check: any) {
     check = copy(check);
-    this.z = check.status === 'active' ? 'unpublish' : 'publish'
+    this.view = check.status === 'active' ? 'unpublish' : 'publish'
     if (check.status === 'active') {
       check.status = 'unpublish'
     } else if (check.status === 'unpublish') {
       check.status = 'active'
     }
     Swal.fire({
-      title: 'Are you sure want change status to ' + this.z + '?',
+      title: 'Are you sure want change status to ' + this.view + '?',
       showDenyButton: false,
       showCancelButton: true,
       showConfirmButton: true,
@@ -189,7 +190,7 @@ export class MenuManagementComponent implements OnInit {
           Swal.fire({
             title:
               this.translate.instant('you have been change status to ') +
-              this.z,
+              this.view,
           });
         });
       } else {

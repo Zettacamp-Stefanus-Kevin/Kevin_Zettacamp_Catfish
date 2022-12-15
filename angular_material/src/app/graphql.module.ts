@@ -9,8 +9,8 @@ import { HttpLink } from 'apollo-angular/http';
 import { HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
-// const uri = environment.apiUrl;
-const uri = 'https://lazy-blue-moose-yoke.cyclic.app/'
+const uri = environment.apiUrl;
+// const uri = 'https://lazy-blue-moose-yoke.cyclic.app/'
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
   const http = httpLink.create({ uri });
   const authLink = new ApolloLink((operation, forward) => {

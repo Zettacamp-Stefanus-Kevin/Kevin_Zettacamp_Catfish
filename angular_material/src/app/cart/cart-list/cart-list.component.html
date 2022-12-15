@@ -6,7 +6,7 @@
       <mat-icon>event_note</mat-icon> {{ "orderHistory" | translate }}... </a
     ><br />
 
-    <div *ngIf="price < 1">
+    <div *ngIf="price < 1 || !price ">
       <a class="noOrder2" mat-button color="primary" routerLink="../../menu">
         {{ "toMenu" | translate }}
       </a>
