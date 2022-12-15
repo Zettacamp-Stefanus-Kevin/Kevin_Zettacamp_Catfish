@@ -46,9 +46,6 @@ export class AppComponent {
       this.name = localStorage.getItem('name');
       this.balance = localStorage.getItem('balance');
     }
-    // this.subs.sink = this.profilService.getUser(this.email).valueChanges.subscribe((resp: any) => {
-    //   this.data = resp?.data?.GetOneUser;
-    // });
   }
 
   onLogout() {
@@ -84,9 +81,13 @@ export class AppComponent {
   public getBadge() {
     this.subs.sink = this.cartService?.getCart()?.valueChanges?.subscribe(
       (item: any) => {
-        this.cartLength = item?.data?.GetOrder?.menu?.length;
-      },
-      () => {}
+        if(item?.data?.GetOrder?.menu?.length > 0) {
+
+          this.cartLength = item?.data?.GetOrder?.menu?.length;
+        } else {
+          this.cartLength = 0
+        }
+      }
     );
   }
 }

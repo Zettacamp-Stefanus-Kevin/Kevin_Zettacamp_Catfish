@@ -104,13 +104,12 @@ export class MenuManagementService {
   }
 
   addRecipe(data: any): Observable<any> {
-    let recipeName = data.recipeName;
+    let recipeName = data.recipe_name;
     let price = data.price;
-    let desription = data.description;
+    let description = data.description;
     let image = data.image;
     let input = data.ingredients;
     let category = data.category;
-    let discount = data.is_hightlighted.discount;
 
     return this.apolo.mutate({
       mutation: gql`
@@ -121,7 +120,6 @@ export class MenuManagementService {
           $price: Int
           $image: String
           $category: String
-          $discount: Int
         ) {
           CreateRecipes(
             input: $input
@@ -129,7 +127,6 @@ export class MenuManagementService {
             description: $description
             price: $price
             image: $image
-            discount: $discount
             category: $category
           ) {
             description
@@ -150,7 +147,7 @@ export class MenuManagementService {
           }
         }
       `,
-      variables: { recipeName, price, desription, image, input, category, discount },
+      variables: { recipeName, price, description, image, input, category },
     });
   }
 
@@ -170,9 +167,9 @@ export class MenuManagementService {
           $updateRecipesId: ID
           $price: Int
           $input: [ingredient_id_input]
-          $recipeName: String
+          $recipe_name: String
           $image: String
-          $desription: String
+          $description: String
           $category: String
           $discount: Int
         ) {
@@ -180,9 +177,9 @@ export class MenuManagementService {
             id: $updateRecipesId
             price: $price
             input: $input
-            recipe_name: $recipeName
+            recipe_name: $recipe_name
             image: $image
-            desription: $desription
+            description: $description
             category: $category
             discount: $discount
           ) {

@@ -19,13 +19,11 @@
             </mat-option>
 
         </mat-select>
-        <!-- <mat-error *ngIf="this.recipeForm.get('image')?.invalid"> This field is required ! </mat-error> -->
     </mat-form-field><br>
 
     <mat-form-field appearance="fill">
         <mat-label> description </mat-label>
         <input matInput type="text" formControlName="description">
-        <!-- <mat-error *ngIf="this.recipeForm.get('description')?.invalid"> This field is required ! </mat-error> -->
     </mat-form-field><br>
 
     <mat-form-field appearance="fill">
@@ -50,14 +48,12 @@
                         {{ingredient.name}}
                     </mat-option>
                 </mat-select>
-                <!-- <mat-error *ngIf="this.recipeForm.get('price')?.invalid"> This field is required ! </mat-error> -->
             </mat-form-field><br>
 
 
             <mat-form-field appearance="fill">
                 <mat-label> stock </mat-label>
                 <input matInput type="number" formControlName="stock_used">
-                <!-- <mat-error *ngIf="this.recipeForm.get('price')?.invalid"> This field is required ! </mat-error> -->
             </mat-form-field><br>
 
             <button class="buttom" type="button" mat-button color="warn" (click)="onRemove(i)">Remove</button>

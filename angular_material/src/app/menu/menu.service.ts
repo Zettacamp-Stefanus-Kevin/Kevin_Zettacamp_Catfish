@@ -9,40 +9,6 @@ import { menu } from './menu';
 export class MenuService {
   constructor(private apolo: Apollo) {}
 
-  // getMenu(pagination: any): Observable<any> {
-
-  //   return this.apolo.query({
-  //     query: gql`
-  //     query Query ($limit: Int, $page: Int, $recipeName: String){
-  //       GetAllRecipes(limit: $limit, page: $page, recipe_name: $recipeName) {
-  //         maxPage
-  //         page
-  //         count
-  //         data_recipes {
-  //           id
-  //           price
-  //           recipe_name
-  //           status
-  //           remain_order
-  //           description
-  //           image
-  //           ingredients {
-  //             ids {
-  //               name
-  //               stock
-  //             }
-  //           }
-  //         }
-  //       }
-  //     }
-  //     `,
-  //     variables: {
-  //       ...pagination, status : 'active'
-  //     },
-  //     fetchPolicy: "network-only"
-  //   })
-  // }
-
   getMenu(pagination: any, kategori:any): Observable<any> {
     let kategoriFilter: any = '';
     if (kategori) {

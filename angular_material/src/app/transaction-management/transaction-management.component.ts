@@ -16,53 +16,14 @@ export interface status {
   styleUrls: ['./transaction-management.component.css'],
 })
 export class TransactionManagementComponent implements OnInit {
-  // dataSource = new MatTableDataSource();
-  // displayedColumns: string[] = [
-  //   'role',
-  //   'user_name',
-  //   'order_menu',
-  //   'total_price',
-  //   'date',
-  // ];
-  // order_date = '';
-
-  // sortUserName: boolean = false;
-  // sortTotalPrice: boolean = false;
 
   constructor(private transactionService: TransactionManagementService) {}
-
-  // ngOnInit(): void {
-  //   this.init();
-  //   this.filterDate()
-  // }
-
-  // init() {
-  //   const data = {
-  //     sortUserName: this.sortUserName,
-  //     sortTotalPrice: this.sortTotalPrice,
-  //     order_date: this.order_date,
-  //   };
-  //   this.transactionService
-  //     .getHistoryTransactions(data)
-  //     .subscribe((data: any) => {
-  //       this.dataSource = new MatTableDataSource(
-  //         data?.data?.GetAllTransactions?.data
-  //       );
-  //     });
-  // }
 
   private subs = new SubSink();
   history : any
 
   displayedColumns: string[] =   ['name', 'recipe_name', 'order_date', 'price', 'status'];
-  // [
-  //   'role',
-  //   'user_name',
-  //   'order_menu',
-  //   'total_price',
-  //   'date',
-  // ];
-
+ 
   dataSource = new MatTableDataSource([]);
 
   ngOnInit(): void {

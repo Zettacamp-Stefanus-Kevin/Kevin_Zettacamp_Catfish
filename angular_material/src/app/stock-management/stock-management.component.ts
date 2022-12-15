@@ -26,6 +26,8 @@ export class StockManagementComponent implements OnInit {
   private subs = new SubSink();
   stock: stock[] = [];
 
+  isSort = true
+
   displayedColumns: string[] = ['nama', 'stock', 'actions'];
   dataSource = new MatTableDataSource();
 
@@ -41,20 +43,20 @@ export class StockManagementComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.init(this.paginator);
+    this.init(this.paginator,this.isSort);
     this.filterIngredient();
-    this.filterStatus();
+    // this.filterStatus();
     // this.filterStock()
   }
 
-  init(paginationObj: any) {
+  init(paginationObj: any, sort) {
     this.pagination = {
       page: paginationObj?.page ?? 1,
       limit: paginationObj?.limit ?? 5,
     };
 
     this.subs.sink = this.stockService
-      .getStock(this.pagination, this.searchIngredient, this.searchStatus)
+      .getStock(this.pagination, this.searchIngredient, this.isSort)
       .subscribe((resp) => {
         this.paginator.length = resp.data.GetAllIngredients.count;
         console.log(resp);
@@ -82,7 +84,7 @@ export class StockManagementComponent implements OnInit {
         title: this.translate.instant('Success'),
         text: this.translate.instant('Your work has been saved'),
       });
-      this.init(this.pagination);
+      this.init(this.pagination, this.isSort);
     });
   }
 
@@ -103,7 +105,7 @@ export class StockManagementComponent implements OnInit {
             title: this.translate.instant('Deleted!'),
             text: this.translate.instant('this menu has been deleted'),
           });
-          this.init(this.pagination);
+          this.init(this.pagination, this.isSort);
         },(err) => {
           Swal.fire({
             icon: 'error',
@@ -137,18 +139,16 @@ export class StockManagementComponent implements OnInit {
           title: this.translate.instant('Success'),
           text: this.translate.instant('Your work has been saved'),
         }).then(() => {
-          this.init(this.pagination);
+          this.init(this.pagination, this.isSort);
         });
       });
     });
   }
 
   onSortName(){
-    // if (this.=== 1) {
-    //   this.= -1;
-    // } else {
-    //   this.= 1;
-    // }
+    this.isSort = !this.isSort
+    this.init(true, this.isSort)
+      
   }
 
   //Ingredients FIlter===================================
@@ -159,7 +159,7 @@ export class StockManagementComponent implements OnInit {
   filterIngredient() {
     this.ingredientFilter.valueChanges.subscribe((val) => {
       this.searchIngredient = val;
-      this.init(true);
+      this.init(true, this.isSort)
     });
   }
 
@@ -171,7 +171,7 @@ export class StockManagementComponent implements OnInit {
   filterStock() {
     this.stockFilter.valueChanges.subscribe((val) => {
       this.searchStock = val;
-      this.init(true);
+      this.init(true, this.isSort)
     });
   }
 
@@ -190,7 +190,7 @@ export class StockManagementComponent implements OnInit {
   filterStatus() {
     this.statusFilter.valueChanges.subscribe((val) => {
       this.searchStatus = val;
-      this.init(true);
+      this.init(true, this.isSort)
     });
   }
 
@@ -203,6 +203,6 @@ export class StockManagementComponent implements OnInit {
       limit: event?.pageSize,
       page: event?.pageIndex + 1,
     };
-    this.init(pagination);
+    this.init(pagination, this.isSort);
   }
 }

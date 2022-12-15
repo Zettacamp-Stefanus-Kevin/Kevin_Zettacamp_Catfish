@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
           Swal.fire({
             icon: 'success',
             title:
-              this.translate.instant('hello ') + data?.data?.Login?.first_name + data?.data?.Login?.last_name ,
+              this.translate.instant('hello ') + data?.data?.Login?.first_name,
             text: this.translate.instant('Welcome to our Restaurant'),
           }).then(() => {
             this.router.navigate(['homepage']);
@@ -106,22 +106,4 @@ export class LoginComponent implements OnInit {
       }
     });
   }
-
-  // forget() {
-  //   const dialogRef = this.dialog.open(ForgetComponent, {
-  //     width: '30%', height: '30%',
-  //   });
-
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     this.loginService.updateToken(result).subscribe((item)=>{
-  //       this.b = item.data
-  //     })
-  //       Swal.fire({
-  //         icon: 'success',
-  //         title: this.translate.instant("Success"),
-  //         text: this.translate.instant("Your work has been saved"),
-  //       });
-
-  //   });
-  // }
 }

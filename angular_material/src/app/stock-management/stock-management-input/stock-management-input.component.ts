@@ -37,26 +37,7 @@ export class StockManagementInputComponent implements OnInit {
   }
 
   onSubmit() {
-    // if (this.stockForm.valid) {
-    //   this.stockService.addStock(this.stockForm.value)
-
-    //   Swal.fire({
-    //     icon: 'success',
-    //     title: 'Success',
-    //     text: 'Your work has been saved',
-    //   });
-    //   this.dialog.close();
-    // } else {
-
-    //   Swal.fire({
-    //     icon: 'error',
-    //     title: 'Failed',
-    //     text: 'Try again',
-    //   });
-
-    //   this.stockForm.markAllAsTouched();
-    // }
-
+    
     if (this.stockForm.valid) {
       this.dialog.close(this.stockForm.value);
     } else {

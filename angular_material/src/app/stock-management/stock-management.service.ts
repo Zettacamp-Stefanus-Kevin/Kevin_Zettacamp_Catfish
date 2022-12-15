@@ -9,25 +9,27 @@ import { stock } from './stock';
 export class StockManagementService {
   constructor(private apolo: Apollo) {}
 
-  getStock(pagination?: any, ing?: any, status?: any): Observable<any> {
+  getStock(pagination?: any, ing?: any, sort?: any): Observable<any> {
     let ingredientFilter: any = '';
     if (ing) {
       ingredientFilter = ing;
     }
 
-    let statusFilter: any = '';
-    if (status) {
-      statusFilter = status;
-    }
+    // let stockFilter: any = '';
+    // if (stock) {
+    //   stockFilter = stock;
+    // }
 
     return this.apolo.query({
       query: gql`
-        query Query($name: String, $status: String, $limit: Int, $page: Int) {
+        query Query($name: String, $status: String, $limit: Int, $page: Int, $stock: Int, $sortName: Boolean) {
           GetAllIngredients(
             name: $name
             status: $status
+            stock: $stock
             limit: $limit
             page: $page
+            sortName: $sortName
           ) {
             maxPage
             page
@@ -44,7 +46,7 @@ export class StockManagementService {
       variables: {
         ...pagination,
         name: ingredientFilter,
-        status: statusFilter,
+        sort
       },
       fetchPolicy: 'network-only',
     });
@@ -98,9 +100,7 @@ export class StockManagementService {
       mutation: gql`
         mutation ($id: ID) {
           DeleteIngredients(id: $id) {
-            id
-            name
-            stock
+            status
           }
         }
       `,

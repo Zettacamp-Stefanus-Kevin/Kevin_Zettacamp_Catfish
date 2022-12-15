@@ -27,10 +27,14 @@ export class MenuManagementInputComponent implements OnInit {
   
 
   kategori: kategory[] = [
-    { value: 'side dish', viewValue: 'Side Dish' },
-    { value: 'appetizer', viewValue: 'Appetizer' },
-    { value: 'dessert', viewValue: 'Dessert'},
-    { value: 'cocktail', viewValue: 'Cocktail'}
+    { value: 'appetizer', viewValue:  this.translate.instant('Appetizer')},
+    { value: 'main course', viewValue: this.translate.instant('Main Course')},
+    { value: 'dessert', viewValue: this.translate.instant('Dessert')},
+    { value: 'side dish', viewValue:  this.translate.instant('Side Dish')},
+    { value: 'cocktail', viewValue: this.translate.instant('Cocktail')},
+    { value: 'mocktail', viewValue: this.translate.instant('Mocktail')},
+    { value: 'drink', viewValue: this.translate.instant('Drink')},
+   
   ];
 
   constructor(

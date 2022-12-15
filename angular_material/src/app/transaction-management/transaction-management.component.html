@@ -2,21 +2,9 @@
 
     <div class="container">
         <h1>  {{ "Transaction Management" | translate }}</h1>
-
-        <!-- <mat-form-field style="color: #F4F4F4;" appearance="fill">
-            <mat-label> Search Date </mat-label>
-            <input matInput type="date" [formControl]="dateFilter">
-        </mat-form-field> -->
     </div>
 
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-        <!-- User Column -->
-        <!-- Role -->
-        <!-- <ng-container matColumnDef="role">
-            <th mat-header-cell *matHeaderCellDef> {{"role" | translate }} </th>
-            <td mat-cell *matCellDef="let element">{{element.user_id.role}} </td>
-        </ng-container> -->
-
         <!-- Name -->
         <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef>{{"name" | translate }} <br>
@@ -26,7 +14,7 @@
                 </mat-form-field>
             </th>
             <td mat-cell *matCellDef="let element">
-                {{element?.user_id?.first_name}}{{element?.user_id?.last_name}}
+                {{element?.user_id?.first_name}} {{element?.user_id?.last_name}}
             </td>
         </ng-container>
 
@@ -76,8 +64,7 @@
             <td mat-cell *matCellDef="let element"> {{element?.total_price}} </td>
         </ng-container>
 
-
-
+        
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>

@@ -37,6 +37,7 @@ export class MenuManagementComponent implements OnInit {
     'actions',
   ];
   dataSource = new MatTableDataSource([]);
+  z: string;
 
   constructor(
     private menuService: MenuManagementService,
@@ -91,7 +92,7 @@ export class MenuManagementComponent implements OnInit {
           text: this.translate.instant('Your work has been saved'),
         }
         );
-        this.init(this.pagination);
+        // this.init(this.pagination);
       }, err => {
         Swal.fire({
           icon: 'error',
@@ -169,13 +170,14 @@ export class MenuManagementComponent implements OnInit {
 
   onChanged(event: any, check: any) {
     check = copy(check);
+    this.z = check.status === 'active' ? 'unpublish' : 'publish'
     if (check.status === 'active') {
       check.status = 'unpublish'
     } else if (check.status === 'unpublish') {
       check.status = 'active'
     }
     Swal.fire({
-      title: 'Are you sure want change status to ' + check.status + '?',
+      title: 'Are you sure want change status to ' + this.z + '?',
       showDenyButton: false,
       showCancelButton: true,
       showConfirmButton: true,
@@ -187,7 +189,7 @@ export class MenuManagementComponent implements OnInit {
           Swal.fire({
             title:
               this.translate.instant('you have been change status to ') +
-              check.status,
+              this.z,
           });
         });
       } else {
@@ -196,66 +198,6 @@ export class MenuManagementComponent implements OnInit {
 
     });
   }
-
-  // onHigh(check: any) {
-  //   check = copy(check);
-  //   if (check.is_hightlighted === true) {
-  //     check.is_hightlighted = false;
-  //   } else if (check.is_hightlighted === false) {
-  //     check.is_hightlighted = true;
-  //   }
-  //   Swal.fire({
-  //     title:
-  //       this.translate.instant('Are you sure want change this menu to ') +
-  //       check.is_hightlighted +
-  //       '?',
-  //     showDenyButton: false,
-  //     showCancelButton: true,
-  //     showConfirmButton: true,
-  //     denyButtonText: `Yes`,
-  //   }).then((result) => {
-  //     if (result.isConfirmed) {
-  //       this.menuService.updateHighlight(check).subscribe(() => {
-  //         Swal.fire({
-  //           title:
-  //             this.translate.instant('you have been change status to ') +
-  //             check.is_hightlighted,
-  //         });
-  //         this.init(true);
-  //       });
-  //     }
-  //   });
-  // }
-
-  // onSpecial(check: any) {
-  //   check = copy(check);
-  //   if (check.is_special_offers.status === true) {
-  //     check.is_special_offers.status = false;
-  //   } else if (check.is_special_offers.status === false) {
-  //     check.is_special_offers.status = true;
-  //   }
-  //   Swal.fire({
-  //     title:
-  //       this.translate.instant('Are you sure want change this menu to ') +
-  //       check.is_special_offers.status +
-  //       '?',
-  //     showDenyButton: false,
-  //     showCancelButton: true,
-  //     showConfirmButton: true,
-  //     denyButtonText: `Yes`,
-  //   }).then((result) => {
-  //     if (result.isConfirmed) {
-  //       this.menuService.updateSPrice(check).subscribe(() => {
-  //         Swal.fire({
-  //           title:
-  //             this.translate.instant('you have been change status to ') +
-  //             check.is_special_offers.status,
-  //         });
-  //         this.init(true);
-  //       });
-  //     }
-  //   });
-  // }
 
   //names FIlter===================================
 
@@ -273,9 +215,8 @@ export class MenuManagementComponent implements OnInit {
 
   status: status[] = [
     { value: '', viewValue: 'All' },
-    { value: 'unpublish', viewValue: 'Not Active' },
-    { value: 'active', viewValue: 'Active' },
-    { value: 'deleted', viewValue: 'Deleted' },
+    { value: 'unpublish', viewValue: 'Not Publish' },
+    { value: 'active', viewValue: 'Publish' },
   ];
 
   statusFilter = new FormControl();

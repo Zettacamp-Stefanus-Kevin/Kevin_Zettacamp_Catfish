@@ -23,7 +23,7 @@ export class CartListComponent implements OnInit {
   user: any;
   data: any;
   amount: any;
-  menu: any;
+  menu?: any;
 
   constructor(
     private cartService: CartService,
@@ -34,36 +34,29 @@ export class CartListComponent implements OnInit {
 
   ngOnInit(): void {
     this.init();
+    // this.getall();
   }
 
-  getall() {
-    this.cartService.getRefcard().subscribe(() => { })
-  }
+  // getall() {
+  //   this.cartService.getRefcard().subscribe(() => { })
+  // }
 
   init() {
-    this.subs.sink = this.cartService
-      .getCart()
-      .valueChanges.subscribe((resp: any) => {
+    this.subs.sink = this.cartService.getCart().valueChanges.subscribe((resp: any) => {
         this.data = resp?.data?.GetOrder;
         this.price = resp?.data?.GetOrder?.total_price;
         this.order = resp?.data?.GetOrder?.order_date;
         this.order_id = resp?.data?.GetOrder?.id;
         this.amount = resp?.data?.GetOrder?.menu.amount;
-        this.menu = resp?.data?.GetOrder?.menu.length;
+        this.menu = resp?.data?.GetOrder?.menu?.length;
         this.user =
           resp?.data?.GetOrder?.user_id?.first_name +
           ' ' +
           resp?.data?.GetOrder?.user_id?.last_name +
           '...';
 
-        let menus: any = [];
-
-        this.data.menu.forEach((item: any) => {
-          menus.push({
-            ...item,
-          });
-        });
-        this.cart = menus;
+        
+        this.cart = resp?.data?.GetOrder.menu;
       });
   }
 
@@ -79,8 +72,8 @@ export class CartListComponent implements OnInit {
             text: resp.data.OrderNow.order_status,
             footer: this.translate.instant('Sorry, You have Menu Out of Stock'),
           });
-          this.data = [];
-          this.getall();
+          this.cart = []
+          // this.getall();
           this.init();
         } else {
           Swal.fire({
@@ -91,12 +84,14 @@ export class CartListComponent implements OnInit {
             text: resp.data.OrderNow.order_status,
           }).then(() => {
             this.router.navigate(['cart']).then(() => {
+              window.location.reload()
               const email = localStorage.getItem('email')
               this.subs.sink = this.profileService.getUser(email).valueChanges.subscribe((resp: any) => {
                 this.appComponent = resp?.data?.GetOneUser?.balance
                 localStorage.setItem('balance', resp?.data?.GetOneUser?.balance)
               });
-               this.getall();
+                this.cart = []
+                // this.getall();
                this.init();
             });
           });
@@ -111,5 +106,5 @@ export class CartListComponent implements OnInit {
       }
     );
   }
-  
+
 }
