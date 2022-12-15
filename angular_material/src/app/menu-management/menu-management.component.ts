@@ -93,7 +93,7 @@ export class MenuManagementComponent implements OnInit {
           text: this.translate.instant('Your work has been saved'),
         }
         );
-        // this.init(this.pagination);
+        this.init(this.pagination);
       }, err => {
         Swal.fire({
           icon: 'error',
@@ -109,7 +109,7 @@ export class MenuManagementComponent implements OnInit {
     const bebas: any = {
       ...parameter,
       ingredients: parameter.ingredients.map((ingredient: any) => {
-        this.init(this.pagination)
+        this.init(this.paginator);
         return {
           ingredient_id: ingredient.ids.id,
           stock_used: ingredient.stock_used,
@@ -154,7 +154,7 @@ export class MenuManagementComponent implements OnInit {
             title: this.translate.instant('Deleted!'),
             text: this.translate.instant('this menu has been deleted'),
           });
-          this.init(this.pagination);
+          this.init(this.paginator);
         }, err => {
           Swal.fire({
             icon: 'error',

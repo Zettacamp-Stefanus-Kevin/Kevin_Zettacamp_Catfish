@@ -43,20 +43,20 @@ export class StockManagementComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.init(this.paginator,this.isSort);
+    this.init(this.paginator);
     this.filterIngredient();
     // this.filterStatus();
     // this.filterStock()
   }
 
-  init(paginationObj: any, sort) {
+  init(paginationObj: any, ) {
     this.pagination = {
       page: paginationObj?.page ?? 1,
       limit: paginationObj?.limit ?? 5,
     };
 
     this.subs.sink = this.stockService
-      .getStock(this.pagination, this.searchIngredient, this.isSort)
+      .getStock(this.pagination, this.searchIngredient)
       .subscribe((resp) => {
         this.paginator.length = resp.data.GetAllIngredients.count;
         console.log(resp);
@@ -83,7 +83,7 @@ export class StockManagementComponent implements OnInit {
           title: this.translate.instant('Success'),
           text: this.translate.instant('Your work has been saved'),
         });
-        this.init(this.pagination, this.isSort);
+        this.init(this.pagination);
       },err => {
       Swal.fire({
         icon: 'error',
@@ -111,7 +111,7 @@ export class StockManagementComponent implements OnInit {
             title: this.translate.instant('Deleted!'),
             text: this.translate.instant('this menu has been deleted'),
           });
-          this.init(this.pagination, this.isSort);
+          this.init(this.pagination);
         },(err) => {
           Swal.fire({
             icon: 'error',
@@ -145,7 +145,7 @@ export class StockManagementComponent implements OnInit {
           title: this.translate.instant('Success'),
           text: this.translate.instant('Your work has been saved'),
         }).then(() => {
-          this.init(this.pagination, this.isSort);
+          this.init(this.pagination);
         });
       },(err) => {
         Swal.fire({
@@ -163,11 +163,11 @@ export class StockManagementComponent implements OnInit {
     });
   }
 
-  onSortName(){
-    this.isSort = !this.isSort
-    this.init(true, this.isSort)
+  // onSortName(){
+  //   this.isSort = !this.isSort
+  //   this.init(true, this.isSort)
       
-  }
+  // }
 
   //Ingredients FIlter===================================
 
@@ -177,7 +177,7 @@ export class StockManagementComponent implements OnInit {
   filterIngredient() {
     this.ingredientFilter.valueChanges.subscribe((val) => {
       this.searchIngredient = val;
-      this.init(true, this.isSort)
+      this.init(true)
     });
   }
 
@@ -189,7 +189,7 @@ export class StockManagementComponent implements OnInit {
   filterStock() {
     this.stockFilter.valueChanges.subscribe((val) => {
       this.searchStock = val;
-      this.init(true, this.isSort)
+      this.init(true)
     });
   }
 
@@ -208,7 +208,7 @@ export class StockManagementComponent implements OnInit {
   filterStatus() {
     this.statusFilter.valueChanges.subscribe((val) => {
       this.searchStatus = val;
-      this.init(true, this.isSort)
+      this.init(true)
     });
   }
 
@@ -221,6 +221,6 @@ export class StockManagementComponent implements OnInit {
       limit: event?.pageSize,
       page: event?.pageIndex + 1,
     };
-    this.init(pagination, this.isSort);
+    this.init(pagination);
   }
 }
